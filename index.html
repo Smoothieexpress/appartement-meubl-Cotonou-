@@ -3,15 +3,15 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>FührerscheinExpress - Ihr schneller Weg zum deutschen Führerschein</title>
+    <title>FahrSchul - Ihr Weg zum deutschen Führerschein</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
     <style>
         :root {
-            --primary: #1e3a8a; /* Bleu foncé professionnel */
-            --secondary: #f97316; /* Orange vif pour les CTAs */
-            --accent: #059669;   /* Vert pour la confiance/validation */
-            --traditional: #7c3aed; /* Violet pour traditionnel */
+            --primary: #1e3a8a;
+            --secondary: #f97316;
+            --accent: #059669;
+            --traditional: #7c3aed;
             --dark: #0f172a;
             --light: #f8fafc;
             --gray: #64748b;
@@ -185,50 +185,35 @@
             font-weight: 600;
         }
         
-        /* Choix Section */
-        .choix { padding: 100px 0; background-color: white; }
+        /* Warum wir? Section */
+        .features { padding: 100px 0; background-color: white; }
         
-        .choix-container {
+        .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(500px, 1fr));
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
             gap: 40px;
             margin-top: 50px;
         }
         
-        .choix-card {
+        .feature-card {
             background-color: white;
             border-radius: 20px;
-            padding: 50px 40px;
-            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
+            padding: 50px 30px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.08);
             text-align: center;
-            position: relative;
-            overflow: hidden;
+            transition: all 0.3s ease;
+            border-top: 4px solid var(--primary);
         }
         
-        .choix-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12); }
-        .choix-card.alternative { border-color: var(--secondary); }
-        .choix-card.traditional { border-color: var(--traditional); }
+        .feature-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
         
-        .choix-badge {
-            position: absolute;
-            top: 20px;
-            right: -30px;
-            color: white;
-            padding: 8px 40px;
-            font-size: 0.8rem;
-            font-weight: 600;
-            transform: rotate(45deg);
-        }
-        
-        .alternative .choix-badge { background-color: var(--secondary); }
-        .traditional .choix-badge { background-color: var(--traditional); }
-        
-        .choix-icon {
-            font-size: 4rem;
-            height: 100px;
-            width: 100px;
+        .feature-icon {
+            font-size: 3rem;
+            color: var(--primary);
+            margin-bottom: 30px;
+            height: 90px;
+            width: 90px;
+            background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(30, 58, 138, 0.05) 100%);
             display: flex;
             align-items: center;
             justify-content: center;
@@ -236,76 +221,122 @@
             margin: 0 auto 30px;
         }
         
-        .alternative .choix-icon {
-            background: linear-gradient(135deg, rgba(249, 115, 22, 0.1) 0%, rgba(249, 115, 22, 0.05) 100%);
-            color: var(--secondary);
+        /* Drei Top-Leistungen */
+        .services { padding: 100px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
+        
+        .services-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 40px;
+            margin-top: 50px;
         }
         
-        .traditional .choix-icon {
-            background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%);
-            color: var(--traditional);
+        .service-card {
+            background-color: white;
+            border-radius: 20px;
+            padding: 50px 40px;
+            box-shadow: 0 15px 40px rgba(0, 0, 0, 0.08);
+            text-align: center;
+            transition: all 0.3s ease;
+            border: 2px solid transparent;
         }
         
-        .choix-features {
-            list-style: none;
-            margin: 30px 0 40px;
-            text-align: left;
-        }
+        .service-card:hover { transform: translateY(-15px); box-shadow: 0 25px 50px rgba(0, 0, 0, 0.12); }
+        .service-card:nth-child(1) { border-color: var(--secondary); }
+        .service-card:nth-child(2) { border-color: var(--traditional); }
+        .service-card:nth-child(3) { border-color: var(--accent); }
         
-        .choix-features li {
-            padding: 12px 0;
-            border-bottom: 1px solid var(--light-gray);
+        .service-icon {
+            font-size: 3.5rem;
+            margin-bottom: 30px;
+            height: 100px;
+            width: 100px;
             display: flex;
             align-items: center;
+            justify-content: center;
+            border-radius: 50%;
+            margin: 0 auto 30px;
+            color: white;
         }
         
-        .choix-features li i { margin-right: 10px; font-size: 1.1rem; }
-        .alternative .choix-features li i { color: var(--secondary); }
-        .traditional .choix-features li i { color: var(--traditional); }
+        .service-card:nth-child(1) .service-icon { background: var(--secondary); }
+        .service-card:nth-child(2) .service-icon { background: var(--traditional); }
+        .service-card:nth-child(3) .service-icon { background: var(--accent); }
         
-        /* SECTION SPÉCIALE UMSCHREIBING (Mise en avant) */
-        .umschreibung-highlight {
-            background: linear-gradient(135deg, #f0f9ff 0%, #e0f2fe 100%);
-            padding: 100px 0;
+        /* Avis Kunden */
+        .testimonials { padding: 100px 0; background-color: white; }
+        
+        .testimonials-slider {
+            max-width: 1000px;
+            margin: 0 auto;
             position: relative;
             overflow: hidden;
         }
         
-        .umschreibung-highlight::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 10px;
-            background: linear-gradient(90deg, var(--accent), var(--primary));
+        .testimonials-track {
+            display: flex;
+            transition: transform 0.5s ease;
         }
         
-        .highlight-container {
+        .testimonial-slide {
+            min-width: 100%;
+            padding: 20px;
+            box-sizing: border-box;
+        }
+        
+        .testimonial-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 50px;
+            gap: 30px;
+        }
+        
+        .testimonial-card {
+            background-color: #f8fafc;
+            border-radius: 15px;
+            padding: 35px;
+            box-shadow: 0 5px 20px rgba(0, 0, 0, 0.05);
+            position: relative;
+        }
+        
+        .testimonial-card::before {
+            content: '"';
+            position: absolute;
+            top: 15px;
+            right: 25px;
+            font-size: 4rem;
+            color: rgba(30, 58, 138, 0.1);
+            font-family: Georgia, serif;
+        }
+        
+        .client-header {
+            display: flex;
             align-items: center;
+            margin-bottom: 25px;
         }
         
-        .highlight-badge {
-            display: inline-block;
-            background-color: var(--accent);
+        .client-avatar {
+            width: 60px;
+            height: 60px;
+            border-radius: 50%;
+            background: linear-gradient(135deg, var(--primary), var(--secondary));
+            margin-right: 20px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-size: 1.5rem;
             color: white;
-            padding: 8px 20px;
-            border-radius: 20px;
-            font-size: 0.9rem;
             font-weight: 600;
-            margin-bottom: 20px;
         }
         
-        /* Achat Permis Section */
-        .achat-permis { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 100px 0; position: relative; overflow: hidden; }
-        .achat-permis::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(90deg, var(--secondary), var(--primary)); }
+        .stars { color: #ffc107; margin-bottom: 15px; }
         
-        .achat-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(320px, 1fr)); gap: 40px; }
+        /* Schnellführerschein Section */
+        .fast-license { background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); padding: 100px 0; position: relative; }
+        .fast-license::before { content: ''; position: absolute; top: 0; left: 0; width: 100%; height: 10px; background: linear-gradient(90deg, var(--secondary), var(--primary)); }
         
-        .achat-card {
+        .license-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
+        
+        .license-card {
             background-color: white;
             border-radius: 15px;
             padding: 40px 30px;
@@ -313,13 +344,11 @@
             text-align: center;
             border: 2px solid transparent;
             transition: all 0.3s ease;
-            position: relative;
-            overflow: hidden;
         }
         
-        .achat-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
-        .achat-card.popular { border-color: var(--secondary); transform: scale(1.05); }
-        .achat-card.popular:hover { transform: scale(1.05) translateY(-10px); }
+        .license-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.12); }
+        .license-card.popular { border-color: var(--secondary); transform: scale(1.05); }
+        .license-card.popular:hover { transform: scale(1.05) translateY(-10px); }
         
         .popular-badge {
             position: absolute;
@@ -333,48 +362,18 @@
             transform: rotate(45deg);
         }
         
-        .achat-price { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 25px 0; }
-        .achat-price span { font-size: 1.5rem; font-weight: 600; }
+        .license-price { font-size: 3.5rem; font-weight: 800; color: var(--primary); margin: 25px 0; }
         
-        .achat-features { list-style: none; margin: 30px 0; text-align: left; }
-        .achat-features li { padding: 12px 0; border-bottom: 1px solid var(--light-gray); display: flex; align-items: center; }
-        .achat-features li i { color: var(--accent); margin-right: 10px; font-size: 1.1rem; }
+        .license-features { list-style: none; margin: 30px 0; text-align: left; }
+        .license-features li { padding: 12px 0; border-bottom: 1px solid var(--light-gray); display: flex; align-items: center; }
+        .license-features li i { color: var(--accent); margin-right: 10px; font-size: 1.1rem; }
         
-        /* Toutes les Catégories Section */
-        .toutes-categories { padding: 100px 0; background-color: white; }
+        /* Traditioneller Führerschein */
+        .traditional-license { padding: 100px 0; background-color: white; }
         
-        .categories-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
+        .traditional-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; margin-top: 50px; }
         
-        .categorie-card {
-            background-color: white;
-            border-radius: 15px;
-            padding: 30px;
-            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05);
-            text-align: center;
-            border: 2px solid transparent;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-        
-        .categorie-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); border-color: var(--primary); }
-        
-        .categorie-icon { font-size: 2.5rem; color: var(--primary); margin-bottom: 20px; height: 70px; width: 70px; background: linear-gradient(135deg, rgba(30, 58, 138, 0.1) 0%, rgba(30, 58, 138, 0.05) 100%); display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 20px; }
-        
-        .categorie-price { font-size: 2.2rem; font-weight: 800; color: var(--primary); margin: 15px 0; }
-        .categorie-features { list-style: none; margin: 20px 0; text-align: left; }
-        .categorie-features li { padding: 8px 0; border-bottom: 1px solid var(--light-gray); display: flex; align-items: center; }
-        .categorie-features li i { color: var(--accent); margin-right: 10px; font-size: 1rem; }
-        
-        /* Formations Traditionnelles Section */
-        .formations { padding: 100px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
-        .formations-grid { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 40px; }
-        
-        .formation-card {
+        .traditional-card {
             background-color: white;
             border-radius: 15px;
             padding: 40px 30px;
@@ -384,19 +383,66 @@
             transition: all 0.3s ease;
         }
         
-        .formation-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
-        .formation-card.popular { border-color: var(--traditional); transform: scale(1.05); }
-        .formation-card.popular:hover { transform: scale(1.05) translateY(-10px); }
+        .traditional-card:hover { transform: translateY(-10px); box-shadow: 0 20px 40px rgba(0, 0, 0, 0.1); }
+        .traditional-card.recommended { border-color: var(--traditional); transform: scale(1.05); }
+        .traditional-card.recommended:hover { transform: scale(1.05) translateY(-10px); }
         
-        .formation-icon { font-size: 3rem; color: var(--traditional); margin-bottom: 25px; height: 80px; width: 80px; background: linear-gradient(135deg, rgba(124, 58, 237, 0.1) 0%, rgba(124, 58, 237, 0.05) 100%); display: flex; align-items: center; justify-content: center; border-radius: 50%; margin: 0 auto 25px; }
-        .formation-price { font-size: 2.5rem; font-weight: 800; color: var(--traditional); margin: 20px 0; }
+        .recommended-badge {
+            position: absolute;
+            top: 20px;
+            right: -30px;
+            background-color: var(--traditional);
+            color: white;
+            padding: 8px 40px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            transform: rotate(45deg);
+        }
         
-        .formation-features { list-style: none; margin: 25px 0; text-align: left; }
-        .formation-features li { padding: 10px 0; border-bottom: 1px solid var(--light-gray); display: flex; align-items: center; }
-        .formation-features li i { color: var(--traditional); margin-right: 10px; }
+        .traditional-price { font-size: 2.5rem; font-weight: 800; color: var(--traditional); margin: 20px 0; }
         
-        /* Tableau des Prix */
-        .pricing-table-section { padding: 100px 0; background-color: white; }
+        .traditional-features { list-style: none; margin: 25px 0; text-align: left; }
+        .traditional-features li { padding: 10px 0; border-bottom: 1px solid var(--light-gray); display: flex; align-items: center; }
+        .traditional-features li i { color: var(--traditional); margin-right: 10px; }
+        
+        /* Umschreibung Highlight */
+        .conversion-highlight {
+            background: linear-gradient(135deg, rgba(5, 150, 105, 0.05) 0%, rgba(30, 58, 138, 0.05) 100%);
+            padding: 100px 0;
+            position: relative;
+            overflow: hidden;
+        }
+        
+        .conversion-highlight::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 10px;
+            background: linear-gradient(90deg, var(--accent), var(--primary));
+        }
+        
+        .conversion-container {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+            gap: 60px;
+            align-items: center;
+        }
+        
+        .conversion-badge {
+            display: inline-block;
+            background-color: var(--accent);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 20px;
+            font-size: 0.9rem;
+            font-weight: 600;
+            margin-bottom: 20px;
+        }
+        
+        /* Preistabelle */
+        .pricing-table-section { padding: 100px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
         .pricing-table { width: 100%; border-collapse: collapse; margin-top: 50px; box-shadow: 0 10px 30px rgba(0, 0, 0, 0.05); border-radius: 10px; overflow: hidden; }
         .pricing-table th { background-color: var(--primary); color: white; padding: 20px; text-align: left; font-weight: 600; }
         .pricing-table td { padding: 20px; border-bottom: 1px solid var(--light-gray); }
@@ -404,18 +450,7 @@
         .pricing-table tr:hover { background-color: #f1f5f9; }
         .price-cell { font-weight: 700; color: var(--primary); font-size: 1.2rem; }
         
-        /* FAQ / Aide Section */
-        .faq-section { padding: 100px 0; background: linear-gradient(135deg, #f8fafc 0%, #f1f5f9 100%); }
-        .faq-container { max-width: 800px; margin: 0 auto; }
-        .faq-item { background-color: white; border-radius: 10px; margin-bottom: 20px; overflow: hidden; box-shadow: 0 5px 15px rgba(0, 0, 0, 0.05); }
-        .faq-question { padding: 25px 30px; font-weight: 600; font-size: 1.1rem; cursor: pointer; display: flex; justify-content: space-between; align-items: center; }
-        .faq-answer { padding: 0 30px; max-height: 0; overflow: hidden; transition: all 0.3s ease; }
-        .faq-item.active .faq-answer { padding: 0 30px 30px; max-height: 500px; }
-        .faq-item.active .faq-question { color: var(--primary); }
-        .faq-icon { transition: transform 0.3s ease; }
-        .faq-item.active .faq-icon { transform: rotate(180deg); }
-        
-        /* Contact Section */
+        /* Kontakt */
         .contact { padding: 100px 0; background-color: white; }
         .contact-container { display: grid; grid-template-columns: repeat(auto-fit, minmax(300px, 1fr)); gap: 60px; margin-top: 50px; }
         .contact-info h3 { margin-bottom: 40px; color: var(--primary); }
@@ -443,9 +478,8 @@
         /* Responsive */
         @media (max-width: 1100px) {
             h1 { font-size: 2.8rem; } h2 { font-size: 2.4rem; }
-            .choix-container { grid-template-columns: 1fr; }
-            .achat-card.popular, .formation-card.popular { transform: none; }
-            .achat-card.popular:hover, .formation-card.popular:hover { transform: translateY(-10px); }
+            .license-card.popular, .traditional-card.recommended { transform: none; }
+            .license-card.popular:hover, .traditional-card.recommended:hover { transform: translateY(-10px); }
         }
         
         @media (max-width: 992px) {
@@ -460,7 +494,7 @@
             nav ul li { margin: 0 15px 10px; }
             .hero h1 { font-size: 2.2rem; } .hero p { font-size: 1.1rem; }
             .btn-whatsapp span { display: none; }
-            .categories-grid { grid-template-columns: repeat(2, 1fr); }
+            .testimonial-grid { grid-template-columns: 1fr; }
         }
         
         @media (max-width: 576px) {
@@ -473,9 +507,7 @@
             section { padding: 60px 0; } .contact-form { padding: 25px; }
             .hero-btns { flex-direction: column; align-items: center; }
             .hero-btns .btn { width: 100%; max-width: 300px; }
-            .categories-grid { grid-template-columns: 1fr; }
-            .achat-grid, .formations-grid { grid-template-columns: 1fr; }
-            .highlight-container { grid-template-columns: 1fr; }
+            .license-grid, .traditional-grid { grid-template-columns: 1fr; }
         }
     </style>
 </head>
@@ -485,290 +517,387 @@
         <div class="container header-container">
             <div class="logo">
                 <i class="fas fa-car"></i>
-                Führerschein<span>Express</span>
+                Fahr<span>Schul</span>
             </div>
             <div class="mobile-menu">
                 <i class="fas fa-bars"></i>
             </div>
             <nav>
                 <ul>
-                    <li><a href="#accueil">Startseite</a></li>
-                    <li><a href="#schnellfuhrerschein">Permis Rapide Sans Examen</a></li>
-                    <li><a href="#traditionell">Permis Traditionnel</a></li>
-                    <li><a href="#umschreibung">Changement de Permis (Umschreibung)</a></li>
+                    <li><a href="#home">Startseite</a></li>
+                    <li><a href="#schnellfuhrerschein">Schnellführerschein</a></li>
+                    <li><a href="#traditionell">Traditioneller Führerschein</a></li>
+                    <li><a href="#umschreibung">Führerscheinumtausch</a></li>
                     <li><a href="#preise">Preise</a></li>
-                    <li><a href="#hilfe">Aide / Support</a></li>
-                    <li><a href="#uber-uns">À propos de nous</a></li>
+                    <li><a href="#hilfe">Hilfe / Support</a></li>
+                    <li><a href="#uber-uns">Über uns</a></li>
                 </ul>
             </nav>
         </div>
     </header>
 
     <!-- Hero Section -->
-    <section class="hero" id="accueil">
+    <section class="hero" id="home">
         <div class="container">
             <div class="section-title">Lösungen für Ihren deutschen Führerschein</div>
-            <h1>Votre Permis de Conduire en Allemagne, Simple, Rapide et Adapté à Votre Situation</h1>
-            <p>Accompagnement complet pour étrangers, nouveaux arrivants, travailleurs et résidents en Allemagne.</p>
+            <h1>Ihr Führerschein in Deutschland – Einfach, Schnell und Perfekt für Ihre Situation</h1>
+            <p>Vollständige Unterstützung für Ausländer, Neuankömmlinge, Arbeitnehmer und Einwohner in Deutschland.</p>
             <div class="hero-btns">
-                <a href="#schnellfuhrerschein" class="btn btn-secondary">Permis Rapide Sans Examen</a>
-                <a href="#umschreibung" class="btn btn-accent">Changer un Permis Étranger</a>
-                <a href="#traditionell" class="btn btn-traditional">Obtenir un Permis Classique</a>
+                <a href="#schnellfuhrerschein" class="btn btn-secondary">Schnellführerschein ohne Prüfung</a>
+                <a href="#umschreibung" class="btn btn-accent">Führerschein umtauschen</a>
+                <a href="#traditionell" class="btn btn-traditional">Klassischen Führerschein</a>
             </div>
             <div class="hero-badges">
-                <div class="hero-badge"><i class="fas fa-shield-alt"></i><span>Service sécurisé</span></div>
-                <div class="hero-badge"><i class="fas fa-bolt"></i><span>Solutions rapides</span></div>
-                <div class="hero-badge"><i class="fas fa-graduation-cap"></i><span>Formations complètes</span></div>
+                <div class="hero-badge"><i class="fas fa-shield-alt"></i><span>Sicherer Service</span></div>
+                <div class="hero-badge"><i class="fas fa-bolt"></i><span>Schnelle Lösungen</span></div>
+                <div class="hero-badge"><i class="fas fa-graduation-cap"></i><span>Komplette Ausbildung</span></div>
             </div>
         </div>
     </section>
 
-    <!-- SECTION MISE EN AVANT : Umschreibung -->
-    <section class="umschreibung-highlight" id="umschreibung">
-        <div class="container highlight-container">
+    <!-- Warum wir? Section -->
+    <section class="features">
+        <div class="container">
+            <div class="section-title">Warum FahrSchul?</div>
+            <h2 class="section-heading">Ihre Vorteile mit unserem Service</h2>
+            <div class="features-grid">
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-globe"></i></div>
+                    <h3>Mehrsprachiger Support</h3>
+                    <p>Deutsch, Englisch, Arabisch, Türkisch und Französisch. Wir sprechen Ihre Sprache.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-bolt"></i></div>
+                    <h3>Vereinfachter Prozess</h3>
+                    <p>Wir übernehmen die gesamte Organisation – von der Antragstellung bis zur Terminvereinbarung.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-clock"></i></div>
+                    <h3>Antwort in unter 24h</h3>
+                    <p>Schnelle Reaktionszeiten per WhatsApp und E-Mail. Sie erhalten immer zeitnah eine Antwort.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-user-graduate"></i></div>
+                    <h3>Schritt-für-Schritt-Begleitung</h3>
+                    <p>Wir begleiten Sie durch jeden Schritt und stellen sicher, dass alles korrekt erledigt wird.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-euro-sign"></i></div>
+                    <h3>Transparente Preise</h3>
+                    <p>Keine versteckten Kosten. Klare Preisübersicht von Anfang an ohne Überraschungen.</p>
+                </div>
+                <div class="feature-card">
+                    <div class="feature-icon"><i class="fas fa-shield-alt"></i></div>
+                    <h3>100% konform mit Behörden</h3>
+                    <p>Alle Dienstleistungen entsprechen deutschen Gesetzen und Vorschriften für Führerscheine.</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Drei Top-Leistungen -->
+    <section class="services">
+        <div class="container">
+            <div class="section-title">Unsere Top-Leistungen</div>
+            <h2 class="section-heading">Drei Wege zu Ihrem deutschen Führerschein</h2>
+            <div class="services-grid">
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-rocket"></i></div>
+                    <h3>Schnellführerschein ohne Prüfung</h3>
+                    <p>Beschleunigte Verfahren für schnelle Ergebnisse. Ideal für Inhaber ausländischer Führerscheine.</p>
+                    <a href="#schnellfuhrerschein" class="btn btn-secondary">Mehr erfahren</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-graduation-cap"></i></div>
+                    <h3>Traditioneller Führerschein</h3>
+                    <p>Vollständige Ausbildung mit Theorie und Praxis. Perfekt für Neulinge in Deutschland.</p>
+                    <a href="#traditionell" class="btn btn-traditional">Mehr erfahren</a>
+                </div>
+                <div class="service-card">
+                    <div class="service-icon"><i class="fas fa-exchange-alt"></i></div>
+                    <h3>Führerscheinumtausch (Umschreibung)</h3>
+                    <p>Konvertieren Sie Ihren ausländischen Führerschein in einen deutschen. Minimaler Aufwand.</p>
+                    <a href="#umschreibung" class="btn btn-accent">Mehr erfahren</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Kundenbewertungen (MINIMUM 5) -->
+    <section class="testimonials" id="testimonials">
+        <div class="container">
+            <div class="section-title">Kundenstimmen</div>
+            <h2 class="section-heading">Das sagen unsere Kunden</h2>
+            <div class="testimonials-slider">
+                <div class="testimonials-track">
+                    <div class="testimonial-slide">
+                        <div class="testimonial-grid">
+                            <div class="testimonial-card">
+                                <div class="client-header">
+                                    <div class="client-avatar">M</div>
+                                    <div>
+                                        <h4>Markus L.</h4>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <span style="color: var(--secondary); font-size: 0.9rem; font-weight: 600;">Schnellführerschein</span>
+                                    </div>
+                                </div>
+                                <p>"Ich hatte meinen syrischen Führerschein und wollte ihn in Deutschland umschreiben lassen. FahrSchul hat alles organisiert - Übersetzung, Termine, alles. In nur 5 Wochen hatte ich meinen deutschen Führerschein!"</p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="client-header">
+                                    <div class="client-avatar">S</div>
+                                    <div>
+                                        <h4>Sophia R.</h4>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <span style="color: var(--traditional); font-size: 0.9rem; font-weight: 600;">Traditionelle Ausbildung</span>
+                                    </div>
+                                </div>
+                                <p>"Ausgezeichnete Ausbildung! Die Fahrlehrer sind geduldig und kompetent. Ich habe meinen Führerschein dank ihrer Betreuung im ersten Versuch bestanden."</p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="client-header">
+                                    <div class="client-avatar">T</div>
+                                    <div>
+                                        <h4>Thomas B.</h4>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star-half-alt"></i>
+                                        </div>
+                                        <span style="color: var(--secondary); font-size: 0.9rem; font-weight: 600;">Schnellführerschein</span>
+                                    </div>
+                                </div>
+                                <p>"Nach zwei Fehlversuchen bei der Prüfung habe ich mich für die schnelle Lösung entschieden. Führerschein in 3 Wochen erhalten, vollständig gültig. Ein echter Gewinn an Zeit und Energie."</p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="client-header">
+                                    <div class="client-avatar">J</div>
+                                    <div>
+                                        <h4>Julia M.</h4>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <span style="color: var(--accent); font-size: 0.9rem; font-weight: 600;">Führerscheinumtausch</span>
+                                    </div>
+                                </div>
+                                <p>"Umschreibung von meinem amerikanischen Führerschein war ein Albtraum - bis ich FahrSchul fand. Sie haben jeden Schritt erklärt und mich zu allen Terminen begleitet. Perfekter Service!"</p>
+                            </div>
+                            <div class="testimonial-card">
+                                <div class="client-header">
+                                    <div class="client-avatar">A</div>
+                                    <div>
+                                        <h4>Ahmed K.</h4>
+                                        <div class="stars">
+                                            <i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i><i class="fas fa-star"></i>
+                                        </div>
+                                        <span style="color: var(--traditional); font-size: 0.9rem; font-weight: 600;">LKW-Führerschein</span>
+                                    </div>
+                                </div>
+                                <p>"Für meinen Job brauchte ich dringend den LKW-Führerschein. Dank der beschleunigten Option hatte ich ihn in 6 Wochen. Die Unterstützung bei der Jobsuche war das i-Tüpfelchen!"</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Schnellführerschein ohne Prüfung -->
+    <section class="fast-license" id="schnellfuhrerschein">
+        <div class="container">
+            <div class="section-title">Schnellführerschein ohne Prüfung</div>
+            <h2>Permis Rapide Sans Examen – Procédure Accélérée (2 à 6 semaines)</h2>
+            <p class="section-subtitle">Sie möchten Ihren deutschen Führerschein schnell erhalten, mit kompletter Begleitung? Unsere beschleunigte Verfahren verkürzt Wartezeiten und vereinfacht Formalitäten.</p>
+            <div class="license-grid">
+                <div class="license-card">
+                    <h3>Führerschein Klasse B – Beschleunigt</h3>
+                    <div class="license-price">2 500 €</div>
+                    <ul class="license-features">
+                        <li><i class="fas fa-check-circle"></i> Intensive Theorievorbereitung</li>
+                        <li><i class="fas fa-check-circle"></i> 10–20 Fahrstunden inklusive</li>
+                        <li><i class="fas fa-check-circle"></i> Beschleunigte Vorbereitung</li>
+                        <li><i class="fas fa-check-circle"></i> Komplette administrative Abwicklung</li>
+                        <li><i class="fas fa-check-circle"></i> Unterstützung bei Führerscheinstelle-Terminen</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="redirectToWhatsApp('Interesse an beschleunigtem Führerschein B für 2500€')">Jetzt buchen</button>
+                </div>
+                <div class="license-card popular">
+                    <div class="popular-badge">Beliebt</div>
+                    <h3>Motorradführerschein – Beschleunigt</h3>
+                    <div class="license-price">1 350 € - 1 950 €</div>
+                    <ul class="license-features">
+                        <li><i class="fas fa-check-circle"></i> A1 (bis 125 cm³): 1 350 €</li>
+                        <li><i class="fas fa-check-circle"></i> A2 (bis 35 kW): 1 700 €</li>
+                        <li><i class="fas fa-check-circle"></i> A (unbegrenzt): 1 950 €</li>
+                        <li><i class="fas fa-check-circle"></i> Beschleunigte Praxisausbildung</li>
+                        <li><i class="fas fa-check-circle"></i> Dauer: 1 bis 4 Wochen</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="redirectToWhatsApp('Interesse an beschleunigtem Motorradführerschein')">Motorrad-Angebot anfragen</button>
+                </div>
+                <div class="license-card">
+                    <h3>LKW-Führerschein – Beschleunigt</h3>
+                    <div class="license-price">3 400 € - 4 000 €</div>
+                    <ul class="license-features">
+                        <li><i class="fas fa-check-circle"></i> Klasse C: 3 400 €</li>
+                        <li><i class="fas fa-check-circle"></i> Klasse C+CE: 4 000 €</li>
+                        <li><i class="fas fa-check-circle"></i> Berufsbezogenes Modul inklusive</li>
+                        <li><i class="fas fa-check-circle"></i> Sicherheitsfahrtraining</li>
+                        <li><i class="fas fa-check-circle"></i> Dauer: 4 bis 8 Wochen</li>
+                    </ul>
+                    <button class="btn btn-secondary" onclick="redirectToWhatsApp('Interesse an beschleunigtem LKW-Führerschein')">Für Berufskraftfahrer</button>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Umschreibung Highlight -->
+    <section class="conversion-highlight" id="umschreibung">
+        <div class="container conversion-container">
             <div>
-                <span class="highlight-badge">Service le plus demandé</span>
-                <h2>Convertir Votre Permis Étranger en Permis Allemand</h2>
-                <p>Nous vous accompagnons étape par étape pour convertir votre permis étranger en permis allemand, avec ou sans examen selon votre pays. Service complet et sans stress.</p>
-                <div class="achat-price">380 €</div>
-                <p style="margin-bottom: 30px;"><strong>Service complet et fixe. Aucun coût caché.</strong></p>
-                <ul class="achat-features" style="margin-bottom: 30px;">
-                    <li><i class="fas fa-check-circle"></i> Assistance dossier complète</li>
-                    <li><i class="fas fa-check-circle"></i> Traduction officielle du permis</li>
-                    <li><i class="fas fa-check-circle"></i> Prise de RDV administration</li>
-                    <li><i class="fas fa-check-circle"></i> Frais administratifs standard inclus</li>
-                    <li><i class="fas fa-check-circle"></i> Vérification approfondie des documents</li>
+                <span class="conversion-badge">Service Nummer 1</span>
+                <h2>Führerscheinumtausch (Umschreibung) – Konvertieren Sie Ihren ausländischen Führerschein</h2>
+                <p>Wir begleiten Sie Schritt für Schritt bei der Umwandlung Ihres ausländischen Führerscheins in einen deutschen – mit oder ohne Prüfung, abhängig von Ihrem Herkunftsland.</p>
+                <div class="license-price">380 €</div>
+                <p style="margin-bottom: 30px;"><strong>Komplettservice zum Festpreis. Keine versteckten Kosten.</strong></p>
+                <ul class="license-features" style="margin-bottom: 30px;">
+                    <li><i class="fas fa-check-circle"></i> Vollständige Unterstützung bei der Antragstellung</li>
+                    <li><i class="fas fa-check-circle"></i> Amtliche Übersetzung Ihres Führerscheins</li>
+                    <li><i class="fas fa-check-circle"></i> Terminvereinbarung mit der Behörde</li>
+                    <li><i class="fas fa-check-circle"></i> Standardgebühren inklusive</li>
+                    <li><i class="fas fa-check-circle"></i> Gründliche Dokumentenprüfung</li>
                 </ul>
-                <p><strong>Si examen nécessaire (selon pays) :</strong> Théorique : 65 € | Pratique : 120 €</p>
-                <a href="https://wa.me/4915781345925?text=Bonjour,%20je%20suis%20intéressé(e)%20par%20le%20service%20d'Umschreibung%20à%20380€" class="btn btn-accent" style="margin-top: 20px;" target="_blank">Demander mon Umschreibung</a>
+                <p><strong>Falls eine Prüfung erforderlich ist (landesabhängig):</strong> Theorie: 65 € | Praxis: 120 €</p>
+                <button class="btn btn-accent" style="margin-top: 20px;" onclick="redirectToWhatsApp('Ich möchte meinen ausländischen Führerschein umschreiben lassen (380€)')">Jetzt umschreiben lassen</button>
             </div>
             <div>
-                <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Umschreibung Führerschein" style="width:100%; border-radius: 15px; box-shadow: var(--shadow);">
+                <img src="https://images.unsplash.com/photo-1580274455191-1c62238fa333?ixlib=rb-4.0.3&auto=format&fit=crop&w=700&q=80" alt="Umschreibung Führerschein Deutschland" style="width:100%; border-radius: 15px; box-shadow: 0 10px 30px rgba(0,0,0,0.1);">
             </div>
         </div>
     </section>
 
-    <!-- Choix Section -->
-    <section class="choix" id="choix">
+    <!-- Traditioneller Führerschein -->
+    <section class="traditional-license" id="traditionell">
         <div class="container">
-            <div class="section-title">Deux options disponibles</div>
-            <h2>Choisissez la solution qui vous convient</h2>
-            <p class="section-subtitle">Nous proposons deux approches différentes pour obtenir votre permis de conduire, selon vos préférences et besoins.</p>
-            <div class="choix-container">
-                <div class="choix-card alternative">
-                    <div class="choix-badge">Rapide</div>
-                    <div class="choix-icon"><i class="fas fa-rocket"></i></div>
-                    <h3>Permis Rapide Sans Examen</h3>
-                    <p>Procédure accélérée pour aller plus vite. Idéal pour les titulaires d'un permis étranger ou les personnes pressées.</p>
-                    <ul class="choix-features">
-                        <li><i class="fas fa-check-circle"></i> Réduction drastique des délais</li>
-                        <li><i class="fas fa-check-circle"></i> Accompagnement administratif complet</li>
-                        <li><i class="fas fa-check-circle"></i> Gestion des démarches simplifiée</li>
-                        <li><i class="fas fa-check-circle"></i> Assistance pour examens (si requis)</li>
-                        <li><i class="fas fa-check-circle"></i> Obtention en 2 à 6 semaines</li>
+            <div class="section-title">Traditioneller Führerschein</div>
+            <h2>Erwerben Sie einen Führerschein in Deutschland – Klassische Ausbildung</h2>
+            <p class="section-subtitle">Die ideale Lösung für Einwohner, die einen vollständigen Ausbildungsweg absolvieren möchten: Theorie + Praxis + Prüfungen.</p>
+            <div class="traditional-grid">
+                <div class="traditional-card">
+                    <div class="formation-icon"><i class="fas fa-car"></i></div>
+                    <h3>Führerschein Klasse B (Klassisch)</h3>
+                    <div class="traditional-price">2 500 €</div>
+                    <ul class="traditional-features">
+                        <li><i class="fas fa-check"></i> Umfassender Theorieunterricht</li>
+                        <li><i class="fas fa-check"></i> Regelmäßige Prüfungssimulationen</li>
+                        <li><i class="fas fa-check"></i> Pflichtfahrstunden inklusive</li>
+                        <li><i class="fas fa-check"></i> Inklusive Lern-App</li>
+                        <li><i class="fas fa-check"></i> Anmeldung zu den offiziellen Prüfungen</li>
                     </ul>
-                    <a href="#schnellfuhrerschein" class="btn btn-secondary">Voir les formules</a>
+                    <button class="btn btn-traditional" onclick="redirectToWhatsApp('Interesse am klassischen Führerschein B für 2500€')">Zur Anmeldung</button>
                 </div>
-                <div class="choix-card traditional">
-                    <div class="choix-badge">Classique</div>
-                    <div class="choix-icon"><i class="fas fa-graduation-cap"></i></div>
-                    <h3>Permis Traditionnel</h3>
-                    <p>Apprentissage complet pour résidents. Parcours théorique et pratique avec moniteurs agréés.</p>
-                    <ul class="choix-features">
-                        <li><i class="fas fa-check-circle"></i> Cours avec moniteurs diplômés</li>
-                        <li><i class="fas fa-check-circle"></i> Passage des examens officiels</li>
-                        <li><i class="fas fa-check-circle"></i> Formation au code et à la conduite</li>
-                        <li><i class="fas fa-check-circle"></i> Accompagnement personnalisé</li>
-                        <li><i class="fas fa-check-circle"></i> Paiement en plusieurs fois possible</li>
-                    </ul>
-                    <a href="#traditionell" class="btn btn-traditional">Voir les formations</a>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Achat Permis Rapide -->
-    <section class="achat-permis" id="schnellfuhrerschein">
-        <div class="container">
-            <div class="section-title">Permis Rapide Sans Examen</div>
-            <h2>Permis Accéléré – Procédure Accélérée (2 à 6 semaines)</h2>
-            <p class="section-subtitle">Vous souhaitez obtenir votre permis allemand rapidement, avec un accompagnement complet ? Notre procédure accélérée permet de réduire les délais et simplifier les démarches.</p>
-            <div class="achat-grid">
-                <div class="achat-card">
-                    <h3>Permis Auto B – Accéléré</h3>
-                    <div class="achat-price">2 500 €</div>
-                    <ul class="achat-features">
-                        <li><i class="fas fa-check-circle"></i> Théorie intensive incluse</li>
-                        <li><i class="fas fa-check-circle"></i> 10–20 heures de conduite</li>
-                        <li><i class="fas fa-check-circle"></i> Préparation accélérée</li>
-                        <li><i class="fas fa-check-circle"></i> Gestion administrative complète</li>
-                        <li><i class="fas fa-check-circle"></i> Assistance RDV Führerscheinstelle</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="redirectToWhatsApp('Bonjour, je souhaite le Permis Auto B Accéléré à 2500€')">Choisir cette formule</button>
-                </div>
-                <div class="achat-card popular">
-                    <div class="popular-badge">Populaire</div>
-                    <h3>Permis Moto – Accéléré</h3>
-                    <div class="achat-price">1 350 € - 1 950 €</div>
-                    <ul class="achat-features">
-                        <li><i class="fas fa-check-circle"></i> A1 : 1 350 € (jusqu'à 125 cm³)</li>
-                        <li><i class="fas fa-check-circle"></i> A2 : 1 700 € (jusqu'à 35 kW)</li>
-                        <li><i class="fas fa-check-circle"></i> A : 1 950 € (toutes cylindrées)</li>
-                        <li><i class="fas fa-check-circle"></i> Formation intensive</li>
-                        <li><i class="fas fa-check-circle"></i> Délai : 1 à 4 semaines</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="redirectToWhatsApp('Bonjour, je souhaite un Permis Moto Accéléré')">Demander un devis moto</button>
-                </div>
-                <div class="achat-card">
-                    <h3>Permis Camion – Accéléré</h3>
-                    <div class="achat-price">3 400 € - 4 000 €</div>
-                    <ul class="achat-features">
-                        <li><i class="fas fa-check-circle"></i> Permis C : 3 400 €</li>
-                        <li><i class="fas fa-check-circle"></i> Permis C+CE : 4 000 €</li>
-                        <li><i class="fas fa-check-circle"></i> Module professionnel inclus</li>
-                        <li><i class="fas fa-check-circle"></i> Formation à la sécurité</li>
-                        <li><i class="fas fa-check-circle"></i> Délai : 4 à 8 semaines</li>
-                    </ul>
-                    <button class="btn btn-secondary" onclick="redirectToWhatsApp('Bonjour, je souhaite un Permis Camion Accéléré')">Choisir cette formule</button>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Formations Traditionnelles -->
-    <section class="formations" id="traditionell">
-        <div class="container">
-            <div class="section-title">Permis Traditionnel</div>
-            <h2>Obtenir un Permis de Conduire en Allemagne – Formation Classique</h2>
-            <p class="section-subtitle">Solution idéale pour les résidents souhaitant suivre un parcours complet : théorie + pratique + examens.</p>
-            <div class="formations-grid">
-                <div class="formation-card">
-                    <div class="formation-icon"><i class="fas fa-book"></i></div>
-                    <h3>Permis B (Classique)</h3>
-                    <div class="formation-price">2 500 €</div>
-                    <ul class="formation-features">
-                        <li><i class="fas fa-check"></i> Cours théoriques complets</li>
-                        <li><i class="fas fa-check"></i> Simulations d'examen</li>
-                        <li><i class="fas fa-check"></i> Heures obligatoires de conduite</li>
-                        <li><i class="fas fa-check"></i> App d'entraînement incluse</li>
-                        <li><i class="fas fa-check"></i> Inscription aux examens officiels</li>
-                    </ul>
-                    <button class="btn btn-traditional" onclick="redirectToWhatsApp('Bonjour, je suis intéressé(e) par le Permis B Classique à 2500€')">S'inscrire</button>
-                </div>
-                <div class="formation-card popular">
-                    <div class="popular-badge">Recommandé</div>
+                <div class="traditional-card recommended">
+                    <div class="recommended-badge">Empfohlen</div>
                     <div class="formation-icon"><i class="fas fa-motorcycle"></i></div>
-                    <h3>Permis Moto</h3>
-                    <div class="formation-price">1 350 € - 1 950 €</div>
-                    <ul class="formation-features">
-                        <li><i class="fas fa-check"></i> A1 : 1 350 €</li>
-                        <li><i class="fas fa-check"></i> A2 : 1 700 €</li>
-                        <li><i class="fas fa-check"></i> A : 1 950 €</li>
-                        <li><i class="fas fa-check"></i> Formation pratique sur piste</li>
-                        <li><i class="fas fa-check"></i> Equipement de sécurité fourni</li>
+                    <h3>Motorradführerschein</h3>
+                    <div class="traditional-price">1 350 € - 1 950 €</div>
+                    <ul class="traditional-features">
+                        <li><i class="fas fa-check"></i> A1 (Leichtkraftrad): 1 350 €</li>
+                        <li><i class="fas fa-check"></i> A2 (mittelstark): 1 700 €</li>
+                        <li><i class="fas fa-check"></i> A (unbegrenzt): 1 950 €</li>
+                        <li><i class="fas fa-check"></i> Praktische Ausbildung auf dem Übungsplatz</li>
+                        <li><i class="fas fa-check"></i> Sicherheitsausrüstung wird gestellt</li>
                     </ul>
-                    <button class="btn btn-traditional" onclick="redirectToWhatsApp('Bonjour, je suis intéressé(e) par le Permis Moto Traditionnel')">S'inscrire</button>
+                    <button class="btn btn-traditional" onclick="redirectToWhatsApp('Interesse am klassischen Motorradführerschein')">Zur Anmeldung</button>
                 </div>
-                <div class="formation-card">
+                <div class="traditional-card">
                     <div class="formation-icon"><i class="fas fa-truck"></i></div>
-                    <h3>Permis Poids Lourds (C / CE)</h3>
-                    <div class="formation-price">3 400 € - 4 000 €</div>
-                    <ul class="formation-features">
-                        <li><i class="fas fa-check"></i> Permis C : 3 400 €</li>
-                        <li><i class="fas fa-check"></i> Permis C+CE : 4 000 €</li>
-                        <li><i class="fas fa-check"></i> Formation certifiée</li>
-                        <li><i class="fas fa-check"></i> Conduite professionnelle</li>
-                        <li><i class="fas fa-check"></i> Modules de sécurité obligatoires</li>
+                    <h3>LKW-Führerschein (C / CE)</h3>
+                    <div class="traditional-price">3 400 € - 4 000 €</div>
+                    <ul class="traditional-features">
+                        <li><i class="fas fa-check"></i> Klasse C (LKW): 3 400 €</li>
+                        <li><i class="fas fa-check"></i> Klasse C+CE (mit Anhänger): 4 000 €</li>
+                        <li><i class="fas fa-check"></i> Zertifizierte Berufsausbildung</li>
+                        <li><i class="fas fa-check"></i> Professionelle Fahrpraxis</li>
+                        <li><i class="fas fa-check"></i> Verpflichtende Sicherheitsmodule</li>
                     </ul>
-                    <button class="btn btn-traditional" onclick="redirectToWhatsApp('Bonjour, je suis intéressé(e) par le Permis Poids Lourds Traditionnel')">S'inscrire</button>
+                    <button class="btn btn-traditional" onclick="redirectToWhatsApp('Interesse am LKW-Führerschein C/CE')">Zur Anmeldung</button>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Tableau des Prix Complet -->
+    <!-- Preistabelle -->
     <section class="pricing-table-section" id="preise">
         <div class="container">
-            <div class="section-title">Tableau Complet</div>
-            <h2>Prix – Toutes nos formules</h2>
-            <p class="section-subtitle">Une vision claire et transparente de tous nos tarifs. Prix fixes, sans surprise.</p>
+            <div class="section-title">Preisübersicht</div>
+            <h2>Alle Preise im Überblick – Transparent und fair</h2>
+            <p class="section-subtitle">Eine klare Übersicht aller unserer Festpreise. Komplettpakete ohne versteckte Kosten.</p>
             <table class="pricing-table">
                 <thead>
-                    <tr>
-                        <th>Catégorie</th>
-                        <th>Prix</th>
-                    </tr>
+                    <tr><th>Kategorie / Leistung</th><th>Preis (Festpreis)</th></tr>
                 </thead>
                 <tbody>
-                    <tr><td>Permis B (Classique ou Accéléré)</td><td class="price-cell">2 500 €</td></tr>
-                    <tr><td>A1 Moto</td><td class="price-cell">1 350 €</td></tr>
-                    <tr><td>A2 Moto</td><td class="price-cell">1 700 €</td></tr>
-                    <tr><td>A Moto</td><td class="price-cell">1 950 €</td></tr>
-                    <tr><td>Permis C (LKW)</td><td class="price-cell">3 400 €</td></tr>
-                    <tr><td>Permis CE (LKW + Anhänger)</td><td class="price-cell">4 000 €</td></tr>
-                    <tr><td>Permis D (Bus)</td><td class="price-cell">4 500 €</td></tr>
-                    <tr><td>Permis BE (Remorque)</td><td class="price-cell">850 €</td></tr>
-                    <tr><td>Umschreibung (Service complet)</td><td class="price-cell">380 €</td></tr>
+                    <tr><td>Führerschein Klasse B (Klassisch oder Beschleunigt)</td><td class="price-cell">2 500 €</td></tr>
+                    <tr><td>Motorrad A1 (bis 125 cm³)</td><td class="price-cell">1 350 €</td></tr>
+                    <tr><td>Motorrad A2 (bis 35 kW)</td><td class="price-cell">1 700 €</td></tr>
+                    <tr><td>Motorrad A (unbegrenzt)</td><td class="price-cell">1 950 €</td></tr>
+                    <tr><td>LKW-Führerschein C</td><td class="price-cell">3 400 €</td></tr>
+                    <tr><td>LKW-Führerschein CE (mit Anhänger)</td><td class="price-cell">4 000 €</td></tr>
+                    <tr><td>Bus-Führerschein D</td><td class="price-cell">4 500 €</td></tr>
+                    <tr><td>Anhängerführerschein BE</td><td class="price-cell">850 €</td></tr>
+                    <tr><td>Führerscheinumtausch (Umschreibung, Komplettservice)</td><td class="price-cell">380 €</td></tr>
                 </tbody>
             </table>
         </div>
     </section>
 
-    <!-- FAQ / Aide -->
-    <section class="faq-section" id="hilfe">
+    <!-- Kontakt -->
+    <section class="contact" id="hilfe">
         <div class="container">
-            <div class="section-title">Aide & Support</div>
-            <h2>Questions Fréquentes</h2>
-            <p class="section-subtitle">Trouvez rapidement des réponses à vos interrogations.</p>
-            <div class="faq-container">
-                <div class="faq-item">
-                    <div class="faq-question">Quels documents sont nécessaires pour débuter ?<i class="fas fa-chevron-down faq-icon"></i></div>
-                    <div class="faq-answer">Pour un premier permis : Pièce d'identité, photo d'identité biométrique, attestation de domicile, certificat médical (optométriste et médecin généraliste). Pour une Umschreibung : Les documents précédents + votre permis de conduire étranger original et une traduction assermentée si nécessaire.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Mon permis étranger est-il accepté pour une conversion (Umschreibung) ?<i class="fas fa-chevron-down faq-icon"></i></div>
-                    <div class="faq-answer">Cela dépend de votre pays d'origine. Les permis de l'UE/EEE sont généralement convertis sans examen. Pour de nombreux autres pays (États-Unis, Canada, Australie, etc.), seule une épreuve théorique est requise. Pour certains pays, les deux examens (théorique et pratique) sont obligatoires. Nous effectuons une vérification gratuite pour vous.</div>
-                </div>
-                <div class="faq-item">
-                    <div class="faq-question">Combien de temps pour obtenir un rendez-vous à la préfecture (Führerscheinstelle) ?<i class="fas fa-chevron-down faq-icon"></i></div>
-                    <div class="faq-answer">Les délais varient considérablement selon les villes. Dans les grandes métropoles comme Berlin, Munich ou Francfort, l'attente peut être de 8 à 12 semaines. Grâce à notre réseau et notre monitoring des annulations, nous parvenons souvent à obtenir des créaux sous 2 à 4 semaines pour nos clients.</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- À propos de nous -->
-    <section class="contact" id="uber-uns">
-        <div class="container">
-            <div class="section-title">À propos de nous</div>
-            <h2>Notre Mission & Nos Valeurs</h2>
+            <div class="section-title">Kontakt & Support</div>
+            <h2>Kostenlose und unverbindliche Erstberatung</h2>
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Qui sommes-nous ?</h3>
-                    <p><strong>Mission :</strong> Démocratiser et simplifier l'accès au permis de conduire allemand pour la communauté internationale. Nous brisons les barrières linguistiques et administratives.</p>
-                    <p><strong>Valeurs :</strong> Transparence, efficacité, et accompagnement personnalisé. Nous croyons que chaque client mérite un parcours sur mesure.</p>
-                    <p><strong>Équipe :</strong> Notre équipe est multiculturelle et multilingue. Nous comprenons vos défis car nous les avons nous-mêmes vécus.</p>
-                    <p><strong>Partenaires :</strong> Nous collaborons avec un réseau d'auto-écoles agréées, de traducteurs assermentés et de médecins agréés par les autorités allemandes (TÜV/DEKRA).</p>
-                    <p><strong>Certification :</strong> Nos processus sont conformes aux exigences strictes des bureaux des permis de conduire (Führerscheinstellen) allemands.</p>
+                    <h3>So erreichen Sie uns</h3>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fab fa-whatsapp"></i></div>
+                        <div><h4>WhatsApp (24/7)</h4><p>+49 1578 1345925</p><small>Schnellste Antwort, meist innerhalb weniger Minuten</small></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-envelope"></i></div>
+                        <div><h4>E-Mail</h4><p>schnellerfuhreschein@proton.me</p><small>Antwort garantiert innerhalb von 24 Stunden</small></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-phone"></i></div>
+                        <div><h4>Telefon (Büro)</h4><p>+49 30 12345678</p><small>Mo-Fr: 9:00-18:00 Uhr</small></div>
+                    </div>
+                    <div class="contact-item">
+                        <div class="contact-icon"><i class="fas fa-language"></i></div>
+                        <div><h4>Beratungssprachen</h4><p>Deutsch, Englisch, Französisch, Arabisch, Türkisch</p><small>Wir verstehen Sie und Ihre Situation</small></div>
+                    </div>
                 </div>
                 <div class="contact-form">
-                    <h3>Contactez-nous directement</h3>
+                    <h3>Anfrageformular</h3>
                     <form id="contactForm" onsubmit="submitContactForm(event)">
-                        <div class="form-group"><label for="name">Nom complet *</label><input type="text" id="name" required></div>
-                        <div class="form-group"><label for="phone">Téléphone *</label><input type="tel" id="phone" required></div>
-                        <div class="form-group"><label for="email">Email</label><input type="email" id="email"></div>
-                        <div class="form-group"><label for="service-type">Service intéressé *</label>
+                        <div class="form-group"><label for="name">Vollständiger Name *</label><input type="text" id="name" required></div>
+                        <div class="form-group"><label for="phone">Telefonnummer *</label><input type="tel" id="phone" required></div>
+                        <div class="form-group"><label for="email">E-Mail-Adresse</label><input type="email" id="email"></div>
+                        <div class="form-group">
+                            <label for="service-type">Gewünschte Leistung *</label>
                             <select id="service-type" required>
-                                <option value="">Sélectionnez</option>
-                                <option value="umschreibung">Umschreibung (380€)</option>
-                                <option value="schnell-b">Permis B Rapide (2500€)</option>
-                                <option value="traditionell-b">Permis B Classique (2500€)</option>
-                                <option value="moto">Permis Moto</option>
-                                <option value="info">Information générale</option>
+                                <option value="">Bitte auswählen...</option>
+                                <option value="umschreibung">Führerscheinumtausch (380€)</option>
+                                <option value="schnell-b">Schnellführerschein Klasse B (2.500€)</option>
+                                <option value="traditionell-b">Klassischer Führerschein B (2.500€)</option>
+                                <option value="moto">Motorradführerschein</option>
+                                <option value="lkw">LKW-/Bus-Führerschein</option>
+                                <option value="beratung">Erstberatung / Information</option>
                             </select>
                         </div>
-                        <div class="form-group"><label for="message">Message</label><textarea id="message" rows="4" placeholder="Parlez-nous de votre situation..."></textarea></div>
-                        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                        <div class="form-group"><label for="message">Ihre Nachricht / Situation</label><textarea id="message" rows="4" placeholder="Beschreiben Sie uns kurz Ihren Hintergrund (z.B. welchen Führerschein Sie bereits haben, aus welchem Land...)"></textarea></div>
+                        <button type="submit" class="btn btn-primary">Kostenlose Beratung anfordern</button>
                     </form>
                 </div>
             </div>
@@ -779,28 +908,30 @@
     <footer>
         <div class="container">
             <div class="footer-container">
-                <div class="footer-col"><h3>FührerscheinExpress</h3><p style="color: #bbb; margin-top: 20px;">Votre partenaire de confiance pour le permis allemand. Rapide. Fiable. Multilingue.</p></div>
-                <div class="footer-col"><h3>Services Populaires</h3>
+                <div class="footer-col"><h3>FahrSchul</h3><p style="color: #bbb; margin-top: 20px;">Ihr verlässlicher Partner für den deutschen Führerschein. Schnell. Zuverlässig. Mehrsprachig.</p></div>
+                <div class="footer-col"><h3>Beliebte Leistungen</h3>
                     <ul>
-                        <li><a href="#umschreibung" onclick="redirectToWhatsApp('Info Umschreibung')"><i class="fas fa-arrow-right"></i> Umschreibung (380€)</a></li>
-                        <li><a href="#schnellfuhrerschein" onclick="redirectToWhatsApp('Info Permis B Rapide')"><i class="fas fa-arrow-right"></i> Permis B Rapide (2500€)</a></li>
-                        <li><a href="#traditionell" onclick="redirectToWhatsApp('Info Permis B Classique')"><i class="fas fa-arrow-right"></i> Permis B Classique (2500€)</a></li>
+                        <li><a href="#umschreibung" onclick="redirectToWhatsApp('Info Umschreibung')"><i class="fas fa-arrow-right"></i> Führerscheinumtausch (380€)</a></li>
+                        <li><a href="#schnellfuhrerschein" onclick="redirectToWhatsApp('Info Schnellführerschein B')"><i class="fas fa-arrow-right"></i> Schnellführerschein B (2.500€)</a></li>
+                        <li><a href="#traditionell" onclick="redirectToWhatsApp('Info klassischer Führerschein')"><i class="fas fa-arrow-right"></i> Klassischer Führerschein B</a></li>
                     </ul>
                 </div>
-                <div class="footer-col"><h3>Contact Rapide</h3>
+                <div class="footer-col"><h3>Schnellkontakt</h3>
                     <ul>
-                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/4915781345925" target="_blank">+49 1578 1345925</a></li>
+                        <li><i class="fab fa-whatsapp"></i> <a href="https://wa.me/4915781345925" target="_blank">WhatsApp: +49 1578 1345925</a></li>
                         <li><i class="fas fa-envelope"></i> <a href="mailto:schnellerfuhreschein@proton.me">schnellerfuhreschein@proton.me</a></li>
-                        <li><i class="fas fa-clock"></i> 7j/7, 9h-22h sur WhatsApp</li>
+                        <li><i class="fas fa-clock"></i> Beratung: 7 Tage/Woche, 9-22 Uhr</li>
                     </ul>
                 </div>
             </div>
-            <div class="footer-bottom"><p>&copy; 2024 FührerscheinExpress. Tous droits réservés. | Solutions complètes pour votre permis de conduire en Allemagne</p></div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 FahrSchul. Alle Rechte vorbehalten. | Professionelle Dienstleistungen für Ihren deutschen Führerschein.</p>
+            </div>
         </div>
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/4915781345925?text=Bonjour%20F%C3%BChrerscheinExpress,%20je%20voudrais%20une%20information%20sur%20vos%20services." class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i><span>Contact WhatsApp</span></a>
+    <a href="https://wa.me/4915781345925?text=Guten%20Tag%20FahrSchul,%20ich%20h%C3%A4tte%20einige%20Fragen%20zu%20Ihren%20F%C3%BChrerscheinleistungen." class="btn btn-whatsapp" target="_blank"><i class="fab fa-whatsapp"></i><span>WhatsApp Beratung</span></a>
 
     <script>
         const whatsappNumber = "4915781345925";
@@ -811,17 +942,6 @@
             window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
         }
         
-        // Process Tabs (from original)
-        document.querySelectorAll('.process-tab').forEach(tab => {
-            tab.addEventListener('click', function() {
-                document.querySelectorAll('.process-tab').forEach(t => t.classList.remove('active'));
-                this.classList.add('active');
-                document.querySelectorAll('.process-content').forEach(content => content.classList.remove('active'));
-                const tabId = this.getAttribute('data-tab');
-                document.getElementById(`${tabId}-process`).classList.add('active');
-            });
-        });
-        
         function submitContactForm(event) {
             event.preventDefault();
             const name = document.getElementById('name').value;
@@ -830,29 +950,20 @@
             const serviceType = document.getElementById('service-type').value;
             const message = document.getElementById('message').value;
             const serviceText = document.getElementById('service-type').options[document.getElementById('service-type').selectedIndex].text;
-            const whatsappMessage = `Nouvelle demande de contact:%0A%0ANom: ${name}%0ATéléphone: ${phone}%0AEmail: ${email || 'Non fourni'}%0AService: ${serviceText}%0AMessage: ${message || 'Aucun message'}`;
+            const whatsappMessage = `Neue Kontaktanfrage über Website:%0A%0AName: ${name}%0ATelefon: ${phone}%0AEmail: ${email || 'nicht angegeben'}%0AGewünschte Leistung: ${serviceText}%0ANachricht: ${message || 'keine Zusatzinfo'}`;
             window.open(`https://wa.me/${whatsappNumber}?text=${whatsappMessage}`, '_blank');
             document.getElementById('contactForm').reset();
-            alert('Demande envoyée ! Redirection vers WhatsApp.');
+            alert('Vielen Dank! Ihre Anfrage wurde gesendet. Sie werden nun zu WhatsApp weitergeleitet.');
         }
         
-        // Mobile Menu
         document.querySelector('.mobile-menu').addEventListener('click', function() {
             document.querySelector('nav').classList.toggle('active');
         });
+        
         document.querySelectorAll('nav a').forEach(link => {
             link.addEventListener('click', function() { document.querySelector('nav').classList.remove('active'); });
         });
         
-        // FAQ Toggle
-        document.querySelectorAll('.faq-question').forEach(question => {
-            question.addEventListener('click', function() {
-                const item = this.parentElement;
-                item.classList.toggle('active');
-            });
-        });
-        
-        // Initial scroll animation
         document.addEventListener('DOMContentLoaded', function() {
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
@@ -862,10 +973,25 @@
             });
             setTimeout(() => { window.dispatchEvent(new Event('scroll')); }, 100);
         });
+        
         window.addEventListener('scroll', function() {
             const header = document.querySelector('header');
             header.style.boxShadow = (window.scrollY > 100) ? '0 5px 20px rgba(0, 0, 0, 0.1)' : '0 4px 20px rgba(0, 0, 0, 0.08)';
         });
+        
+        // Kundenbewertungen Slider
+        let currentTestimonialSlide = 0;
+        const testimonialSlides = document.querySelectorAll('.testimonial-slide');
+        
+        function showTestimonialSlide(index) {
+            const track = document.querySelector('.testimonials-track');
+            track.style.transform = `translateX(-${index * 100}%)`;
+        }
+        
+        setInterval(() => {
+            currentTestimonialSlide = (currentTestimonialSlide + 1) % testimonialSlides.length;
+            showTestimonialSlide(currentTestimonialSlide);
+        }, 8000);
     </script>
 </body>
 </html>

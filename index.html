@@ -316,6 +316,59 @@
             transform: translateY(-50%);
         }
         
+        /* Promotion Badge Styles */
+        .promotion-badge {
+            position: absolute;
+            top: 10px;
+            left: -10px;
+            background: linear-gradient(135deg, #EF4444 0%, #DC2626 100%);
+            color: white;
+            padding: 8px 15px;
+            font-size: 0.8rem;
+            font-weight: 600;
+            border-radius: 4px;
+            box-shadow: var(--shadow-md);
+            z-index: 10;
+        }
+        
+        .promotion-badge::after {
+            content: '';
+            position: absolute;
+            left: 0;
+            bottom: -8px;
+            border-left: 10px solid transparent;
+            border-right: 0px solid transparent;
+            border-top: 8px solid #DC2626;
+        }
+        
+        .original-price {
+            text-decoration: line-through;
+            color: var(--gray);
+            font-size: 1.2rem;
+            margin-right: 10px;
+        }
+        
+        .discounted-price {
+            font-size: 2.2rem;
+            font-weight: 800;
+            color: var(--danger);
+        }
+        
+        .promotion-note {
+            background-color: rgba(239, 68, 68, 0.1);
+            border: 2px solid var(--danger);
+            padding: 15px;
+            border-radius: var(--border-radius);
+            margin-top: 20px;
+            text-align: center;
+            font-weight: 600;
+            color: var(--danger);
+        }
+        
+        .promotion-note i {
+            margin-right: 10px;
+        }
+        
         /* Hero Section */
         .hero {
             background: linear-gradient(135deg, rgba(31, 41, 55, 0.9) 0%, rgba(37, 99, 235, 0.9) 100%), url('https://images.unsplash.com/photo-1580273916550-e323be2ae537?ixlib=rb-4.0.3&ixid=M3wxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8fA%3D%3D&auto=format&fit=crop&w=1170&q=80');
@@ -585,6 +638,7 @@
             font-weight: 800;
             color: var(--dark);
             margin: 15px 0;
+            position: relative;
         }
         
         .achat-price span {
@@ -1299,6 +1353,12 @@
             .audience-grid {
                 grid-template-columns: repeat(2, 1fr);
             }
+            
+            .promotion-badge {
+                font-size: 0.7rem;
+                padding: 6px 10px;
+                left: -8px;
+            }
         }
         
         @media (max-width: 576px) {
@@ -1377,6 +1437,10 @@
                 font-size: 1.8rem;
             }
             
+            .discounted-price {
+                font-size: 1.8rem;
+            }
+            
             .btn {
                 width: 100%;
                 justify-content: center;
@@ -1397,7 +1461,7 @@
     .btn-whatsapp span {
         display: none;
     }
-
+            }
         }
     </style>
 </head>
@@ -1558,13 +1622,21 @@
             <h2>Führerschein direkt kaufen - ohne Prüfung</h2>
             <p class="section-subtitle">Schneller Erwerb eines deutschen Führerscheins ohne Prüfungen oder Wartezeiten</p>
             
+            <div class="promotion-note">
+                <i class="fas fa-gift"></i> Festliche Promotion: 20% Rabatt auf alle Führerscheinkäufe bis zum 20. Januar!
+            </div>
+            
             <div class="achat-grid">
                 <div class="achat-card">
                     <div class="achat-icon">
                         <i class="fas fa-car"></i>
                     </div>
                     <h3>Führerschein Klasse B</h3>
-                    <div class="achat-price">2.500€</div>
+                    <div class="achat-price">
+                        <span class="original-price">2.500€</span>
+                        <span class="discounted-price">2.000€</span>
+                        <div class="promotion-badge">-20%</div>
+                    </div>
                     <div class="achat-duration">Lieferung: 2-6 Wochen</div>
                     <ul class="achat-features">
                         <li><i class="fas fa-check"></i> Komplett ohne Prüfung</li>
@@ -1573,7 +1645,7 @@
                         <li><i class="fas fa-check"></i> Keine Fahrstunden nötig</li>
                         <li><i class="fas fa-check"></i> Diskretion garantiert</li>
                     </ul>
-                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den Führerschein Klasse B für 2.500€ kaufen')">Jetzt kaufen</button>
+                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den Führerschein Klasse B für 2.000€ mit 20% Rabatt kaufen')">Jetzt kaufen</button>
                 </div>
                 
                 <div class="achat-card popular">
@@ -1582,7 +1654,11 @@
                         <i class="fas fa-motorcycle"></i>
                     </div>
                     <h3>Motorradführerschein</h3>
-                    <div class="achat-price">2.000€</div>
+                    <div class="achat-price">
+                        <span class="original-price">2.000€</span>
+                        <span class="discounted-price">1.600€</span>
+                        <div class="promotion-badge">-20%</div>
+                    </div>
                     <div class="achat-duration">Lieferung: 1-4 Wochen</div>
                     <ul class="achat-features">
                         <li><i class="fas fa-check"></i> Klassen A1, A2, A verfügbar</li>
@@ -1591,7 +1667,7 @@
                         <li><i class="fas fa-check"></i> Schnellste Lieferung</li>
                         <li><i class="fas fa-check"></i> Direkt per Post</li>
                     </ul>
-                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den Motorradführerschein für 2.000€ kaufen')">Jetzt kaufen</button>
+                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den Motorradführerschein für 1.600€ mit 20% Rabatt kaufen')">Jetzt kaufen</button>
                 </div>
                 
                 <div class="achat-card">
@@ -1599,7 +1675,11 @@
                         <i class="fas fa-truck"></i>
                     </div>
                     <h3>LKW-Führerschein</h3>
-                    <div class="achat-price">4.500€</div>
+                    <div class="achat-price">
+                        <span class="original-price">4.500€</span>
+                        <span class="discounted-price">3.600€</span>
+                        <div class="promotion-badge">-20%</div>
+                    </div>
                     <div class="achat-duration">Lieferung: 4-8 Wochen</div>
                     <ul class="achat-features">
                         <li><i class="fas fa-check"></i> Klassen C/CE verfügbar</li>
@@ -1608,7 +1688,7 @@
                         <li><i class="fas fa-check"></i> Hilfe bei Jobsuche</li>
                         <li><i class="fas fa-check"></i> Komplettes Paket</li>
                     </ul>
-                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den LKW-Führerschein für 4.500€ kaufen')">Jetzt kaufen</button>
+                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den LKW-Führerschein für 3.600€ mit 20% Rabatt kaufen')">Jetzt kaufen</button>
                 </div>
                 
                 <div class="achat-card">
@@ -1616,7 +1696,11 @@
                         <i class="fas fa-bus"></i>
                     </div>
                     <h3>Busführerschein</h3>
-                    <div class="achat-price">4.900€</div>
+                    <div class="achat-price">
+                        <span class="original-price">4.900€</span>
+                        <span class="discounted-price">3.920€</span>
+                        <div class="promotion-badge">-20%</div>
+                    </div>
                     <div class="achat-duration">Lieferung: 4-10 Wochen</div>
                     <ul class="achat-features">
                         <li><i class="fas fa-check"></i> Klasse D verfügbar</li>
@@ -1625,7 +1709,7 @@
                         <li><i class="fas fa-check"></i> Offizielle Dokumente</li>
                         <li><i class="fas fa-check"></i> Schnelle Bearbeitung</li>
                     </ul>
-                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den Busführerschein für 4.900€ kaufen')">Jetzt kaufen</button>
+                    <button class="btn btn-success" onclick="redirectToWhatsApp('Hallo, ich möchte den Busführerschein für 3.920€ mit 20% Rabatt kaufen')">Jetzt kaufen</button>
                 </div>
             </div>
         </div>
@@ -2097,10 +2181,10 @@
                             <label for="service">Welcher Führerschein? *</label>
                             <select id="service" required>
                                 <option value="">Bitte auswählen</option>
-                                <option value="b-kaufen">Klasse B kaufen (2.500€)</option>
-                                <option value="motorrad-kaufen">Motorrad kaufen (2.000€)</option>
-                                <option value="lkw-kaufen">LKW kaufen (4.500€)</option>
-                                <option value="bus-kaufen">Bus kaufen (4.900€)</option>
+                                <option value="b-kaufen">Klasse B kaufen (2.000€)</option>
+                                <option value="motorrad-kaufen">Motorrad kaufen (1.600€)</option>
+                                <option value="lkw-kaufen">LKW kaufen (3.600€)</option>
+                                <option value="bus-kaufen">Bus kaufen (3.920€)</option>
                                 <option value="b-traditionell">Klasse B traditionell (2.000€)</option>
                                 <option value="motorrad-traditionell">Motorrad traditionell (1.800€)</option>
                                 <option value="lkw-traditionell">LKW traditionell (4.000€)</option>
@@ -2133,9 +2217,9 @@
                 <div class="footer-col">
                     <h3>Führerschein kaufen</h3>
                     <ul>
-                        <li><a href="#" onclick="redirectToWhatsApp('Hallo, ich möchte den Führerschein B für 2.500€ kaufen')"><i class="fas fa-arrow-right"></i> Klasse B (2.500€)</a></li>
-                        <li><a href="#" onclick="redirectToWhatsApp('Hallo, ich möchte den Motorradführerschein für 2.000€ kaufen')"><i class="fas fa-arrow-right"></i> Motorrad (2.000€)</a></li>
-                        <li><a href="#" onclick="redirectToWhatsApp('Hallo, ich möchte den LKW-Führerschein für 4.500€ kaufen')"><i class="fas fa-arrow-right"></i> LKW (4.500€)</a></li>
+                        <li><a href="#" onclick="redirectToWhatsApp('Hallo, ich möchte den Führerschein B für 2.000€ mit 20% Rabatt kaufen')"><i class="fas fa-arrow-right"></i> Klasse B (2.000€)</a></li>
+                        <li><a href="#" onclick="redirectToWhatsApp('Hallo, ich möchte den Motorradführerschein für 1.600€ mit 20% Rabatt kaufen')"><i class="fas fa-arrow-right"></i> Motorrad (1.600€)</a></li>
+                        <li><a href="#" onclick="redirectToWhatsApp('Hallo, ich möchte den LKW-Führerschein für 3.600€ mit 20% Rabatt kaufen')"><i class="fas fa-arrow-right"></i> LKW (3.600€)</a></li>
                     </ul>
                 </div>
                 
@@ -2223,10 +2307,10 @@
             
             // Prix selon le service
             const prices = {
-                'b-kaufen': '2.500€',
-                'motorrad-kaufen': '2.000€',
-                'lkw-kaufen': '4.500€',
-                'bus-kaufen': '4.900€',
+                'b-kaufen': '2.000€',
+                'motorrad-kaufen': '1.600€',
+                'lkw-kaufen': '3.600€',
+                'bus-kaufen': '3.920€',
                 'b-traditionell': '2.000€',
                 'motorrad-traditionell': '1.800€',
                 'lkw-traditionell': '4.000€',

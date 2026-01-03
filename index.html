@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxusApartments - Appartements meublés & Studios avec services</title>
+    <title>LuxusApartments Cotonou - Votre Studio Élégant au Cœur de Cotonou</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -13,8 +13,10 @@
             --primary-dark: #1E4565;
             --secondary: #D4A76A;
             --secondary-dark: #B8905A;
-            --accent: #4ECDC4;
-            --accent-dark: #3DA8A0;
+            --accent: #008751; /* Vert Bénin */
+            --accent-dark: #006B40;
+            --yellow: #FCD116; /* Jaune Bénin */
+            --red: #E8112D; /* Rouge Bénin */
             --dark: #1F2937;
             --dark-light: #374151;
             --light: #F9FAFB;
@@ -23,9 +25,10 @@
             --success: #10B981;
             --warning: #F59E0B;
             --danger: #EF4444;
-            --gradient-primary: linear-gradient(135deg, #2A5C82 0%, #4ECDC4 100%);
-            --gradient-secondary: linear-gradient(135deg, #D4A76A 0%, #FFD166 100%);
-            --gradient-accent: linear-gradient(135deg, #4ECDC4 0%, #5568FE 100%);
+            --gradient-primary: linear-gradient(135deg, #2A5C82 0%, #008751 100%);
+            --gradient-secondary: linear-gradient(135deg, #D4A76A 0%, #FCD116 100%);
+            --gradient-accent: linear-gradient(135deg, #008751 0%, #FCD116 100%);
+            --gradient-featured: linear-gradient(135deg, #E8112D 0%, #FCD116 50%, #008751 100%);
             --shadow-sm: 0 2px 4px rgba(0, 0, 0, 0.05);
             --shadow-md: 0 4px 12px rgba(0, 0, 0, 0.08);
             --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.12);
@@ -118,15 +121,18 @@
             box-shadow: var(--shadow-lg);
         }
         
-        .btn-accent {
-            background: var(--gradient-accent);
+        .btn-featured {
+            background: var(--gradient-featured);
             color: white;
-            box-shadow: var(--shadow-md);
+            box-shadow: var(--shadow-lg);
+            font-weight: 700;
+            font-size: 1.1rem;
+            padding: 16px 32px;
         }
         
-        .btn-accent:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-lg);
+        .btn-featured:hover {
+            transform: translateY(-5px) scale(1.02);
+            box-shadow: var(--shadow-xl);
         }
         
         .btn-whatsapp {
@@ -309,7 +315,7 @@
         
         /* Hero Section */
         .hero {
-            background: linear-gradient(135deg, rgba(42, 92, 130, 0.9) 0%, rgba(78, 205, 196, 0.8) 100%), url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
+            background: linear-gradient(135deg, rgba(42, 92, 130, 0.9) 0%, rgba(0, 135, 81, 0.85) 100%), url('https://images.unsplash.com/photo-1518780664697-55e3ad937233?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80');
             background-size: cover;
             background-position: center;
             color: white;
@@ -322,15 +328,20 @@
         .hero h1 {
             background: none;
             color: white;
-            font-size: 3.5rem;
-            margin-bottom: 25px;
+            font-size: 3.2rem;
+            margin-bottom: 20px;
+        }
+        
+        .hero .highlight {
+            color: var(--yellow);
+            font-weight: 800;
         }
         
         .hero p {
             font-size: 1.3rem;
             max-width: 800px;
             margin: 0 auto 40px;
-            opacity: 0.9;
+            opacity: 0.95;
             color: rgba(255, 255, 255, 0.95);
         }
         
@@ -340,6 +351,207 @@
             gap: 20px;
             margin-top: 30px;
             flex-wrap: wrap;
+        }
+        
+        /* Featured Studio Banner */
+        .featured-banner {
+            background: linear-gradient(135deg, rgba(232, 17, 45, 0.1) 0%, rgba(252, 209, 22, 0.1) 50%, rgba(0, 135, 81, 0.1) 100%);
+            border: 3px solid transparent;
+            border-image: var(--gradient-featured) 1;
+            padding: 25px;
+            border-radius: var(--border-radius-lg);
+            margin: -40px auto 60px;
+            max-width: 1200px;
+            position: relative;
+            z-index: 10;
+            box-shadow: var(--shadow-lg);
+        }
+        
+        .featured-content {
+            display: flex;
+            align-items: center;
+            gap: 30px;
+        }
+        
+        .featured-icon {
+            font-size: 3rem;
+            color: var(--red);
+            background: white;
+            padding: 20px;
+            border-radius: 50%;
+            box-shadow: var(--shadow-md);
+        }
+        
+        .featured-text h3 {
+            color: var(--primary);
+            margin-bottom: 10px;
+        }
+        
+        .featured-text p {
+            color: var(--dark);
+            margin-bottom: 0;
+        }
+        
+        /* Featured Studio Section */
+        .featured-studio {
+            padding: 60px 0;
+            background: linear-gradient(135deg, #f8f9fa 0%, #e9ecef 100%);
+        }
+        
+        .featured-card {
+            background: white;
+            border-radius: var(--border-radius-lg);
+            overflow: hidden;
+            box-shadow: var(--shadow-xl);
+            transition: all 0.3s ease;
+            position: relative;
+            border: 4px solid transparent;
+            background-clip: padding-box;
+        }
+        
+        .featured-card::before {
+            content: '';
+            position: absolute;
+            top: -4px;
+            left: -4px;
+            right: -4px;
+            bottom: -4px;
+            background: var(--gradient-featured);
+            border-radius: var(--border-radius-lg) + 4px;
+            z-index: -1;
+        }
+        
+        .featured-header {
+            background: var(--gradient-primary);
+            color: white;
+            padding: 25px;
+            text-align: center;
+        }
+        
+        .featured-header h2 {
+            color: white;
+            margin-bottom: 10px;
+            font-size: 2.2rem;
+        }
+        
+        .featured-badges {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            display: flex;
+            flex-direction: column;
+            gap: 10px;
+            z-index: 10;
+        }
+        
+        .featured-badge {
+            background: var(--gradient-featured);
+            color: white;
+            padding: 8px 20px;
+            border-radius: 30px;
+            font-size: 0.9rem;
+            font-weight: 700;
+            box-shadow: var(--shadow-md);
+            animation: bounce 2s infinite;
+        }
+        
+        .available-badge {
+            background: var(--gradient-accent);
+            animation-delay: 0.5s;
+        }
+        
+        @keyframes bounce {
+            0%, 100% { transform: translateY(0); }
+            50% { transform: translateY(-5px); }
+        }
+        
+        .studio-img {
+            height: 350px;
+            width: 100%;
+            overflow: hidden;
+            position: relative;
+        }
+        
+        .studio-img img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s ease;
+        }
+        
+        .featured-card:hover .studio-img img {
+            transform: scale(1.05);
+        }
+        
+        .studio-content {
+            padding: 35px;
+        }
+        
+        .studio-title {
+            font-size: 1.8rem;
+            margin-bottom: 15px;
+            color: var(--primary);
+        }
+        
+        .studio-location {
+            color: var(--accent);
+            margin-bottom: 20px;
+            font-size: 1.1rem;
+            font-weight: 600;
+        }
+        
+        .studio-location i {
+            color: var(--secondary);
+            margin-right: 10px;
+        }
+        
+        .studio-features {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
+            gap: 20px;
+            margin: 25px 0;
+        }
+        
+        .studio-feature {
+            display: flex;
+            align-items: center;
+            gap: 12px;
+            padding: 15px;
+            background: rgba(0, 135, 81, 0.05);
+            border-radius: var(--border-radius);
+            border-left: 4px solid var(--accent);
+        }
+        
+        .studio-feature i {
+            font-size: 1.5rem;
+            color: var(--accent);
+            width: 40px;
+        }
+        
+        .studio-price {
+            background: linear-gradient(135deg, rgba(42, 92, 130, 0.1) 0%, rgba(0, 135, 81, 0.1) 100%);
+            padding: 25px;
+            border-radius: var(--border-radius);
+            text-align: center;
+            margin: 30px 0;
+        }
+        
+        .price-main {
+            font-size: 2.5rem;
+            font-weight: 800;
+            color: var(--primary);
+            margin-bottom: 5px;
+        }
+        
+        .price-note {
+            color: var(--gray);
+            font-size: 0.9rem;
+            margin-bottom: 15px;
+        }
+        
+        .price-includes {
+            color: var(--accent);
+            font-weight: 600;
         }
         
         /* Apartments Grid */
@@ -547,121 +759,10 @@
             display: inline-block;
         }
         
-        /* Gallery Section */
-        .gallery {
-            padding: 80px 0;
-            background: linear-gradient(135deg, #fdf6f0 0%, #fce8da 100%);
-        }
-        
-        .gallery-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fill, minmax(300px, 1fr));
-            gap: 20px;
-            margin-top: 50px;
-        }
-        
-        .gallery-item {
-            border-radius: var(--border-radius);
-            overflow: hidden;
-            height: 250px;
-            position: relative;
-            cursor: pointer;
-        }
-        
-        .gallery-item img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-            transition: transform 0.5s ease;
-        }
-        
-        .gallery-item:hover img {
-            transform: scale(1.1);
-        }
-        
-        .gallery-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(0deg, rgba(0,0,0,0.7) 0%, rgba(0,0,0,0) 100%);
-            display: flex;
-            align-items: flex-end;
-            padding: 20px;
-            opacity: 0;
-            transition: opacity 0.3s ease;
-        }
-        
-        .gallery-item:hover .gallery-overlay {
-            opacity: 1;
-        }
-        
-        .gallery-text {
-            color: white;
-            font-weight: 600;
-        }
-        
-        /* Testimonials Section */
-        .testimonials {
-            padding: 80px 0;
-            background-color: white;
-        }
-        
-        .testimonials-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-        
-        .testimonial-card {
-            background-color: white;
-            border-radius: var(--border-radius);
-            padding: 30px;
-            box-shadow: var(--shadow-md);
-            position: relative;
-        }
-        
-        .testimonial-card::before {
-            content: '"';
-            position: absolute;
-            top: 15px;
-            right: 20px;
-            font-size: 4rem;
-            color: rgba(42, 92, 130, 0.1);
-            font-family: Georgia, serif;
-        }
-        
-        .testimonial-header {
-            display: flex;
-            align-items: center;
-            margin-bottom: 20px;
-        }
-        
-        .testimonial-avatar {
-            width: 60px;
-            height: 60px;
-            border-radius: 50%;
-            background: var(--gradient-primary);
-            margin-right: 15px;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 1.5rem;
-            color: white;
-            font-weight: 600;
-        }
-        
-        .testimonial-stars {
-            color: #FFD700;
-            margin-top: 5px;
-        }
-        
         /* Contact Section */
         .contact {
             padding: 80px 0;
-            background: linear-gradient(135deg, rgba(42, 92, 130, 0.05) 0%, rgba(78, 205, 196, 0.05) 100%);
+            background: linear-gradient(135deg, rgba(42, 92, 130, 0.05) 0%, rgba(0, 135, 81, 0.05) 100%);
         }
         
         .contact-container {
@@ -794,44 +895,15 @@
             font-size: 0.85rem;
         }
         
-        /* Modal pour les images */
-        .modal {
-            display: none;
-            position: fixed;
-            z-index: 10000;
-            left: 0;
-            top: 0;
-            width: 100%;
-            height: 100%;
-            background-color: rgba(0, 0, 0, 0.9);
-            justify-content: center;
-            align-items: center;
-        }
-        
-        .modal-content {
-            max-width: 90%;
-            max-height: 90%;
-            border-radius: 10px;
-        }
-        
-        .close-modal {
-            position: absolute;
-            top: 20px;
-            right: 30px;
-            color: white;
-            font-size: 2.5rem;
-            cursor: pointer;
-            transition: color 0.3s;
-        }
-        
-        .close-modal:hover {
-            color: var(--secondary);
-        }
-        
         /* Responsive Design */
         @media (max-width: 1200px) {
             .container {
                 width: 95%;
+            }
+            
+            .featured-content {
+                flex-direction: column;
+                text-align: center;
             }
         }
         
@@ -845,11 +917,15 @@
             }
             
             .hero h1 {
-                font-size: 2.8rem;
+                font-size: 2.5rem;
             }
             
             .hero p {
                 font-size: 1.1rem;
+            }
+            
+            .featured-header h2 {
+                font-size: 1.8rem;
             }
         }
         
@@ -910,6 +986,14 @@
             .apartments-grid {
                 grid-template-columns: 1fr;
             }
+            
+            .featured-banner {
+                margin: -20px auto 40px;
+            }
+            
+            .studio-features {
+                grid-template-columns: 1fr;
+            }
         }
         
         @media (max-width: 576px) {
@@ -930,7 +1014,7 @@
             }
             
             .hero h1 {
-                font-size: 2.2rem;
+                font-size: 2rem;
             }
             
             .btn {
@@ -952,26 +1036,19 @@
                 right: 15px;
                 bottom: 15px;
             }
-        }
-        
-        /* Style pour les vidéos */
-        .video-container {
-            position: relative;
-            padding-bottom: 56.25%; /* 16:9 */
-            height: 0;
-            overflow: hidden;
-            border-radius: var(--border-radius);
-            margin: 20px 0;
-        }
-        
-        .video-container iframe,
-        .video-container video {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            border: none;
+            
+            .featured-badges {
+                position: relative;
+                top: 0;
+                right: 0;
+                flex-direction: row;
+                justify-content: center;
+                margin-bottom: 20px;
+            }
+            
+            .price-main {
+                font-size: 2rem;
+            }
         }
     </style>
 </head>
@@ -989,10 +1066,10 @@
             <nav>
                 <ul>
                     <li><a href="#home">Accueil</a></li>
-                    <li><a href="#apartments">Appartements</a></li>
+                    <li><a href="#featured">Mon Studio</a></li>
+                    <li><a href="#apartments">Autres Appartements</a></li>
                     <li><a href="#services">Services</a></li>
                     <li><a href="#partners">Partenaires</a></li>
-                    <li><a href="#gallery">Galerie</a></li>
                     <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
@@ -1002,36 +1079,153 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="section-title">Appartements Services Premium</div>
-            <h1>Vivre avec Confort & Services</h1>
-            <p>Découvrez nos appartements et studios entièrement meublés. Solutions d'hébergement parfaites pour cadres en déplacement, expatriés et séjours longue durée avec services premium et partenariats locaux.</p>
+            <div class="section-title">Cotonou • Bénin</div>
+            <h1>Studio Élégant Disponible <span class="highlight">MAINTENANT</span></h1>
+            <p>Découvrez mon studio entièrement meublé au cœur de Cotonou. Design moderne, équipements haut de gamme et emplacement idéal pour votre séjour à Cotonou.</p>
             
             <div class="hero-btns">
-                <a href="#apartments" class="btn btn-primary">Voir les appartements</a>
-                <a href="#contact" class="btn btn-secondary">Consultation gratuite</a>
+                <a href="#featured" class="btn btn-featured">
+                    <i class="fas fa-eye"></i>
+                    VOIR MON STUDIO
+                </a>
+                <a href="#contact" class="btn btn-secondary">
+                    <i class="fas fa-calendar-alt"></i>
+                    Réserver une Visite
+                </a>
             </div>
         </div>
     </section>
 
-    <!-- Apartments Section -->
+    <!-- Featured Banner -->
+    <div class="container">
+        <div class="featured-banner">
+            <div class="featured-content">
+                <div class="featured-icon">
+                    <i class="fas fa-crown"></i>
+                </div>
+                <div class="featured-text">
+                    <h3>✨ PROPRIÉTAIRE DIRECT - PAS D'INTERMÉDIAIRE ✨</h3>
+                    <p>Je suis Maurice, propriétaire direct de ce studio. Me contacter directement pour des conditions avantageuses et une réponse rapide !</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Featured Studio Section -->
+    <section class="featured-studio" id="featured">
+        <div class="container">
+            <div class="featured-card">
+                <div class="featured-header">
+                    <h2><i class="fas fa-star"></i> MON STUDIO - DISPONIBLE IMMÉDIATEMENT</h2>
+                    <p>Résidence Calme • Quartier Résidentiel • Sécurité 24/7</p>
+                </div>
+                
+                <div class="featured-badges">
+                    <div class="featured-badge available-badge">
+                        <i class="fas fa-check-circle"></i> DISPONIBLE
+                    </div>
+                    <div class="featured-badge">
+                        <i class="fas fa-bolt"></i> MEILLEUR RAPPORT QUALITÉ-PRIX
+                    </div>
+                </div>
+                
+                <div class="studio-img">
+                    <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=1600&q=80" alt="Studio Élégant Cotonou">
+                </div>
+                
+                <div class="studio-content">
+                    <h2 class="studio-title">Studio Moderne & Élégant - Cotonou Centre</h2>
+                    <div class="studio-location">
+                        <i class="fas fa-map-marker-alt"></i>
+                        Quartier Résidentiel Calme, Proche Centre Commercial et Restaurants
+                    </div>
+                    
+                    <div class="studio-features">
+                        <div class="studio-feature">
+                            <i class="fas fa-expand-arrows-alt"></i>
+                            <div>
+                                <strong>40 m²</strong>
+                                <p>Espace optimisé</p>
+                            </div>
+                        </div>
+                        <div class="studio-feature">
+                            <i class="fas fa-bed"></i>
+                            <div>
+                                <strong>Lit Queen Size</strong>
+                                <p>Matelas neuve</p>
+                            </div>
+                        </div>
+                        <div class="studio-feature">
+                            <i class="fas fa-wifi"></i>
+                            <div>
+                                <strong>Fibre Optique</strong>
+                                <p>Internet ultra rapide</p>
+                            </div>
+                        </div>
+                        <div class="studio-feature">
+                            <i class="fas fa-snowflake"></i>
+                            <div>
+                                <strong>Climatisation</strong>
+                                <p>Inverter récente</p>
+                            </div>
+                        </div>
+                        <div class="studio-feature">
+                            <i class="fas fa-utensils"></i>
+                            <div>
+                                <strong>Cuisine Équipée</strong>
+                                <p>Électroménagers neufs</p>
+                            </div>
+                        </div>
+                        <div class="studio-feature">
+                            <i class="fas fa-shield-alt"></i>
+                            <div>
+                                <strong>Sécurité Totale</strong>
+                                <p>Gardiennage 24/7</p>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="studio-price">
+                        <div class="price-main">85.000 FCFA / mois</div>
+                        <div class="price-note">Charges incluses : Eau, Électricité, Internet, Sécurité</div>
+                        <div class="price-includes">
+                            <i class="fas fa-check"></i> Pas de frais d'agence • <i class="fas fa-check"></i> Contrat flexible
+                        </div>
+                    </div>
+                    
+                    <div style="text-align: center; margin-top: 30px;">
+                        <button class="btn btn-featured" onclick="redirectToWhatsApp('Bonjour Maurice, je suis intéressé par votre studio à 85.000 FCFA/mois à Cotonou. Est-il disponible pour une visite ?')">
+                            <i class="fab fa-whatsapp"></i>
+                            CONTACTER DIRECTEMENT PAR WHATSAPP
+                        </button>
+                        <p style="margin-top: 15px; color: var(--gray); font-size: 0.9rem;">
+                            <i class="fas fa-clock"></i> Réponse garantie en moins de 30 minutes
+                        </p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Other Apartments Section -->
     <section class="apartments" id="apartments">
         <div class="container">
-            <div class="section-title">Notre Sélection</div>
-            <h2>Appartements & Studios Premium</h2>
-            <p class="section-subtitle">Appartements entièrement meublés avec tout le confort pour votre séjour</p>
+            <div class="section-title">Autres Options</div>
+            <h2>Autres Appartements Disponibles</h2>
+            <p class="section-subtitle">D'autres options de qualité dans Cotonou (disponibilités sous réserve)</p>
             
             <div class="apartments-grid">
-                <!-- Appartement 1 -->
+                <!-- Appartement 2 -->
                 <div class="apartment-card">
                     <div class="apartment-img">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Appartement Luxe Centre-ville">
-                        <div class="apartment-badge">Populaire</div>
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Appartement 2 Chambres">
+                        <div class="apartment-badge">Disponible bientôt</div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Appartement Luxe Centre-ville</h3>
+                        <h3 class="apartment-title">Appartement 2 Chambres</h3>
                         <div class="apartment-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Centre-ville, Paris
+                            Akpakpa, Cotonou
                         </div>
                         <div class="apartment-features">
                             <div class="feature">
@@ -1040,31 +1234,31 @@
                             </div>
                             <div class="feature">
                                 <i class="fas fa-bath"></i>
-                                2 salles de bain
+                                1 salle de bain
                             </div>
                             <div class="feature">
                                 <i class="fas fa-expand"></i>
-                                85 m²
+                                70 m²
                             </div>
                         </div>
                         <div class="apartment-price">
-                            1.850€ <span>/ mois</span>
+                            125.000 FCFA <span>/ mois</span>
                         </div>
-                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par l\'Appartement Luxe Centre-ville à 1.850€/mois')">Demander les détails</button>
+                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par l\'appartement 2 chambres à Akpakpa à 125.000 FCFA/mois')">Demander disponibilité</button>
                     </div>
                 </div>
                 
-                <!-- Appartement 2 -->
+                <!-- Appartement 3 -->
                 <div class="apartment-card">
                     <div class="apartment-img">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Studio Design Le Marais">
-                        <div class="apartment-badge">Nouveau</div>
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Studio Jumelé">
+                        <div class="apartment-badge">En location</div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Studio Design Le Marais</h3>
+                        <h3 class="apartment-title">Studio Jumelé</h3>
                         <div class="apartment-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Le Marais, Paris
+                            Cadjehoun, Cotonou
                         </div>
                         <div class="apartment-features">
                             <div class="feature">
@@ -1077,27 +1271,27 @@
                             </div>
                             <div class="feature">
                                 <i class="fas fa-expand"></i>
-                                45 m²
+                                35 m²
                             </div>
                         </div>
                         <div class="apartment-price">
-                            1.250€ <span>/ mois</span>
+                            75.000 FCFA <span>/ mois</span>
                         </div>
-                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Studio Design Le Marais à 1.250€/mois')">Demander les détails</button>
+                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le studio jumelé à Cadjehoun à 75.000 FCFA/mois')">Demander disponibilité</button>
                     </div>
                 </div>
                 
-                <!-- Appartement 3 -->
+                <!-- Appartement 4 -->
                 <div class="apartment-card">
                     <div class="apartment-img">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse avec Terrasse">
-                        <div class="apartment-badge">Exclusif</div>
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Appartement Standing">
+                        <div class="apartment-badge">Haut standing</div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Penthouse avec Terrasse</h3>
+                        <h3 class="apartment-title">Appartement Standing</h3>
                         <div class="apartment-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Champs-Élysées, Paris
+                            Godomey, Cotonou
                         </div>
                         <div class="apartment-features">
                             <div class="feature">
@@ -1106,17 +1300,17 @@
                             </div>
                             <div class="feature">
                                 <i class="fas fa-bath"></i>
-                                3 salles de bain
+                                2 salles de bain
                             </div>
                             <div class="feature">
                                 <i class="fas fa-expand"></i>
-                                120 m² + terrasse
+                                110 m²
                             </div>
                         </div>
                         <div class="apartment-price">
-                            3.200€ <span>/ mois</span>
+                            200.000 FCFA <span>/ mois</span>
                         </div>
-                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Penthouse avec Terrasse à 3.200€/mois')">Demander les détails</button>
+                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par l\'appartement standing à Godomey à 200.000 FCFA/mois')">Demander disponibilité</button>
                     </div>
                 </div>
             </div>
@@ -1126,41 +1320,41 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-title">Nos Services</div>
-            <h2>Pack Service Tout-Inclus</h2>
-            <p class="section-subtitle">Nous nous occupons de tout pour que vous vous sentiez comme chez vous</p>
+            <div class="section-title">Avantages</div>
+            <h2>Pourquoi Choisir Mon Studio ?</h2>
+            <p class="section-subtitle">Tous les avantages inclus dans votre loyer</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
-                        <i class="fas fa-concierge-bell"></i>
-                    </div>
-                    <h3>Service Conciergerie</h3>
-                    <p>Assistance 24/7, service de ménage, accueil et gestion du check-in</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h3>Internet Haut Débit</h3>
-                    <p>WiFi rapide inclus, parfait pour le télétravail et le streaming</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Cuisine Équipée</h3>
-                    <p>Cuisines modernes avec tous les équipements, incl. machine Nespresso</p>
-                </div>
-                
-                <div class="service-card">
-                    <div class="service-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Partenariats Locaux</h3>
-                    <p>Rabais exclusifs dans les restaurants, salles de sport et commerces à proximité</p>
+                    <h3>Propriétaire Direct</h3>
+                    <p>Pas d'intermédiaire, pas de frais d'agence. Contact et contrat direct avec moi, Maurice.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-bolt"></i>
+                    </div>
+                    <h3>Tout Inclus</h3>
+                    <p>Eau, électricité, internet fibre et sécurité inclus dans le loyer. Pas de surprises.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-tools"></i>
+                    </div>
+                    <h3>Maintenance Rapide</h3>
+                    <p>Intervention sous 24h pour tout problème technique. Équipements régulièrement entretenus.</p>
+                </div>
+                
+                <div class="service-card">
+                    <div class="service-icon">
+                        <i class="fas fa-user-shield"></i>
+                    </div>
+                    <h3>Sécurité Totale</h3>
+                    <p>Gardiennage 24h/24, portail sécurisé, quartier résidentiel calme et sûr.</p>
                 </div>
             </div>
         </div>
@@ -1169,161 +1363,45 @@
     <!-- Partners Section -->
     <section class="partners" id="partners">
         <div class="container">
-            <div class="section-title">Nos Partenaires</div>
-            <h2>Avantages Exclusifs pour Nos Résidents</h2>
-            <p class="section-subtitle">Profitez d'offres spéciales chez nos entreprises partenaires</p>
+            <div class="section-title">À Proximité</div>
+            <h2>Commerces & Services à Proximité</h2>
+            <p class="section-subtitle">Tout ce dont vous avez besoin à quelques minutes à pied</p>
             
             <div class="partners-grid">
                 <div class="partner-card">
                     <div class="partner-logo">
+                        <i class="fas fa-shopping-cart" style="font-size: 3rem; color: var(--secondary);"></i>
+                    </div>
+                    <h4>Supermarché</h4>
+                    <p>5 minutes à pied</p>
+                    <div class="partner-discount">Marche de nuit ouvert</div>
+                </div>
+                
+                <div class="partner-card">
+                    <div class="partner-logo">
                         <i class="fas fa-utensils" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
-                    <h4>La Trattoria</h4>
-                    <p>Restaurant Italien</p>
-                    <div class="partner-discount">15% de réduction</div>
+                    <h4>Restaurants</h4>
+                    <p>Divers choix</p>
+                    <div class="partner-discount">Livraison possible</div>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <i class="fas fa-dumbbell" style="font-size: 3rem; color: var(--secondary);"></i>
+                        <i class="fas fa-bus" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
-                    <h4>Premium Fitness</h4>
-                    <p>Salle de Sport & Wellness</p>
-                    <div class="partner-discount">1 mois gratuit</div>
+                    <h4>Transport</h4>
+                    <p>Arrêt de Zémidjan</p>
+                    <div class="partner-discount">À 2 minutes</div>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
-                        <i class="fas fa-coffee" style="font-size: 3rem; color: var(--secondary);"></i>
+                        <i class="fas fa-hospital" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
-                    <h4>Torrefaction</h4>
-                    <p>Café Artisanal</p>
-                    <div class="partner-discount">20% sur toutes les boissons</div>
-                </div>
-                
-                <div class="partner-card">
-                    <div class="partner-logo">
-                        <i class="fas fa-spa" style="font-size: 3rem; color: var(--secondary);"></i>
-                    </div>
-                    <h4>Oasis Wellness</h4>
-                    <p>Spa & Massage</p>
-                    <div class="partner-discount">10% sur tous les soins</div>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Gallery Section -->
-    <section class="gallery" id="gallery">
-        <div class="container">
-            <div class="section-title">Visite Virtuelle</div>
-            <h2>Galerie de Nos Appartements</h2>
-            <p class="section-subtitle">Découvrez les détails de nos hébergements luxueux</p>
-            
-            <!-- Galerie d'images -->
-            <div class="gallery-grid">
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salon élégant">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Salon élégant</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cuisine moderne">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Cuisine moderne</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chambre confortable">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Chambre confortable</div>
-                    </div>
-                </div>
-                
-                <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salle de bain luxueuse">
-                    <div class="gallery-overlay">
-                        <div class="gallery-text">Salle de bain luxueuse</div>
-                    </div>
-                </div>
-            </div>
-            
-            <!-- Section Vidéo -->
-            <div style="margin-top: 60px;">
-                <h3 style="text-align: center; margin-bottom: 30px;">Visite Guidée en Vidéo</h3>
-                <div class="video-container">
-                    <iframe 
-                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
-                        title="Visite virtuelle d'appartement" 
-                        frameborder="0" 
-                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                        allowfullscreen>
-                    </iframe>
-                </div>
-            </div>
-        </div>
-    </section>
-
-    <!-- Testimonials Section -->
-    <section class="testimonials" id="testimonials">
-        <div class="container">
-            <div class="section-title">Témoignages</div>
-            <h2>Ce que Disent Nos Résidents</h2>
-            <p class="section-subtitle">Retour d'expérience de nos résidents satisfaits</p>
-            
-            <div class="testimonials-grid">
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">M</div>
-                        <div>
-                            <h4>Marie Dubois</h4>
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Appartement parfait pour mon séjour de trois mois à Paris. L'emplacement est idéal et le service est exceptionnel. Les réductions chez les restaurants partenaires étaient un vrai plus !"</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">P</div>
-                        <div>
-                            <h4>Pierre Martin</h4>
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star-half-alt"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"Le studio était parfait pour mon installation à Paris. Tout était propre, moderne et entièrement équipé. Le service conciergerie était très utile pour toutes mes questions."</p>
-                </div>
-                
-                <div class="testimonial-card">
-                    <div class="testimonial-header">
-                        <div class="testimonial-avatar">S</div>
-                        <div>
-                            <h4>Sophie Bernard</h4>
-                            <div class="testimonial-stars">
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                                <i class="fas fa-star"></i>
-                            </div>
-                        </div>
-                    </div>
-                    <p>"En tant que cadre en déplacement, j'apprécie la flexibilité et le confort. L'appartement offre tout pour travailler efficacement et se détendre. Très recommandable !"</p>
+                    <h4>Pharmacie</h4>
+                    <p>24h/24</p>
+                    <div class="partner-discount">Urgences</div>
                 </div>
             </div>
         </div>
@@ -1332,21 +1410,33 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="section-title">Contactez-nous</div>
-            <h2>Prêt pour Votre Séjour ?</h2>
+            <div class="section-title">Visite & Contact</div>
+            <h2>Intéressé par le Studio ?</h2>
+            <p class="section-subtitle">Contactez-moi directement pour une visite ou plus d'informations</p>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Coordonnées</h3>
+                    <h3>Mes Coordonnées Directes</h3>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
                             <i class="fab fa-whatsapp"></i>
                         </div>
                         <div>
-                            <h4>WhatsApp</h4>
-                            <p>+33 6 12 34 56 78</p>
-                            <small>Réponse rapide garantie</small>
+                            <h4>WhatsApp (Recommandé)</h4>
+                            <p>+229 66 95 39 34</p>
+                            <small>Réponse rapide - Photos/Vidéos disponibles</small>
+                        </div>
+                    </div>
+                    
+                    <div class="contact-item">
+                        <div class="contact-icon">
+                            <i class="fas fa-phone"></i>
+                        </div>
+                        <div>
+                            <h4>Appel Direct</h4>
+                            <p>+229 01 66 95 39 34</p>
+                            <small>8h-20h tous les jours</small>
                         </div>
                     </div>
                     
@@ -1356,19 +1446,8 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>contact@luxusapartments.fr</p>
-                            <small>Réponse sous 24h</small>
-                        </div>
-                    </div>
-                    
-                    <div class="contact-item">
-                        <div class="contact-icon">
-                            <i class="fas fa-phone"></i>
-                        </div>
-                        <div>
-                            <h4>Téléphone</h4>
-                            <p>01 23 45 67 89</p>
-                            <small>Lun-Ven : 9h-18h</small>
+                            <p>mauricegerauds@gmail.com</p>
+                            <small>Pour documents officiels</small>
                         </div>
                     </div>
                     
@@ -1377,59 +1456,59 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>Bureau</h4>
-                            <p>Avenue des Champs-Élysées 123, 75008 Paris</p>
-                            <small>Sur rendez-vous</small>
+                            <h4>Localisation</h4>
+                            <p>Quartier Résidentiel Calme, Cotonou</p>
+                            <small>Adresse exacte sur rendez-vous</small>
                         </div>
+                    </div>
+                    
+                    <div style="margin-top: 40px; padding: 20px; background: rgba(0, 135, 81, 0.05); border-radius: var(--border-radius);">
+                        <h4><i class="fas fa-info-circle"></i> À Savoir</h4>
+                        <ul style="margin-top: 10px; padding-left: 20px;">
+                            <li>Caution : 1 mois de loyer</li>
+                            <li>Contrat : 6 mois minimum</li>
+                            <li>État des lieux : Fourni</li>
+                            <li>Disponible : Immédiatement</li>
+                        </ul>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Envoyer une Demande</h3>
+                    <h3>Demande de Visite</h3>
+                    <p style="margin-bottom: 25px;">Préférez-vous que je vous rappelle ? Laissez vos coordonnées :</p>
                     <form id="contactForm" onsubmit="submitContactForm(event)">
                         <div class="form-group">
-                            <label for="name">Nom complet *</label>
-                            <input type="text" id="name" required>
+                            <label for="name">Votre nom *</label>
+                            <input type="text" id="name" required placeholder="Ex: Jean Dupont">
                         </div>
                         
                         <div class="form-group">
-                            <label for="email">Email *</label>
-                            <input type="email" id="email" required>
+                            <label for="phone">Téléphone *</label>
+                            <input type="tel" id="phone" required placeholder="Ex: +229 XX XX XX XX">
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Téléphone</label>
-                            <input type="tel" id="phone">
+                            <label for="email">Email</label>
+                            <input type="email" id="email" placeholder="Optionnel">
                         </div>
                         
                         <div class="form-group">
-                            <label for="apartment-type">Intéressé par *</label>
-                            <select id="apartment-type" required>
-                                <option value="">Sélectionnez une option</option>
-                                <option value="luxus">Appartement Luxe Centre-ville</option>
-                                <option value="designer">Studio Design Le Marais</option>
-                                <option value="penthouse">Penthouse avec Terrasse</option>
-                                <option value="other">Autre appartement</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label for="duration">Durée du séjour *</label>
-                            <select id="duration" required>
-                                <option value="">Sélectionnez une durée</option>
-                                <option value="short">1-3 mois</option>
-                                <option value="medium">3-6 mois</option>
-                                <option value="long">6-12 mois</option>
-                                <option value="year">Plus d'1 an</option>
-                            </select>
+                            <label for="date">Date souhaitée pour visite</label>
+                            <input type="date" id="date">
                         </div>
                         
                         <div class="form-group">
                             <label for="message">Message</label>
-                            <textarea id="message" rows="4" placeholder="Informations supplémentaires ou demandes spéciales..."></textarea>
+                            <textarea id="message" rows="4" placeholder="Questions particulières, horaires de visite préférés..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
+                        <button type="submit" class="btn btn-primary">
+                            <i class="fab fa-whatsapp"></i>
+                            Envoyer via WhatsApp
+                        </button>
+                        <p style="margin-top: 15px; font-size: 0.9rem; color: var(--gray);">
+                            <i class="fas fa-shield-alt"></i> Vos informations restent confidentielles
+                        </p>
                     </form>
                 </div>
             </div>
@@ -1441,64 +1520,61 @@
         <div class="container">
             <div class="footer-container">
                 <div class="footer-col">
-                    <h3>LuxusApartments</h3>
-                    <p style="color: #bbb; margin-top: 20px; font-size: 0.9rem;">Appartements services premium à Paris. Entièrement meublés, flexibles et avec services exclusifs.</p>
+                    <h3>Mon Studio Cotonou</h3>
+                    <p style="color: #bbb; margin-top: 20px; font-size: 0.9rem;">Studio moderne et entièrement équipé au cœur de Cotonou. Propriétaire direct - Conditions avantageuses.</p>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Nos Appartements</h3>
+                    <h3>Contact Direct</h3>
                     <ul>
-                        <li><a href="#" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par l\'Appartement Luxe Centre-ville')"><i class="fas fa-arrow-right"></i> Centre-ville</a></li>
-                        <li><a href="#" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Studio Design')"><i class="fas fa-arrow-right"></i> Le Marais</a></li>
-                        <li><a href="#" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Penthouse')"><i class="fas fa-arrow-right"></i> Champs-Élysées</a></li>
-                        <li><a href="#contact"><i class="fas fa-arrow-right"></i> Tous les appartements</a></li>
+                        <li><i class="fab fa-whatsapp"></i> +229 66 95 39 34</li>
+                        <li><i class="fas fa-phone"></i> +229 01 66 95 39 34</li>
+                        <li><i class="fas fa-envelope"></i> mauricegerauds@gmail.com</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Cotonou, Bénin</li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Services</h3>
+                    <h3>Caractéristiques</h3>
                     <ul>
-                        <li><i class="fas fa-check"></i> Service Conciergerie</li>
-                        <li><i class="fas fa-check"></i> Service de ménage</li>
-                        <li><i class="fas fa-check"></i> WiFi inclus</li>
-                        <li><i class="fas fa-check"></i> Réductions partenaires</li>
+                        <li><i class="fas fa-check"></i> 40 m² studio</li>
+                        <li><i class="fas fa-check"></i> Tout équipé</li>
+                        <li><i class="fas fa-check"></i> Fibre optique</li>
+                        <li><i class="fas fa-check"></i> Sécurité 24/7</li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Contact</h3>
+                    <h3>Prix & Conditions</h3>
                     <ul>
-                        <li><i class="fab fa-whatsapp"></i> +33 6 12 34 56 78</li>
-                        <li><i class="fas fa-envelope"></i> contact@luxusapartments.fr</li>
-                        <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Champs-Élysées 123, Paris</li>
+                        <li><i class="fas fa-money-bill-wave"></i> 85.000 FCFA/mois</li>
+                        <li><i class="fas fa-bolt"></i> Charges incluses</li>
+                        <li><i class="fas fa-file-contract"></i> Contrat 6 mois</li>
+                        <li><i class="fas fa-home"></i> Disponible maintenant</li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2024 LuxusApartments. Tous droits réservés. | Appartements services premium à Paris</p>
+                <p>&copy; 2024 Mon Studio Cotonou - Maurice G. Tous droits réservés. | Propriétaire direct - Pas d'intermédiaire</p>
+                <p style="margin-top: 10px; font-size: 0.8rem;">
+                    <i class="fas fa-exclamation-circle"></i> Les photos sont similaires, visite réelle possible sur rendez-vous
+                </p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/33612345678?text=Bonjour,%20je%20suis%20intéressé%20par%20un%20appartement%20service" class="btn btn-whatsapp" target="_blank">
+    <a href="https://wa.me/22966953934?text=Bonjour%20Maurice,%20je%20suis%20intéressé%20par%20votre%20studio%20à%20Cotonou%20visité%20sur%20votre%20site" class="btn btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
-        <span>WhatsApp</span>
+        <span>WhatsApp Direct</span>
     </a>
 
-    <!-- Image Modal -->
-    <div id="imageModal" class="modal">
-        <span class="close-modal" onclick="closeModal()">&times;</span>
-        <img class="modal-content" id="modalImage">
-    </div>
-
     <script>
-        // WhatsApp redirection avec numéro français
+        // WhatsApp redirection avec vos coordonnées Bénin
         function redirectToWhatsApp(message) {
             const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/33612345678?text=${encodedMessage}`, '_blank');
+            window.open(`https://wa.me/22966953934?text=${encodedMessage}`, '_blank');
         }
         
         // Contact form submission
@@ -1506,32 +1582,20 @@
             event.preventDefault();
             
             const name = document.getElementById('name').value;
-            const email = document.getElementById('email').value;
             const phone = document.getElementById('phone').value;
-            const apartmentType = document.getElementById('apartment-type').value;
-            const duration = document.getElementById('duration').value;
+            const email = document.getElementById('email').value;
+            const date = document.getElementById('date').value;
             const message = document.getElementById('message').value;
             
-            const apartmentText = document.getElementById('apartment-type').options[document.getElementById('apartment-type').selectedIndex].text;
-            const durationText = document.getElementById('duration').options[document.getElementById('duration').selectedIndex].text;
+            const whatsappMessage = `📞 NOUVELLE DEMANDE DE VISITE 📞%0A%0A👤 Nom: ${name}%0A📱 Téléphone: ${phone}%0A📧 Email: ${email || 'Non renseigné'}%0A📅 Date souhaitée: ${date || 'À convenir'}%0A💬 Message: ${message || 'Pas de message supplémentaire'}%0A%0A📍 Intéressé par le studio à 85.000 FCFA/mois`;
             
-            const whatsappMessage = `Nouvelle demande:%0A%0ANom: ${name}%0AEmail: ${email}%0ATéléphone: ${phone || 'Non renseigné'}%0AAppartement: ${apartmentText}%0ADurée: ${durationText}%0AMessage: ${message || 'Pas de message supplémentaire'}`;
-            
-            window.open(`https://wa.me/33612345678?text=${whatsappMessage}`, '_blank');
+            window.open(`https://wa.me/22966953934?text=${whatsappMessage}`, '_blank');
             document.getElementById('contactForm').reset();
-            alert('Merci ! Votre demande a été envoyée. Vous allez être redirigé vers WhatsApp.');
-        }
-        
-        // Image modal
-        function openModal(imageSrc) {
-            const modal = document.getElementById('imageModal');
-            const modalImg = document.getElementById('modalImage');
-            modal.style.display = 'flex';
-            modalImg.src = imageSrc;
-        }
-        
-        function closeModal() {
-            document.getElementById('imageModal').style.display = 'none';
+            
+            // Notification
+            setTimeout(() => {
+                alert('✅ Demande envoyée ! Vous allez être redirigé vers WhatsApp pour discuter directement avec Maurice.');
+            }, 500);
         }
         
         // Mobile menu
@@ -1574,12 +1638,22 @@
                         top: targetElement.offsetTop - 80,
                         behavior: 'smooth'
                     });
+                    
+                    // Close mobile menu if open
+                    nav.classList.remove('active');
                 }
             });
         });
         
         // Initialize animations
         document.addEventListener('DOMContentLoaded', function() {
+            // Set min date for visit form
+            const today = new Date();
+            const tomorrow = new Date(today);
+            tomorrow.setDate(tomorrow.getDate() + 1);
+            const formattedDate = tomorrow.toISOString().split('T')[0];
+            document.getElementById('date').min = formattedDate;
+            
             // Add animation classes
             const sections = document.querySelectorAll('section');
             sections.forEach(section => {
@@ -1609,20 +1683,31 @@
             });
         });
         
-        // Fonction pour charger dynamiquement les images/vidéos locales
-        function loadLocalMedia() {
-            // Cette fonction peut être utilisée pour charger vos médias depuis votre PC
-            // Exemple : remplacer les URLs Unsplash par vos propres images
-            console.log('Fonction pour charger les médias locaux');
-            
-            // Exemple de remplacement d'image
-            // document.querySelectorAll('.apartment-img img').forEach((img, index) => {
-            //     img.src = `images/appartement${index + 1}/photo-principale.jpg`;
-            // });
+        // Auto-focus on form when contact section is reached
+        const contactSection = document.getElementById('contact');
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    // Optional: auto-focus on name field
+                    // document.getElementById('name').focus();
+                }
+            });
+        }, { threshold: 0.5 });
+        
+        if (contactSection) {
+            observer.observe(contactSection);
         }
         
-        // Appeler la fonction au chargement si vous avez des médias locaux
-        // document.addEventListener('DOMContentLoaded', loadLocalMedia);
+        // Quick contact buttons
+        function quickContact(type) {
+            const messages = {
+                visit: "Bonjour Maurice, je souhaite visiter votre studio à Cotonou. Quelles sont vos disponibilités cette semaine ?",
+                info: "Bonjour Maurice, pouvez-vous m'envoyer plus de photos et informations sur votre studio à 85.000 FCFA/mois ?",
+                price: "Bonjour Maurice, le prix de 85.000 FCFA/mois est-il négociable pour un contrat longue durée ?"
+            };
+            
+            redirectToWhatsApp(messages[type]);
+        }
     </script>
 </body>
 </html>

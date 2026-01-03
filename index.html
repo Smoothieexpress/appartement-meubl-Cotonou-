@@ -1,9 +1,9 @@
 <!DOCTYPE html>
-<html lang="de">
+<html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>LuxusApartments - Serviced Apartments & Furnished Studios</title>
+    <title>LuxusApartments - Appartements meublés & Studios avec services</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700;800&family=Poppins:wght@300;400;500;600;700&display=swap" rel="stylesheet">
     <style>
@@ -953,6 +953,26 @@
                 bottom: 15px;
             }
         }
+        
+        /* Style pour les vidéos */
+        .video-container {
+            position: relative;
+            padding-bottom: 56.25%; /* 16:9 */
+            height: 0;
+            overflow: hidden;
+            border-radius: var(--border-radius);
+            margin: 20px 0;
+        }
+        
+        .video-container iframe,
+        .video-container video {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
     </style>
 </head>
 <body>
@@ -968,12 +988,12 @@
             </div>
             <nav>
                 <ul>
-                    <li><a href="#home">Startseite</a></li>
-                    <li><a href="#apartments">Apartments</a></li>
+                    <li><a href="#home">Accueil</a></li>
+                    <li><a href="#apartments">Appartements</a></li>
                     <li><a href="#services">Services</a></li>
-                    <li><a href="#partners">Partner</a></li>
+                    <li><a href="#partners">Partenaires</a></li>
                     <li><a href="#gallery">Galerie</a></li>
-                    <li><a href="#contact">Kontakt</a></li>
+                    <li><a href="#contact">Contact</a></li>
                 </ul>
             </nav>
         </div>
@@ -982,13 +1002,13 @@
     <!-- Hero Section -->
     <section class="hero" id="home">
         <div class="container">
-            <div class="section-title">Premium Serviced Apartments</div>
-            <h1>Wohnen mit Komfort & Service</h1>
-            <p>Entdecken Sie unsere exklusiven, vollmöblierten Apartments und Studios. Perfekte Unterkünfte für Geschäftsreisende, Expats und Langzeitgäste mit Premium-Service und lokalen Partnerschaften.</p>
+            <div class="section-title">Appartements Services Premium</div>
+            <h1>Vivre avec Confort & Services</h1>
+            <p>Découvrez nos appartements et studios entièrement meublés. Solutions d'hébergement parfaites pour cadres en déplacement, expatriés et séjours longue durée avec services premium et partenariats locaux.</p>
             
             <div class="hero-btns">
-                <a href="#apartments" class="btn btn-primary">Apartments ansehen</a>
-                <a href="#contact" class="btn btn-secondary">Kostenlose Beratung</a>
+                <a href="#apartments" class="btn btn-primary">Voir les appartements</a>
+                <a href="#contact" class="btn btn-secondary">Consultation gratuite</a>
             </div>
         </div>
     </section>
@@ -996,31 +1016,31 @@
     <!-- Apartments Section -->
     <section class="apartments" id="apartments">
         <div class="container">
-            <div class="section-title">Unsere Auswahl</div>
-            <h2>Premium Apartments & Studios</h2>
-            <p class="section-subtitle">Vollmöblierte Unterkünfte mit allem Komfort für Ihren Aufenthalt</p>
+            <div class="section-title">Notre Sélection</div>
+            <h2>Appartements & Studios Premium</h2>
+            <p class="section-subtitle">Appartements entièrement meublés avec tout le confort pour votre séjour</p>
             
             <div class="apartments-grid">
-                <!-- Apartment 1 -->
+                <!-- Appartement 1 -->
                 <div class="apartment-card">
                     <div class="apartment-img">
-                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Luxus Apartment Stadtzentrum">
-                        <div class="apartment-badge">Beliebt</div>
+                        <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Appartement Luxe Centre-ville">
+                        <div class="apartment-badge">Populaire</div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Luxus Apartment Stadtzentrum</h3>
+                        <h3 class="apartment-title">Appartement Luxe Centre-ville</h3>
                         <div class="apartment-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            City Center, Berlin
+                            Centre-ville, Paris
                         </div>
                         <div class="apartment-features">
                             <div class="feature">
                                 <i class="fas fa-bed"></i>
-                                2 Schlafzimmer
+                                2 chambres
                             </div>
                             <div class="feature">
                                 <i class="fas fa-bath"></i>
-                                2 Bäder
+                                2 salles de bain
                             </div>
                             <div class="feature">
                                 <i class="fas fa-expand"></i>
@@ -1028,23 +1048,23 @@
                             </div>
                         </div>
                         <div class="apartment-price">
-                            1.850€ <span>/ Monat</span>
+                            1.850€ <span>/ mois</span>
                         </div>
-                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Interesse an Luxus Apartment Stadtzentrum für 1.850€/Monat')">Details anfragen</button>
+                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par l\'Appartement Luxe Centre-ville à 1.850€/mois')">Demander les détails</button>
                     </div>
                 </div>
                 
-                <!-- Apartment 2 -->
+                <!-- Appartement 2 -->
                 <div class="apartment-card">
                     <div class="apartment-img">
-                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Designer Studio Prenzlauer Berg">
-                        <div class="apartment-badge">Neu</div>
+                        <img src="https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Studio Design Le Marais">
+                        <div class="apartment-badge">Nouveau</div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Designer Studio Prenzlauer Berg</h3>
+                        <h3 class="apartment-title">Studio Design Le Marais</h3>
                         <div class="apartment-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Prenzlauer Berg, Berlin
+                            Le Marais, Paris
                         </div>
                         <div class="apartment-features">
                             <div class="feature">
@@ -1053,7 +1073,7 @@
                             </div>
                             <div class="feature">
                                 <i class="fas fa-bath"></i>
-                                1 Bad
+                                1 salle de bain
                             </div>
                             <div class="feature">
                                 <i class="fas fa-expand"></i>
@@ -1061,42 +1081,42 @@
                             </div>
                         </div>
                         <div class="apartment-price">
-                            1.250€ <span>/ Monat</span>
+                            1.250€ <span>/ mois</span>
                         </div>
-                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Interesse an Designer Studio Prenzlauer Berg für 1.250€/Monat')">Details anfragen</button>
+                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Studio Design Le Marais à 1.250€/mois')">Demander les détails</button>
                     </div>
                 </div>
                 
-                <!-- Apartment 3 -->
+                <!-- Appartement 3 -->
                 <div class="apartment-card">
                     <div class="apartment-img">
-                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse mit Dachterrasse">
-                        <div class="apartment-badge">Exklusiv</div>
+                        <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Penthouse avec Terrasse">
+                        <div class="apartment-badge">Exclusif</div>
                     </div>
                     <div class="apartment-content">
-                        <h3 class="apartment-title">Penthouse mit Dachterrasse</h3>
+                        <h3 class="apartment-title">Penthouse avec Terrasse</h3>
                         <div class="apartment-location">
                             <i class="fas fa-map-marker-alt"></i>
-                            Charlottenburg, Berlin
+                            Champs-Élysées, Paris
                         </div>
                         <div class="apartment-features">
                             <div class="feature">
                                 <i class="fas fa-bed"></i>
-                                3 Schlafzimmer
+                                3 chambres
                             </div>
                             <div class="feature">
                                 <i class="fas fa-bath"></i>
-                                3 Bäder
+                                3 salles de bain
                             </div>
                             <div class="feature">
                                 <i class="fas fa-expand"></i>
-                                120 m² + Terrasse
+                                120 m² + terrasse
                             </div>
                         </div>
                         <div class="apartment-price">
-                            3.200€ <span>/ Monat</span>
+                            3.200€ <span>/ mois</span>
                         </div>
-                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Interesse an Penthouse mit Dachterrasse für 3.200€/Monat')">Details anfragen</button>
+                        <button class="btn btn-primary" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Penthouse avec Terrasse à 3.200€/mois')">Demander les détails</button>
                     </div>
                 </div>
             </div>
@@ -1106,41 +1126,41 @@
     <!-- Services Section -->
     <section class="services" id="services">
         <div class="container">
-            <div class="section-title">Unsere Services</div>
-            <h2>All-Inclusive Servicepaket</h2>
-            <p class="section-subtitle">Wir kümmern uns um alles, damit Sie sich wie zu Hause fühlen</p>
+            <div class="section-title">Nos Services</div>
+            <h2>Pack Service Tout-Inclus</h2>
+            <p class="section-subtitle">Nous nous occupons de tout pour que vous vous sentiez comme chez vous</p>
             
             <div class="services-grid">
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-concierge-bell"></i>
                     </div>
-                    <h3>Concierge Service</h3>
-                    <p>24/7 Unterstützung, Reinigungsservice, Empfang und Check-in Management</p>
+                    <h3>Service Conciergerie</h3>
+                    <p>Assistance 24/7, service de ménage, accueil et gestion du check-in</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-wifi"></i>
                     </div>
-                    <h3>High-Speed Internet</h3>
-                    <p>Schnelles WLAN inklusive, perfekt für Home Office und Streaming</p>
+                    <h3>Internet Haut Débit</h3>
+                    <p>WiFi rapide inclus, parfait pour le télétravail et le streaming</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-utensils"></i>
                     </div>
-                    <h3>Voll ausgestattete Küche</h3>
-                    <p>Moderne Küchen mit allem Zubehör, inkl. Nespresso Maschine</p>
+                    <h3>Cuisine Équipée</h3>
+                    <p>Cuisines modernes avec tous les équipements, incl. machine Nespresso</p>
                 </div>
                 
                 <div class="service-card">
                     <div class="service-icon">
                         <i class="fas fa-handshake"></i>
                     </div>
-                    <h3>Lokale Partnerschaften</h3>
-                    <p>Exklusive Rabatte bei Restaurants, Fitnessstudios und Geschäften in der Nähe</p>
+                    <h3>Partenariats Locaux</h3>
+                    <p>Rabais exclusifs dans les restaurants, salles de sport et commerces à proximité</p>
                 </div>
             </div>
         </div>
@@ -1149,9 +1169,9 @@
     <!-- Partners Section -->
     <section class="partners" id="partners">
         <div class="container">
-            <div class="section-title">Unsere Partner</div>
-            <h2>Exklusive Vorteile für unsere Gäste</h2>
-            <p class="section-subtitle">Genießen Sie besondere Angebote bei unseren Partnerunternehmen</p>
+            <div class="section-title">Nos Partenaires</div>
+            <h2>Avantages Exclusifs pour Nos Résidents</h2>
+            <p class="section-subtitle">Profitez d'offres spéciales chez nos entreprises partenaires</p>
             
             <div class="partners-grid">
                 <div class="partner-card">
@@ -1159,8 +1179,8 @@
                         <i class="fas fa-utensils" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
                     <h4>La Trattoria</h4>
-                    <p>Italienisches Restaurant</p>
-                    <div class="partner-discount">15% Rabatt</div>
+                    <p>Restaurant Italien</p>
+                    <div class="partner-discount">15% de réduction</div>
                 </div>
                 
                 <div class="partner-card">
@@ -1168,26 +1188,26 @@
                         <i class="fas fa-dumbbell" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
                     <h4>Premium Fitness</h4>
-                    <p>Fitnessstudio & Wellness</p>
-                    <div class="partner-discount">1 Monat kostenlos</div>
+                    <p>Salle de Sport & Wellness</p>
+                    <div class="partner-discount">1 mois gratuit</div>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
                         <i class="fas fa-coffee" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
-                    <h4>Kaffeerösterei</h4>
-                    <p>Artisan Coffee Shop</p>
-                    <div class="partner-discount">20% auf alle Getränke</div>
+                    <h4>Torrefaction</h4>
+                    <p>Café Artisanal</p>
+                    <div class="partner-discount">20% sur toutes les boissons</div>
                 </div>
                 
                 <div class="partner-card">
                     <div class="partner-logo">
                         <i class="fas fa-spa" style="font-size: 3rem; color: var(--secondary);"></i>
                     </div>
-                    <h4>Wellness Oase</h4>
+                    <h4>Oasis Wellness</h4>
                     <p>Spa & Massage</p>
-                    <div class="partner-discount">10% auf alle Behandlungen</div>
+                    <div class="partner-discount">10% sur tous les soins</div>
                 </div>
             </div>
         </div>
@@ -1196,37 +1216,52 @@
     <!-- Gallery Section -->
     <section class="gallery" id="gallery">
         <div class="container">
-            <div class="section-title">Einblicke</div>
-            <h2>Galerie unserer Apartments</h2>
-            <p class="section-subtitle">Entdecken Sie die Details unserer luxuriösen Unterkünfte</p>
+            <div class="section-title">Visite Virtuelle</div>
+            <h2>Galerie de Nos Appartements</h2>
+            <p class="section-subtitle">Découvrez les détails de nos hébergements luxueux</p>
             
+            <!-- Galerie d'images -->
             <div class="gallery-grid">
                 <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Wohnzimmer">
+                    <img src="https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salon élégant">
                     <div class="gallery-overlay">
-                        <div class="gallery-text">Elegantes Wohnzimmer</div>
+                        <div class="gallery-text">Salon élégant</div>
                     </div>
                 </div>
                 
                 <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Küche">
+                    <img src="https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Cuisine moderne">
                     <div class="gallery-overlay">
-                        <div class="gallery-text">Moderne Küche</div>
+                        <div class="gallery-text">Cuisine moderne</div>
                     </div>
                 </div>
                 
                 <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Schlafzimmer">
+                    <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Chambre confortable">
                     <div class="gallery-overlay">
-                        <div class="gallery-text">Gemütliches Schlafzimmer</div>
+                        <div class="gallery-text">Chambre confortable</div>
                     </div>
                 </div>
                 
                 <div class="gallery-item" onclick="openModal('https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80')">
-                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Badezimmer">
+                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" alt="Salle de bain luxueuse">
                     <div class="gallery-overlay">
-                        <div class="gallery-text">Luxuriöses Bad</div>
+                        <div class="gallery-text">Salle de bain luxueuse</div>
                     </div>
+                </div>
+            </div>
+            
+            <!-- Section Vidéo -->
+            <div style="margin-top: 60px;">
+                <h3 style="text-align: center; margin-bottom: 30px;">Visite Guidée en Vidéo</h3>
+                <div class="video-container">
+                    <iframe 
+                        src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                        title="Visite virtuelle d'appartement" 
+                        frameborder="0" 
+                        allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                        allowfullscreen>
+                    </iframe>
                 </div>
             </div>
         </div>
@@ -1235,16 +1270,16 @@
     <!-- Testimonials Section -->
     <section class="testimonials" id="testimonials">
         <div class="container">
-            <div class="section-title">Erfahrungen</div>
-            <h2>Was unsere Gäste sagen</h2>
-            <p class="section-subtitle">Feedback von zufriedenen Gästen unserer Apartments</p>
+            <div class="section-title">Témoignages</div>
+            <h2>Ce que Disent Nos Résidents</h2>
+            <p class="section-subtitle">Retour d'expérience de nos résidents satisfaits</p>
             
             <div class="testimonials-grid">
                 <div class="testimonial-card">
                     <div class="testimonial-header">
                         <div class="testimonial-avatar">M</div>
                         <div>
-                            <h4>Michael Schmidt</h4>
+                            <h4>Marie Dubois</h4>
                             <div class="testimonial-stars">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -1254,14 +1289,14 @@
                             </div>
                         </div>
                     </div>
-                    <p>"Perfektes Apartment für meinen dreimonatigen Aufenthalt in Berlin. Die Lage ist ideal und der Service erstklassig. Die Partnerrabatte bei den Restaurants waren ein tolles Plus!"</p>
+                    <p>"Appartement parfait pour mon séjour de trois mois à Paris. L'emplacement est idéal et le service est exceptionnel. Les réductions chez les restaurants partenaires étaient un vrai plus !"</p>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">S</div>
+                        <div class="testimonial-avatar">P</div>
                         <div>
-                            <h4>Sarah Müller</h4>
+                            <h4>Pierre Martin</h4>
                             <div class="testimonial-stars">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -1271,14 +1306,14 @@
                             </div>
                         </div>
                     </div>
-                    <p>"Das Studio war perfekt für meinen Umzug nach Berlin. Alles war sauber, modern und vollständig ausgestattet. Der Concierge-Service war sehr hilfreich bei allen Fragen."</p>
+                    <p>"Le studio était parfait pour mon installation à Paris. Tout était propre, moderne et entièrement équipé. Le service conciergerie était très utile pour toutes mes questions."</p>
                 </div>
                 
                 <div class="testimonial-card">
                     <div class="testimonial-header">
-                        <div class="testimonial-avatar">T</div>
+                        <div class="testimonial-avatar">S</div>
                         <div>
-                            <h4>Thomas Weber</h4>
+                            <h4>Sophie Bernard</h4>
                             <div class="testimonial-stars">
                                 <i class="fas fa-star"></i>
                                 <i class="fas fa-star"></i>
@@ -1288,7 +1323,7 @@
                             </div>
                         </div>
                     </div>
-                    <p>"Als Geschäftsreisender schätze ich die Flexibilität und den Komfort. Das Apartment bietet alles für produktives Arbeiten und entspanntes Wohnen. Sehr empfehlenswert!"</p>
+                    <p>"En tant que cadre en déplacement, j'apprécie la flexibilité et le confort. L'appartement offre tout pour travailler efficacement et se détendre. Très recommandable !"</p>
                 </div>
             </div>
         </div>
@@ -1297,12 +1332,12 @@
     <!-- Contact Section -->
     <section class="contact" id="contact">
         <div class="container">
-            <div class="section-title">Kontaktieren Sie uns</div>
-            <h2>Bereit für Ihren Aufenthalt?</h2>
+            <div class="section-title">Contactez-nous</div>
+            <h2>Prêt pour Votre Séjour ?</h2>
             
             <div class="contact-container">
                 <div class="contact-info">
-                    <h3>Kontaktdaten</h3>
+                    <h3>Coordonnées</h3>
                     
                     <div class="contact-item">
                         <div class="contact-icon">
@@ -1310,8 +1345,8 @@
                         </div>
                         <div>
                             <h4>WhatsApp</h4>
-                            <p>+49 1578 1234567</p>
-                            <small>Schnelle Antwort garantiert</small>
+                            <p>+33 6 12 34 56 78</p>
+                            <small>Réponse rapide garantie</small>
                         </div>
                     </div>
                     
@@ -1321,8 +1356,8 @@
                         </div>
                         <div>
                             <h4>Email</h4>
-                            <p>info@luxusapartments.de</p>
-                            <small>Antwort innerhalb 24h</small>
+                            <p>contact@luxusapartments.fr</p>
+                            <small>Réponse sous 24h</small>
                         </div>
                     </div>
                     
@@ -1331,9 +1366,9 @@
                             <i class="fas fa-phone"></i>
                         </div>
                         <div>
-                            <h4>Telefon</h4>
-                            <p>030 12345678</p>
-                            <small>Mo-Fr: 9-18 Uhr</small>
+                            <h4>Téléphone</h4>
+                            <p>01 23 45 67 89</p>
+                            <small>Lun-Ven : 9h-18h</small>
                         </div>
                     </div>
                     
@@ -1342,18 +1377,18 @@
                             <i class="fas fa-map-marker-alt"></i>
                         </div>
                         <div>
-                            <h4>Büro</h4>
-                            <p>Kurfürstendamm 123, 10719 Berlin</p>
-                            <small>Nach Vereinbarung</small>
+                            <h4>Bureau</h4>
+                            <p>Avenue des Champs-Élysées 123, 75008 Paris</p>
+                            <small>Sur rendez-vous</small>
                         </div>
                     </div>
                 </div>
                 
                 <div class="contact-form">
-                    <h3>Anfrage senden</h3>
+                    <h3>Envoyer une Demande</h3>
                     <form id="contactForm" onsubmit="submitContactForm(event)">
                         <div class="form-group">
-                            <label for="name">Vollständiger Name *</label>
+                            <label for="name">Nom complet *</label>
                             <input type="text" id="name" required>
                         </div>
                         
@@ -1363,38 +1398,38 @@
                         </div>
                         
                         <div class="form-group">
-                            <label for="phone">Telefon</label>
+                            <label for="phone">Téléphone</label>
                             <input type="tel" id="phone">
                         </div>
                         
                         <div class="form-group">
-                            <label for="apartment-type">Interesse an *</label>
+                            <label for="apartment-type">Intéressé par *</label>
                             <select id="apartment-type" required>
-                                <option value="">Bitte auswählen</option>
-                                <option value="luxus">Luxus Apartment Stadtzentrum</option>
-                                <option value="designer">Designer Studio Prenzlauer Berg</option>
-                                <option value="penthouse">Penthouse mit Dachterrasse</option>
-                                <option value="other">Anderes Apartment</option>
+                                <option value="">Sélectionnez une option</option>
+                                <option value="luxus">Appartement Luxe Centre-ville</option>
+                                <option value="designer">Studio Design Le Marais</option>
+                                <option value="penthouse">Penthouse avec Terrasse</option>
+                                <option value="other">Autre appartement</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="duration">Aufenthaltsdauer *</label>
+                            <label for="duration">Durée du séjour *</label>
                             <select id="duration" required>
-                                <option value="">Bitte auswählen</option>
-                                <option value="short">1-3 Monate</option>
-                                <option value="medium">3-6 Monate</option>
-                                <option value="long">6-12 Monate</option>
-                                <option value="year">Mehr als 1 Jahr</option>
+                                <option value="">Sélectionnez une durée</option>
+                                <option value="short">1-3 mois</option>
+                                <option value="medium">3-6 mois</option>
+                                <option value="long">6-12 mois</option>
+                                <option value="year">Plus d'1 an</option>
                             </select>
                         </div>
                         
                         <div class="form-group">
-                            <label for="message">Nachricht</label>
-                            <textarea id="message" rows="4" placeholder="Weitere Informationen oder spezielle Wünsche..."></textarea>
+                            <label for="message">Message</label>
+                            <textarea id="message" rows="4" placeholder="Informations supplémentaires ou demandes spéciales..."></textarea>
                         </div>
                         
-                        <button type="submit" class="btn btn-primary">Anfrage senden</button>
+                        <button type="submit" class="btn btn-primary">Envoyer la demande</button>
                     </form>
                 </div>
             </div>
@@ -1407,48 +1442,48 @@
             <div class="footer-container">
                 <div class="footer-col">
                     <h3>LuxusApartments</h3>
-                    <p style="color: #bbb; margin-top: 20px; font-size: 0.9rem;">Premium Serviced Apartments in Berlin. Vollmöbliert, flexibel und mit exklusiven Serviceleistungen.</p>
+                    <p style="color: #bbb; margin-top: 20px; font-size: 0.9rem;">Appartements services premium à Paris. Entièrement meublés, flexibles et avec services exclusifs.</p>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Unsere Apartments</h3>
+                    <h3>Nos Appartements</h3>
                     <ul>
-                        <li><a href="#" onclick="redirectToWhatsApp('Interesse an Luxus Apartment Stadtzentrum')"><i class="fas fa-arrow-right"></i> Stadtzentrum</a></li>
-                        <li><a href="#" onclick="redirectToWhatsApp('Interesse an Designer Studio')"><i class="fas fa-arrow-right"></i> Prenzlauer Berg</a></li>
-                        <li><a href="#" onclick="redirectToWhatsApp('Interesse an Penthouse')"><i class="fas fa-arrow-right"></i> Charlottenburg</a></li>
-                        <li><a href="#contact"><i class="fas fa-arrow-right"></i> Alle Apartments</a></li>
+                        <li><a href="#" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par l\'Appartement Luxe Centre-ville')"><i class="fas fa-arrow-right"></i> Centre-ville</a></li>
+                        <li><a href="#" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Studio Design')"><i class="fas fa-arrow-right"></i> Le Marais</a></li>
+                        <li><a href="#" onclick="redirectToWhatsApp('Bonjour, je suis intéressé par le Penthouse')"><i class="fas fa-arrow-right"></i> Champs-Élysées</a></li>
+                        <li><a href="#contact"><i class="fas fa-arrow-right"></i> Tous les appartements</a></li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
                     <h3>Services</h3>
                     <ul>
-                        <li><i class="fas fa-check"></i> Concierge Service</li>
-                        <li><i class="fas fa-check"></i> Reinigungsservice</li>
-                        <li><i class="fas fa-check"></i> WLAN inklusive</li>
-                        <li><i class="fas fa-check"></i> Partnerrabatte</li>
+                        <li><i class="fas fa-check"></i> Service Conciergerie</li>
+                        <li><i class="fas fa-check"></i> Service de ménage</li>
+                        <li><i class="fas fa-check"></i> WiFi inclus</li>
+                        <li><i class="fas fa-check"></i> Réductions partenaires</li>
                     </ul>
                 </div>
                 
                 <div class="footer-col">
-                    <h3>Kontakt</h3>
+                    <h3>Contact</h3>
                     <ul>
-                        <li><i class="fab fa-whatsapp"></i> +49 1578 1234567</li>
-                        <li><i class="fas fa-envelope"></i> info@luxusapartments.de</li>
-                        <li><i class="fas fa-phone"></i> 030 12345678</li>
-                        <li><i class="fas fa-map-marker-alt"></i> Kurfürstendamm 123, Berlin</li>
+                        <li><i class="fab fa-whatsapp"></i> +33 6 12 34 56 78</li>
+                        <li><i class="fas fa-envelope"></i> contact@luxusapartments.fr</li>
+                        <li><i class="fas fa-phone"></i> 01 23 45 67 89</li>
+                        <li><i class="fas fa-map-marker-alt"></i> Champs-Élysées 123, Paris</li>
                     </ul>
                 </div>
             </div>
             
             <div class="footer-bottom">
-                <p>&copy; 2023 LuxusApartments. Alle Rechte vorbehalten. | Premium Serviced Apartments in Berlin</p>
+                <p>&copy; 2024 LuxusApartments. Tous droits réservés. | Appartements services premium à Paris</p>
             </div>
         </div>
     </footer>
 
     <!-- WhatsApp Button -->
-    <a href="https://wa.me/4915781234567?text=Hallo,%20ich%20interessiere%20mich%20für%20ein%20Serviced%20Apartment" class="btn btn-whatsapp" target="_blank">
+    <a href="https://wa.me/33612345678?text=Bonjour,%20je%20suis%20intéressé%20par%20un%20appartement%20service" class="btn btn-whatsapp" target="_blank">
         <i class="fab fa-whatsapp"></i>
         <span>WhatsApp</span>
     </a>
@@ -1460,10 +1495,10 @@
     </div>
 
     <script>
-        // WhatsApp redirection
+        // WhatsApp redirection avec numéro français
         function redirectToWhatsApp(message) {
             const encodedMessage = encodeURIComponent(message);
-            window.open(`https://wa.me/4915781234567?text=${encodedMessage}`, '_blank');
+            window.open(`https://wa.me/33612345678?text=${encodedMessage}`, '_blank');
         }
         
         // Contact form submission
@@ -1480,11 +1515,11 @@
             const apartmentText = document.getElementById('apartment-type').options[document.getElementById('apartment-type').selectedIndex].text;
             const durationText = document.getElementById('duration').options[document.getElementById('duration').selectedIndex].text;
             
-            const whatsappMessage = `Neue Anfrage:%0A%0AName: ${name}%0AEmail: ${email}%0ATelefon: ${phone || 'Nicht angegeben'}%0AApartment: ${apartmentText}%0ADauer: ${durationText}%0ANachricht: ${message || 'Keine zusätzliche Nachricht'}`;
+            const whatsappMessage = `Nouvelle demande:%0A%0ANom: ${name}%0AEmail: ${email}%0ATéléphone: ${phone || 'Non renseigné'}%0AAppartement: ${apartmentText}%0ADurée: ${durationText}%0AMessage: ${message || 'Pas de message supplémentaire'}`;
             
-            window.open(`https://wa.me/4915781234567?text=${whatsappMessage}`, '_blank');
+            window.open(`https://wa.me/33612345678?text=${whatsappMessage}`, '_blank');
             document.getElementById('contactForm').reset();
-            alert('Vielen Dank! Ihre Anfrage wurde gesendet. Sie werden nun zu WhatsApp weitergeleitet.');
+            alert('Merci ! Votre demande a été envoyée. Vous allez être redirigé vers WhatsApp.');
         }
         
         // Image modal
@@ -1573,6 +1608,21 @@
                 }
             });
         });
+        
+        // Fonction pour charger dynamiquement les images/vidéos locales
+        function loadLocalMedia() {
+            // Cette fonction peut être utilisée pour charger vos médias depuis votre PC
+            // Exemple : remplacer les URLs Unsplash par vos propres images
+            console.log('Fonction pour charger les médias locaux');
+            
+            // Exemple de remplacement d'image
+            // document.querySelectorAll('.apartment-img img').forEach((img, index) => {
+            //     img.src = `images/appartement${index + 1}/photo-principale.jpg`;
+            // });
+        }
+        
+        // Appeler la fonction au chargement si vous avez des médias locaux
+        // document.addEventListener('DOMContentLoaded', loadLocalMedia);
     </script>
 </body>
 </html>

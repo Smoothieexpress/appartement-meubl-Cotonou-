@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Meublé Cotonou - Appartements meublés à Cotonou</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <style>
         /* Variables et reset */
         :root {
@@ -14,6 +15,8 @@
             --gray: #666;
             --shadow: 0 5px 15px rgba(0,0,0,0.1);
             --radius: 10px;
+            --success: #2ecc71;
+            --warning: #f39c12;
         }
 
         * {
@@ -165,6 +168,9 @@
             font-weight: 600;
             transition: transform 0.3s, box-shadow 0.3s;
             font-size: 15px;
+            border: none;
+            cursor: pointer;
+            justify-content: center;
         }
 
         .btn:hover {
@@ -189,6 +195,18 @@
 
         .btn-whatsapp:hover {
             background: #128C7E;
+        }
+
+        .btn-disabled {
+            background: #95a5a6;
+            color: white;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        .btn-disabled:hover {
+            transform: none;
+            box-shadow: none;
         }
 
         /* Section titles */
@@ -261,11 +279,26 @@
             color: white;
         }
 
+        .video-container {
+            position: relative;
+            width: 100%;
+            height: 400px;
+            overflow: hidden;
+            border-radius: var(--radius);
+            margin: 30px;
+        }
+
+        .video-container iframe {
+            width: 100%;
+            height: 100%;
+            border: none;
+        }
+
         .studio-gallery {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(200px, 1fr));
             gap: 15px;
-            padding: 30px;
+            padding: 0 30px 30px;
         }
 
         .gallery-image {
@@ -344,6 +377,22 @@
             border-radius: var(--radius);
             border: 2px solid var(--primary);
             min-width: 150px;
+            cursor: pointer;
+            transition: all 0.3s;
+        }
+
+        .price-item:hover {
+            transform: translateY(-5px);
+            box-shadow: var(--shadow);
+        }
+
+        .price-item.selected {
+            background: var(--primary);
+            color: white;
+        }
+
+        .price-item.selected .price-amount {
+            color: white;
         }
 
         .price-amount {
@@ -356,6 +405,93 @@
         .price-item p {
             font-size: 14px;
             color: var(--gray);
+        }
+
+        .price-item.selected p {
+            color: white;
+        }
+
+        .selected-tarif {
+            text-align: center;
+            margin-top: 20px;
+            padding: 15px;
+            background: var(--light);
+            border-radius: var(--radius);
+            display: none;
+        }
+
+        .selected-tarif.active {
+            display: block;
+        }
+
+        /* Galerie complète */
+        .gallery-section {
+            background: var(--light);
+        }
+
+        .gallery-filter {
+            display: flex;
+            justify-content: center;
+            gap: 15px;
+            margin-bottom: 30px;
+            flex-wrap: wrap;
+        }
+
+        .filter-btn {
+            padding: 10px 20px;
+            background: white;
+            border: 2px solid #eee;
+            border-radius: var(--radius);
+            cursor: pointer;
+            font-weight: 500;
+            transition: all 0.3s;
+        }
+
+        .filter-btn.active, .filter-btn:hover {
+            background: var(--primary);
+            color: white;
+            border-color: var(--primary);
+        }
+
+        .gallery-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+        }
+
+        .gallery-item {
+            position: relative;
+            border-radius: var(--radius);
+            overflow: hidden;
+            height: 250px;
+            cursor: pointer;
+        }
+
+        .gallery-item img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            transition: transform 0.5s;
+        }
+
+        .gallery-item:hover img {
+            transform: scale(1.05);
+        }
+
+        .gallery-overlay {
+            position: absolute;
+            bottom: 0;
+            left: 0;
+            right: 0;
+            background: linear-gradient(transparent, rgba(0,0,0,0.8));
+            color: white;
+            padding: 20px;
+            transform: translateY(100%);
+            transition: transform 0.3s;
+        }
+
+        .gallery-item:hover .gallery-overlay {
+            transform: translateY(0);
         }
 
         /* Comment ça marche */
@@ -494,6 +630,40 @@
         .form-group textarea:focus {
             outline: none;
             border-color: var(--primary);
+        }
+
+        .availability-check {
+            background: var(--light);
+            padding: 20px;
+            border-radius: var(--radius);
+            margin-bottom: 25px;
+            text-align: center;
+        }
+
+        .availability-status {
+            padding: 10px 15px;
+            border-radius: var(--radius);
+            margin-top: 15px;
+            font-weight: 600;
+            display: none;
+        }
+
+        .available {
+            background: #d4edda;
+            color: #155724;
+            border: 1px solid #c3e6cb;
+        }
+
+        .not-available {
+            background: #f8d7da;
+            color: #721c24;
+            border: 1px solid #f5c6cb;
+        }
+
+        .loading {
+            background: #fff3cd;
+            color: #856404;
+            border: 1px solid #ffeaa7;
         }
 
         /* Page Proposer */
@@ -703,6 +873,7 @@
             background: none;
             border: none;
             line-height: 1;
+            z-index: 2001;
         }
 
         /* Responsive */
@@ -715,8 +886,8 @@
                 font-size: 28px;
             }
             
-            .studio-gallery {
-                grid-template-columns: repeat(2, 1fr);
+            .video-container {
+                height: 350px;
             }
         }
 
@@ -774,9 +945,14 @@
                 grid-template-columns: 1fr;
             }
             
+            .video-container {
+                height: 250px;
+                margin: 20px;
+            }
+            
             .studio-gallery {
                 grid-template-columns: 1fr;
-                padding: 20px;
+                padding: 0 20px 20px;
             }
             
             .reservation-form,
@@ -801,6 +977,10 @@
             
             .studio-header h2 {
                 font-size: 22px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
             }
         }
 
@@ -843,6 +1023,15 @@
                 height: 50px;
                 font-size: 24px;
             }
+            
+            .video-container {
+                height: 200px;
+                margin: 15px;
+            }
+            
+            .gallery-grid {
+                grid-template-columns: 1fr;
+            }
         }
     </style>
 </head>
@@ -855,6 +1044,7 @@
             <nav id="main-nav">
                 <a href="#accueil" class="active">Accueil</a>
                 <a href="#logements">Logements</a>
+                <a href="#galerie">Galerie</a>
                 <a href="#reserver">Réserver</a>
                 <a href="#proposer">Proposer</a>
                 <a href="#apropos">À propos</a>
@@ -881,6 +1071,7 @@
                 </a>
                 <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20souhaite%20plus%20d'informations%20sur%20vos%20logements" 
                    class="btn btn-whatsapp" target="_blank">
+                    <i class="fab fa-whatsapp"></i>
                     <span>WhatsApp</span>
                 </a>
             </div>
@@ -933,6 +1124,15 @@
                     <p>Le confort moderne au cœur de Cotonou</p>
                 </div>
                 
+                <div class="video-container">
+                    <iframe src="https://www.youtube.com/embed/dQw4w9WgXcQ" 
+                            title="Visite virtuelle du studio Akpakpa" 
+                            frameborder="0" 
+                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
+                            allowfullscreen>
+                    </iframe>
+                </div>
+                
                 <div class="studio-gallery">
                     <img src="https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="Studio salon" class="gallery-image" onclick="openModal(this.src)">
@@ -940,8 +1140,6 @@
                          alt="Studio cuisine" class="gallery-image" onclick="openModal(this.src)">
                     <img src="https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
                          alt="Studio chambre" class="gallery-image" onclick="openModal(this.src)">
-                    <img src="https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80" 
-                         alt="Studio salle de bain" class="gallery-image" onclick="openModal(this.src)">
                 </div>
                 
                 <div class="studio-details">
@@ -980,16 +1178,23 @@
                     </div>
                     
                     <div class="price-section">
-                        <h3 style="text-align: center; margin-bottom: 20px;">Tarifs</h3>
+                        <h3 style="text-align: center; margin-bottom: 20px;">Choisissez votre tarif</h3>
                         <div class="price-grid">
-                            <div class="price-item">
+                            <div class="price-item" data-tarif="nuit" data-prix="15000">
                                 <div class="price-amount">15 000 F</div>
                                 <p>Nuitée</p>
                             </div>
-                            <div class="price-item">
+                            <div class="price-item" data-tarif="24h" data-prix="23000">
                                 <div class="price-amount">23 000 F</div>
                                 <p>24 heures</p>
                             </div>
+                        </div>
+                        
+                        <div class="selected-tarif" id="selectedTarif">
+                            <p id="tarifText">Vous avez sélectionné : <strong>Nuitée - 15 000 F</strong></p>
+                            <button class="btn btn-primary" onclick="scrollToReservation()" style="margin-top: 10px;">
+                                Réserver maintenant avec ce tarif
+                            </button>
                         </div>
                         
                         <div style="display: flex; gap: 15px; margin-top: 25px; flex-wrap: wrap;">
@@ -998,11 +1203,31 @@
                             </a>
                             <a href="https://wa.me/22966953934?text=Bonjour,%20je%20souhaite%20plus%20d'informations%20sur%20le%20studio%20Akpakpa" 
                                class="btn btn-whatsapp" style="flex: 1; min-width: 200px;" target="_blank">
+                                <i class="fab fa-whatsapp"></i>
                                 <span>Contact WhatsApp</span>
                             </a>
                         </div>
                     </div>
                 </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Galerie complète -->
+    <section class="gallery-section" id="galerie">
+        <div class="container">
+            <h2 class="section-title">Galerie complète</h2>
+            <p class="section-subtitle">Découvrez tous nos appartements et studios disponibles</p>
+            
+            <div class="gallery-filter">
+                <button class="filter-btn active" data-filter="all">Tous</button>
+                <button class="filter-btn" data-filter="studio">Studios</button>
+                <button class="filter-btn" data-filter="appartement">Appartements</button>
+                <button class="filter-btn" data-filter="luxe">Luxe</button>
+            </div>
+            
+            <div class="gallery-grid" id="galleryGrid">
+                <!-- Les éléments seront ajoutés dynamiquement par JavaScript -->
             </div>
         </div>
     </section>
@@ -1022,8 +1247,8 @@
                 
                 <div class="step-card">
                     <div class="step-number">2</div>
-                    <h3>Sélectionnez vos dates</h3>
-                    <p>Indiquez vos dates d'arrivée et de départ pour vérifier la disponibilité.</p>
+                    <h3>Vérifiez la disponibilité</h3>
+                    <p>Entrez vos dates pour vérifier si le logement est disponible à cette période.</p>
                 </div>
                 
                 <div class="step-card">
@@ -1050,11 +1275,12 @@
                     <div class="apartment-content">
                         <h3 class="apartment-title">Studio centre-ville</h3>
                         <div class="apartment-location">
-                            📍 Centre-ville, Cotonou
+                            <i class="fas fa-map-marker-alt"></i>
+                            Centre-ville, Cotonou
                         </div>
                         <div class="apartment-price">18 000 F / nuit</div>
                         <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                            <a href="#reserver" class="btn btn-primary" style="flex: 1; min-width: 120px;">Réserver</a>
+                            <button class="btn btn-primary" style="flex: 1; min-width: 120px;" onclick="selectApartment('studio-centre', 18000)">Réserver</button>
                         </div>
                     </div>
                 </div>
@@ -1067,11 +1293,12 @@
                     <div class="apartment-content">
                         <h3 class="apartment-title">Appartement 2 pièces – Hédzranawoe</h3>
                         <div class="apartment-location">
-                            📍 Hédzranawoe, Cotonou
+                            <i class="fas fa-map-marker-alt"></i>
+                            Hédzranawoe, Cotonou
                         </div>
                         <div class="apartment-price">25 000 F / nuit</div>
                         <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                            <a href="#reserver" class="btn btn-primary" style="flex: 1; min-width: 120px;">Réserver</a>
+                            <button class="btn btn-primary" style="flex: 1; min-width: 120px;" onclick="selectApartment('appart-2pieces', 25000)">Réserver</button>
                         </div>
                     </div>
                 </div>
@@ -1084,11 +1311,12 @@
                     <div class="apartment-content">
                         <h3 class="apartment-title">Appartement meublé – Fidjrossè</h3>
                         <div class="apartment-location">
-                            📍 Fidjrossè, Cotonou
+                            <i class="fas fa-map-marker-alt"></i>
+                            Fidjrossè, Cotonou
                         </div>
                         <div class="apartment-price">22 000 F / nuit</div>
                         <div style="display: flex; gap: 10px; margin-top: 15px; flex-wrap: wrap;">
-                            <a href="#reserver" class="btn btn-primary" style="flex: 1; min-width: 120px;">Réserver</a>
+                            <button class="btn btn-primary" style="flex: 1; min-width: 120px;" onclick="selectApartment('appart-fidjrosse', 22000)">Réserver</button>
                         </div>
                     </div>
                 </div>
@@ -1103,6 +1331,35 @@
             <p class="section-subtitle">Remplissez le formulaire ci-dessous pour effectuer une demande de réservation</p>
             
             <div class="reservation-form">
+                <div class="availability-check">
+                    <h3 style="margin-bottom: 15px;">Vérifier la disponibilité</h3>
+                    <div style="display: grid; grid-template-columns: 1fr 1fr; gap: 15px; margin-bottom: 15px;">
+                        <div class="form-group">
+                            <label for="check-arrivee">Date d'arrivée *</label>
+                            <input type="date" id="check-arrivee" required>
+                        </div>
+                        
+                        <div class="form-group">
+                            <label for="check-depart">Date de départ *</label>
+                            <input type="date" id="check-depart" required>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label for="check-logement">Logement à vérifier *</label>
+                        <select id="check-logement" required>
+                            <option value="">Sélectionnez un logement</option>
+                            <option value="studio-akpakpa">Studio Akpakpa</option>
+                            <option value="studio-centre">Studio centre-ville</option>
+                            <option value="appart-2pieces">Appartement 2 pièces</option>
+                            <option value="appart-fidjrosse">Appartement Fidjrossè</option>
+                        </select>
+                    </div>
+                    <button class="btn btn-primary" onclick="checkAvailability()" style="margin-top: 10px;">
+                        Vérifier la disponibilité
+                    </button>
+                    <div class="availability-status" id="availabilityStatus"></div>
+                </div>
+                
                 <form id="reservationForm">
                     <div class="form-group">
                         <label for="nom">Nom & Prénom *</label>
@@ -1118,10 +1375,21 @@
                         <label for="logement">Logement choisi *</label>
                         <select id="logement" required>
                             <option value="">Sélectionnez un logement</option>
-                            <option value="studio-akpakpa">Studio Akpakpa (15 000 F/nuit)</option>
-                            <option value="studio-centre">Studio centre-ville (18 000 F/nuit)</option>
-                            <option value="appart-2pieces">Appartement 2 pièces (25 000 F/nuit)</option>
-                            <option value="appart-fidjrosse">Appartement Fidjrossè (22 000 F/nuit)</option>
+                            <option value="studio-akpakpa">Studio Akpakpa</option>
+                            <option value="studio-centre">Studio centre-ville</option>
+                            <option value="appart-2pieces">Appartement 2 pièces</option>
+                            <option value="appart-fidjrosse">Appartement Fidjrossè</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
+                        <label for="tarif">Type de tarif *</label>
+                        <select id="tarif" required>
+                            <option value="">Sélectionnez un tarif</option>
+                            <option value="nuit">Nuitée</option>
+                            <option value="24h">24 heures</option>
+                            <option value="semaine">Semaine</option>
+                            <option value="mois">Mois</option>
                         </select>
                     </div>
                     
@@ -1293,7 +1561,7 @@
                     <h3 style="margin-top: 30px; margin-bottom: 15px;">Suivez-nous</h3>
                     <div class="social-links">
                         <a href="https://www.tiktok.com/@house.luxx" target="_blank" class="social-link" title="TikTok">
-                            <span>TikTok</span>
+                            <i class="fab fa-tiktok"></i>
                         </a>
                     </div>
                 </div>
@@ -1346,8 +1614,8 @@
                     <ul class="footer-links">
                         <li><a href="#accueil">Accueil</a></li>
                         <li><a href="#logements">Logements</a></li>
+                        <li><a href="#galerie">Galerie</a></li>
                         <li><a href="#reserver">Réserver</a></li>
-                        <li><a href="#proposer">Proposer un logement</a></li>
                     </ul>
                 </div>
                 
@@ -1383,7 +1651,7 @@
     <!-- WhatsApp Float -->
     <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20souhaite%20plus%20d'informations%20sur%20vos%20logements" 
        class="whatsapp-float" target="_blank" title="Contact WhatsApp">
-        <span>WhatsApp</span>
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <!-- Image Modal -->
@@ -1393,6 +1661,103 @@
     </div>
 
     <script>
+        // Données de la galerie
+        const galleryData = [
+            {
+                id: 1,
+                type: "studio",
+                category: "studio",
+                image: "https://images.unsplash.com/photo-1502672260266-1c1ef2d93688?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Studio moderne",
+                description: "Studio entièrement équipé",
+                price: "15 000 F/nuit"
+            },
+            {
+                id: 2,
+                type: "appartement",
+                category: "appartement",
+                image: "https://images.unsplash.com/photo-1512917774080-9991f1c4c750?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Appartement 2 pièces",
+                description: "Hédzranawoe - Vue imprenable",
+                price: "25 000 F/nuit"
+            },
+            {
+                id: 3,
+                type: "studio",
+                category: "studio",
+                image: "https://images.unsplash.com/photo-1560185893-a55cbc8c57e8?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Studio centre-ville",
+                description: "Au cœur de Cotonou",
+                price: "18 000 F/nuit"
+            },
+            {
+                id: 4,
+                type: "appartement",
+                category: "appartement",
+                image: "https://images.unsplash.com/photo-1545324418-cc1a3fa10c00?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Appartement Fidjrossè",
+                description: "Proche de la plage",
+                price: "22 000 F/nuit"
+            },
+            {
+                id: 5,
+                type: "luxe",
+                category: "luxe",
+                image: "https://images.unsplash.com/photo-1613977257363-707ba9348227?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Suite luxe",
+                description: "Appartement haut standing",
+                price: "35 000 F/nuit"
+            },
+            {
+                id: 6,
+                type: "studio",
+                category: "studio",
+                image: "https://images.unsplash.com/photo-1586023492125-27b2c045efd7?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Studio cuisine équipée",
+                description: "Nouveau - Tout équipé",
+                price: "16 000 F/nuit"
+            },
+            {
+                id: 7,
+                type: "appartement",
+                category: "appartement",
+                image: "https://images.unsplash.com/photo-1552321554-5fefe8c9ef14?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Appartement 3 pièces",
+                description: "Idéal pour famille",
+                price: "30 000 F/nuit"
+            },
+            {
+                id: 8,
+                type: "luxe",
+                category: "luxe",
+                image: "https://images.unsplash.com/photo-1616594039964-ae9021a400a0?ixlib=rb-4.0.3&auto=format&fit=crop&w=800&q=80",
+                title: "Penthouse vue mer",
+                description: "Exceptionnel - Vue panoramique",
+                price: "50 000 F/nuit"
+            }
+        ];
+
+        // Dates réservées (simulation - en réalité ça viendrait d'une base de données)
+        const bookedDates = {
+            "studio-akpakpa": ["2024-12-15", "2024-12-16", "2024-12-20", "2024-12-21"],
+            "studio-centre": ["2024-12-10", "2024-12-11", "2024-12-25"],
+            "appart-2pieces": ["2024-12-12", "2024-12-13", "2024-12-14"],
+            "appart-fidjrosse": ["2024-12-18", "2024-12-19"]
+        };
+
+        // Variables globales
+        let selectedTarif = null;
+        let selectedApartment = null;
+        let selectedApartmentPrice = null;
+
+        // Initialisation
+        document.addEventListener('DOMContentLoaded', function() {
+            initGallery();
+            initDatePickers();
+            initTarifSelection();
+            initFormPrepopulation();
+        });
+
         // Mobile Menu
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');
         const nav = document.getElementById('main-nav');
@@ -1432,6 +1797,266 @@
             });
         });
         
+        // Initialisation de la galerie
+        function initGallery() {
+            const galleryGrid = document.getElementById('galleryGrid');
+            
+            galleryData.forEach(item => {
+                const galleryItem = document.createElement('div');
+                galleryItem.className = 'gallery-item';
+                galleryItem.dataset.type = item.type;
+                galleryItem.dataset.category = item.category;
+                
+                galleryItem.innerHTML = `
+                    <img src="${item.image}" alt="${item.title}" onclick="selectFromGallery('${item.title}', '${item.price}')">
+                    <div class="gallery-overlay">
+                        <h4>${item.title}</h4>
+                        <p>${item.description}</p>
+                        <p><strong>${item.price}</strong></p>
+                    </div>
+                `;
+                
+                galleryGrid.appendChild(galleryItem);
+            });
+            
+            // Filtres de la galerie
+            document.querySelectorAll('.filter-btn').forEach(button => {
+                button.addEventListener('click', function() {
+                    // Retirer la classe active de tous les boutons
+                    document.querySelectorAll('.filter-btn').forEach(btn => {
+                        btn.classList.remove('active');
+                    });
+                    
+                    // Ajouter la classe active au bouton cliqué
+                    this.classList.add('active');
+                    
+                    const filter = this.dataset.filter;
+                    
+                    // Filtrer les éléments
+                    document.querySelectorAll('.gallery-item').forEach(item => {
+                        if (filter === 'all' || item.dataset.category === filter) {
+                            item.style.display = 'block';
+                        } else {
+                            item.style.display = 'none';
+                        }
+                    });
+                });
+            });
+        }
+        
+        // Initialisation des sélecteurs de date
+        function initDatePickers() {
+            const today = new Date().toISOString().split('T')[0];
+            
+            // Définir les dates minimales
+            document.getElementById('arrivee').min = today;
+            document.getElementById('depart').min = today;
+            document.getElementById('check-arrivee').min = today;
+            document.getElementById('check-depart').min = today;
+            
+            // Gérer le changement de date d'arrivée
+            document.getElementById('arrivee').addEventListener('change', function() {
+                document.getElementById('depart').min = this.value;
+            });
+            
+            document.getElementById('check-arrivee').addEventListener('change', function() {
+                document.getElementById('check-depart').min = this.value;
+            });
+        }
+        
+        // Initialisation de la sélection de tarif
+        function initTarifSelection() {
+            document.querySelectorAll('.price-item').forEach(item => {
+                item.addEventListener('click', function() {
+                    // Retirer la classe selected de tous les éléments
+                    document.querySelectorAll('.price-item').forEach(el => {
+                        el.classList.remove('selected');
+                    });
+                    
+                    // Ajouter la classe selected à l'élément cliqué
+                    this.classList.add('selected');
+                    
+                    // Mettre à jour le tarif sélectionné
+                    selectedTarif = this.dataset.tarif;
+                    const prix = this.dataset.prix;
+                    const type = this.querySelector('p').textContent;
+                    
+                    // Mettre à jour l'affichage
+                    document.getElementById('tarifText').innerHTML = 
+                        `Vous avez sélectionné : <strong>${type} - ${prix} F</strong>`;
+                    document.getElementById('selectedTarif').classList.add('active');
+                    
+                    // Pré-remplir le formulaire de réservation
+                    if (selectedTarif === 'nuit') {
+                        document.getElementById('tarif').value = 'nuit';
+                    } else if (selectedTarif === '24h') {
+                        document.getElementById('tarif').value = '24h';
+                    }
+                    
+                    // Pré-remplir le logement
+                    document.getElementById('logement').value = 'studio-akpakpa';
+                });
+            });
+        }
+        
+        // Initialisation du pré-remplissage des formulaires
+        function initFormPrepopulation() {
+            // Si un appartement a été sélectionné depuis la galerie
+            if (selectedApartment && selectedApartmentPrice) {
+                document.getElementById('logement').value = selectedApartment;
+            }
+        }
+        
+        // Sélection depuis la galerie
+        function selectFromGallery(title, price) {
+            // Déterminer quel logement correspond
+            let logementValue = '';
+            
+            if (title.includes('Studio Akpakpa') || title.includes('Studio moderne')) {
+                logementValue = 'studio-akpakpa';
+            } else if (title.includes('Studio centre-ville')) {
+                logementValue = 'studio-centre';
+            } else if (title.includes('Appartement 2 pièces')) {
+                logementValue = 'appart-2pieces';
+            } else if (title.includes('Appartement Fidjrossè')) {
+                logementValue = 'appart-fidjrosse';
+            }
+            
+            if (logementValue) {
+                // Pré-remplir le formulaire
+                document.getElementById('logement').value = logementValue;
+                document.getElementById('check-logement').value = logementValue;
+                
+                // Faire défiler vers le formulaire de réservation
+                document.getElementById('reserver').scrollIntoView({ behavior: 'smooth' });
+                
+                // Afficher un message
+                alert(`Vous avez sélectionné : ${title}\nPrix : ${price}\nLe formulaire a été pré-rempli.`);
+            }
+        }
+        
+        // Sélection d'un appartement
+        function selectApartment(apartmentId, price) {
+            selectedApartment = apartmentId;
+            selectedApartmentPrice = price;
+            
+            // Pré-remplir le formulaire
+            document.getElementById('logement').value = apartmentId;
+            document.getElementById('check-logement').value = apartmentId;
+            
+            // Faire défiler vers le formulaire de réservation
+            document.getElementById('reserver').scrollIntoView({ behavior: 'smooth' });
+            
+            // Afficher un message
+            const apartmentNames = {
+                'studio-centre': 'Studio centre-ville',
+                'appart-2pieces': 'Appartement 2 pièces',
+                'appart-fidjrosse': 'Appartement Fidjrossè'
+            };
+            
+            alert(`Vous avez sélectionné : ${apartmentNames[apartmentId] || apartmentId}\nPrix : ${price} F/nuit\nLe formulaire a été pré-rempli.`);
+        }
+        
+        // Vérification de la disponibilité
+        function checkAvailability() {
+            const arrivee = document.getElementById('check-arrivee').value;
+            const depart = document.getElementById('check-depart').value;
+            const logement = document.getElementById('check-logement').value;
+            
+            if (!arrivee || !depart || !logement) {
+                alert('Veuillez remplir tous les champs pour vérifier la disponibilité.');
+                return;
+            }
+            
+            const statusDiv = document.getElementById('availabilityStatus');
+            statusDiv.className = 'availability-status loading';
+            statusDiv.textContent = 'Vérification en cours...';
+            statusDiv.style.display = 'block';
+            
+            // Simulation d'une vérification avec délai
+            setTimeout(() => {
+                let isAvailable = true;
+                const datesReservees = bookedDates[logement] || [];
+                
+                // Vérifier si une des dates est déjà réservée
+                const dateArrivee = new Date(arrivee);
+                const dateDepart = new Date(depart);
+                
+                for (let d = new Date(dateArrivee); d <= dateDepart; d.setDate(d.getDate() + 1)) {
+                    const dateStr = d.toISOString().split('T')[0];
+                    if (datesReservees.includes(dateStr)) {
+                        isAvailable = false;
+                        break;
+                    }
+                }
+                
+                if (isAvailable) {
+                    statusDiv.className = 'availability-status available';
+                    statusDiv.innerHTML = `
+                        ✅ <strong>Disponible !</strong><br>
+                        Le logement est disponible pour les dates sélectionnées.
+                        <button class="btn btn-primary" onclick="prefillReservation('${logement}', '${arrivee}', '${depart}')" style="margin-top: 10px; width: 100%;">
+                            Réserver maintenant
+                        </button>
+                    `;
+                } else {
+                    statusDiv.className = 'availability-status not-available';
+                    statusDiv.innerHTML = `
+                        ❌ <strong>Non disponible</strong><br>
+                        Le logement est déjà réservé pour une ou plusieurs dates de votre séjour.
+                        <button class="btn btn-secondary" onclick="suggestAlternativeDates()" style="margin-top: 10px; width: 100%;">
+                            Voir les dates alternatives
+                        </button>
+                    `;
+                }
+            }, 1500);
+        }
+        
+        // Pré-remplir le formulaire de réservation
+        function prefillReservation(logement, arrivee, depart) {
+            document.getElementById('logement').value = logement;
+            document.getElementById('arrivee').value = arrivee;
+            document.getElementById('depart').value = depart;
+            
+            // Faire défiler vers le formulaire
+            document.getElementById('reservationForm').scrollIntoView({ behavior: 'smooth' });
+        }
+        
+        // Suggérer des dates alternatives
+        function suggestAlternativeDates() {
+            const logement = document.getElementById('check-logement').value;
+            const datesReservees = bookedDates[logement] || [];
+            
+            if (datesReservees.length === 0) {
+                alert('Le logement est disponible à toutes les dates.');
+                return;
+            }
+            
+            // Trouver les prochaines dates disponibles (simplifié)
+            const today = new Date();
+            const nextAvailable = new Date(today);
+            nextAvailable.setDate(today.getDate() + 7);
+            
+            const nextAvailableStr = nextAvailable.toISOString().split('T')[0];
+            
+            alert(`Le logement est disponible à partir du ${formatDate(nextAvailableStr)}. Vous pouvez modifier vos dates ou choisir un autre logement.`);
+        }
+        
+        // Formater une date
+        function formatDate(dateStr) {
+            const date = new Date(dateStr);
+            return date.toLocaleDateString('fr-FR', {
+                day: 'numeric',
+                month: 'long',
+                year: 'numeric'
+            });
+        }
+        
+        // Faire défiler vers la réservation
+        function scrollToReservation() {
+            document.getElementById('reserver').scrollIntoView({ behavior: 'smooth' });
+        }
+        
         // Form submissions
         document.getElementById('reservationForm').addEventListener('submit', function(e) {
             e.preventDefault();
@@ -1439,14 +2064,56 @@
             const nom = document.getElementById('nom').value;
             const whatsapp = document.getElementById('whatsapp').value;
             const logement = document.getElementById('logement').value;
+            const tarif = document.getElementById('tarif').value;
             const arrivee = document.getElementById('arrivee').value;
             const depart = document.getElementById('depart').value;
             const message = document.getElementById('message').value;
             
-            const whatsappMessage = `RÉSERVATION%0A%0ANom: ${nom}%0AWhatsApp: ${whatsapp}%0ALogement: ${logement}%0AArrivée: ${arrivee}%0ADépart: ${depart}%0AMessage: ${message || 'Aucun'}`;
+            // Vérifier la disponibilité avant d'envoyer
+            const datesReservees = bookedDates[logement] || [];
+            const dateArrivee = new Date(arrivee);
+            const dateDepart = new Date(depart);
+            let isAvailable = true;
+            
+            for (let d = new Date(dateArrivee); d <= dateDepart; d.setDate(d.getDate() + 1)) {
+                const dateStr = d.toISOString().split('T')[0];
+                if (datesReservees.includes(dateStr)) {
+                    isAvailable = false;
+                    break;
+                }
+            }
+            
+            if (!isAvailable) {
+                alert('Désolé, le logement n\'est plus disponible pour les dates sélectionnées. Veuillez vérifier la disponibilité avant de réserver.');
+                return;
+            }
+            
+            // Noms des logements pour le message WhatsApp
+            const logementNoms = {
+                'studio-akpakpa': 'Studio Akpakpa',
+                'studio-centre': 'Studio centre-ville',
+                'appart-2pieces': 'Appartement 2 pièces Hédzranawoe',
+                'appart-fidjrosse': 'Appartement Fidjrossè'
+            };
+            
+            // Types de tarif pour le message WhatsApp
+            const tarifTypes = {
+                'nuit': 'Nuitée',
+                '24h': '24 heures',
+                'semaine': 'Semaine',
+                'mois': 'Mois'
+            };
+            
+            const whatsappMessage = `NOUVELLE RÉSERVATION%0A%0ANom: ${nom}%0AWhatsApp: ${whatsapp}%0ALogement: ${logementNoms[logement] || logement}%0ATarif: ${tarifTypes[tarif] || tarif}%0AArrivée: ${arrivee}%0ADépart: ${depart}%0AMessage: ${message || 'Aucun'}`;
             
             window.open(`https://wa.me/22966953934?text=${whatsappMessage}`, '_blank');
             this.reset();
+            
+            // Réinitialiser le tarif sélectionné
+            document.querySelectorAll('.price-item').forEach(el => {
+                el.classList.remove('selected');
+            });
+            document.getElementById('selectedTarif').classList.remove('active');
         });
         
         document.getElementById('proposerForm').addEventListener('submit', function(e) {
@@ -1493,16 +2160,6 @@
         
         // Update year
         document.getElementById('current-year').textContent = new Date().getFullYear();
-        
-        // Set min date for reservation
-        const today = new Date().toISOString().split('T')[0];
-        document.getElementById('arrivee').min = today;
-        document.getElementById('depart').min = today;
-        
-        // Date change handler
-        document.getElementById('arrivee').addEventListener('change', function() {
-            document.getElementById('depart').min = this.value;
-        });
         
         // Close modal on ESC key
         document.addEventListener('keydown', (e) => {

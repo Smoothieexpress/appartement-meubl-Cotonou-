@@ -282,16 +282,35 @@
         .video-container {
             position: relative;
             width: 100%;
-            height: 400px;
+            height: 600px;
             overflow: hidden;
             border-radius: var(--radius);
             margin: 30px;
         }
 
-        .video-container iframe {
+        .tiktok-video {
             width: 100%;
             height: 100%;
             border: none;
+            border-radius: var(--radius);
+        }
+
+        .video-alternative {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            justify-content: center;
+            background: #f8f9fa;
+            height: 100%;
+            padding: 30px;
+            text-align: center;
+            border-radius: var(--radius);
+        }
+
+        .video-alternative i {
+            font-size: 60px;
+            color: var(--primary);
+            margin-bottom: 20px;
         }
 
         .studio-gallery {
@@ -887,7 +906,7 @@
             }
             
             .video-container {
-                height: 350px;
+                height: 500px;
             }
         }
 
@@ -946,7 +965,7 @@
             }
             
             .video-container {
-                height: 250px;
+                height: 400px;
                 margin: 20px;
             }
             
@@ -1025,7 +1044,7 @@
             }
             
             .video-container {
-                height: 200px;
+                height: 300px;
                 margin: 15px;
             }
             
@@ -1125,12 +1144,25 @@
                 </div>
                 
                 <div class="video-container">
-                    <iframe src="https://youtube.com/shorts/q0j7eaTcUxw?si=xXr3D0WLFaesvaBp" 
-                            title="Visite virtuelle du studio Akpakpa" 
-                            frameborder="0" 
-                            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture" 
-                            allowfullscreen>
-                    </iframe>
+                    <!-- Vidéo TikTok intégrée -->
+                    <blockquote class="tiktok-embed" cite="https://www.tiktok.com/@house.luxx/video/734123456789" 
+                                data-video-id="734123456789" style="max-width: 605px;min-width: 325px;" >
+                        <section> 
+                            <a target="_blank" title="@house.luxx" href="https://www.tiktok.com/@house.luxx">@house.luxx</a> 
+                            Visite de notre studio Akpakpa 🏡 #locationcotonou #appartementmeublé #cotonou
+                        </section> 
+                    </blockquote> 
+                    
+                    <!-- Fallback si le script TikTok ne charge pas -->
+                    <div class="video-alternative" id="tiktok-fallback">
+                        <i class="fab fa-tiktok"></i>
+                        <h3>Visite virtuelle du studio</h3>
+                        <p>La vidéo TikTok n'a pas pu être chargée directement.</p>
+                        <p>Vous pouvez la visionner en cliquant sur le lien ci-dessous :</p>
+                        <a href="https://vm.tiktok.com/ZNRMm6wfb/" target="_blank" class="btn btn-primary" style="margin-top: 15px;">
+                            <i class="fab fa-tiktok"></i> Voir la vidéo sur TikTok
+                        </a>
+                    </div>
                 </div>
                 
                 <div class="studio-gallery">
@@ -1660,6 +1692,9 @@
         <img class="modal-content" id="modalImage">
     </div>
 
+    <!-- Script TikTok Embed -->
+    <script async src="https://www.tiktok.com/embed.js"></script>
+
     <script>
         // Données de la galerie
         const galleryData = [
@@ -1756,7 +1791,23 @@
             initDatePickers();
             initTarifSelection();
             initFormPrepopulation();
+            checkTikTokEmbed();
         });
+
+        // Vérifier si l'embed TikTok a chargé
+        function checkTikTokEmbed() {
+            setTimeout(() => {
+                const tiktokEmbed = document.querySelector('.tiktok-embed');
+                const fallback = document.getElementById('tiktok-fallback');
+                
+                // Si l'embed TikTok n'est pas visible, afficher le fallback
+                if (tiktokEmbed && tiktokEmbed.offsetHeight === 0) {
+                    fallback.style.display = 'flex';
+                } else {
+                    fallback.style.display = 'none';
+                }
+            }, 2000);
+        }
 
         // Mobile Menu
         const mobileMenuBtn = document.querySelector('.mobile-menu-btn');

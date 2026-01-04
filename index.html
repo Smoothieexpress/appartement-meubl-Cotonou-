@@ -245,132 +245,6 @@
             border-color: #128C7E;
         }
 
-        /* Politique d'annulation Section */
-        .politique-section {
-            background: var(--gris-clair);
-            padding: 100px 0;
-        }
-
-        .politique-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--blanc);
-            border-radius: var(--radius);
-            padding: 50px;
-            box-shadow: var(--shadow);
-            border: 1px solid rgba(217, 130, 43, 0.05);
-        }
-
-        .politique-header {
-            text-align: center;
-            margin-bottom: 50px;
-        }
-
-        .politique-title {
-            font-size: 36px;
-            margin-bottom: 15px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .politique-title:after {
-            content: '';
-            position: absolute;
-            bottom: -8px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 60px;
-            height: 2px;
-            background: var(--terracotta);
-        }
-
-        .politique-subtitle {
-            font-size: 17px;
-            color: var(--gris);
-            max-width: 700px;
-            margin: 15px auto 0;
-            line-height: 1.6;
-        }
-
-        .politique-card {
-            background: var(--gris-clair);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin-bottom: 30px;
-            border-left: 4px solid var(--terracotta);
-        }
-
-        .politique-card h3 {
-            color: var(--terracotta);
-            margin-bottom: 20px;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .politique-card h3 i {
-            font-size: 20px;
-        }
-
-        .politique-list {
-            list-style: none;
-            margin: 20px 0;
-        }
-
-        .politique-list li {
-            margin-bottom: 12px;
-            padding-left: 25px;
-            position: relative;
-            font-size: 15px;
-        }
-
-        .politique-list li:before {
-            content: '•';
-            position: absolute;
-            left: 10px;
-            color: var(--terracotta);
-            font-weight: bold;
-        }
-
-        .politique-list li strong {
-            color: var(--terracotta);
-        }
-
-        .important-note {
-            background: rgba(217, 130, 43, 0.1);
-            border-left: 4px solid var(--terracotta);
-            padding: 20px;
-            border-radius: var(--radius-sm);
-            margin: 30px 0;
-        }
-
-        .important-note h4 {
-            color: var(--terracotta);
-            margin-bottom: 10px;
-        }
-
-        .warning-box {
-            background: rgba(231, 76, 60, 0.1);
-            border-left: 4px solid #e74c3c;
-            padding: 20px;
-            border-radius: var(--radius-sm);
-            margin: 30px 0;
-        }
-
-        .warning-box h4 {
-            color: #e74c3c;
-            margin-bottom: 10px;
-        }
-
-        .juridique-note {
-            font-size: 14px;
-            color: var(--gris);
-            text-align: center;
-            margin-top: 40px;
-            padding-top: 20px;
-            border-top: 1px solid var(--gris-clair);
-        }
-
         /* Tarifs Section */
         .tarifs-section {
             background: var(--gris-clair);
@@ -467,6 +341,18 @@
 
         .tarif-cta {
             margin-top: 25px;
+        }
+
+        .offer-badge {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: var(--terracotta);
+            color: var(--blanc);
+            padding: 5px 15px;
+            border-radius: 20px;
+            font-size: 13px;
+            font-weight: 600;
         }
 
         /* Gallery Carousel */
@@ -819,7 +705,51 @@
             box-shadow: 0 6px 20px rgba(37, 211, 102, 0.4);
         }
 
-        /* Responsive Design */
+        /* Modal pour politique d'annulation */
+        .modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background: rgba(0, 0, 0, 0.8);
+            z-index: 2000;
+            overflow-y: auto;
+        }
+
+        .modal-content {
+            background: var(--blanc);
+            margin: 50px auto;
+            padding: 40px;
+            border-radius: var(--radius);
+            max-width: 800px;
+            width: 90%;
+            position: relative;
+        }
+
+        .modal-close {
+            position: absolute;
+            top: 15px;
+            right: 15px;
+            background: none;
+            border: none;
+            font-size: 24px;
+            cursor: pointer;
+            color: var(--gris);
+        }
+
+        .modal-close:hover {
+            color: var(--terracotta);
+        }
+
+        .modal-title {
+            font-size: 32px;
+            margin-bottom: 20px;
+            text-align: center;
+        }
+
+        /* Responsive Design - AMÉLIORÉ */
         @media (max-width: 1024px) {
             .container {
                 padding: 0 30px;
@@ -833,19 +763,16 @@
             .carousel-slide {
                 height: 400px;
             }
+            
+            .modal-content {
+                width: 95%;
+                padding: 30px;
+            }
         }
 
         @media (max-width: 768px) {
             section {
                 padding: 60px 0;
-            }
-            
-            .politique-section {
-                padding: 80px 0;
-            }
-            
-            .politique-container {
-                padding: 30px;
             }
             
             .hero {
@@ -860,14 +787,15 @@
                 font-size: 17px;
             }
             
-            .politique-title, .section-title {
+            .section-title {
                 font-size: 28px;
             }
             
-            .politique-subtitle, .section-subtitle {
+            .section-subtitle {
                 font-size: 16px;
             }
             
+            /* Navigation mobile améliorée */
             nav {
                 position: fixed;
                 top: 80px;
@@ -880,6 +808,8 @@
                 z-index: 1000;
                 gap: 20px;
                 display: none;
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
             }
             
             nav.active {
@@ -937,15 +867,21 @@
                 height: 50px;
                 font-size: 24px;
             }
+            
+            .modal-content {
+                margin: 20px auto;
+                padding: 25px;
+                width: 95%;
+            }
+            
+            .modal-title {
+                font-size: 26px;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
                 padding: 0 20px;
-            }
-            
-            .politique-container {
-                padding: 25px 20px;
             }
             
             .hero h1 {
@@ -956,7 +892,7 @@
                 font-size: 16px;
             }
             
-            .politique-title, .section-title {
+            .section-title {
                 font-size: 26px;
             }
             
@@ -981,6 +917,16 @@
             .footer-contact li {
                 justify-content: center;
             }
+            
+            .modal-content {
+                padding: 20px;
+                margin: 10px auto;
+            }
+            
+            .btn {
+                padding: 12px 20px;
+                font-size: 14px;
+            }
         }
 
         @media (max-width: 360px) {
@@ -992,7 +938,7 @@
                 font-size: 15px;
             }
             
-            .politique-title, .section-title {
+            .section-title {
                 font-size: 24px;
             }
             
@@ -1000,13 +946,56 @@
                 font-size: 36px;
             }
             
+            .carousel-slide {
+                height: 200px;
+            }
+            
             .btn {
                 font-size: 14px;
                 padding: 12px 18px;
             }
+        }
+
+        /* Améliorations pour très petits écrans */
+        @media (max-width: 320px) {
+            .container {
+                padding: 0 15px;
+            }
             
-            .carousel-slide {
-                height: 200px;
+            .hero h1 {
+                font-size: 22px;
+            }
+            
+            .section-title {
+                font-size: 22px;
+            }
+            
+            .tarif-card {
+                padding: 30px 20px;
+            }
+            
+            .reservation-form-container {
+                padding: 20px 15px;
+            }
+        }
+
+        /* Amélioration pour orientation paysage mobile */
+        @media (max-height: 600px) and (orientation: landscape) {
+            .hero {
+                padding: 120px 0 60px;
+            }
+            
+            .hero h1 {
+                font-size: 28px;
+            }
+            
+            .hero-subtitle {
+                margin-bottom: 25px;
+                font-size: 16px;
+            }
+            
+            nav.active {
+                max-height: 70vh;
             }
         }
     </style>
@@ -1036,82 +1025,71 @@
         </div>
     </header>
 
-    <!-- Politique d'annulation Section -->
-    <section class="politique-section" id="politique">
-        <div class="container">
-            <div class="politique-container">
-                <div class="politique-header">
-                    <h1 class="politique-title">Politique d'Annulation</h1>
-                    <p class="politique-subtitle">
-                        Politique équilibrée et professionnelle pour votre confort et notre organisation
-                    </p>
-                </div>
-                
-                <div class="politique-card">
-                    <h3><i class="fas fa-calendar-times"></i> Délais d'annulation</h3>
-                    <ul class="politique-list">
-                        <li><strong>Plus de 72h avant l'arrivée</strong> : Annulation gratuite avec remboursement à 100%</li>
-                        <li><strong>Entre 72h et 24h avant l'arrivée</strong> : Remboursement à 50% du montant payé</li>
-                        <li><strong>Moins de 24h avant l'arrivée</strong> : Aucun remboursement</li>
-                    </ul>
-                </div>
-                
-                <div class="politique-card">
-                    <h3><i class="fas fa-money-bill-wave"></i> Montant remboursé</h3>
-                    <ul class="politique-list">
-                        <li><strong>100%</strong> si annulation plus de 72h avant l'arrivée</li>
-                        <li><strong>50%</strong> si annulation entre 72h et 24h avant l'arrivée</li>
-                        <li><strong>0%</strong> si annulation moins de 24h avant l'arrivée</li>
-                        <li><strong>Frais non remboursables</strong> : Services de ménage, frais de service, et formules smoothies/sandwichs</li>
-                    </ul>
-                </div>
-                
-                <div class="politique-card">
-                    <h3><i class="fas fa-exclamation-triangle"></i> Cas particuliers</h3>
-                    <ul class="politique-list">
-                        <li><strong>No-show (client qui ne se présente pas)</strong> : Aucun remboursement</li>
-                        <li><strong>Force majeure</strong> (urgence médicale grave, décès, événements exceptionnels) : Justificatif obligatoire. Proposition prioritaire de report, pas de remboursement automatique</li>
-                        <li><strong>Annulation par le propriétaire</strong> : Remboursement à 100% ou report avec avantage (smoothie offert / remise)</li>
-                    </ul>
-                </div>
-                
-                <div class="politique-card">
-                    <h3><i class="fas fa-calendar-alt"></i> Report de séjour</h3>
-                    <ul class="politique-list">
-                        <li><strong>Report possible une seule fois</strong>, sous 30 jours maximum</li>
-                        <li>Sous réserve de disponibilité du studio</li>
-                        <li>Aucun remboursement si la nouvelle date est annulée</li>
-                        <li>Les formules smoothies et sandwichs peuvent être reportées si possible</li>
-                    </ul>
-                </div>
-                
-                <div class="warning-box">
-                    <h4><i class="fas fa-exclamation-circle"></i> Attention</h4>
-                    <p>Les formules avec smoothies et sandwichs sont <strong>non remboursables</strong> en cas d'annulation. En cas de report, elles peuvent être reportées si possible, mais les produits alimentaires déjà préparés ne sont pas remboursés.</p>
-                </div>
-                
-                <div class="politique-card">
-                    <h3><i class="fas fa-calendar-week"></i> Séjours longs (semaine / mois)</h3>
-                    <ul class="politique-list">
-                        <li><strong>Acompte non remboursable de 30%</strong> à la réservation</li>
-                        <li>Solde payé à l'arrivée ou 24h avant</li>
-                        <li>Annulation moins de 7 jours avant → acompte conservé</li>
-                    </ul>
-                </div>
-                
-                <div class="important-note">
-                    <h4><i class="fas fa-info-circle"></i> Note importante</h4>
-                    <p><strong>Toute réservation confirmée vaut acceptation pleine et entière de la politique d'annulation et de remboursement.</strong></p>
-                    <p style="margin-top: 10px;">Cette politique est conçue pour être équitable pour nos clients tout en nous permettant de maintenir un service de qualité.</p>
-                </div>
-                
-                <div class="juridique-note">
-                    <p>Cette politique d'annulation est applicable à toutes les réservations effectuées sur le site Cosylogement.</p>
-                    <p>Dernière mise à jour : Janvier 2024</p>
-                </div>
+    <!-- Modal pour politique d'annulation -->
+    <div class="modal" id="politiqueModal">
+        <div class="modal-content">
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal-title">Politique d'Annulation</h2>
+            
+            <div class="politique-card">
+                <h3><i class="fas fa-calendar-times"></i> Délais d'annulation</h3>
+                <ul class="politique-list">
+                    <li><strong>Plus de 72h avant l'arrivée</strong> : Annulation gratuite avec remboursement à 100%</li>
+                    <li><strong>Entre 72h et 24h avant l'arrivée</strong> : Remboursement à 50% du montant payé</li>
+                    <li><strong>Moins de 24h avant l'arrivée</strong> : Aucun remboursement</li>
+                </ul>
+            </div>
+            
+            <div class="politique-card">
+                <h3><i class="fas fa-money-bill-wave"></i> Montant remboursé</h3>
+                <ul class="politique-list">
+                    <li><strong>100%</strong> si annulation plus de 72h avant l'arrivée</li>
+                    <li><strong>50%</strong> si annulation entre 72h et 24h avant l'arrivée</li>
+                    <li><strong>0%</strong> si annulation moins de 24h avant l'arrivée</li>
+                    <li><strong>Frais non remboursables</strong> : Services de ménage, frais de service, et formules smoothies/sandwichs</li>
+                </ul>
+            </div>
+            
+            <div class="politique-card">
+                <h3><i class="fas fa-exclamation-triangle"></i> Cas particuliers</h3>
+                <ul class="politique-list">
+                    <li><strong>No-show (client qui ne se présente pas)</strong> : Aucun remboursement</li>
+                    <li><strong>Force majeure</strong> (urgence médicale grave, décès, événements exceptionnels) : Justificatif obligatoire. Proposition prioritaire de report, pas de remboursement automatique</li>
+                    <li><strong>Annulation par le propriétaire</strong> : Remboursement à 100% ou report avec avantage (smoothie offert / remise)</li>
+                </ul>
+            </div>
+            
+            <div class="politique-card">
+                <h3><i class="fas fa-calendar-alt"></i> Report de séjour</h3>
+                <ul class="politique-list">
+                    <li><strong>Report possible une seule fois</strong>, sous 30 jours maximum</li>
+                    <li>Sous réserve de disponibilité du studio</li>
+                    <li>Aucun remboursement si la nouvelle date est annulée</li>
+                    <li>Les formules smoothies et sandwichs peuvent être reportées si possible</li>
+                </ul>
+            </div>
+            
+            <div class="warning-box">
+                <h4><i class="fas fa-exclamation-circle"></i> Important</h4>
+                <p>Les smoothies et sandwichs <strong>offerts avec certaines formules</strong> sont non remboursables en cas d'annulation. En cas de report, ils peuvent être reportés si possible.</p>
+            </div>
+            
+            <div class="politique-card">
+                <h3><i class="fas fa-calendar-week"></i> Séjours longs (semaine / mois)</h3>
+                <ul class="politique-list">
+                    <li><strong>Acompte non remboursable de 30%</strong> à la réservation</li>
+                    <li>Solde payé à l'arrivée ou 24h avant</li>
+                    <li>Annulation moins de 7 jours avant → acompte conservé</li>
+                </ul>
+            </div>
+            
+            <div class="important-note">
+                <h4><i class="fas fa-info-circle"></i> Note juridique</h4>
+                <p><strong>Toute réservation confirmée vaut acceptation pleine et entière de la politique d'annulation et de remboursement.</strong></p>
+                <p style="margin-top: 10px;">Dernière mise à jour : Janvier 2024</p>
             </div>
         </div>
-    </section>
+    </div>
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
@@ -1147,7 +1125,8 @@
             
             <div class="tarifs-grid">
                 <!-- Tarif Nuitée -->
-                <div class="tarif-card">
+                <div class="tarif-card" style="position: relative;">
+                    <div class="offer-badge">OFFERT</div>
                     <h3>Nuitée Cosy</h3>
                     <div class="tarif-price">17 000 F</div>
                     <div class="tarif-period">par nuitée</div>
@@ -1159,6 +1138,7 @@
                         <li>TV écran plat + PS4</li>
                         <li>Cuisine équipée</li>
                         <li>Arrivée 14h - Départ 12h</li>
+                        <li><strong>Smoothie ou sandwich OFFERT</strong></li>
                     </ul>
                     
                     <div class="tarif-cta">
@@ -1170,7 +1150,8 @@
                 </div>
                 
                 <!-- Tarif 24h -->
-                <div class="tarif-card">
+                <div class="tarif-card" style="position: relative;">
+                    <div class="offer-badge">OFFERT</div>
                     <h3>24h Flexibles</h3>
                     <div class="tarif-price">27 000 F</div>
                     <div class="tarif-period">pour 24 heures</div>
@@ -1182,6 +1163,7 @@
                         <li>TV écran plat + PS4</li>
                         <li>Cuisine équipée</li>
                         <li>Heure d'arrivée flexible</li>
+                        <li><strong>Smoothie ou sandwich OFFERT</strong></li>
                     </ul>
                     
                     <div class="tarif-cta">
@@ -1195,8 +1177,8 @@
             
             <div class="text-center" style="margin-top: 40px;">
                 <p style="color: var(--gris); font-size: 16px;">
-                    <i class="fas fa-info-circle"></i> 
-                    <strong>Option gourmande :</strong> Smoothie ou sandwich disponible en supplément
+                    <i class="fas fa-gift"></i> 
+                    <strong>Attention :</strong> Les smoothies et sandwichs offerts sont préparés par notre partenaire FreshMood
                 </p>
             </div>
         </div>
@@ -1324,7 +1306,7 @@
                 <h3>FreshMood</h3>
                 <p style="margin: 20px 0; font-size: 17px; line-height: 1.6;">
                     Découvrez les smoothies frais et sandwichs gourmands préparés avec soin par notre partenaire <strong>FreshMood</strong>. 
-                    Des produits de qualité pour agrémenter votre séjour.
+                    Ces délices sont <strong>offerts avec toutes nos formules</strong> pour agrémenter votre séjour.
                 </p>
                 <a href="https://freshmood.bj" target="_blank" class="btn btn-outline" style="color: var(--terracotta); border-color: var(--terracotta);">
                     <i class="fas fa-external-link-alt"></i>
@@ -1365,8 +1347,8 @@
                         </div>
                         
                         <div class="form-group">
-                            <label class="form-label" for="telephone">Téléphone *</label>
-                            <input type="tel" class="form-control" id="telephone" required>
+                            <label class="form-label" for="telephone">Téléphone WhatsApp *</label>
+                            <input type="tel" class="form-control" id="telephone" required placeholder="Ex: +229 00 00 00 00">
                         </div>
                     </div>
                     
@@ -1389,8 +1371,8 @@
                             <label class="form-label" for="formule">Formule choisie *</label>
                             <select class="form-control" id="formule" required>
                                 <option value="">Sélectionnez une formule</option>
-                                <option value="nuit">Nuitée Cosy (17.000 F)</option>
-                                <option value="24h">24h Flexibles (27.000 F)</option>
+                                <option value="nuit">Nuitée Cosy (17.000 F) - Smoothie ou sandwich OFFERT</option>
+                                <option value="24h">24h Flexibles (27.000 F) - Smoothie ou sandwich OFFERT</option>
                             </select>
                         </div>
                         
@@ -1407,8 +1389,18 @@
                     </div>
                     
                     <div class="form-group">
+                        <label class="form-label" for="preference">Préférence</label>
+                        <select class="form-control" id="preference">
+                            <option value="">Smoothie ou sandwich ?</option>
+                            <option value="smoothie">Smoothie FreshMood</option>
+                            <option value="sandwich">Sandwich FreshMood</option>
+                            <option value="aucun">Aucun</option>
+                        </select>
+                    </div>
+                    
+                    <div class="form-group">
                         <label class="form-label" for="message">Message ou demande particulière</label>
-                        <textarea class="form-control" id="message" placeholder="Préférences, heure d'arrivée, etc."></textarea>
+                        <textarea class="form-control" id="message" placeholder="Heure d'arrivée, besoins particuliers, etc." rows="4"></textarea>
                     </div>
                     
                     <!-- Checkbox d'acceptation des conditions -->
@@ -1416,22 +1408,20 @@
                         <div class="checkbox-group">
                             <input type="checkbox" id="accept-conditions" required>
                             <label for="accept-conditions">
-                                Je reconnais avoir lu et j'accepte pleinement et entièrement la 
-                                <a href="#politique" onclick="scrollToPolitique()">politique d'annulation et de remboursement</a> 
+                                J'accepte la <a href="#" id="openPolitique">politique d'annulation et de remboursement</a> 
                                 de Cosylogement.
                             </label>
                         </div>
                     </div>
                     
-                    <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
-                        <i class="fas fa-paper-plane"></i>
-                        Envoyer la demande de réservation
-                    </button>
-                    
-                    <div class="text-center" style="margin-top: 20px;">
-                        <p style="font-size: 14px; color: var(--gris);">
-                            <i class="fas fa-sync-alt"></i> 
-                            Les dates disponibles sont vérifiées automatiquement
+                    <div class="form-group" style="text-align: center;">
+                        <button type="submit" class="btn btn-whatsapp submit-btn" id="submit-btn" style="max-width: 400px; margin: 0 auto;">
+                            <i class="fab fa-whatsapp"></i>
+                            Réserver via WhatsApp
+                        </button>
+                        <p style="margin-top: 10px; font-size: 14px; color: var(--gris);">
+                            <i class="fas fa-info-circle"></i> 
+                            Vous serez redirigé vers WhatsApp pour finaliser votre réservation
                         </p>
                     </div>
                 </form>
@@ -1463,216 +1453,113 @@
                 <div class="footer-column">
                     <h3>Informations</h3>
                     <ul class="footer-links">
-                        <li><a href="#politique">Politique d'annulation</a></li>
+                        <li><a href="#" id="openPolitiqueFooter">Politique d'annulation</a></li>
                         <li><a href="#partenaire">Notre Partenaire</a></li>
-                        <li><a href="#reservationre Partenaire</a></li>
                         <li><a href="#reservation">Réservation</a></li>
-                        <li><a href="#">Réservation</a></li>
                         <li><a href="#contact">Contact</a></li>
                     </ul>
                 </div>
-contact">Contact</a></li>
-                    </ul>
-                </div>
                 
-                <div class="                
                 <div class="footer-column">
                     <h3>Contact</h3>
-                    <ul class="footer-column">
-                    <h3>Contact</h3>
                     <ul class="footer-contact">
-                        <lifooter-contact">
                         <li>
-                            <i class="fab fa>
-                            <i class="fab fa-whatsapp"></i-whatsapp"></i>
-                           >
+                            <i class="fab fa-whatsapp"></i>
                             <div>
-                                <strong>WhatsApp</strong><br>
-                                +229 66 95  <div>
                                 <strong>WhatsApp</strong><br>
                                 +229 66 95 39 34
                             </div>
-39 34
-                            </div>
-                        </li>
-                        <li>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
                             <div>
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</                                <strong>Email</strongstrong><br>
-                                maurice><br>
+                                <strong>Email</strong><br>
                                 mauricegerauds@gmail.com
                             </div>
                         </li>
                         <li>
-                            <i class="fasgerauds@gmail.com
-                            </div>
-                        </li>
-                        <li>
                             <i class="fas fa-map-marker-alt"></i>
- fa-map-marker-alt"></i>
                             <div>
                                 <strong>Adresse</strong><br>
-                                                           <div>
-                                <strong>Adresse</strong><br>
-                                Akpakpa, Coton Akpakpa, Cotonou
-                            </div>
-                        </ou
+                                Akpakpa, Cotonou
                             </div>
                         </li>
-                    </ul>
-                </li>
                     </ul>
                 </div>
             </div>
             
-           div>
-            </div>
-            
             <div class="copyright">
-                <p>© <span id <div class="copyright">
-                <p>© <span id="current-year">2024</span="current-year">2024</span> Cosylogement – Studio à> Cosylogement – Studio à Akpakpa, Cotonou. Akpakpa, Cotonou. Tous droits réservés.</p Tous droits réservés.</p>
-                <p style=">
-                <p style="margin-topmargin-top: 10px; font-size: 13px;">
-                    Contact: 10px; font-size: 13px;">
-                    Contact : +229 66 95  : +229 66 95 39 34 | mauriceger39 34 | mauricegerauds@gmail.com
-               auds@gmail.com
+                <p>© <span id="current-year">2024</span> Cosylogement – Studio à Akpakpa, Cotonou. Tous droits réservés.</p>
+                <p style="margin-top: 10px; font-size: 13px;">
+                    Contact : +229 66 95 39 34 | mauricegerauds@gmail.com
                 </p>
             </div>
-        </div </p>
-            </div>
-       >
-    </footer>
-
-    <!-- </div>
+        </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href WhatsApp Float -->
-    <a href="https://wa.me/229669="https://wa.me/22966953934?text=Bonjour%53934?text=Bonjour%20!%20Je%20m20!%20Je%20m'intéresse%20au%20'intéresse%20au%20studio%20Cosylogstudio%20Cosylogement%20à%20Akpakement%20à%20Akpakpa" 
-       class="whatspa" 
-       class="whatsapp-float" target="_blank"app-float" target="_blank" title="Contact WhatsApp">
-        <i title="Contact WhatsApp">
-        <i class="fab fa-whatsapp class="fab fa-whatsapp"></i>
-    </a"></i>
+    <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20m'intéresse%20au%20studio%20Cosylogement%20à%20Akpakpa" 
+       class="whatsapp-float" target="_blank" title="Contact WhatsApp">
+        <i class="fab fa-whatsapp"></i>
     </a>
 
     <script>
-        document.addEventListener>
-
-    <script>
         document.addEventListener('DOMContentLoaded', function() {
-('DOMContentLoaded', function() {
             // Initialisation
-                       // Initialisation
             initApp();
-        });
-
-        function initApp() initApp();
         });
 
         function initApp() {
             // Update year in footer
- {
-            // Update year in footer
-            document.getElementById('current-year            document.getElementById('current-year').textContent = new Date().get').textContent = new Date().getFullYear();
-            
-            // Setup eventFullYear();
+            document.getElementById('current-year').textContent = new Date().getFullYear();
             
             // Setup event listeners
             setupEventListeners();
- listeners
-            setupEventListeners();
             
-            // Setup UI
-            setup            
             // Setup UI
             setupUI();
-            
-            // Setup carouselUI();
             
             // Setup carousel
             setupCarousel();
             
             // Setup forms
-            setup
-            setupCarousel();
-            
-            // Setup forms
             setupForms();
-Forms();
             
-            // Initialize dates
-            initDates();
-        }
-
-        function            
+            // Setup modal
+            setupModal();
+            
             // Initialize dates
             initDates();
         }
 
         function setupEventListeners() {
             // Mobile menu toggle
-            const setupEventListeners() {
-            // Mobile menu toggle
             const menuBtn = document.getElementById('mobile-menu-btn');
             const nav = document.getElementById('main-nav');
             
             menuBtn.addEventListener('click', function(e) {
- menuBtn = document.getElementById('mobile-menu-btn');
-            const nav = document.getElementById('main-nav');
-            
-            menuBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
-                               e.stopPropagation();
                 nav.classList.toggle('active');
- nav.classList.toggle('active');
-                this.innerHTML = nav.classList.contains('                this.innerHTML = nav.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : 
-                    '<i class="fas faactive') ? 
+                this.innerHTML = nav.classList.contains('active') ? 
                     '<i class="fas fa-times"></i>' : 
                     '<i class="fas fa-bars"></i>';
-           -bars"></i>';
             });
-            
-            // Close mobile menu when clicking links
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', });
             
             // Close mobile menu when clicking links
             document.querySelectorAll('nav a').forEach(link => {
                 link.addEventListener('click', () => {
                     nav.classList.remove('active');
- () => {
-                    nav.classList.remove('active');
-                    menuBtn.innerHTML = '<                    menuBtn.innerHTML = '<i class="fas fa-bars"></i class="fas fa-bars"></i>';
-                });
-            });
-            
-           i>';
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 });
             });
             
             // Close mobile menu when clicking outside
- // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event            document.addEventListener('click', function(event) {
-                if (nav.classList.contains('active') && 
-                    !nav) {
+            document.addEventListener('click', function(event) {
                 if (nav.classList.contains('active') && 
                     !nav.contains(event.target) && 
-.contains(event.target) && 
-                    !                    !menuBtn.contains(event.target)) {
+                    !menuBtn.contains(event.target)) {
                     nav.classList.remove('active');
-                    menuBtn.innerHTML = '<i classmenuBtn.contains(event.target)) {
-                    nav.classList.remove('active');
-                    menuBtn.innerHTML = '<i class="fas="fas fa-bars"></i>';
-                }
-            });
-            
-            // Header fa-bars"></i>';
+                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
                 }
             });
             
@@ -1680,32 +1567,52 @@ Forms();
             window.addEventListener('scroll', handleHeaderScroll);
         }
 
-        scroll effect
-            window.addEventListener('scroll', handleHeaderScroll);
+        function setupModal() {
+            const modal = document.getElementById('politiqueModal');
+            const openButtons = document.querySelectorAll('#openPolitique, #openPolitiqueFooter');
+            const closeButton = document.getElementById('modalClose');
+            
+            openButtons.forEach(button => {
+                button.addEventListener('click', function(e) {
+                    e.preventDefault();
+                    modal.style.display = 'block';
+                    document.body.style.overflow = 'hidden';
+                });
+            });
+            
+            closeButton.addEventListener('click', function() {
+                modal.style.display = 'none';
+                document.body.style.overflow = 'auto';
+            });
+            
+            // Close modal when clicking outside
+            window.addEventListener('click', function(e) {
+                if (e.target === modal) {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
+            
+            // Close modal with Escape key
+            document.addEventListener('keydown', function(e) {
+                if (e.key === 'Escape' && modal.style.display === 'block') {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                }
+            });
         }
 
         function setupUI() {
-            function setupUI() {
             // Smooth scrolling for anchor links
-            document.querySelector // Smooth scrolling for anchor links
-           All('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
-                    const targetId) {
                     const targetId = this.getAttribute('href');
-                    if ( = this.getAttribute('href');
-                    if (targetId === '#') return;
-                    
-                    const targetElement = documenttargetId === '#') return;
+                    if (targetId === '#' || targetId === '#politique') return;
                     
                     const targetElement = document.querySelector(targetId);
-                    if (target.querySelector(targetId);
                     if (targetElement) {
-                        e.preventDefaultElement) {
                         e.preventDefault();
-                       ();
                         window.scrollTo({
-                            window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
@@ -1713,438 +1620,204 @@ Forms();
                 });
             });
             
-            // Update top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
             // Update active nav link on scroll
-            window.addEventListener('scroll', updateActiveNavLink active nav link on scroll
             window.addEventListener('scroll', updateActiveNavLink);
             
             // Initialize active nav link
-           );
-            
-            // Initialize active nav link
             updateActiveNavLink();
-        updateActiveNavLink();
-        }
-
-        // Fonction pour }
-
-        // Fonction pour scroller vers la politique
- scroller vers la politique
-        function scrollToPolitique() {
-            const politique        function scrollToPolitique() {
-            const politiqueSection = document.getElementById('politique');
-            if (politiqueSectionSection = document.getElementById('politique');
-            if (politiqueSection) {
-                window.scrollTo({
-                    top) {
-                window.scrollTo({
-                    top: politiqueSection.offsetTop - 80,
-                    behavior: ': politiqueSection.offsetTop - 80,
-                    behavior: 'smooth'
-                });
-            }
-           smooth'
-                });
-            }
-            return false;
-        }
-
-        return false;
         }
 
         function setupCarousel() {
-            const container = function setupCarousel() {
-            const container = document.getElementById('carousel-container document.getElementById('carousel-container');
-           ');
+            const container = document.getElementById('carousel-container');
             const slides = container.querySelectorAll('.carousel-slide');
             const prevBtn = document.getElementById('carousel-prev');
-            const next const slides = container.querySelectorAll('.carousel-slide');
-            const prevBtn = document.getElementById('carousel-prev');
             const nextBtn = document.getElementById('carousel-next');
-           Btn = document.getElementById('carousel-next');
             const dotsContainer = document.getElementById('carousel-dots');
             
- const dotsContainer = document.getElementById('carousel-dots');
-            
             let currentSlide = 0;
-            const total            let currentSlide = 0;
-            const totalSlides = slidesSlides = slides.length;
-            let autoSlideInterval;
-            
-           .length;
+            const totalSlides = slides.length;
             let autoSlideInterval;
             
             // Create dots
             slides.forEach((_, index) => {
-                // Create dots
-            slides.forEach((_, index) => {
                 const dot = document.createElement('button');
-                dot const dot = document.createElement('button');
                 dot.classList.add('carousel-dot');
-                if (index === .classList.add('carousel-dot');
                 if (index === 0) dot.classList.add('active');
-0) dot.classList.add('active');
-                dot.addEventListener('click',                dot.addEventListener('click', () => goToSlide(index));
+                dot.addEventListener('click', () => goToSlide(index));
                 dotsContainer.appendChild(dot);
             });
             
-            () => goToSlide(index));
-                dotsContainer.appendChild(dot);
-            });
-            
-            const dots = document.querySelectorAll const dots = document.querySelectorAll('.car('.carousel-dot');
+            const dots = document.querySelectorAll('.carousel-dot');
             
             // Update carousel position
             function updateCarousel() {
-               ousel-dot');
-            
-            // Update carousel position
-            function updateCarousel() {
-                container.style.transform = `translateX(-${current container.style.transform = `translateX(-${currentSlide * 100}%)`;
+                container.style.transform = `translateX(-${currentSlide * 100}%)`;
                 
                 // Update dots
-               Slide * 100}%)`;
-                
-                // Update dots
-                dots.forEach dots.forEach((dot, index) => {
-                    dot.classList.toggle('active', index === currentSlide);
-((dot, index) => {
+                dots.forEach((dot, index) => {
                     dot.classList.toggle('active', index === currentSlide);
                 });
             }
             
-            // Go to specific                });
-            }
-            
-            // Go slide
-            function goToSlide(slideIndex) {
-                currentSlide = to specific slide
+            // Go to specific slide
             function goToSlide(slideIndex) {
                 currentSlide = slideIndex;
-                if (currentSlide >= totalSlides) slideIndex;
                 if (currentSlide >= totalSlides) currentSlide = 0;
-                if ( currentSlide = 0;
-                if (currentSlide < 0) currentSlide = totalSlides - currentSlide < 0) currentSlide = totalSlides - 1;
-                updateCarousel();
-            }
-            
-1;
+                if (currentSlide < 0) currentSlide = totalSlides - 1;
                 updateCarousel();
             }
             
             // Next slide
             function nextSlide() {
-                goTo            // Next slide
-            function nextSlide() {
                 goToSlide(currentSlide + 1);
             }
             
-Slide(currentSlide + 1);
-            }
-            
-            // Previous slide            // Previous slide
-            function prevSlide() {
-                goTo
+            // Previous slide
             function prevSlide() {
                 goToSlide(currentSlide - 1);
             }
             
-            // Auto slideSlide(currentSlide - 1);
-            }
-            
             // Auto slide every 5 seconds
-            function startAutoSlide every 5 seconds
             function startAutoSlide() {
-                autoSlideInterval = setInterval(nextSlide,() {
                 autoSlideInterval = setInterval(nextSlide, 5000);
-            }
-            
-            function stop 5000);
             }
             
             function stopAutoSlide() {
                 clearInterval(autoSlideInterval);
             }
             
-AutoSlide() {
-                clearInterval(autoSlideInterval);
-            }
-            
             // Event listeners
-                       // Event listeners
             prevBtn.addEventListener('click', () => {
                 prevSlide();
-                stopAuto prevBtn.addEventListener('click', () => {
-                prevSlide();
                 stopAutoSlide();
-                startAutoSlide();
-            });
-            
-Slide();
                 startAutoSlide();
             });
             
             nextBtn.addEventListener('click', () => {
                 nextSlide();
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                stopAutoSlide();
-                startAutoSlide();
                 stopAutoSlide();
                 startAutoSlide();
             });
-            
-            // P            });
             
             // Pause auto slide on hover
-            container.addEventListener('mouseenter', stopAutoSlideause auto slide on hover
             container.addEventListener('mouseenter', stopAutoSlide);
-            container.addEventListener);
             container.addEventListener('mouseleave', startAutoSlide);
-            
-            // Start('mouseleave', startAutoSlide);
             
             // Start auto slide
             startAutoSlide();
         }
 
-        function auto slide
-            startAutoSlide();
-        }
-
         function initDates() {
-            // Set minimum date for initDates() {
             // Set minimum date for reservation (today)
             const today = new Date();
-            const tomorrow reservation (today)
-            const today = new Date();
             const tomorrow = new Date(today);
-            tomorrow.setDate = new Date(today);
-            tomorrow(tomorrow.getDate() + 1);
-            
-            const todayStr = today.toISOString().split('.setDate(tomorrow.getDate() + 1);
+            tomorrow.setDate(tomorrow.getDate() + 1);
             
             const todayStr = today.toISOString().split('T')[0];
-            const tomorrowStr = tomorrow.toISOStringT')[0];
-            const tomorrowStr = tomorrow.toISOString().split().split('T')[0];
+            const tomorrowStr = tomorrow.toISOString().split('T')[0];
             
             document.getElementById('date-arrivee').min = todayStr;
-           ('T')[0];
-            
-            document.getElementById('date-arrivee').min = todayStr;
-            document.getElementById('date-depart').min = tomorrow document.getElementById('date-depart').min = tomorrowStr;
-            
-            // Set initial values (tomorrow andStr;
+            document.getElementById('date-depart').min = tomorrowStr;
             
             // Set initial values (tomorrow and day after tomorrow)
-            document.getElementById('date- day after tomorrow)
             document.getElementById('date-arrivee').value = tomorrowStr;
             
-            const afterTomorrowarrivee').value = tomorrowStr;
-            
             const afterTomorrow = new Date(tomorrow);
-            = new Date(tomorrow);
-            afterTomorrow.setDate(after afterTomorrow.setDate(afterTomorrow.getDate() + 1);
-            document.getElementById('date-departTomorrow.getDate() + 1);
-            document.getElementById('date-depart').value = afterTomorrow.toISOString().').value = afterTomorrow.toISOString().split('T')[0];
+            afterTomorrow.setDate(afterTomorrow.getDate() + 1);
+            document.getElementById('date-depart').value = afterTomorrow.toISOString().split('T')[0];
             
             // Check initial availability
-            checkAvailabilitysplit('T')[0];
-            
-            // Check initial availability
-           ();
-        }
-
-        function setupForms() {
-            const reservationForm = document.getElementById checkAvailability();
+            checkAvailability();
         }
 
         function setupForms() {
             const reservationForm = document.getElementById('reservationForm');
-           ('reservationForm');
             const submitBtn = document.getElementById('submit-btn');
             
-            // Date availability simulation const submitBtn = document.getElementById('submit-btn');
-            
-            // Date availability simulation (dans la réalité, (dans la réalité, ce serait une API)
+            // Date availability simulation
             const bookedDates = [
-                '2024- ce serait une API)
-            const bookedDates = [
-                '2024-12-25', '20212-25', '2024-12-26', // Noël
-                '2024-124-12-26', // Noël
-                '2024-12-31', '2025-31', '2025-01-01', // Nouvel An
-            ];
-            
-            // Check date availability-01-01', // Nouvel An
+                '2024-12-25', '2024-12-26',
+                '2024-12-31', '2025-01-01',
             ];
             
             // Check date availability
             function checkAvailability() {
-               
-            function checkAvailability() {
-                const arriveeDate = document.getElementById('date-arrivee'). const arriveeDate = document.getElementById('date-arrivee').value;
-                const departDate = documentvalue;
+                const arriveeDate = document.getElementById('date-arrivee').value;
                 const departDate = document.getElementById('date-depart').value;
-                const arriveeStatus = document.getElementById.getElementById('date-depart').value;
                 const arriveeStatus = document.getElementById('arrivee-status');
-                const('arrivee-status');
                 const departStatus = document.getElementById('depart-status');
                 
-                // Reset departStatus = document.getElementById('depart-status');
-                
                 // Reset status
-                arriveeStatus.textContent status
                 arriveeStatus.textContent = '';
-                departStatus.textContent = = '';
                 departStatus.textContent = '';
-                arriveeStatus.className = 'date-status';
- '';
                 arriveeStatus.className = 'date-status';
                 departStatus.className = 'date-status';
                 
-                               departStatus.className = 'date-status';
-                
                 // Validate dates
-                if (!arriveeDate || !dep // Validate dates
                 if (!arriveeDate || !departDate) return;
                 
-                constartDate) return;
-                
                 const arrivee = new Date(arriveeDate);
-                const depart = arrivee = new Date(arriveeDate);
                 const depart = new Date(departDate);
-                const today new Date(departDate);
                 const today = new Date();
-                today.setHours(0, 0, = new Date();
-                today.setHours(0, 0, 0,  0, 0);
-                
-                // Check if arrival is in the past0);
+                today.setHours(0, 0, 0, 0);
                 
                 // Check if arrival is in the past
                 if (arrivee < today) {
                     arriveeStatus.textContent = '❌ Date déjà passée';
                     arriveeStatus.classList.add('unavailable');
-                    submit
-                if (arrivee < today) {
-                    arriveeStatus.textContent = '❌ Date déjà passée';
-                    arriveeStatus.classList.add('unavailable');
                     submitBtn.disabled = true;
-                    returnBtn.disabled = true;
                     return;
                 }
                 
                 // Check if departure is before arrival
-               ;
-                }
-                
-                // Check if departure is before arrival
-                if ( if (depart <= arrivee) {
-                    departStatus.textContent = 'depart <= arrivee) {
+                if (depart <= arrivee) {
                     departStatus.textContent = '❌ Doit être après l\'arrivée';
-                    departStatus.classList❌ Doit être après l\'arrivée';
                     departStatus.classList.add('unavailable');
-                   .add('unavailable');
-                    submitBtn submitBtn.disabled = true;
-                    return;
-                }
-                
-                // Check if dates are booked
-                let is.disabled = true;
+                    submitBtn.disabled = true;
                     return;
                 }
                 
                 // Check if dates are booked
                 let isAvailable = true;
                 
-                // Simulate checking each day between arrival and departureAvailable = true;
-                
                 // Simulate checking each day between arrival and departure
                 const checkDate = new Date(arrivee);
-                while
-                const checkDate = new Date(arrivee);
                 while (checkDate < depart) {
-                    const (checkDate < depart) {
                     const dateStr = checkDate.toISOString().split('T')[0];
- dateStr = checkDate.toISOString().split('T')[0];
-                    if (bookedDates.includes(date                    if (bookedDates.includes(dateStr)) {
+                    if (bookedDates.includes(dateStr)) {
                         isAvailable = false;
                         break;
                     }
-Str)) {
-                        isAvailable = false;
-                        break;
-                    }
-                    checkDate.setDate(checkDate.getDate()                    checkDate.setDate(checkDate.getDate() + 1);
+                    checkDate.setDate(checkDate.getDate() + 1);
                 }
                 
                 if (isAvailable) {
- + 1);
-                }
-                
-                if (isAvailable) {
-                    arriveeStatus.textContent = '                    arriveeStatus.textContent = '✅ Date disponible';
+                    arriveeStatus.textContent = '✅ Date disponible';
                     arriveeStatus.classList.add('available');
-                   ✅ Date disponible';
-                    arriveeStatus.classList.add('available');
-                    departStatus departStatus.textContent = '✅ Date disponible';
-                    departStatus.classList.add('.textContent = '✅ Date disponible';
+                    departStatus.textContent = '✅ Date disponible';
                     departStatus.classList.add('available');
                     submitBtn.disabled = false;
                 } else {
-                    arriveavailable');
-                    submitBtn.disabled = false;
-                } else {
-                    arriveeStatus.textContent = '⚠️ Certaines dates sont réserveStatus.textContent = '⚠️ Certaines dates sont réservées';
-                    arriveeStatus.classList.add('unées';
+                    arriveeStatus.textContent = '⚠️ Certaines dates sont réservées';
                     arriveeStatus.classList.add('unavailable');
-                    departStatus.textContent = '⚠️ Certaines datesavailable');
                     departStatus.textContent = '⚠️ Certaines dates sont réservées';
                     departStatus.classList.add('unavailable');
                     submitBtn.disabled = true;
-                sont réservées';
-                    departStatus.classList.add('unavailable');
-                    submitBtn.disabled = true;
                 }
-            }
-            
-            // Date change listeners
-            document.getElementById('date-arr }
             }
             
             // Date change listeners
             document.getElementById('date-arrivee').addEventListener('change', function() {
-                const arriveivee').addEventListener('change', function() {
                 const arriveeDate = new Date(this.value);
-eDate = new Date(this.value);
                 const minDepartDate = new Date(arriveeDate);
-                minDepart                const minDepartDate = new Date(arriveeDate);
-                minDepartDate.setDate(minDepartDateDate.setDate(minDepartDate.getDate() + 1);
-                
-                document.getElementById('date-depart').min = minDepartDate.toISOString().split.getDate() + 1);
+                minDepartDate.setDate(minDepartDate.getDate() + 1);
                 
                 document.getElementById('date-depart').min = minDepartDate.toISOString().split('T')[0];
                 
-                //('T')[0];
-                
                 // If current departure date is before new minimum, update it
-                const currentDepart If current departure date is before new minimum, update it
                 const currentDepart = new Date(document.getElementById('date-depart').value);
-                if = new Date(document.getElementById('date-depart').value);
                 if (currentDepart <= arriveeDate) {
-                    (currentDepart <= arriveeDate) {
-                    document.getElementById('date-depart').value = minDepartDate.toISO document.getElementById('date-depart').value = minDepartDate.toISOString().split('T')[0];
-String().split('T')[0];
-                }
-                
-                checkAvailability();
-            });
-            
+                    document.getElementById('date-depart').value = minDepartDate.toISOString().split('T')[0];
                 }
                 
                 checkAvailability();
@@ -2152,401 +1825,208 @@ String().split('T')[0];
             
             document.getElementById('date-depart').addEventListener('change', checkAvailability);
             
-            // Form            document.getElementById('date-depart').addEventListener('change', checkAvailability);
-            
             // Form submission
-            reservationForm.addEventListener('submit submission
             reservationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
-                // Vérifier l', function(e) {
-                e.preventDefault();
-                
                 // Vérifier l'acceptation des conditions
-'acceptation des conditions
                 const acceptConditions = document.getElementById('accept-conditions');
-                if (!                const acceptConditions = document.getElementById('accept-conditions');
                 if (!acceptConditions.checked) {
-                    alert('Veuillez accepteracceptConditions.checked) {
                     alert('Veuillez accepter la politique d\'annulation et de remboursement pour continuer.');
- la politique d\'annulation et de remboursement pour continuer.');
                     return;
                 }
-                
-                // Show loading state
-                const                    return;
-                }
-                
-                // Show loading state
-                const originalText = submitBtn.innerHTML;
-                originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></ submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-                submitBtn.disabled = truei> Envoi en cours...';
-                submitBtn.disabled;
-                
-                // Collect form data
-                const formData = {
-                    nom: document.getElementById('nom').value = true;
                 
                 // Collect form data
                 const formData = {
                     nom: document.getElementById('nom').value.trim(),
-                    prenom: document.getElementById('prenom').value.trim.trim(),
                     prenom: document.getElementById('prenom').value.trim(),
-                    email: document.getElementById('email(),
                     email: document.getElementById('email').value.trim(),
-                    telephone: document.getElementById('telephone').value').value.trim(),
                     telephone: document.getElementById('telephone').value.trim(),
-                    dateArrivee: document.getElementById('date-arrivee.trim(),
                     dateArrivee: document.getElementById('date-arrivee').value,
                     dateDepart: document.getElementById('date-depart').value,
                     formule: document.getElementById('formule').value,
-                    dateDepart: document.getElementById('date-depart').value,
-                    formule: document.getElementById('formule').value,
                     personnes: document.getElementById('personnes').value,
-').value,
-                    personnes: document.getElementById('personnes').value,
-                    message: document.getElementById('message').                    message: document.getElementById('message').value.trim()
+                    preference: document.getElementById('preference').value,
+                    message: document.getElementById('message').value.trim()
                 };
                 
                 // Validate form
-                if (!value.trim()
-                };
-                
-                // Validate form
-                if (!formDataformData.nom || !formData.prenom || !formData.email || !formData.telephone || 
-                    !formData.dateArrive.nom || !formData.prenom || !formData.email || !formData.telephone || 
-                    !formData.dateArrivee || !formData.dateDepart ||e || !formData.date !formData.formule || !formData.personnes) {
+                if (!formData.nom || !formData.prenom || !formData.email || !formData.telephone || 
+                    !formData.dateArrivee || !formData.dateDepart || !formData.formule || !formData.personnes) {
                     alert('Veuillez remplir tous les champs obligatoires (*).');
-Depart || !formData.formule || !formData.personnes) {
-                    alert('Veuillez remplir tous les champs obligatoires (*).');
-                    submitBtn.innerHTML = original                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
                     return;
                 }
                 
-Text;
-                    submitBtn.disabled = false;
-                    return;
+                // Validate phone number for WhatsApp
+                let phoneNumber = formData.telephone.replace(/\s/g, ''); // Remove spaces
+                if (!phoneNumber.startsWith('+229')) {
+                    if (phoneNumber.startsWith('0')) {
+                        phoneNumber = '+229' + phoneNumber.substring(1);
+                    } else if (phoneNumber.startsWith('229')) {
+                        phoneNumber = '+' + phoneNumber;
+                    } else {
+                        phoneNumber = '+229' + phoneNumber;
+                    }
                 }
                 
                 // Validate dates
-                const arriveeDate = new Date(form                // Validate dates
                 const arriveeDate = new Date(formData.dateArrivee);
-                const departDateData.dateArrivee);
                 const departDate = new Date(formData.dateDepart);
                 
-                if ( = new Date(formData.dateDepart);
-                
                 if (departDate <= arriveeDate) {
-                    alert('La date de départ doit êtredepartDate <= arriveeDate) {
                     alert('La date de départ doit être après la date d\'arrivée.');
-                    submitBtn.innerHTML = après la date d\'arrivée.');
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false originalText;
-                    submitBtn.disabled = false;
-                    return;
-                }
-;
                     return;
                 }
                 
-                // Calculate price and duration
-                let prix = 0;
-                let formuleTexte = '';
-                let caution = '20 000 FCFA';
-                
-                switch(form                
                 // Calculate price and duration
                 let prix = 0;
                 let formuleTexte = '';
                 let caution = '20 000 FCFA';
                 
                 switch(formData.formule) {
-                    case 'nuitData.formule) {
-                    case '':
+                    case 'nuit':
                         // Calculate nights
                         const diffTime = Math.abs(departDate - arriveeDate);
-                        const diffDays = Math.ceilnuit':
-                        // Calculate nights
-                        const diffTime = Math.abs(departDate - arriveeDate);
-                        const diffDays = Math.ceil(diffTime / (100(diffTime / (1000 * 60 * 60 * 24));
-                        prix = diffDays * 0 * 60 * 60 * 24));
+                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
                         prix = diffDays * 17000;
-                        formuleTexte = `${diffDays}17000;
-                        formuleTexte = `${diffDays} nuitée(s) Cosy`;
-                        break;
-                    case '24 nuitée(s) Cosy`;
+                        formuleTexte = `${diffDays} nuitée(s) Cosy - 17.000 F/nuit`;
+                        caution = '20 000 FCFA';
                         break;
                     case '24h':
-                        prix = 27000;
-                       h':
-                        prix = 27000;
-                        formuleTexte = '24h Flexibles';
-                        caution formuleTexte = '24h Flexibles';
+                        const diffHours = Math.abs(departDate - arriveeDate) / (1000 * 60 * 60);
+                        if (diffHours > 24) {
+                            // Calculate additional hours
+                            const additionalHours = Math.ceil((diffHours - 24) / 24) * 27000;
+                            prix = 27000 + additionalHours;
+                            formuleTexte = `${Math.ceil(diffHours/24)} x 24h Flexibles - 27.000 F/24h`;
+                        } else {
+                            prix = 27000;
+                            formuleTexte = '24h Flexibles - 27.000 F';
+                        }
                         caution = '25 000 FCFA';
                         break;
                 }
                 
-                // Format = '25 000 FCFA';
-                        break;
-                }
-                
                 // Format dates
-                const options = { day: 'numeric', month: dates
                 const options = { day: 'numeric', month: 'long', year: 'numeric' };
                 
- 'long', year: 'numeric' };
+                // Determine preference text
+                let preferenceText = '';
+                switch(formData.preference) {
+                    case 'smoothie': preferenceText = 'Smoothie FreshMood'; break;
+                    case 'sandwich': preferenceText = 'Sandwich FreshMood'; break;
+                    case 'aucun': preferenceText = 'Aucun'; break;
+                    default: preferenceText = 'Non spécifié';
+                }
                 
                 // Prepare WhatsApp message
-                const whatsappMessage =                // Prepare WhatsApp message
-                const whatsappMessage = `Nouvelle réservation Cosylogement !
+                const whatsappMessage = `📋 NOUVELLE RÉSERVATION COSYLOGEMENT 📋
 
-📋 INFORMATIONS DU CL `Nouvelle réservation Cosylogement !
-
-📋 INFORMATIONS DU CLIENT :
-• Nom : ${formData.prenom}IENT :
+👤 INFORMATIONS CLIENT :
 • Nom : ${formData.prenom} ${formData.nom}
-• Email : ${formData ${formData.nom}
 • Email : ${formData.email}
-• Téléphone : ${formData.tele.email}
 • Téléphone : ${formData.telephone}
 
-phone}
-
-📅 DATES DU SÉJOUR :
-• Arrivée : ${arriveeDate.toLocaleDateString('fr-FR', options📅 DATES DU SÉJOUR :
+📅 SÉJOUR :
 • Arrivée : ${arriveeDate.toLocaleDateString('fr-FR', options)} à 14h
-• Départ :)} à 14h
-• Départ : ${departDate.toLocaleDateString('fr-FR ${departDate.toLocaleDateString('fr-FR', options)} à 12h
+• Départ : ${departDate.toLocaleDateString('fr-FR', options)} à 12h
 • Formule : ${formuleTexte}
-', options)} à 12h
-• Formule : ${form• Personnes : ${formData.personnes}
-
-💰 TARIFS :
-• Prix total : ${prixuleTexte}
 • Personnes : ${formData.personnes}
+• Préférence : ${preferenceText}
 
 💰 TARIFS :
-• Prix total : ${prix.toLocaleString('fr-FR')} F.toLocaleString('fr-FR')} FCFA
+• Prix total : ${prix.toLocaleString('fr-FR')} FCFA
 • Caution : ${caution}
+• Smoothie/Sandwich : OFFERT
 
-${formData.message ? `📝 MCFA
-• Caution : ${caution}
-
-${formData.message ? `📝 MESSAGE : ${formData.message}` : ''}
-
-────────────────────ESSAGE : ${formData.message}` : ''}
+${formData.message ? `📝 MESSAGE DU CLIENT :
+${formData.message}` : ''}
 
 ────────────────────
-Merci de recontacter le client pour confirmation.
-Merci de recontacter le client pour confirmation.`;
-                
-                //`;
-                
+⚠️ Cette réservation est soumise à notre politique d'annulation.`;
+
                 // Encode message for WhatsApp URL
                 const encodedMessage = encodeURIComponent(whatsappMessage);
                 
-                // Prepare email Encode message for WhatsApp URL
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                
-                //
-                const emailSubject = `Nouvelle réservation - ${formData.prenom} ${formData.n Prepare email
-                const emailSubject = `Nouvelle réservation - ${formData.prenom} ${formData.nom}`;
-                const emailBody = encodeURIComponent(whatsappMessage);
-                
-                //om}`;
-                const emailBody = encodeURIComponent(whatsappMessage);
+                // Open WhatsApp directly
+                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
                 
                 // Show confirmation
                 setTimeout(() => {
-                    const Show confirmation
-                setTimeout(() => {
-                    const confirmationMessage = `✅ Demande envoyée avec confirmationMessage = `✅ Demande envoyée avec succès !
-
-Nous vous recontacterons sous 24h pour confirmation.
-
-📞 Contact rap succès !
-
-Nous vous recontacterons sous 24h pour confirmation.
-
-📞ide :
-• WhatsApp : +229 66 95 39 34
-• Email : mauricegeraud Contact rapide :
-• WhatsApp : +229 66 95 39 34
-• Email : mauricegerauds@gmails@gmail.com
-
-Merci pour votre confiance !`;
+                    alert('✅ Ouverture de WhatsApp...\n\nVeuillez envoyer le message pré-rempli pour finaliser votre réservation.');
                     
-                    alert(confirmationMessage);
-                    
-                    // Open WhatsApp with pre-filled message
-.com
-
-Merci pour votre confiance !`;
-                    
-                    alert(confirmationMessage);
-                    
-                    // Open WhatsApp with pre-filled message
-                    window.open(`https://wa.me/229669539                    window.open(`https://wa.me/22966953934?text=${encodedMessage}`,34?text=${encodedMessage}`, '_blank');
-                    
-                    // Also suggest email as backup
+                    // Reset form after a delay
                     setTimeout(() => {
-                        if (confirm('Sou '_blank');
-                    
-                    // Also suggest email as backup
-                    setTimeout(() => {
-                        if (confirm('Souhaitez-vous aussi envoyer un email de confirmationhaitez-vous aussi envoyer un email de confirmation ?')) {
-                            window.open(`mailto:maur ?')) {
-                            window.open(`mailto:mauricegericegerauds@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`, '_blank');
-                        }
-                    }, 500);
-auds@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`, '_blank');
-                        }
-                    }, 500);
-                    
-                    // Reset form
-                    reservationForm.reset                    
-                    // Reset form
-                    reservationForm.reset();
-                    
-                    // Reset checkbox
-                    acceptConditions.checked = false;
-                    
-                    // Reset();
-                    
-                    // Reset checkbox
-                    acceptConditions.checked = false;
-                    
-                    // Reset dates
-                    initDates();
-                    
-                    // Reset dates
-                    initDates();
-                    
-                    // Reset button
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.dis button
-                    submitBtn.innerHTML = originalText;
-                    submitBtn.disabled =abled = false;
-                    
-                }, 1000);
-            });
-        }
-
-        function handleHeaderScroll() {
-            const header = document.getElementById('main false;
-                    
-                }, 1000);
+                        reservationForm.reset();
+                        acceptConditions.checked = false;
+                        initDates();
+                    }, 1000);
+                }, 500);
             });
         }
 
         function handleHeaderScroll() {
             const header = document.getElementById('main-header');
-            if (window.scrollY >-header');
             if (window.scrollY > 50) {
-                header.classList.add('scrolled');
- 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         }
 
-        function updateActive            } else {
-                header.classList.remove('scrolled');
-            }
-        }
-
         function updateActiveNavLink() {
-            const sections = document.querySelectorAll('NavLink() {
             const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAllsection');
             const navLinks = document.querySelectorAll('nav a');
-            
-            let currentSection = '';
-            const scrollPosition = window.scrollY('nav a');
             
             let currentSection = '';
             const scrollPosition = window.scrollY + 100;
             
-            sections.forEach + 100;
-            
             sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-               (section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 
-                if const sectionHeight = section.clientHeight;
-                
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     currentSection = '#' + section.getAttribute('id');
- = '#' + section.getAttribute('id');
                 }
-            });
-            
-            navLinks.forEach(link =>                }
             });
             
             navLinks.forEach(link => {
                 link.classList.remove('active');
-                if (link.getAttribute('href') === current {
-                link.classList.remove('active');
                 if (link.getAttribute('href') === currentSection) {
-                    link.classList.add('active');
-                }
-           Section) {
                     link.classList.add('active');
                 }
             });
             
             // Default to accueil if at top
-            if (scrollPosition });
-            
-            // Default to accueil if at top
             if (scrollPosition < 100) {
                 navLinks.forEach(link => {
- < 100) {
-                navLinks.forEach(link => {
                     link.classList.remove('active');
-                    if (                    link.classList.remove('active');
                     if (link.getAttribute('href') === '#accueil') {
-                        link.classList.add('active');
-                   link.getAttribute('href') === '#accueil') {
                         link.classList.add('active');
                     }
                 });
             }
         }
 
-        // Handle window resize }
-                });
-            }
-        }
-
         // Handle window resize
         window.addEventListener('resize', function() {
-           
-        window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
-                const nav = document.getElementById('main if (window.innerWidth > 768) {
                 const nav = document.getElementById('main-nav');
                 if (nav.classList.contains('active')) {
--nav');
-                if (nav.classList.contains('active')) {
                     nav.classList.remove('active');
-                    document.getElementById('mobile                    nav.classList.remove('active');
-                    document.getElementById('mobile-menu-btn').innerHTML = '<i class="fas fa-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
+                    document.getElementById('mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
                 }
             }
+            
+            // Fix for mobile viewport height
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
-    </script>
-</body>
--bars"></i>';
-                }
-            }
+
+        // Fix for mobile viewport
+        window.addEventListener('load', function() {
+            const vh = window.innerHeight * 0.01;
+            document.documentElement.style.setProperty('--vh', `${vh}px`);
         });
     </script>
 </body>

@@ -3,7 +3,7 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Studio Cotonou | Studio confortable à Akpakpa</title>
+    <title>Studio Cotonou | Studio à Akpakpa</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
@@ -12,7 +12,8 @@
             --primary: #2c3e50; /* Bleu-gris élégant */
             --primary-dark: #1a252f; /* Plus foncé */
             --secondary: #3498db; /* Bleu clair */
-            --secondary-light: #5dade2; /* Bleu plus clair */
+            --accent: #e74c3c; /* Rouge pour FreshMood */
+            --accent-light: #fadbd8; /* Rouge très clair */
             --light: #f8f9fa;
             --light-gray: #ecf0f1;
             --gray: #7f8c8d;
@@ -169,6 +170,17 @@
         .btn-primary:hover {
             background: var(--primary);
             border-color: var(--primary);
+        }
+
+        .btn-accent {
+            background: var(--accent);
+            color: var(--white);
+            border: 2px solid var(--accent);
+        }
+
+        .btn-accent:hover {
+            background: #c0392b;
+            border-color: #c0392b;
         }
 
         .btn-outline {
@@ -417,117 +429,163 @@
             flex-shrink: 0;
         }
 
-        .price-section {
-            background: var(--light-gray);
-            padding: 25px;
-            border-radius: var(--radius);
-            margin-top: 25px;
-            border: 1px solid rgba(52, 152, 219, 0.2);
-        }
-
-        .price-display {
-            text-align: center;
-            margin-bottom: 25px;
-        }
-
-        .price-amount {
-            font-size: 36px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-
-        .price-period {
-            color: var(--gray);
-            font-size: 14px;
-        }
-
-        .price-options {
-            display: flex;
-            justify-content: center;
-            gap: 15px;
-            flex-wrap: wrap;
-        }
-
-        .price-option {
-            text-align: center;
-            padding: 15px;
-            background: var(--white);
-            border-radius: var(--radius-sm);
-            border: 2px solid var(--light-gray);
-            min-width: 150px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-
-        .price-option:hover {
-            border-color: var(--secondary);
-            transform: translateY(-3px);
-        }
-
-        .price-option.selected {
-            border-color: var(--secondary);
-            background: rgba(52, 152, 219, 0.05);
-        }
-
-        .option-price {
-            font-size: 22px;
-            font-weight: 700;
-            color: var(--secondary);
-            margin-bottom: 5px;
-        }
-
-        .option-label {
-            color: var(--dark-gray);
-            font-size: 13px;
-            font-weight: 500;
-        }
-
-        /* Reservation Process */
-        .reservation-process {
+        /* Tarifs Section */
+        .tarifs-section {
             background: var(--light-gray);
         }
 
-        .process-steps {
+        .tarifs-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
+            grid-template-columns: 1fr;
             gap: 30px;
             margin-top: 40px;
         }
 
-        .process-step {
-            text-align: center;
-            padding: 30px 20px;
-            background: var(--white);
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            position: relative;
+        @media (min-width: 768px) {
+            .tarifs-container {
+                grid-template-columns: 1fr 1fr;
+            }
         }
 
-        .process-step:hover {
+        .tarif-category {
+            background: var(--white);
+            border-radius: var(--radius);
+            padding: 30px;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+        }
+
+        .tarif-category:hover {
             transform: translateY(-5px);
             box-shadow: var(--shadow-hover);
         }
 
-        .step-number {
-            width: 50px;
-            height: 50px;
-            background: var(--secondary);
-            color: var(--white);
-            border-radius: 50%;
+        .tarif-category.accent {
+            border-top: 4px solid var(--accent);
+            background: var(--accent-light);
+        }
+
+        .tarif-header {
+            text-align: center;
+            margin-bottom: 25px;
+        }
+
+        .tarif-title {
+            font-size: 22px;
+            margin-bottom: 10px;
             display: flex;
             align-items: center;
             justify-content: center;
-            font-size: 20px;
-            font-weight: 700;
-            margin: 0 auto 15px;
-            position: relative;
+            gap: 10px;
         }
 
-        /* Authentication System - Supprimé car non requis */
-        .auth-section {
-            display: none;
+        .tarif-title i {
+            color: var(--accent);
+        }
+
+        .tarif-subtitle {
+            color: var(--gray);
+            font-size: 14px;
+        }
+
+        .tarif-options {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+        }
+
+        .tarif-option {
+            padding: 15px;
+            border: 2px solid var(--light-gray);
+            border-radius: var(--radius-sm);
+            transition: var(--transition);
+        }
+
+        .tarif-option.accent {
+            border-color: rgba(231, 76, 60, 0.3);
+        }
+
+        .tarif-option.accent:hover {
+            border-color: var(--accent);
+        }
+
+        .tarif-option.selected {
+            border-color: var(--secondary);
+            background: rgba(52, 152, 219, 0.05);
+        }
+
+        .tarif-option.accent.selected {
+            border-color: var(--accent);
+            background: rgba(231, 76, 60, 0.1);
+        }
+
+        .option-price {
+            font-size: 24px;
+            font-weight: 700;
+            color: var(--secondary);
+            margin-bottom: 5px;
+        }
+
+        .option-price.accent {
+            color: var(--accent);
+        }
+
+        .option-label {
+            font-weight: 600;
+            margin-bottom: 8px;
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        .option-label i {
+            color: var(--accent);
+        }
+
+        .option-description {
+            color: var(--gray);
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .freshmood-badge {
+            display: inline-block;
+            background: var(--accent);
+            color: white;
+            padding: 4px 10px;
+            border-radius: 12px;
+            font-size: 12px;
+            font-weight: 600;
+            margin-left: 8px;
+        }
+
+        .cta-buttons {
+            display: flex;
+            flex-direction: column;
+            gap: 15px;
+            margin-top: 30px;
+        }
+
+        .freshmood-link {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            gap: 10px;
+            padding: 15px;
+            background: white;
+            border: 2px solid var(--accent);
+            border-radius: var(--radius);
+            text-decoration: none;
+            color: var(--accent);
+            font-weight: 600;
+            transition: var(--transition);
+            margin-top: 20px;
+        }
+
+        .freshmood-link:hover {
+            background: var(--accent);
+            color: white;
+            transform: translateY(-2px);
         }
 
         /* Contact Section */
@@ -740,22 +798,8 @@
                 font-size: 13px;
             }
             
-            .studio-gallery {
-                padding: 15px;
-            }
-            
-            .studio-info {
-                padding: 0 15px 15px;
-            }
-            
-            .price-options {
-                flex-direction: column;
-                align-items: center;
-            }
-            
-            .price-option {
-                width: 100%;
-                max-width: 250px;
+            .tarif-category {
+                padding: 20px;
             }
             
             .whatsapp-float {
@@ -789,10 +833,6 @@
             .section-title {
                 font-size: 22px;
             }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-            }
         }
     </style>
 </head>
@@ -808,7 +848,7 @@
             <nav id="main-nav">
                 <a href="#accueil" class="active">Accueil</a>
                 <a href="#studio">Le Studio</a>
-                <a href="#reservation">Tarifs & Réservation</a>
+                <a href="#tarifs">Nos Tarifs</a>
                 <a href="#contact">Contact</a>
             </nav>
             
@@ -819,37 +859,37 @@
     <!-- Hero Section -->
     <section class="hero" id="accueil">
         <div class="container">
-            <h1>Studio cosy et discret à Cotonou</h1>
-            <p class="hero-subtitle">Un espace fonctionnel, calme et bien équipé, idéal pour les courts et moyens séjours à Akpakpa, Cotonou.</p>
+            <h1>Studio cosy à Akpakpa</h1>
+            <p class="hero-subtitle">Un espace fonctionnel, calme et bien équipé. Idéal pour les courts et moyens séjours à Cotonou.</p>
             
             <div class="hero-buttons">
-                <a href="#studio" class="btn btn-primary">
+                <a href="#tarifs" class="btn btn-primary">
                     <i class="fas fa-eye"></i>
-                    Découvrir le Studio
+                    Voir les tarifs
                 </a>
                 <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20m'intéresse%20au%20studio%20à%20Akpakpa" 
                    class="btn btn-whatsapp" target="_blank">
                     <i class="fab fa-whatsapp"></i>
-                    Réserver via WhatsApp
+                    Réserver maintenant
                 </a>
             </div>
             
             <div class="hero-features">
                 <div class="hero-feature">
-                    <i class="fas fa-wifi"></i>
-                    <span>Wi-Fi Haut Débit</span>
-                </div>
-                <div class="hero-feature">
                     <i class="fas fa-snowflake"></i>
                     <span>Climatisation</span>
                 </div>
                 <div class="hero-feature">
-                    <i class="fas fa-shield-alt"></i>
-                    <span>Environnement sécurisé</span>
+                    <i class="fas fa-wifi"></i>
+                    <span>Wi-Fi Haut Débit</span>
                 </div>
                 <div class="hero-feature">
                     <i class="fas fa-gamepad"></i>
                     <span>PS4 avec jeux</span>
+                </div>
+                <div class="hero-feature">
+                    <i class="fas fa-shield-alt"></i>
+                    <span>Environnement sécurisé</span>
                 </div>
             </div>
         </div>
@@ -951,70 +991,123 @@
                             </div>
                         </div>
                     </div>
-                    
-                    <div class="price-section">
-                        <div class="price-display">
-                            <div class="price-amount">15 000 F</div>
-                            <div class="price-period">par nuitée</div>
-                        </div>
-                        
-                        <div class="price-options">
-                            <div class="price-option selected" data-tarif="nuit" data-prix="15000">
-                                <div class="option-price">15 000 F</div>
-                                <div class="option-label">Par nuitée</div>
-                            </div>
-                            <div class="price-option" data-tarif="24h" data-prix="25000">
-                                <div class="option-price">25 000 F</div>
-                                <div class="option-label">Pour 24 heures</div>
-                            </div>
-                        </div>
-                        
-                        <div style="text-align: center; margin-top: 25px;">
-                            <a href="#contact" class="btn btn-primary">
-                                <i class="fas fa-calendar-alt"></i>
-                                Vérifier disponibilité
-                            </a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
     </section>
 
-    <!-- Reservation Process -->
-    <section class="reservation-process" id="reservation">
+    <!-- Tarifs Section -->
+    <section class="tarifs-section" id="tarifs">
         <div class="container">
             <div class="section-header">
-                <h2 class="section-title">Tarifs & Réservation</h2>
-                <p class="section-subtitle">Des tarifs simples et un processus de réservation direct</p>
+                <h2 class="section-title">Nos Tarifs</h2>
+                <p class="section-subtitle">Choisissez la formule qui correspond à vos besoins. Réservez directement via WhatsApp.</p>
             </div>
             
-            <div class="process-steps">
-                <div class="process-step">
-                    <div class="step-number">1</div>
-                    <h3>Contactez-nous</h3>
-                    <p>Envoyez-nous un message WhatsApp ou appelez-nous pour vérifier les disponibilités aux dates qui vous intéressent.</p>
+            <div class="tarifs-container">
+                <!-- Tarifs standards -->
+                <div class="tarif-category">
+                    <div class="tarif-header">
+                        <h3 class="tarif-title">
+                            <i class="fas fa-bed"></i>
+                            Tarifs Studio
+                        </h3>
+                        <p class="tarif-subtitle">Séjour dans notre studio cosy</p>
+                    </div>
+                    
+                    <div class="tarif-options">
+                        <div class="tarif-option selected" data-tarif="nuit" data-prix="15000">
+                            <div class="option-price">15 000 F</div>
+                            <div class="option-label">Nuitée</div>
+                            <div class="option-description">
+                                Accès au studio pour une nuitée complète. Arrivée à partir de 14h, départ avant 12h.
+                            </div>
+                        </div>
+                        
+                        <div class="tarif-option" data-tarif="24h" data-prix="25000">
+                            <div class="option-price">25 000 F</div>
+                            <div class="option-label">24 heures</div>
+                            <div class="option-description">
+                                Accès au studio pour 24 heures consécutives. Heure d'arrivée flexible.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20souhaite%20r%C3%A9server%20une%20nuit%C3%A9e%20%C3%A0%2015%20000%20F" 
+                           class="btn btn-primary" target="_blank">
+                            <i class="fas fa-bed"></i>
+                            Réserver une nuitée
+                        </a>
+                        
+                        <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20souhaite%20r%C3%A9server%2024%20heures%20%C3%A0%2025%20000%20F" 
+                           class="btn btn-outline" target="_blank">
+                            <i class="fas fa-clock"></i>
+                            Réserver 24 heures
+                        </a>
+                    </div>
                 </div>
                 
-                <div class="process-step">
-                    <div class="step-number">2</div>
-                    <h3>Confirmation</h3>
-                    <p>Nous vérifions les dates et vous confirmons immédiatement la disponibilité du studio.</p>
-                </div>
-                
-                <div class="process-step">
-                    <div class="step-number">3</div>
-                    <h3>Séjournez</h3>
-                    <p>Vous réglez sur place et profitez de votre séjour dans notre studio cosy et bien équipé.</p>
+                <!-- Partenariat FreshMood -->
+                <div class="tarif-category accent">
+                    <div class="tarif-header">
+                        <h3 class="tarif-title">
+                            <i class="fas fa-glass-whiskey"></i>
+                            Commandez des rafraîchissements
+                            <span class="freshmood-badge">Partenariat</span>
+                        </h3>
+                        <p class="tarif-subtitle">Découvrez notre partenaire FreshMood</p>
+                    </div>
+                    
+                    <p style="margin-bottom: 20px; text-align: center; font-size: 15px;">
+                        Pour agrémenter votre séjour, commandez des smoothies frais ou des sandwichs gourmands auprès de notre partenaire.
+                    </p>
+                    
+                    <div class="tarif-options">
+                        <div class="tarif-option accent">
+                            <div class="option-price accent">À partir de</div>
+                            <div class="option-label">
+                                Smoothies frais
+                                <i class="fas fa-blender"></i>
+                            </div>
+                            <div class="option-description">
+                                Smoothies naturels préparés avec des fruits frais. Parfaits pour un moment de détente dans votre studio.
+                            </div>
+                        </div>
+                        
+                        <div class="tarif-option accent">
+                            <div class="option-price accent">À partir de</div>
+                            <div class="option-label">
+                                Sandwichs gourmands
+                                <i class="fas fa-bread-slice"></i>
+                            </div>
+                            <div class="option-description">
+                                Sandwichs préparés avec des ingrédients de qualité. Idéal pour un repas rapide et savoureux.
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <a href="https://freshmood.bj" class="freshmood-link" target="_blank">
+                        <i class="fas fa-external-link-alt"></i>
+                        Commander sur FreshMood.bj
+                    </a>
+                    
+                    <div class="cta-buttons">
+                        <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20r%C3%A9serve%20le%20studio%20et%20je%20souhaite%20aussi%20commander%20des%20smoothies%20sur%20freshmood.bj" 
+                           class="btn btn-accent" target="_blank">
+                            <i class="fab fa-whatsapp"></i>
+                            Réserver + Commander
+                        </a>
+                    </div>
                 </div>
             </div>
             
-            <div style="text-align: center; margin-top: 40px;">
-                <h3 style="margin-bottom: 20px;">Nos Tarifs</h3>
-                <div style="display: inline-block; background: white; padding: 25px; border-radius: var(--radius); box-shadow: var(--shadow);">
-                    <p style="font-size: 20px; margin-bottom: 10px;"><strong>Nuitée : 15 000 F CFA</strong></p>
-                    <p style="font-size: 20px;"><strong>24 heures : 25 000 F CFA</strong></p>
-                </div>
+            <div style="text-align: center; margin-top: 40px; padding: 20px; background: white; border-radius: var(--radius); box-shadow: var(--shadow);">
+                <p style="font-size: 15px; color: var(--gray);">
+                    <i class="fas fa-handshake" style="color: var(--accent);"></i> 
+                    <strong>Partenariat FreshMood</strong> – En tant que client du studio, bénéficiez de nos recommandations pour des smoothies 
+                    et sandwichs frais livrés directement. Visitez <a href="https://freshmood.bj" target="_blank" style="color: var(--accent); font-weight: 600;">freshmood.bj</a> pour découvrir le menu complet.
+                </p>
             </div>
         </div>
     </section>
@@ -1026,7 +1119,7 @@
                 <div class="contact-info">
                     <h2>Contact & Réservation</h2>
                     <p style="margin-bottom: 25px; opacity: 0.9; font-size: 16px;">
-                        Pour réserver ou obtenir plus d'informations, contactez-nous directement. Aucune création de compte requise.
+                        Pour réserver le studio ou obtenir plus d'informations, contactez-nous directement.
                     </p>
                     
                     <div class="contact-methods">
@@ -1064,12 +1157,16 @@
                         </div>
                     </div>
                     
-                    <h3 style="margin-top: 40px; margin-bottom: 15px;">Suivez-nous</h3>
-                    <div class="social-links">
-                        <a href="https://www.tiktok.com/@house.luxx" target="_blank" class="social-link" title="TikTok">
-                            <i class="fab fa-tiktok"></i>
-                        </a>
-                    </div>
+                    <h3 style="margin-top: 40px; margin-bottom: 15px;">Notre partenaire</h3>
+                    <p style="margin-bottom: 15px; font-size: 15px;">
+                        Découvrez <strong>FreshMood</strong>, notre partenaire spécialisé dans les smoothies frais et sandwichs gourmands. 
+                        Parfait pour compléter votre séjour.
+                    </p>
+                    
+                    <a href="https://freshmood.bj" target="_blank" style="display: inline-flex; align-items: center; gap: 10px; color: white; text-decoration: none; font-weight: 600; margin-top: 10px;">
+                        <i class="fas fa-external-link-alt"></i>
+                        Visiter freshmood.bj
+                    </a>
                 </div>
                 
                 <div style="background: rgba(255,255,255,0.1); padding: 30px; border-radius: var(--radius);">
@@ -1089,7 +1186,7 @@
                     <div style="margin-top: 25px; padding: 20px; background: rgba(255,255,255,0.05); border-radius: var(--radius);">
                         <p style="font-size: 14px; text-align: center;">
                             <i class="fas fa-info-circle"></i> 
-                            Le site vérifie automatiquement les dates de disponibilité. Réservation simple et rapide sans création de compte.
+                            Réservation simple et rapide sans création de compte.
                         </p>
                     </div>
                 </div>
@@ -1115,17 +1212,17 @@
                             <ul class="footer-links">
                                 <li><a href="#accueil">Accueil</a></li>
                                 <li><a href="#studio">Le Studio</a></li>
-                                <li><a href="#reservation">Tarifs & Réservation</a></li>
+                                <li><a href="#tarifs">Nos Tarifs</a></li>
                                 <li><a href="#contact">Contact</a></li>
                             </ul>
                         </div>
                         
                         <div>
-                            <h3>Contact</h3>
+                            <h3>Contact & Partenaires</h3>
                             <ul class="footer-links">
-                                <li><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> WhatsApp</li>
-                                <li><i class="fas fa-phone" style="margin-right: 8px;"></i> +229 66 95 39 34</li>
+                                <li><i class="fab fa-whatsapp" style="margin-right: 8px;"></i> +229 66 95 39 34</li>
                                 <li><i class="fas fa-map-marker-alt" style="margin-right: 8px;"></i> Akpakpa, Cotonou</li>
+                                <li><i class="fas fa-handshake" style="margin-right: 8px; color: var(--accent);"></i> <a href="https://freshmood.bj" target="_blank" style="color: var(--accent);">FreshMood.bj</a></li>
                             </ul>
                         </div>
                     </div>
@@ -1135,7 +1232,7 @@
             <div class="copyright">
                 <p>© <span id="current-year">2024</span> Studio Cotonou – Akpakpa. Tous droits réservés.</p>
                 <p style="margin-top: 10px; font-size: 13px;">
-                    Contact direct : +229 66 95 39 34 (WhatsApp/Téléphone)
+                    Contact : +229 66 95 39 34 (WhatsApp/Téléphone) • Partenaire : <a href="https://freshmood.bj" target="_blank" style="color: var(--accent);">FreshMood.bj</a>
                 </p>
             </div>
         </div>
@@ -1195,12 +1292,17 @@
             });
             
             // Price selection
-            document.querySelectorAll('.price-option').forEach(option => {
+            document.querySelectorAll('.tarif-option').forEach(option => {
                 option.addEventListener('click', function() {
-                    document.querySelectorAll('.price-option').forEach(opt => {
-                        opt.classList.remove('selected');
-                    });
-                    this.classList.add('selected');
+                    // Only allow selection for studio options, not FreshMood options
+                    if (!this.classList.contains('accent')) {
+                        document.querySelectorAll('.tarif-option').forEach(opt => {
+                            if (!opt.classList.contains('accent')) {
+                                opt.classList.remove('selected');
+                            }
+                        });
+                        this.classList.add('selected');
+                    }
                 });
             });
         });

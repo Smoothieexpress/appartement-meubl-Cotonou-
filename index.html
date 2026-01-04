@@ -9,11 +9,11 @@
     <style>
         /* Variables et reset */
         :root {
-            --beige: #F5E8D3; /* Fond lumineux et cosy */
-            --terracotta: #D9822B; /* Titres/boutons principaux */
-            --rose: #F4A89C; /* Accents doux */
-            --vert: #A3C4BC; /* Détails naturels */
-            --chocolat: #5C3A21; /* Texte courant */
+            --beige: #F5E8D3;
+            --terracotta: #D9822B;
+            --rose: #F4A89C;
+            --vert: #A3C4BC;
+            --chocolat: #5C3A21;
             --blanc: #FFFFFF;
             --gris-clair: #F8F5F0;
             --gris: #8C7E6E;
@@ -243,6 +243,132 @@
         .btn-whatsapp:hover {
             background: #128C7E;
             border-color: #128C7E;
+        }
+
+        /* Politique d'annulation Section */
+        .politique-section {
+            background: var(--gris-clair);
+            padding: 100px 0;
+        }
+
+        .politique-container {
+            max-width: 900px;
+            margin: 0 auto;
+            background: var(--blanc);
+            border-radius: var(--radius);
+            padding: 50px;
+            box-shadow: var(--shadow);
+            border: 1px solid rgba(217, 130, 43, 0.05);
+        }
+
+        .politique-header {
+            text-align: center;
+            margin-bottom: 50px;
+        }
+
+        .politique-title {
+            font-size: 36px;
+            margin-bottom: 15px;
+            position: relative;
+            display: inline-block;
+        }
+
+        .politique-title:after {
+            content: '';
+            position: absolute;
+            bottom: -8px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 60px;
+            height: 2px;
+            background: var(--terracotta);
+        }
+
+        .politique-subtitle {
+            font-size: 17px;
+            color: var(--gris);
+            max-width: 700px;
+            margin: 15px auto 0;
+            line-height: 1.6;
+        }
+
+        .politique-card {
+            background: var(--gris-clair);
+            border-radius: var(--radius);
+            padding: 30px;
+            margin-bottom: 30px;
+            border-left: 4px solid var(--terracotta);
+        }
+
+        .politique-card h3 {
+            color: var(--terracotta);
+            margin-bottom: 20px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .politique-card h3 i {
+            font-size: 20px;
+        }
+
+        .politique-list {
+            list-style: none;
+            margin: 20px 0;
+        }
+
+        .politique-list li {
+            margin-bottom: 12px;
+            padding-left: 25px;
+            position: relative;
+            font-size: 15px;
+        }
+
+        .politique-list li:before {
+            content: '•';
+            position: absolute;
+            left: 10px;
+            color: var(--terracotta);
+            font-weight: bold;
+        }
+
+        .politique-list li strong {
+            color: var(--terracotta);
+        }
+
+        .important-note {
+            background: rgba(217, 130, 43, 0.1);
+            border-left: 4px solid var(--terracotta);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            margin: 30px 0;
+        }
+
+        .important-note h4 {
+            color: var(--terracotta);
+            margin-bottom: 10px;
+        }
+
+        .warning-box {
+            background: rgba(231, 76, 60, 0.1);
+            border-left: 4px solid #e74c3c;
+            padding: 20px;
+            border-radius: var(--radius-sm);
+            margin: 30px 0;
+        }
+
+        .warning-box h4 {
+            color: #e74c3c;
+            margin-bottom: 10px;
+        }
+
+        .juridique-note {
+            font-size: 14px;
+            color: var(--gris);
+            text-align: center;
+            margin-top: 40px;
+            padding-top: 20px;
+            border-top: 1px solid var(--gris-clair);
         }
 
         /* Tarifs Section */
@@ -577,6 +703,37 @@
             cursor: not-allowed;
         }
 
+        .conditions-checkbox {
+            margin: 25px 0;
+            padding: 20px;
+            background: var(--gris-clair);
+            border-radius: var(--radius-sm);
+        }
+
+        .checkbox-group {
+            display: flex;
+            align-items: flex-start;
+            gap: 10px;
+        }
+
+        .checkbox-group input[type="checkbox"] {
+            margin-top: 3px;
+        }
+
+        .checkbox-group label {
+            font-size: 14px;
+            line-height: 1.5;
+        }
+
+        .checkbox-group label a {
+            color: var(--terracotta);
+            text-decoration: none;
+        }
+
+        .checkbox-group label a:hover {
+            text-decoration: underline;
+        }
+
         /* Footer */
         footer {
             background: var(--chocolat);
@@ -683,6 +840,14 @@
                 padding: 60px 0;
             }
             
+            .politique-section {
+                padding: 80px 0;
+            }
+            
+            .politique-container {
+                padding: 30px;
+            }
+            
             .hero {
                 padding: 140px 0 80px;
             }
@@ -695,11 +860,11 @@
                 font-size: 17px;
             }
             
-            .section-title {
+            .politique-title, .section-title {
                 font-size: 28px;
             }
             
-            .section-subtitle {
+            .politique-subtitle, .section-subtitle {
                 font-size: 16px;
             }
             
@@ -779,6 +944,10 @@
                 padding: 0 20px;
             }
             
+            .politique-container {
+                padding: 25px 20px;
+            }
+            
             .hero h1 {
                 font-size: 28px;
             }
@@ -787,7 +956,7 @@
                 font-size: 16px;
             }
             
-            .section-title {
+            .politique-title, .section-title {
                 font-size: 26px;
             }
             
@@ -823,7 +992,7 @@
                 font-size: 15px;
             }
             
-            .section-title {
+            .politique-title, .section-title {
                 font-size: 24px;
             }
             
@@ -866,6 +1035,83 @@
             </button>
         </div>
     </header>
+
+    <!-- Politique d'annulation Section -->
+    <section class="politique-section" id="politique">
+        <div class="container">
+            <div class="politique-container">
+                <div class="politique-header">
+                    <h1 class="politique-title">Politique d'Annulation</h1>
+                    <p class="politique-subtitle">
+                        Politique équilibrée et professionnelle pour votre confort et notre organisation
+                    </p>
+                </div>
+                
+                <div class="politique-card">
+                    <h3><i class="fas fa-calendar-times"></i> Délais d'annulation</h3>
+                    <ul class="politique-list">
+                        <li><strong>Plus de 72h avant l'arrivée</strong> : Annulation gratuite avec remboursement à 100%</li>
+                        <li><strong>Entre 72h et 24h avant l'arrivée</strong> : Remboursement à 50% du montant payé</li>
+                        <li><strong>Moins de 24h avant l'arrivée</strong> : Aucun remboursement</li>
+                    </ul>
+                </div>
+                
+                <div class="politique-card">
+                    <h3><i class="fas fa-money-bill-wave"></i> Montant remboursé</h3>
+                    <ul class="politique-list">
+                        <li><strong>100%</strong> si annulation plus de 72h avant l'arrivée</li>
+                        <li><strong>50%</strong> si annulation entre 72h et 24h avant l'arrivée</li>
+                        <li><strong>0%</strong> si annulation moins de 24h avant l'arrivée</li>
+                        <li><strong>Frais non remboursables</strong> : Services de ménage, frais de service, et formules smoothies/sandwichs</li>
+                    </ul>
+                </div>
+                
+                <div class="politique-card">
+                    <h3><i class="fas fa-exclamation-triangle"></i> Cas particuliers</h3>
+                    <ul class="politique-list">
+                        <li><strong>No-show (client qui ne se présente pas)</strong> : Aucun remboursement</li>
+                        <li><strong>Force majeure</strong> (urgence médicale grave, décès, événements exceptionnels) : Justificatif obligatoire. Proposition prioritaire de report, pas de remboursement automatique</li>
+                        <li><strong>Annulation par le propriétaire</strong> : Remboursement à 100% ou report avec avantage (smoothie offert / remise)</li>
+                    </ul>
+                </div>
+                
+                <div class="politique-card">
+                    <h3><i class="fas fa-calendar-alt"></i> Report de séjour</h3>
+                    <ul class="politique-list">
+                        <li><strong>Report possible une seule fois</strong>, sous 30 jours maximum</li>
+                        <li>Sous réserve de disponibilité du studio</li>
+                        <li>Aucun remboursement si la nouvelle date est annulée</li>
+                        <li>Les formules smoothies et sandwichs peuvent être reportées si possible</li>
+                    </ul>
+                </div>
+                
+                <div class="warning-box">
+                    <h4><i class="fas fa-exclamation-circle"></i> Attention</h4>
+                    <p>Les formules avec smoothies et sandwichs sont <strong>non remboursables</strong> en cas d'annulation. En cas de report, elles peuvent être reportées si possible, mais les produits alimentaires déjà préparés ne sont pas remboursés.</p>
+                </div>
+                
+                <div class="politique-card">
+                    <h3><i class="fas fa-calendar-week"></i> Séjours longs (semaine / mois)</h3>
+                    <ul class="politique-list">
+                        <li><strong>Acompte non remboursable de 30%</strong> à la réservation</li>
+                        <li>Solde payé à l'arrivée ou 24h avant</li>
+                        <li>Annulation moins de 7 jours avant → acompte conservé</li>
+                    </ul>
+                </div>
+                
+                <div class="important-note">
+                    <h4><i class="fas fa-info-circle"></i> Note importante</h4>
+                    <p><strong>Toute réservation confirmée vaut acceptation pleine et entière de la politique d'annulation et de remboursement.</strong></p>
+                    <p style="margin-top: 10px;">Cette politique est conçue pour être équitable pour nos clients tout en nous permettant de maintenir un service de qualité.</p>
+                </div>
+                
+                <div class="juridique-note">
+                    <p>Cette politique d'annulation est applicable à toutes les réservations effectuées sur le site Cosylogement.</p>
+                    <p>Dernière mise à jour : Janvier 2024</p>
+                </div>
+            </div>
+        </div>
+    </section>
 
     <!-- Hero Section -->
     <section class="hero" id="accueil">
@@ -1165,6 +1411,18 @@
                         <textarea class="form-control" id="message" placeholder="Préférences, heure d'arrivée, etc."></textarea>
                     </div>
                     
+                    <!-- Checkbox d'acceptation des conditions -->
+                    <div class="conditions-checkbox">
+                        <div class="checkbox-group">
+                            <input type="checkbox" id="accept-conditions" required>
+                            <label for="accept-conditions">
+                                Je reconnais avoir lu et j'accepte pleinement et entièrement la 
+                                <a href="#politique" onclick="scrollToPolitique()">politique d'annulation et de remboursement</a> 
+                                de Cosylogement.
+                            </label>
+                        </div>
+                    </div>
+                    
                     <button type="submit" class="btn btn-primary submit-btn" id="submit-btn">
                         <i class="fas fa-paper-plane"></i>
                         Envoyer la demande de réservation
@@ -1205,110 +1463,216 @@
                 <div class="footer-column">
                     <h3>Informations</h3>
                     <ul class="footer-links">
+                        <li><a href="#politique">Politique d'annulation</a></li>
                         <li><a href="#partenaire">Notre Partenaire</a></li>
+                        <li><a href="#reservationre Partenaire</a></li>
                         <li><a href="#reservation">Réservation</a></li>
+                        <li><a href="#">Réservation</a></li>
                         <li><a href="#contact">Contact</a></li>
-                        <li><a href="https://freshmood.bj" target="_blank">FreshMood</a></li>
+                    </ul>
+                </div>
+contact">Contact</a></li>
                     </ul>
                 </div>
                 
+                <div class="                
                 <div class="footer-column">
                     <h3>Contact</h3>
+                    <ul class="footer-column">
+                    <h3>Contact</h3>
                     <ul class="footer-contact">
+                        <lifooter-contact">
                         <li>
-                            <i class="fab fa-whatsapp"></i>
+                            <i class="fab fa>
+                            <i class="fab fa-whatsapp"></i-whatsapp"></i>
+                           >
                             <div>
+                                <strong>WhatsApp</strong><br>
+                                +229 66 95  <div>
                                 <strong>WhatsApp</strong><br>
                                 +229 66 95 39 34
                             </div>
+39 34
+                            </div>
+                        </li>
+                        <li>
                         </li>
                         <li>
                             <i class="fas fa-envelope"></i>
                             <div>
-                                <strong>Email</strong><br>
+                            <i class="fas fa-envelope"></i>
+                            <div>
+                                <strong>Email</                                <strong>Email</strongstrong><br>
+                                maurice><br>
                                 mauricegerauds@gmail.com
                             </div>
                         </li>
                         <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Adresse</strong><br>
-                                Akpakpa, Cotonou
+                            <i class="fasgerauds@gmail.com
                             </div>
                         </li>
+                        <li>
+                            <i class="fas fa-map-marker-alt"></i>
+ fa-map-marker-alt"></i>
+                            <div>
+                                <strong>Adresse</strong><br>
+                                                           <div>
+                                <strong>Adresse</strong><br>
+                                Akpakpa, Coton Akpakpa, Cotonou
+                            </div>
+                        </ou
+                            </div>
+                        </li>
+                    </ul>
+                </li>
                     </ul>
                 </div>
             </div>
             
+           div>
+            </div>
+            
             <div class="copyright">
-                <p>© <span id="current-year">2024</span> Cosylogement – Studio à Akpakpa, Cotonou. Tous droits réservés.</p>
-                <p style="margin-top: 10px; font-size: 13px;">
-                    Contact : +229 66 95 39 34 | mauricegerauds@gmail.com
+                <p>© <span id <div class="copyright">
+                <p>© <span id="current-year">2024</span="current-year">2024</span> Cosylogement – Studio à> Cosylogement – Studio à Akpakpa, Cotonou. Akpakpa, Cotonou. Tous droits réservés.</p Tous droits réservés.</p>
+                <p style=">
+                <p style="margin-topmargin-top: 10px; font-size: 13px;">
+                    Contact: 10px; font-size: 13px;">
+                    Contact : +229 66 95  : +229 66 95 39 34 | mauriceger39 34 | mauricegerauds@gmail.com
+               auds@gmail.com
                 </p>
             </div>
-        </div>
+        </div </p>
+            </div>
+       >
+    </footer>
+
+    <!-- </div>
     </footer>
 
     <!-- WhatsApp Float -->
-    <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20m'intéresse%20au%20studio%20Cosylogement%20à%20Akpakpa" 
-       class="whatsapp-float" target="_blank" title="Contact WhatsApp">
-        <i class="fab fa-whatsapp"></i>
+    <a href WhatsApp Float -->
+    <a href="https://wa.me/229669="https://wa.me/22966953934?text=Bonjour%53934?text=Bonjour%20!%20Je%20m20!%20Je%20m'intéresse%20au%20'intéresse%20au%20studio%20Cosylogstudio%20Cosylogement%20à%20Akpakement%20à%20Akpakpa" 
+       class="whatspa" 
+       class="whatsapp-float" target="_blank"app-float" target="_blank" title="Contact WhatsApp">
+        <i title="Contact WhatsApp">
+        <i class="fab fa-whatsapp class="fab fa-whatsapp"></i>
+    </a"></i>
     </a>
 
     <script>
+        document.addEventListener>
+
+    <script>
         document.addEventListener('DOMContentLoaded', function() {
+('DOMContentLoaded', function() {
             // Initialisation
+                       // Initialisation
             initApp();
+        });
+
+        function initApp() initApp();
         });
 
         function initApp() {
             // Update year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
+ {
+            // Update year in footer
+            document.getElementById('current-year            document.getElementById('current-year').textContent = new Date().get').textContent = new Date().getFullYear();
+            
+            // Setup eventFullYear();
             
             // Setup event listeners
             setupEventListeners();
+ listeners
+            setupEventListeners();
             
             // Setup UI
+            setup            
+            // Setup UI
             setupUI();
+            
+            // Setup carouselUI();
             
             // Setup carousel
             setupCarousel();
             
             // Setup forms
-            setupForms();
+            setup
+            setupCarousel();
             
+            // Setup forms
+            setupForms();
+Forms();
+            
+            // Initialize dates
+            initDates();
+        }
+
+        function            
             // Initialize dates
             initDates();
         }
 
         function setupEventListeners() {
             // Mobile menu toggle
+            const setupEventListeners() {
+            // Mobile menu toggle
             const menuBtn = document.getElementById('mobile-menu-btn');
             const nav = document.getElementById('main-nav');
             
             menuBtn.addEventListener('click', function(e) {
+ menuBtn = document.getElementById('mobile-menu-btn');
+            const nav = document.getElementById('main-nav');
+            
+            menuBtn.addEventListener('click', function(e) {
                 e.stopPropagation();
+                               e.stopPropagation();
                 nav.classList.toggle('active');
-                this.innerHTML = nav.classList.contains('active') ? 
+ nav.classList.toggle('active');
+                this.innerHTML = nav.classList.contains('                this.innerHTML = nav.classList.contains('active') ? 
+                    '<i class="fas fa-times"></i>' : 
+                    '<i class="fas faactive') ? 
                     '<i class="fas fa-times"></i>' : 
                     '<i class="fas fa-bars"></i>';
+           -bars"></i>';
             });
+            
+            // Close mobile menu when clicking links
+            document.querySelectorAll('nav a').forEach(link => {
+                link.addEventListener('click', });
             
             // Close mobile menu when clicking links
             document.querySelectorAll('nav a').forEach(link => {
                 link.addEventListener('click', () => {
                     nav.classList.remove('active');
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+ () => {
+                    nav.classList.remove('active');
+                    menuBtn.innerHTML = '<                    menuBtn.innerHTML = '<i class="fas fa-bars"></i class="fas fa-bars"></i>';
+                });
+            });
+            
+           i>';
                 });
             });
             
             // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
+ // Close mobile menu when clicking outside
+            document.addEventListener('click', function(event            document.addEventListener('click', function(event) {
+                if (nav.classList.contains('active') && 
+                    !nav) {
                 if (nav.classList.contains('active') && 
                     !nav.contains(event.target) && 
-                    !menuBtn.contains(event.target)) {
+.contains(event.target) && 
+                    !                    !menuBtn.contains(event.target)) {
                     nav.classList.remove('active');
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    menuBtn.innerHTML = '<i classmenuBtn.contains(event.target)) {
+                    nav.classList.remove('active');
+                    menuBtn.innerHTML = '<i class="fas="fas fa-bars"></i>';
+                }
+            });
+            
+            // Header fa-bars"></i>';
                 }
             });
             
@@ -1316,17 +1680,32 @@
             window.addEventListener('scroll', handleHeaderScroll);
         }
 
+        scroll effect
+            window.addEventListener('scroll', handleHeaderScroll);
+        }
+
         function setupUI() {
+            function setupUI() {
             // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            document.querySelector // Smooth scrolling for anchor links
+           All('a[href^="#"]').forEach(anchor => {
+                anchor.addEventListener('click', function(e document.querySelectorAll('a[href^="#"]').forEach(anchor => {
                 anchor.addEventListener('click', function(e) {
+                    const targetId) {
                     const targetId = this.getAttribute('href');
+                    if ( = this.getAttribute('href');
                     if (targetId === '#') return;
                     
+                    const targetElement = documenttargetId === '#') return;
+                    
                     const targetElement = document.querySelector(targetId);
+                    if (target.querySelector(targetId);
                     if (targetElement) {
+                        e.preventDefaultElement) {
                         e.preventDefault();
+                       ();
                         window.scrollTo({
+                            window.scrollTo({
                             top: targetElement.offsetTop - 80,
                             behavior: 'smooth'
                         });
@@ -1334,204 +1713,438 @@
                 });
             });
             
+            // Update top: targetElement.offsetTop - 80,
+                            behavior: 'smooth'
+                        });
+                    }
+                });
+            });
+            
             // Update active nav link on scroll
+            window.addEventListener('scroll', updateActiveNavLink active nav link on scroll
             window.addEventListener('scroll', updateActiveNavLink);
             
             // Initialize active nav link
+           );
+            
+            // Initialize active nav link
             updateActiveNavLink();
+        updateActiveNavLink();
+        }
+
+        // Fonction pour }
+
+        // Fonction pour scroller vers la politique
+ scroller vers la politique
+        function scrollToPolitique() {
+            const politique        function scrollToPolitique() {
+            const politiqueSection = document.getElementById('politique');
+            if (politiqueSectionSection = document.getElementById('politique');
+            if (politiqueSection) {
+                window.scrollTo({
+                    top) {
+                window.scrollTo({
+                    top: politiqueSection.offsetTop - 80,
+                    behavior: ': politiqueSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+            }
+           smooth'
+                });
+            }
+            return false;
+        }
+
+        return false;
         }
 
         function setupCarousel() {
-            const container = document.getElementById('carousel-container');
+            const container = function setupCarousel() {
+            const container = document.getElementById('carousel-container document.getElementById('carousel-container');
+           ');
             const slides = container.querySelectorAll('.carousel-slide');
             const prevBtn = document.getElementById('carousel-prev');
+            const next const slides = container.querySelectorAll('.carousel-slide');
+            const prevBtn = document.getElementById('carousel-prev');
             const nextBtn = document.getElementById('carousel-next');
+           Btn = document.getElementById('carousel-next');
             const dotsContainer = document.getElementById('carousel-dots');
             
+ const dotsContainer = document.getElementById('carousel-dots');
+            
             let currentSlide = 0;
-            const totalSlides = slides.length;
+            const total            let currentSlide = 0;
+            const totalSlides = slidesSlides = slides.length;
+            let autoSlideInterval;
+            
+           .length;
             let autoSlideInterval;
             
             // Create dots
             slides.forEach((_, index) => {
+                // Create dots
+            slides.forEach((_, index) => {
                 const dot = document.createElement('button');
+                dot const dot = document.createElement('button');
                 dot.classList.add('carousel-dot');
+                if (index === .classList.add('carousel-dot');
                 if (index === 0) dot.classList.add('active');
-                dot.addEventListener('click', () => goToSlide(index));
+0) dot.classList.add('active');
+                dot.addEventListener('click',                dot.addEventListener('click', () => goToSlide(index));
                 dotsContainer.appendChild(dot);
             });
             
-            const dots = document.querySelectorAll('.carousel-dot');
+            () => goToSlide(index));
+                dotsContainer.appendChild(dot);
+            });
+            
+            const dots = document.querySelectorAll const dots = document.querySelectorAll('.car('.carousel-dot');
             
             // Update carousel position
             function updateCarousel() {
-                container.style.transform = `translateX(-${currentSlide * 100}%)`;
+               ousel-dot');
+            
+            // Update carousel position
+            function updateCarousel() {
+                container.style.transform = `translateX(-${current container.style.transform = `translateX(-${currentSlide * 100}%)`;
                 
                 // Update dots
-                dots.forEach((dot, index) => {
+               Slide * 100}%)`;
+                
+                // Update dots
+                dots.forEach dots.forEach((dot, index) => {
+                    dot.classList.toggle('active', index === currentSlide);
+((dot, index) => {
                     dot.classList.toggle('active', index === currentSlide);
                 });
             }
             
-            // Go to specific slide
+            // Go to specific                });
+            }
+            
+            // Go slide
+            function goToSlide(slideIndex) {
+                currentSlide = to specific slide
             function goToSlide(slideIndex) {
                 currentSlide = slideIndex;
+                if (currentSlide >= totalSlides) slideIndex;
                 if (currentSlide >= totalSlides) currentSlide = 0;
-                if (currentSlide < 0) currentSlide = totalSlides - 1;
+                if ( currentSlide = 0;
+                if (currentSlide < 0) currentSlide = totalSlides - currentSlide < 0) currentSlide = totalSlides - 1;
+                updateCarousel();
+            }
+            
+1;
                 updateCarousel();
             }
             
             // Next slide
             function nextSlide() {
+                goTo            // Next slide
+            function nextSlide() {
                 goToSlide(currentSlide + 1);
             }
             
-            // Previous slide
+Slide(currentSlide + 1);
+            }
+            
+            // Previous slide            // Previous slide
+            function prevSlide() {
+                goTo
             function prevSlide() {
                 goToSlide(currentSlide - 1);
             }
             
+            // Auto slideSlide(currentSlide - 1);
+            }
+            
             // Auto slide every 5 seconds
+            function startAutoSlide every 5 seconds
             function startAutoSlide() {
+                autoSlideInterval = setInterval(nextSlide,() {
                 autoSlideInterval = setInterval(nextSlide, 5000);
+            }
+            
+            function stop 5000);
             }
             
             function stopAutoSlide() {
                 clearInterval(autoSlideInterval);
             }
             
+AutoSlide() {
+                clearInterval(autoSlideInterval);
+            }
+            
             // Event listeners
+                       // Event listeners
             prevBtn.addEventListener('click', () => {
+                prevSlide();
+                stopAuto prevBtn.addEventListener('click', () => {
                 prevSlide();
                 stopAutoSlide();
                 startAutoSlide();
             });
             
+Slide();
+                startAutoSlide();
+            });
+            
+            nextBtn.addEventListener('click', () => {
+                nextSlide();
             nextBtn.addEventListener('click', () => {
                 nextSlide();
                 stopAutoSlide();
                 startAutoSlide();
+                stopAutoSlide();
+                startAutoSlide();
             });
             
+            // P            });
+            
             // Pause auto slide on hover
+            container.addEventListener('mouseenter', stopAutoSlideause auto slide on hover
             container.addEventListener('mouseenter', stopAutoSlide);
+            container.addEventListener);
             container.addEventListener('mouseleave', startAutoSlide);
+            
+            // Start('mouseleave', startAutoSlide);
             
             // Start auto slide
             startAutoSlide();
         }
 
+        function auto slide
+            startAutoSlide();
+        }
+
         function initDates() {
+            // Set minimum date for initDates() {
             // Set minimum date for reservation (today)
             const today = new Date();
+            const tomorrow reservation (today)
+            const today = new Date();
             const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
+            tomorrow.setDate = new Date(today);
+            tomorrow(tomorrow.getDate() + 1);
+            
+            const todayStr = today.toISOString().split('.setDate(tomorrow.getDate() + 1);
             
             const todayStr = today.toISOString().split('T')[0];
-            const tomorrowStr = tomorrow.toISOString().split('T')[0];
+            const tomorrowStr = tomorrow.toISOStringT')[0];
+            const tomorrowStr = tomorrow.toISOString().split().split('T')[0];
             
             document.getElementById('date-arrivee').min = todayStr;
-            document.getElementById('date-depart').min = tomorrowStr;
+           ('T')[0];
+            
+            document.getElementById('date-arrivee').min = todayStr;
+            document.getElementById('date-depart').min = tomorrow document.getElementById('date-depart').min = tomorrowStr;
+            
+            // Set initial values (tomorrow andStr;
             
             // Set initial values (tomorrow and day after tomorrow)
+            document.getElementById('date- day after tomorrow)
             document.getElementById('date-arrivee').value = tomorrowStr;
             
+            const afterTomorrowarrivee').value = tomorrowStr;
+            
             const afterTomorrow = new Date(tomorrow);
-            afterTomorrow.setDate(afterTomorrow.getDate() + 1);
-            document.getElementById('date-depart').value = afterTomorrow.toISOString().split('T')[0];
+            = new Date(tomorrow);
+            afterTomorrow.setDate(after afterTomorrow.setDate(afterTomorrow.getDate() + 1);
+            document.getElementById('date-departTomorrow.getDate() + 1);
+            document.getElementById('date-depart').value = afterTomorrow.toISOString().').value = afterTomorrow.toISOString().split('T')[0];
             
             // Check initial availability
-            checkAvailability();
+            checkAvailabilitysplit('T')[0];
+            
+            // Check initial availability
+           ();
+        }
+
+        function setupForms() {
+            const reservationForm = document.getElementById checkAvailability();
         }
 
         function setupForms() {
             const reservationForm = document.getElementById('reservationForm');
+           ('reservationForm');
             const submitBtn = document.getElementById('submit-btn');
             
-            // Date availability simulation (dans la réalité, ce serait une API)
+            // Date availability simulation const submitBtn = document.getElementById('submit-btn');
+            
+            // Date availability simulation (dans la réalité, (dans la réalité, ce serait une API)
             const bookedDates = [
-                '2024-12-25', '2024-12-26', // Noël
-                '2024-12-31', '2025-01-01', // Nouvel An
+                '2024- ce serait une API)
+            const bookedDates = [
+                '2024-12-25', '20212-25', '2024-12-26', // Noël
+                '2024-124-12-26', // Noël
+                '2024-12-31', '2025-31', '2025-01-01', // Nouvel An
+            ];
+            
+            // Check date availability-01-01', // Nouvel An
             ];
             
             // Check date availability
             function checkAvailability() {
-                const arriveeDate = document.getElementById('date-arrivee').value;
+               
+            function checkAvailability() {
+                const arriveeDate = document.getElementById('date-arrivee'). const arriveeDate = document.getElementById('date-arrivee').value;
+                const departDate = documentvalue;
                 const departDate = document.getElementById('date-depart').value;
+                const arriveeStatus = document.getElementById.getElementById('date-depart').value;
                 const arriveeStatus = document.getElementById('arrivee-status');
+                const('arrivee-status');
                 const departStatus = document.getElementById('depart-status');
                 
+                // Reset departStatus = document.getElementById('depart-status');
+                
                 // Reset status
+                arriveeStatus.textContent status
                 arriveeStatus.textContent = '';
+                departStatus.textContent = = '';
                 departStatus.textContent = '';
+                arriveeStatus.className = 'date-status';
+ '';
                 arriveeStatus.className = 'date-status';
                 departStatus.className = 'date-status';
                 
+                               departStatus.className = 'date-status';
+                
                 // Validate dates
+                if (!arriveeDate || !dep // Validate dates
                 if (!arriveeDate || !departDate) return;
                 
+                constartDate) return;
+                
                 const arrivee = new Date(arriveeDate);
+                const depart = arrivee = new Date(arriveeDate);
                 const depart = new Date(departDate);
+                const today new Date(departDate);
                 const today = new Date();
-                today.setHours(0, 0, 0, 0);
+                today.setHours(0, 0, = new Date();
+                today.setHours(0, 0, 0,  0, 0);
+                
+                // Check if arrival is in the past0);
                 
                 // Check if arrival is in the past
                 if (arrivee < today) {
                     arriveeStatus.textContent = '❌ Date déjà passée';
                     arriveeStatus.classList.add('unavailable');
+                    submit
+                if (arrivee < today) {
+                    arriveeStatus.textContent = '❌ Date déjà passée';
+                    arriveeStatus.classList.add('unavailable');
                     submitBtn.disabled = true;
+                    returnBtn.disabled = true;
                     return;
                 }
                 
                 // Check if departure is before arrival
-                if (depart <= arrivee) {
+               ;
+                }
+                
+                // Check if departure is before arrival
+                if ( if (depart <= arrivee) {
+                    departStatus.textContent = 'depart <= arrivee) {
                     departStatus.textContent = '❌ Doit être après l\'arrivée';
+                    departStatus.classList❌ Doit être après l\'arrivée';
                     departStatus.classList.add('unavailable');
-                    submitBtn.disabled = true;
+                   .add('unavailable');
+                    submitBtn submitBtn.disabled = true;
+                    return;
+                }
+                
+                // Check if dates are booked
+                let is.disabled = true;
                     return;
                 }
                 
                 // Check if dates are booked
                 let isAvailable = true;
                 
+                // Simulate checking each day between arrival and departureAvailable = true;
+                
                 // Simulate checking each day between arrival and departure
                 const checkDate = new Date(arrivee);
+                while
+                const checkDate = new Date(arrivee);
                 while (checkDate < depart) {
+                    const (checkDate < depart) {
                     const dateStr = checkDate.toISOString().split('T')[0];
-                    if (bookedDates.includes(dateStr)) {
+ dateStr = checkDate.toISOString().split('T')[0];
+                    if (bookedDates.includes(date                    if (bookedDates.includes(dateStr)) {
                         isAvailable = false;
                         break;
                     }
-                    checkDate.setDate(checkDate.getDate() + 1);
+Str)) {
+                        isAvailable = false;
+                        break;
+                    }
+                    checkDate.setDate(checkDate.getDate()                    checkDate.setDate(checkDate.getDate() + 1);
                 }
                 
                 if (isAvailable) {
-                    arriveeStatus.textContent = '✅ Date disponible';
+ + 1);
+                }
+                
+                if (isAvailable) {
+                    arriveeStatus.textContent = '                    arriveeStatus.textContent = '✅ Date disponible';
                     arriveeStatus.classList.add('available');
-                    departStatus.textContent = '✅ Date disponible';
+                   ✅ Date disponible';
+                    arriveeStatus.classList.add('available');
+                    departStatus departStatus.textContent = '✅ Date disponible';
+                    departStatus.classList.add('.textContent = '✅ Date disponible';
                     departStatus.classList.add('available');
                     submitBtn.disabled = false;
                 } else {
-                    arriveeStatus.textContent = '⚠️ Certaines dates sont réservées';
+                    arriveavailable');
+                    submitBtn.disabled = false;
+                } else {
+                    arriveeStatus.textContent = '⚠️ Certaines dates sont réserveStatus.textContent = '⚠️ Certaines dates sont réservées';
+                    arriveeStatus.classList.add('unées';
                     arriveeStatus.classList.add('unavailable');
+                    departStatus.textContent = '⚠️ Certaines datesavailable');
                     departStatus.textContent = '⚠️ Certaines dates sont réservées';
+                    departStatus.classList.add('unavailable');
+                    submitBtn.disabled = true;
+                sont réservées';
                     departStatus.classList.add('unavailable');
                     submitBtn.disabled = true;
                 }
             }
             
             // Date change listeners
+            document.getElementById('date-arr }
+            }
+            
+            // Date change listeners
             document.getElementById('date-arrivee').addEventListener('change', function() {
+                const arriveivee').addEventListener('change', function() {
                 const arriveeDate = new Date(this.value);
+eDate = new Date(this.value);
                 const minDepartDate = new Date(arriveeDate);
-                minDepartDate.setDate(minDepartDate.getDate() + 1);
+                minDepart                const minDepartDate = new Date(arriveeDate);
+                minDepartDate.setDate(minDepartDateDate.setDate(minDepartDate.getDate() + 1);
+                
+                document.getElementById('date-depart').min = minDepartDate.toISOString().split.getDate() + 1);
                 
                 document.getElementById('date-depart').min = minDepartDate.toISOString().split('T')[0];
                 
+                //('T')[0];
+                
                 // If current departure date is before new minimum, update it
+                const currentDepart If current departure date is before new minimum, update it
                 const currentDepart = new Date(document.getElementById('date-depart').value);
+                if = new Date(document.getElementById('date-depart').value);
                 if (currentDepart <= arriveeDate) {
-                    document.getElementById('date-depart').value = minDepartDate.toISOString().split('T')[0];
+                    (currentDepart <= arriveeDate) {
+                    document.getElementById('date-depart').value = minDepartDate.toISO document.getElementById('date-depart').value = minDepartDate.toISOString().split('T')[0];
+String().split('T')[0];
+                }
+                
+                checkAvailability();
+            });
+            
                 }
                 
                 checkAvailability();
@@ -1539,45 +2152,102 @@
             
             document.getElementById('date-depart').addEventListener('change', checkAvailability);
             
+            // Form            document.getElementById('date-depart').addEventListener('change', checkAvailability);
+            
             // Form submission
+            reservationForm.addEventListener('submit submission
             reservationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
+                // Vérifier l', function(e) {
+                e.preventDefault();
+                
+                // Vérifier l'acceptation des conditions
+'acceptation des conditions
+                const acceptConditions = document.getElementById('accept-conditions');
+                if (!                const acceptConditions = document.getElementById('accept-conditions');
+                if (!acceptConditions.checked) {
+                    alert('Veuillez accepteracceptConditions.checked) {
+                    alert('Veuillez accepter la politique d\'annulation et de remboursement pour continuer.');
+ la politique d\'annulation et de remboursement pour continuer.');
+                    return;
+                }
+                
+                // Show loading state
+                const                    return;
+                }
+                
                 // Show loading state
                 const originalText = submitBtn.innerHTML;
-                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
-                submitBtn.disabled = true;
+                originalText = submitBtn.innerHTML;
+                submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></ submitBtn.innerHTML = '<i class="fas fa-spinner fa-spin"></i> Envoi en cours...';
+                submitBtn.disabled = truei> Envoi en cours...';
+                submitBtn.disabled;
+                
+                // Collect form data
+                const formData = {
+                    nom: document.getElementById('nom').value = true;
                 
                 // Collect form data
                 const formData = {
                     nom: document.getElementById('nom').value.trim(),
+                    prenom: document.getElementById('prenom').value.trim.trim(),
                     prenom: document.getElementById('prenom').value.trim(),
+                    email: document.getElementById('email(),
                     email: document.getElementById('email').value.trim(),
+                    telephone: document.getElementById('telephone').value').value.trim(),
                     telephone: document.getElementById('telephone').value.trim(),
+                    dateArrivee: document.getElementById('date-arrivee.trim(),
                     dateArrivee: document.getElementById('date-arrivee').value,
                     dateDepart: document.getElementById('date-depart').value,
                     formule: document.getElementById('formule').value,
+                    dateDepart: document.getElementById('date-depart').value,
+                    formule: document.getElementById('formule').value,
                     personnes: document.getElementById('personnes').value,
-                    message: document.getElementById('message').value.trim()
+').value,
+                    personnes: document.getElementById('personnes').value,
+                    message: document.getElementById('message').                    message: document.getElementById('message').value.trim()
                 };
                 
                 // Validate form
-                if (!formData.nom || !formData.prenom || !formData.email || !formData.telephone || 
-                    !formData.dateArrivee || !formData.dateDepart || !formData.formule || !formData.personnes) {
+                if (!value.trim()
+                };
+                
+                // Validate form
+                if (!formDataformData.nom || !formData.prenom || !formData.email || !formData.telephone || 
+                    !formData.dateArrive.nom || !formData.prenom || !formData.email || !formData.telephone || 
+                    !formData.dateArrivee || !formData.dateDepart ||e || !formData.date !formData.formule || !formData.personnes) {
                     alert('Veuillez remplir tous les champs obligatoires (*).');
-                    submitBtn.innerHTML = originalText;
+Depart || !formData.formule || !formData.personnes) {
+                    alert('Veuillez remplir tous les champs obligatoires (*).');
+                    submitBtn.innerHTML = original                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false;
+                    return;
+                }
+                
+Text;
                     submitBtn.disabled = false;
                     return;
                 }
                 
                 // Validate dates
+                const arriveeDate = new Date(form                // Validate dates
                 const arriveeDate = new Date(formData.dateArrivee);
+                const departDateData.dateArrivee);
                 const departDate = new Date(formData.dateDepart);
                 
+                if ( = new Date(formData.dateDepart);
+                
                 if (departDate <= arriveeDate) {
+                    alert('La date de départ doit êtredepartDate <= arriveeDate) {
                     alert('La date de départ doit être après la date d\'arrivée.');
+                    submitBtn.innerHTML = après la date d\'arrivée.');
                     submitBtn.innerHTML = originalText;
+                    submitBtn.disabled = false originalText;
                     submitBtn.disabled = false;
+                    return;
+                }
+;
                     return;
                 }
                 
@@ -1586,87 +2256,186 @@
                 let formuleTexte = '';
                 let caution = '20 000 FCFA';
                 
+                switch(form                
+                // Calculate price and duration
+                let prix = 0;
+                let formuleTexte = '';
+                let caution = '20 000 FCFA';
+                
                 switch(formData.formule) {
-                    case 'nuit':
+                    case 'nuitData.formule) {
+                    case '':
                         // Calculate nights
                         const diffTime = Math.abs(departDate - arriveeDate);
-                        const diffDays = Math.ceil(diffTime / (1000 * 60 * 60 * 24));
+                        const diffDays = Math.ceilnuit':
+                        // Calculate nights
+                        const diffTime = Math.abs(departDate - arriveeDate);
+                        const diffDays = Math.ceil(diffTime / (100(diffTime / (1000 * 60 * 60 * 24));
+                        prix = diffDays * 0 * 60 * 60 * 24));
                         prix = diffDays * 17000;
+                        formuleTexte = `${diffDays}17000;
                         formuleTexte = `${diffDays} nuitée(s) Cosy`;
+                        break;
+                    case '24 nuitée(s) Cosy`;
                         break;
                     case '24h':
                         prix = 27000;
+                       h':
+                        prix = 27000;
                         formuleTexte = '24h Flexibles';
+                        caution formuleTexte = '24h Flexibles';
                         caution = '25 000 FCFA';
                         break;
                 }
                 
+                // Format = '25 000 FCFA';
+                        break;
+                }
+                
                 // Format dates
+                const options = { day: 'numeric', month: dates
                 const options = { day: 'numeric', month: 'long', year: 'numeric' };
                 
+ 'long', year: 'numeric' };
+                
                 // Prepare WhatsApp message
+                const whatsappMessage =                // Prepare WhatsApp message
                 const whatsappMessage = `Nouvelle réservation Cosylogement !
 
+📋 INFORMATIONS DU CL `Nouvelle réservation Cosylogement !
+
 📋 INFORMATIONS DU CLIENT :
+• Nom : ${formData.prenom}IENT :
 • Nom : ${formData.prenom} ${formData.nom}
+• Email : ${formData ${formData.nom}
 • Email : ${formData.email}
+• Téléphone : ${formData.tele.email}
 • Téléphone : ${formData.telephone}
 
+phone}
+
 📅 DATES DU SÉJOUR :
+• Arrivée : ${arriveeDate.toLocaleDateString('fr-FR', options📅 DATES DU SÉJOUR :
 • Arrivée : ${arriveeDate.toLocaleDateString('fr-FR', options)} à 14h
-• Départ : ${departDate.toLocaleDateString('fr-FR', options)} à 12h
+• Départ :)} à 14h
+• Départ : ${departDate.toLocaleDateString('fr-FR ${departDate.toLocaleDateString('fr-FR', options)} à 12h
 • Formule : ${formuleTexte}
+', options)} à 12h
+• Formule : ${form• Personnes : ${formData.personnes}
+
+💰 TARIFS :
+• Prix total : ${prixuleTexte}
 • Personnes : ${formData.personnes}
 
 💰 TARIFS :
-• Prix total : ${prix.toLocaleString('fr-FR')} FCFA
+• Prix total : ${prix.toLocaleString('fr-FR')} F.toLocaleString('fr-FR')} FCFA
+• Caution : ${caution}
+
+${formData.message ? `📝 MCFA
 • Caution : ${caution}
 
 ${formData.message ? `📝 MESSAGE : ${formData.message}` : ''}
 
+────────────────────ESSAGE : ${formData.message}` : ''}
+
 ────────────────────
+Merci de recontacter le client pour confirmation.
 Merci de recontacter le client pour confirmation.`;
+                
+                //`;
                 
                 // Encode message for WhatsApp URL
                 const encodedMessage = encodeURIComponent(whatsappMessage);
                 
-                // Prepare email
+                // Prepare email Encode message for WhatsApp URL
+                const encodedMessage = encodeURIComponent(whatsappMessage);
+                
+                //
+                const emailSubject = `Nouvelle réservation - ${formData.prenom} ${formData.n Prepare email
                 const emailSubject = `Nouvelle réservation - ${formData.prenom} ${formData.nom}`;
+                const emailBody = encodeURIComponent(whatsappMessage);
+                
+                //om}`;
                 const emailBody = encodeURIComponent(whatsappMessage);
                 
                 // Show confirmation
                 setTimeout(() => {
-                    const confirmationMessage = `✅ Demande envoyée avec succès !
+                    const Show confirmation
+                setTimeout(() => {
+                    const confirmationMessage = `✅ Demande envoyée avec confirmationMessage = `✅ Demande envoyée avec succès !
 
 Nous vous recontacterons sous 24h pour confirmation.
 
-📞 Contact rapide :
+📞 Contact rap succès !
+
+Nous vous recontacterons sous 24h pour confirmation.
+
+📞ide :
 • WhatsApp : +229 66 95 39 34
-• Email : mauricegerauds@gmail.com
+• Email : mauricegeraud Contact rapide :
+• WhatsApp : +229 66 95 39 34
+• Email : mauricegerauds@gmails@gmail.com
 
 Merci pour votre confiance !`;
                     
                     alert(confirmationMessage);
                     
                     // Open WhatsApp with pre-filled message
-                    window.open(`https://wa.me/22966953934?text=${encodedMessage}`, '_blank');
+.com
+
+Merci pour votre confiance !`;
+                    
+                    alert(confirmationMessage);
+                    
+                    // Open WhatsApp with pre-filled message
+                    window.open(`https://wa.me/229669539                    window.open(`https://wa.me/22966953934?text=${encodedMessage}`,34?text=${encodedMessage}`, '_blank');
                     
                     // Also suggest email as backup
                     setTimeout(() => {
-                        if (confirm('Souhaitez-vous aussi envoyer un email de confirmation ?')) {
-                            window.open(`mailto:mauricegerauds@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`, '_blank');
+                        if (confirm('Sou '_blank');
+                    
+                    // Also suggest email as backup
+                    setTimeout(() => {
+                        if (confirm('Souhaitez-vous aussi envoyer un email de confirmationhaitez-vous aussi envoyer un email de confirmation ?')) {
+                            window.open(`mailto:maur ?')) {
+                            window.open(`mailto:mauricegericegerauds@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`, '_blank');
+                        }
+                    }, 500);
+auds@gmail.com?subject=${encodeURIComponent(emailSubject)}&body=${emailBody}`, '_blank');
                         }
                     }, 500);
                     
                     // Reset form
+                    reservationForm.reset                    
+                    // Reset form
                     reservationForm.reset();
+                    
+                    // Reset checkbox
+                    acceptConditions.checked = false;
+                    
+                    // Reset();
+                    
+                    // Reset checkbox
+                    acceptConditions.checked = false;
+                    
+                    // Reset dates
+                    initDates();
                     
                     // Reset dates
                     initDates();
                     
                     // Reset button
                     submitBtn.innerHTML = originalText;
-                    submitBtn.disabled = false;
+                    submitBtn.dis button
+                    submitBtn.innerHTML = originalText;
+                    submitBtn.disabled =abled = false;
+                    
+                }, 1000);
+            });
+        }
+
+        function handleHeaderScroll() {
+            const header = document.getElementById('main false;
                     
                 }, 1000);
             });
@@ -1674,54 +2443,108 @@ Merci pour votre confiance !`;
 
         function handleHeaderScroll() {
             const header = document.getElementById('main-header');
+            if (window.scrollY >-header');
             if (window.scrollY > 50) {
+                header.classList.add('scrolled');
+ 50) {
                 header.classList.add('scrolled');
             } else {
                 header.classList.remove('scrolled');
             }
         }
 
+        function updateActive            } else {
+                header.classList.remove('scrolled');
+            }
+        }
+
         function updateActiveNavLink() {
+            const sections = document.querySelectorAll('NavLink() {
             const sections = document.querySelectorAll('section');
+            const navLinks = document.querySelectorAllsection');
             const navLinks = document.querySelectorAll('nav a');
+            
+            let currentSection = '';
+            const scrollPosition = window.scrollY('nav a');
             
             let currentSection = '';
             const scrollPosition = window.scrollY + 100;
             
+            sections.forEach + 100;
+            
             sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+               (section => {
                 const sectionTop = section.offsetTop;
                 const sectionHeight = section.clientHeight;
                 
+                if const sectionHeight = section.clientHeight;
+                
                 if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
+                    currentSection (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
                     currentSection = '#' + section.getAttribute('id');
+ = '#' + section.getAttribute('id');
                 }
+            });
+            
+            navLinks.forEach(link =>                }
             });
             
             navLinks.forEach(link => {
                 link.classList.remove('active');
+                if (link.getAttribute('href') === current {
+                link.classList.remove('active');
                 if (link.getAttribute('href') === currentSection) {
+                    link.classList.add('active');
+                }
+           Section) {
                     link.classList.add('active');
                 }
             });
             
             // Default to accueil if at top
+            if (scrollPosition });
+            
+            // Default to accueil if at top
             if (scrollPosition < 100) {
                 navLinks.forEach(link => {
+ < 100) {
+                navLinks.forEach(link => {
                     link.classList.remove('active');
+                    if (                    link.classList.remove('active');
                     if (link.getAttribute('href') === '#accueil') {
+                        link.classList.add('active');
+                   link.getAttribute('href') === '#accueil') {
                         link.classList.add('active');
                     }
                 });
             }
         }
 
+        // Handle window resize }
+                });
+            }
+        }
+
         // Handle window resize
         window.addEventListener('resize', function() {
+           
+        window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
+                const nav = document.getElementById('main if (window.innerWidth > 768) {
                 const nav = document.getElementById('main-nav');
                 if (nav.classList.contains('active')) {
+-nav');
+                if (nav.classList.contains('active')) {
                     nav.classList.remove('active');
-                    document.getElementById('mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
+                    document.getElementById('mobile                    nav.classList.remove('active');
+                    document.getElementById('mobile-menu-btn').innerHTML = '<i class="fas fa-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
+                }
+            }
+        });
+    </script>
+</body>
+-bars"></i>';
                 }
             }
         });

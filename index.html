@@ -7,11 +7,10 @@
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Variables et reset - Contraste amélioré */
+        /* Variables et reset */
         :root {
             --beige: #F5E8D3;
             --terracotta: #D9822B;
-            --rose: #F4A89C;
             --vert: #A3C4BC;
             --chocolat: #3A2415;
             --blanc: #FFFFFF;
@@ -418,7 +417,7 @@
             color: var(--gris);
         }
 
-        /* Gallery Carousel */
+        /* Gallery Carousel - CORRIGÉ */
         .gallery-section {
             background: var(--blanc);
             position: relative;
@@ -438,19 +437,28 @@
         .carousel-container {
             display: flex;
             transition: transform 0.5s ease;
+            will-change: transform;
         }
 
         .carousel-slide {
             min-width: 100%;
             height: 500px;
             position: relative;
+            flex-shrink: 0;
         }
 
-        .carousel-slide img,
+        .carousel-slide img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
         .carousel-slide video {
             width: 100%;
             height: 100%;
             object-fit: cover;
+            display: block;
         }
 
         .carousel-nav {
@@ -687,35 +695,45 @@
             cursor: not-allowed;
         }
 
-        .conditions-checkbox {
+        /* NOUVEAU : Conditions avec bouton de lecture */
+        .conditions-container {
             margin: 25px 0;
             padding: 20px;
             background: var(--gris-clair);
             border-radius: var(--radius-sm);
         }
 
-        .checkbox-group {
+        .conditions-header {
             display: flex;
             align-items: flex-start;
             gap: 10px;
+            margin-bottom: 15px;
         }
 
-        .checkbox-group input[type="checkbox"] {
+        .conditions-header input[type="checkbox"] {
             margin-top: 3px;
         }
 
-        .checkbox-group label {
-            font-size: 14px;
+        .conditions-header label {
+            font-size: 15px;
             line-height: 1.5;
+            font-weight: 500;
         }
 
-        .checkbox-group label a {
+        .read-conditions-btn {
+            background: transparent;
+            border: none;
             color: var(--terracotta);
-            text-decoration: none;
+            text-decoration: underline;
+            cursor: pointer;
+            font-size: 14px;
+            margin-top: 5px;
+            padding: 0;
+            font-family: 'Montserrat', sans-serif;
         }
 
-        .checkbox-group label a:hover {
-            text-decoration: underline;
+        .read-conditions-btn:hover {
+            color: #C17322;
         }
 
         /* Calcul du prix en temps réel */
@@ -952,7 +970,7 @@
             letter-spacing: 5px;
         }
 
-        /* Responsive Design */
+        /* Responsive Design - AMÉLIORÉ */
         @media (max-width: 1024px) {
             .container {
                 padding: 0 30px;
@@ -976,6 +994,11 @@
                 flex-direction: column;
                 gap: 20px;
                 align-items: center;
+            }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 15px;
             }
         }
 
@@ -1008,6 +1031,7 @@
                 font-size: 16px;
             }
             
+            /* MENU MOBILE - CORRIGÉ */
             nav {
                 position: fixed;
                 top: 80px;
@@ -1019,13 +1043,18 @@
                 box-shadow: var(--shadow);
                 z-index: 1000;
                 gap: 20px;
-                display: none;
+                transform: translateY(-100%);
+                opacity: 0;
+                visibility: hidden;
+                transition: transform 0.3s ease, opacity 0.3s ease, visibility 0.3s;
                 max-height: calc(100vh - 80px);
                 overflow-y: auto;
             }
             
             nav.active {
-                display: flex;
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
             }
             
             .mobile-menu-btn {
@@ -1046,11 +1075,6 @@
             .tarifs-grid {
                 grid-template-columns: 1fr;
                 gap: 20px;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
             }
             
             .reservation-form-container {
@@ -1093,11 +1117,21 @@
             .price-amount {
                 font-size: 28px;
             }
+            
+            .footer-container {
+                grid-template-columns: 1fr;
+                gap: 30px;
+                text-align: center;
+            }
+            
+            .footer-contact li {
+                justify-content: center;
+            }
         }
 
         @media (max-width: 480px) {
             .container {
-                padding: 0 20px;
+                padding: 0 15px;
             }
             
             .hero h1 {
@@ -1121,25 +1155,21 @@
             }
             
             .reservation-form-container {
-                padding: 25px 20px;
+                padding: 20px 15px;
             }
             
             .carousel-slide {
                 height: 250px;
             }
             
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 30px;
-                text-align: center;
-            }
-            
-            .footer-contact li {
-                justify-content: center;
+            .carousel-nav {
+                width: 35px;
+                height: 35px;
+                font-size: 14px;
             }
             
             .modal-content {
-                padding: 20px;
+                padding: 20px 15px;
                 margin: 10px auto;
             }
             
@@ -1151,16 +1181,25 @@
             .price-amount {
                 font-size: 24px;
             }
+            
+            .form-grid {
+                grid-template-columns: 1fr;
+                gap: 10px;
+            }
+            
+            .conditions-header label {
+                font-size: 14px;
+            }
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- Header - CORRIGÉ -->
     <header id="main-header">
         <div class="container header-container">
             <a href="#parenthese" class="logo">
                 <i class="fas fa-pause-circle logo-icon"></i>
-                (La <span>Parenthèse</span>)
+                La <span>Parenthèse</span>
             </a>
             
             <nav id="main-nav">
@@ -1281,7 +1320,7 @@
                 <i class="fas fa-star"></i> Une pause • Un lieu à soi • Un souvenir gourmand <i class="fas fa-star"></i>
             </div>
             <p class="hero-subtitle">
-                Prenez un moment pour vous. Notre studio est une parenthèse de calme et de confort dans l’énergie de Cotonou, où chaque détail est pensé pour votre bien-être, avec une attention gourmande incluse.
+                Prenez un moment pour vous. Notre studio est une parenthèse de calme et de confort dans l'énergie de Cotonou, où chaque détail est pensé pour votre bien-être, avec une attention gourmande incluse.
             </p>
             <p class="hero-note">
                 Ouvrez la parenthèse, nous nous occupons du reste.
@@ -1391,7 +1430,7 @@
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- Gallery Section - CORRIGÉ -->
     <section class="gallery-section" id="galerie">
         <div class="container">
             <div class="section-header">
@@ -1433,7 +1472,7 @@
                         <img src="images/image5.jpg" alt="Détail ambiance cosy du studio">
                     </div>
                     
-                    <!-- Slide 7 : Vidéo -->
+                    <!-- Slide 7 : Vidéo - CORRIGÉ pour bien cadrer -->
                     <div class="carousel-slide">
                         <video controls poster="images/image6.jpg">
                             <source src="images/visite-studio.mp4" type="video/mp4">
@@ -1570,7 +1609,7 @@
         </div>
     </section>
 
-    <!-- Reservation Section -->
+    <!-- Reservation Section - CORRIGÉ -->
     <section class="reservation-section" id="reservation">
         <div class="container">
             <div class="reservation-header">
@@ -1671,7 +1710,7 @@
                         <textarea class="form-control" id="message" placeholder="Heure d'arrivée, besoins particuliers, etc." rows="4"></textarea>
                     </div>
                     
-                    <!-- Affichage du prix en temps réel -->
+                    <!-- Affichage du prix en temps réel - CORRIGÉ -->
                     <div class="price-display" id="price-display" style="display: none;">
                         <h3>Estimation du prix</h3>
                         <div class="price-amount" id="total-price">0 F</div>
@@ -1680,15 +1719,17 @@
                         </div>
                     </div>
                     
-                    <!-- Checkbox d'acceptation des conditions -->
-                    <div class="conditions-checkbox">
-                        <div class="checkbox-group">
+                    <!-- NOUVEAU : Conditions avec bouton de lecture -->
+                    <div class="conditions-container">
+                        <div class="conditions-header">
                             <input type="checkbox" id="accept-conditions" required>
                             <label for="accept-conditions">
-                                J'accepte la <a href="#" id="openPolitique">politique d'annulation et de remboursement</a> 
-                                de La Parenthèse.
+                                J'accepte la politique d'annulation et de remboursement de La Parenthèse.
                             </label>
                         </div>
+                        <button type="button" class="read-conditions-btn" id="openPolitiqueBtn">
+                            <i class="fas fa-external-link-alt"></i> Lire les conditions d'annulation et de remboursement
+                        </button>
                     </div>
                     
                     <div class="form-group" style="text-align: center;">
@@ -1806,35 +1847,37 @@
         }
 
         function setupEventListeners() {
-            // Mobile menu toggle
+            // Mobile menu toggle - CORRIGÉ
             const menuBtn = document.getElementById('mobile-menu-btn');
             const nav = document.getElementById('main-nav');
             
-            menuBtn.addEventListener('click', function(e) {
-                e.stopPropagation();
-                nav.classList.toggle('active');
-                this.innerHTML = nav.classList.contains('active') ? 
-                    '<i class="fas fa-times"></i>' : 
-                    '<i class="fas fa-bars"></i>';
-            });
-            
-            // Close mobile menu when clicking links
-            document.querySelectorAll('nav a').forEach(link => {
-                link.addEventListener('click', () => {
-                    nav.classList.remove('active');
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+            if (menuBtn && nav) {
+                menuBtn.addEventListener('click', function(e) {
+                    e.stopPropagation();
+                    nav.classList.toggle('active');
+                    this.innerHTML = nav.classList.contains('active') ? 
+                        '<i class="fas fa-times"></i>' : 
+                        '<i class="fas fa-bars"></i>';
                 });
-            });
-            
-            // Close mobile menu when clicking outside
-            document.addEventListener('click', function(event) {
-                if (nav.classList.contains('active') && 
-                    !nav.contains(event.target) && 
-                    !menuBtn.contains(event.target)) {
-                    nav.classList.remove('active');
-                    menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                }
-            });
+                
+                // Close mobile menu when clicking links
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.addEventListener('click', () => {
+                        nav.classList.remove('active');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    });
+                });
+                
+                // Close mobile menu when clicking outside
+                document.addEventListener('click', function(event) {
+                    if (nav.classList.contains('active') && 
+                        !nav.contains(event.target) && 
+                        !menuBtn.contains(event.target)) {
+                        nav.classList.remove('active');
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
+                });
+            }
             
             // Header scroll effect
             window.addEventListener('scroll', handleHeaderScroll);
@@ -1842,7 +1885,7 @@
 
         function setupModal() {
             const modal = document.getElementById('politiqueModal');
-            const openButtons = document.querySelectorAll('#openPolitique, #openPolitiqueFooter');
+            const openButtons = document.querySelectorAll('#openPolitiqueBtn, #openPolitiqueFooter');
             const closeButton = document.getElementById('modalClose');
             
             openButtons.forEach(button => {
@@ -1853,10 +1896,12 @@
                 });
             });
             
-            closeButton.addEventListener('click', function() {
-                modal.style.display = 'none';
-                document.body.style.overflow = 'auto';
-            });
+            if (closeButton) {
+                closeButton.addEventListener('click', function() {
+                    modal.style.display = 'none';
+                    document.body.style.overflow = 'auto';
+                });
+            }
             
             // Close modal when clicking outside
             window.addEventListener('click', function(e) {
@@ -1905,11 +1950,14 @@
             const nextBtn = document.getElementById('carousel-next');
             const dotsContainer = document.getElementById('carousel-dots');
             
+            if (!container || slides.length === 0) return;
+            
             let currentSlide = 0;
             const totalSlides = slides.length;
             let autoSlideInterval;
             
             // Create dots
+            dotsContainer.innerHTML = '';
             slides.forEach((_, index) => {
                 const dot = document.createElement('button');
                 dot.classList.add('carousel-dot');
@@ -1958,17 +2006,21 @@
             }
             
             // Event listeners
-            prevBtn.addEventListener('click', () => {
-                prevSlide();
-                stopAutoSlide();
-                startAutoSlide();
-            });
+            if (prevBtn) {
+                prevBtn.addEventListener('click', () => {
+                    prevSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+            }
             
-            nextBtn.addEventListener('click', () => {
-                nextSlide();
-                stopAutoSlide();
-                startAutoSlide();
-            });
+            if (nextBtn) {
+                nextBtn.addEventListener('click', () => {
+                    nextSlide();
+                    stopAutoSlide();
+                    startAutoSlide();
+                });
+            }
             
             // Pause auto slide on hover
             container.addEventListener('mouseenter', stopAutoSlide);
@@ -1976,6 +2028,9 @@
             
             // Start auto slide
             startAutoSlide();
+            
+            // Initialiser la position
+            updateCarousel();
         }
 
         function initDates() {
@@ -1987,20 +2042,25 @@
             const todayStr = today.toISOString().split('T')[0];
             const tomorrowStr = tomorrow.toISOString().split('T')[0];
             
-            document.getElementById('date-arrivee').min = todayStr;
-            document.getElementById('date-depart').min = tomorrowStr;
+            const dateArrivee = document.getElementById('date-arrivee');
+            const dateDepart = document.getElementById('date-depart');
             
-            // Set initial values (tomorrow and day after tomorrow)
-            document.getElementById('date-arrivee').value = tomorrowStr;
-            
-            const afterTomorrow = new Date(tomorrow);
-            afterTomorrow.setDate(afterTomorrow.getDate() + 1);
-            document.getElementById('date-depart').value = afterTomorrow.toISOString().split('T')[0];
-            
-            // Check initial availability
-            checkAvailability();
-            // Calculate initial price
-            calculatePrice();
+            if (dateArrivee && dateDepart) {
+                dateArrivee.min = todayStr;
+                dateDepart.min = tomorrowStr;
+                
+                // Set initial values (tomorrow and day after tomorrow)
+                dateArrivee.value = tomorrowStr;
+                
+                const afterTomorrow = new Date(tomorrow);
+                afterTomorrow.setDate(afterTomorrow.getDate() + 1);
+                dateDepart.value = afterTomorrow.toISOString().split('T')[0];
+                
+                // Check initial availability
+                checkAvailability();
+                // Calculate initial price
+                calculatePrice();
+            }
         }
 
         function calculatePrice() {
@@ -2008,9 +2068,10 @@
             const departDate = document.getElementById('date-depart').value;
             const formule = document.getElementById('formule').value;
             const smoothieOption = document.getElementById('smoothie-sandwich').value;
+            const priceDisplay = document.getElementById('price-display');
             
-            if (!arriveeDate || !departDate || !formule) {
-                document.getElementById('price-display').style.display = 'none';
+            if (!arriveeDate || !departDate || !formule || !priceDisplay) {
+                priceDisplay.style.display = 'none';
                 return;
             }
             
@@ -2018,7 +2079,7 @@
             const depart = new Date(departDate);
             
             if (depart <= arrivee) {
-                document.getElementById('price-display').style.display = 'none';
+                priceDisplay.style.display = 'none';
                 return;
             }
             
@@ -2059,7 +2120,7 @@
                     break;
                     
                 default:
-                    document.getElementById('price-display').style.display = 'none';
+                    priceDisplay.style.display = 'none';
                     return;
             }
             
@@ -2082,122 +2143,141 @@
                 • Option gourmande: ${smoothieOption === 'avec' ? 'INCLUS' : 'NON INCLUS (-2.000 F)'}
             `;
             
-            document.getElementById('price-display').style.display = 'block';
+            priceDisplay.style.display = 'block';
+        }
+
+        function checkAvailability() {
+            const arriveeDate = document.getElementById('date-arrivee').value;
+            const departDate = document.getElementById('date-depart').value;
+            const arriveeStatus = document.getElementById('arrivee-status');
+            const departStatus = document.getElementById('depart-status');
+            const submitBtn = document.getElementById('submit-btn');
+            
+            if (!arriveeDate || !departDate || !arriveeStatus || !departStatus || !submitBtn) return;
+            
+            arriveeStatus.textContent = '';
+            departStatus.textContent = '';
+            arriveeStatus.className = 'date-status';
+            departStatus.className = 'date-status';
+            
+            const arrivee = new Date(arriveeDate);
+            const depart = new Date(departDate);
+            const today = new Date();
+            today.setHours(0, 0, 0, 0);
+            
+            // Check if arrival is in the past
+            if (arrivee < today) {
+                arriveeStatus.textContent = '❌ Date déjà passée';
+                arriveeStatus.classList.add('unavailable');
+                submitBtn.disabled = true;
+                return;
+            }
+            
+            // Check if departure is before arrival
+            if (depart <= arrivee) {
+                departStatus.textContent = '❌ Doit être après l\'arrivée';
+                departStatus.classList.add('unavailable');
+                submitBtn.disabled = true;
+                return;
+            }
+            
+            // Date availability simulation (dates déjà réservées)
+            const bookedDates = [
+                '2024-12-25', '2024-12-26',
+                '2024-12-31', '2025-01-01',
+            ];
+            
+            let isAvailable = true;
+            const checkDate = new Date(arrivee);
+            while (checkDate < depart) {
+                const dateStr = checkDate.toISOString().split('T')[0];
+                if (bookedDates.includes(dateStr)) {
+                    isAvailable = false;
+                    break;
+                }
+                checkDate.setDate(checkDate.getDate() + 1);
+            }
+            
+            if (isAvailable) {
+                arriveeStatus.textContent = '✅ Date disponible';
+                arriveeStatus.classList.add('available');
+                departStatus.textContent = '✅ Date disponible';
+                departStatus.classList.add('available');
+                submitBtn.disabled = false;
+            } else {
+                arriveeStatus.textContent = '⚠️ Certaines dates sont réservées';
+                arriveeStatus.classList.add('unavailable');
+                departStatus.textContent = '⚠️ Certaines dates sont réservées';
+                departStatus.classList.add('unavailable');
+                submitBtn.disabled = true;
+            }
         }
 
         function setupForms() {
             const reservationForm = document.getElementById('reservationForm');
             const submitBtn = document.getElementById('submit-btn');
             
-            // Date availability simulation
-            const bookedDates = [
-                '2024-12-25', '2024-12-26',
-                '2024-12-31', '2025-01-01',
-            ];
+            if (!reservationForm || !submitBtn) return;
             
-            function checkAvailability() {
-                const arriveeDate = document.getElementById('date-arrivee').value;
-                const departDate = document.getElementById('date-depart').value;
-                const arriveeStatus = document.getElementById('arrivee-status');
-                const departStatus = document.getElementById('depart-status');
-                
-                arriveeStatus.textContent = '';
-                departStatus.textContent = '';
-                arriveeStatus.className = 'date-status';
-                departStatus.className = 'date-status';
-                
-                if (!arriveeDate || !departDate) return;
-                
-                const arrivee = new Date(arriveeDate);
-                const depart = new Date(departDate);
-                const today = new Date();
-                today.setHours(0, 0, 0, 0);
-                
-                if (arrivee < today) {
-                    arriveeStatus.textContent = '❌ Date déjà passée';
-                    arriveeStatus.classList.add('unavailable');
-                    submitBtn.disabled = true;
-                    return;
-                }
-                
-                if (depart <= arrivee) {
-                    departStatus.textContent = '❌ Doit être après l\'arrivée';
-                    departStatus.classList.add('unavailable');
-                    submitBtn.disabled = true;
-                    return;
-                }
-                
-                let isAvailable = true;
-                const checkDate = new Date(arrivee);
-                while (checkDate < depart) {
-                    const dateStr = checkDate.toISOString().split('T')[0];
-                    if (bookedDates.includes(dateStr)) {
-                        isAvailable = false;
-                        break;
+            // Écouteurs pour le calcul du prix et vérification des dates
+            const dateArrivee = document.getElementById('date-arrivee');
+            const dateDepart = document.getElementById('date-depart');
+            const formule = document.getElementById('formule');
+            const smoothieOption = document.getElementById('smoothie-sandwich');
+            
+            if (dateArrivee && dateDepart && formule && smoothieOption) {
+                dateArrivee.addEventListener('change', function() {
+                    const arriveeDate = new Date(this.value);
+                    const minDepartDate = new Date(arriveeDate);
+                    minDepartDate.setDate(minDepartDate.getDate() + 1);
+                    
+                    if (dateDepart) {
+                        dateDepart.min = minDepartDate.toISOString().split('T')[0];
+                        
+                        // If current departure date is before new minimum, update it
+                        const currentDepart = new Date(dateDepart.value);
+                        if (currentDepart <= arriveeDate) {
+                            dateDepart.value = minDepartDate.toISOString().split('T')[0];
+                        }
                     }
-                    checkDate.setDate(checkDate.getDate() + 1);
-                }
+                    
+                    checkAvailability();
+                    calculatePrice();
+                });
                 
-                if (isAvailable) {
-                    arriveeStatus.textContent = '✅ Date disponible';
-                    arriveeStatus.classList.add('available');
-                    departStatus.textContent = '✅ Date disponible';
-                    departStatus.classList.add('available');
-                    submitBtn.disabled = false;
-                } else {
-                    arriveeStatus.textContent = '⚠️ Certaines dates sont réservées';
-                    arriveeStatus.classList.add('unavailable');
-                    departStatus.textContent = '⚠️ Certaines dates sont réservées';
-                    departStatus.classList.add('unavailable');
-                    submitBtn.disabled = true;
-                }
+                dateDepart.addEventListener('change', function() {
+                    checkAvailability();
+                    calculatePrice();
+                });
+                
+                formule.addEventListener('change', calculatePrice);
+                smoothieOption.addEventListener('change', calculatePrice);
+                
+                // Gérer l'affichage de la préférence selon le choix smoothie/sandwich
+                smoothieOption.addEventListener('change', function() {
+                    const preferenceSelect = document.getElementById('preference');
+                    if (this.value === 'avec') {
+                        preferenceSelect.disabled = false;
+                        preferenceSelect.required = true;
+                    } else {
+                        preferenceSelect.disabled = true;
+                        preferenceSelect.required = false;
+                        preferenceSelect.value = '';
+                    }
+                });
             }
             
-            document.getElementById('date-arrivee').addEventListener('change', function() {
-                const arriveeDate = new Date(this.value);
-                const minDepartDate = new Date(arriveeDate);
-                minDepartDate.setDate(minDepartDate.getDate() + 1);
-                
-                document.getElementById('date-depart').min = minDepartDate.toISOString().split('T')[0];
-                
-                const currentDepart = new Date(document.getElementById('date-depart').value);
-                if (currentDepart <= arriveeDate) {
-                    document.getElementById('date-depart').value = minDepartDate.toISOString().split('T')[0];
-                }
-                
-                checkAvailability();
-                calculatePrice();
-            });
-            
-            document.getElementById('date-depart').addEventListener('change', function() {
-                checkAvailability();
-                calculatePrice();
-            });
-            
-            document.getElementById('formule').addEventListener('change', calculatePrice);
-            document.getElementById('smoothie-sandwich').addEventListener('change', calculatePrice);
-            
-            document.getElementById('smoothie-sandwich').addEventListener('change', function() {
-                const preferenceSelect = document.getElementById('preference');
-                if (this.value === 'avec') {
-                    preferenceSelect.disabled = false;
-                    preferenceSelect.required = true;
-                } else {
-                    preferenceSelect.disabled = true;
-                    preferenceSelect.required = false;
-                    preferenceSelect.value = '';
-                }
-            });
-            
+            // Form submission - CORRIGÉ pour WhatsApp
             reservationForm.addEventListener('submit', function(e) {
                 e.preventDefault();
                 
                 const acceptConditions = document.getElementById('accept-conditions');
-                if (!acceptConditions.checked) {
+                if (!acceptConditions || !acceptConditions.checked) {
                     alert('Veuillez accepter la politique d\'annulation et de remboursement pour continuer.');
                     return;
                 }
                 
+                // Collect form data
                 const formData = {
                     nom: document.getElementById('nom').value.trim(),
                     prenom: document.getElementById('prenom').value.trim(),
@@ -2212,40 +2292,43 @@
                     message: document.getElementById('message').value.trim()
                 };
                 
+                // Validate form
                 if (!formData.nom || !formData.prenom || !formData.email || !formData.telephone || 
                     !formData.dateArrivee || !formData.dateDepart || !formData.formule || !formData.personnes) {
                     alert('Veuillez remplir tous les champs obligatoires (*).');
                     return;
                 }
                 
-                let phoneNumber = formData.telephone.replace(/\s/g, '');
+                // Validate phone number for WhatsApp
+                let phoneNumber = formData.telephone.replace(/\s/g, ''); // Remove spaces
                 
-                // Format du numéro Bénin pour WhatsApp
+                // Format du numéro Bénin pour WhatsApp - CORRIGÉ
                 if (phoneNumber.startsWith('0')) {
                     phoneNumber = '229' + phoneNumber.substring(1);
-                } else if (phoneNumber.length === 8) {
+                } else if (phoneNumber.length === 8 && !phoneNumber.startsWith('229')) {
                     // Si c'est un numéro à 8 chiffres (ex: 66953934)
-                    phoneNumber = '229' + phoneNumber;
-                } else if (!phoneNumber.startsWith('229')) {
                     phoneNumber = '229' + phoneNumber;
                 }
                 
                 // Vérifier qu'il n'y a pas de "1" après le 229
                 if (phoneNumber.startsWith('2291')) {
-                    phoneNumber = '229' + phoneNumber.substring(4); // Enlève le "1" après 229
+                    phoneNumber = '229' + phoneNumber.substring(4);
                 }
                 
+                // Validate dates
                 const arriveeDate = new Date(formData.dateArrivee);
                 const departDate = new Date(formData.dateDepart);
                 
                 if (departDate <= arriveeDate) {
-                    alert('La date de départ doit être après la date d'arrivée.');
+                    alert('La date de départ doit être après la date d\'arrivée.');
                     return;
                 }
                 
+                // Recalculer le prix pour confirmation
                 calculatePrice();
                 const prixTotal = document.getElementById('total-price').textContent;
                 
+                // Déterminer les textes
                 let formuleTexte = '';
                 let prixUnitaire = 0;
                 let caution = 20000;
@@ -2269,8 +2352,10 @@
                         break;
                 }
                 
+                // Format dates
                 const options = { day: 'numeric', month: 'long', year: 'numeric' };
                 
+                // Determine preference text
                 let preferenceText = 'Non inclus';
                 if (formData.smoothieOption === 'avec') {
                     preferenceText = formData.preference === 'smoothie' ? 'Smoothie FreshMood' : 
@@ -2278,6 +2363,7 @@
                                    'Non spécifié';
                 }
                 
+                // Calcul du prix du séjour (sans caution)
                 let prixSejour = 0;
                 if (formData.formule === 'nuit') {
                     const diffTimeNuit = Math.abs(departDate - arriveeDate);
@@ -2290,6 +2376,7 @@
                     prixSejour = periodes24h * prixUnitaire;
                 }
                 
+                // Prepare WhatsApp message
                 const whatsappMessage = `📋 NOUVELLE RÉSERVATION LA PARENTHÈSE 📋
 
 👤 INFORMATIONS CLIENT :
@@ -2316,14 +2403,20 @@ ${formData.message}` : ''}
 ────────────────────
 ⚠️ Cette réservation est soumise à notre politique d'annulation.`;
 
+                // Encode message for WhatsApp URL
                 const encodedMessage = encodeURIComponent(whatsappMessage);
                 
-                // URL WhatsApp avec le bon numéro
-                window.open(`https://wa.me/${phoneNumber}?text=${encodedMessage}`, '_blank');
+                // CORRECTION : Utiliser le numéro fixe pour WhatsApp
+                const whatsappNumber = '22966953934';
                 
+                // Open WhatsApp directly
+                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
+                
+                // Show confirmation
                 setTimeout(() => {
                     alert('✅ Ouverture de WhatsApp...\n\nVeuillez envoyer le message pré-rempli pour finaliser votre réservation.\n\nLe numéro de contact est : 66 95 39 34');
                     
+                    // Reset form after a delay
                     setTimeout(() => {
                         reservationForm.reset();
                         acceptConditions.checked = false;
@@ -2332,6 +2425,7 @@ ${formData.message}` : ''}
                 }, 500);
             });
             
+            // Calcul initial
             calculatePrice();
         }
 
@@ -2367,6 +2461,7 @@ ${formData.message}` : ''}
                 }
             });
             
+            // Default to parenthese if at top
             if (scrollPosition < 100) {
                 navLinks.forEach(link => {
                     link.classList.remove('active');
@@ -2377,12 +2472,16 @@ ${formData.message}` : ''}
             }
         }
 
+        // Handle window resize - CORRIGÉ
         window.addEventListener('resize', function() {
             if (window.innerWidth > 768) {
                 const nav = document.getElementById('main-nav');
-                if (nav.classList.contains('active')) {
+                const menuBtn = document.getElementById('mobile-menu-btn');
+                if (nav && nav.classList.contains('active')) {
                     nav.classList.remove('active');
-                    document.getElementById('mobile-menu-btn').innerHTML = '<i class="fas fa-bars"></i>';
+                    if (menuBtn) {
+                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
+                    }
                 }
             }
         });

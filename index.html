@@ -2,12 +2,12 @@
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
     <title>La Parenthèse | Studio cosy à Akpakpa, Cotonou</title>
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
     <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* Variables et reset améliorées */
+        /* ===== VARIABLES ===== */
         :root {
             --beige: #F5E8D3;
             --terracotta: #D9822B;
@@ -24,6 +24,7 @@
             --gradient: linear-gradient(135deg, var(--terracotta) 0%, #E09A5D 100%);
         }
 
+        /* ===== RESET & BASE ===== */
         * {
             margin: 0;
             padding: 0;
@@ -37,11 +38,12 @@
 
         body {
             font-family: 'Montserrat', sans-serif;
-            line-height: 1.7;
+            line-height: 1.6;
             color: var(--chocolat);
             background-color: var(--blanc);
             overflow-x: hidden;
             font-size: 16px;
+            -webkit-font-smoothing: antialiased;
         }
 
         h1, h2, h3, h4, h5 {
@@ -49,6 +51,12 @@
             font-weight: 600;
             color: var(--chocolat);
             line-height: 1.3;
+        }
+
+        img {
+            max-width: 100%;
+            height: auto;
+            display: block;
         }
 
         .container {
@@ -63,16 +71,23 @@
             position: relative;
         }
 
-        .text-center {
-            text-align: center;
+        @media (max-width: 992px) {
+            section { padding: 80px 0; }
+        }
+        @media (max-width: 768px) {
+            section { padding: 70px 0; }
+        }
+        @media (max-width: 576px) {
+            section { padding: 60px 0; }
+            .container { padding: 0 20px; }
         }
 
-        /* Header amélioré */
+        /* ===== HEADER ===== */
         header {
             position: fixed;
             top: 0;
             width: 100%;
-            background: rgba(255, 255, 255, 0.95);
+            background: rgba(255, 255, 255, 0.98);
             backdrop-filter: blur(10px);
             z-index: 1000;
             padding: 20px 0;
@@ -102,36 +117,9 @@
             gap: 10px;
             transition: var(--transition);
         }
-
-        .logo:hover {
-            transform: translateY(-2px);
-        }
-
-        .logo span {
-            color: var(--terracotta);
-            position: relative;
-        }
-
-        .logo span::after {
-            content: '';
-            position: absolute;
-            bottom: -2px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: var(--gradient);
-            transform: scaleX(0);
-            transition: transform 0.3s ease;
-        }
-
-        .logo:hover span::after {
-            transform: scaleX(1);
-        }
-
-        .logo-icon {
-            color: var(--terracotta);
-            font-size: 24px;
-        }
+        .logo:hover { transform: translateY(-2px); }
+        .logo span { color: var(--terracotta); }
+        .logo-icon { color: var(--terracotta); font-size: 24px; }
 
         nav {
             display: flex;
@@ -174,15 +162,17 @@
 
         .mobile-menu-btn {
             display: none;
-            background: none;
+            background: var(--gris-clair);
             border: none;
-            font-size: 24px;
+            width: 48px;
+            height: 48px;
+            border-radius: var(--radius-sm);
             cursor: pointer;
             color: var(--chocolat);
-            padding: 8px;
-            background: var(--gris-clair);
-            border-radius: var(--radius-sm);
+            font-size: 24px;
             transition: var(--transition);
+            align-items: center;
+            justify-content: center;
         }
 
         .mobile-menu-btn:hover {
@@ -190,51 +180,70 @@
             color: var(--blanc);
         }
 
-        /* Hero Section améliorée */
+        @media (max-width: 768px) {
+            .mobile-menu-btn { display: flex; }
+            nav {
+                position: fixed;
+                top: 80px;
+                left: 0;
+                right: 0;
+                background: rgba(255, 255, 255, 0.98);
+                backdrop-filter: blur(20px);
+                flex-direction: column;
+                padding: 30px;
+                box-shadow: 0 10px 30px rgba(58, 36, 21, 0.15);
+                z-index: 1000;
+                gap: 20px;
+                transform: translateY(-20px);
+                opacity: 0;
+                visibility: hidden;
+                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+                max-height: calc(100vh - 80px);
+                overflow-y: auto;
+                border-radius: 0 0 var(--radius) var(--radius);
+            }
+            nav.active {
+                transform: translateY(0);
+                opacity: 1;
+                visibility: visible;
+            }
+            nav a {
+                width: 100%;
+                text-align: center;
+                font-size: 16px;
+                border-bottom: 1px solid rgba(58, 36, 21, 0.1);
+                padding: 15px 0;
+            }
+            nav a:last-child { border-bottom: none; }
+            nav a::after { display: none; }
+        }
+
+        /* ===== HERO ===== */
         .hero {
             padding: 180px 0 120px;
-            background: linear-gradient(135deg, rgba(58, 36, 21, 0.85) 0%, rgba(58, 36, 21, 0.7) 100%), 
-                        url('images/image1.jpg') center/cover no-repeat fixed;
+            background: linear-gradient(135deg, rgba(58, 36, 21, 0.9) 0%, rgba(58, 36, 21, 0.7) 100%),
+                        url('images/image1.jpg') center/cover no-repeat;
             color: var(--blanc);
             text-align: center;
             position: relative;
-            overflow: hidden;
-        }
-
-        .hero::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 100%;
-            background: radial-gradient(circle at 50% 50%, transparent 0%, rgba(0,0,0,0.3) 100%);
-            pointer-events: none;
         }
 
         .hero h1 {
-            font-size: 48px;
+            font-size: clamp(32px, 6vw, 48px);
             margin-bottom: 20px;
             color: var(--blanc);
             font-weight: 700;
-            line-height: 1.2;
             text-shadow: 0 2px 10px rgba(0,0,0,0.3);
             animation: fadeUp 0.8s ease-out;
         }
 
         @keyframes fadeUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .hero-tagline {
-            font-size: 20px;
+            font-size: clamp(16px, 4vw, 20px);
             margin-bottom: 20px;
             color: var(--beige);
             font-weight: 500;
@@ -243,8 +252,8 @@
         }
 
         .hero-subtitle {
-            font-size: 19px;
-            margin-bottom: 50px;
+            font-size: clamp(16px, 3.5vw, 19px);
+            margin-bottom: 40px;
             max-width: 750px;
             margin-left: auto;
             margin-right: auto;
@@ -276,6 +285,7 @@
             animation: fadeUp 0.8s ease-out 0.8s both;
         }
 
+        /* ===== BOUTONS ===== */
         .btn {
             display: inline-flex;
             align-items: center;
@@ -288,10 +298,11 @@
             font-size: 16px;
             border: none;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             font-family: 'Montserrat', sans-serif;
             position: relative;
             overflow: hidden;
+            min-width: 200px;
         }
 
         .btn::before {
@@ -320,18 +331,12 @@
         .btn-primary {
             background: var(--gradient);
             color: var(--blanc);
-            border: 2px solid transparent;
-        }
-
-        .btn-primary:hover {
-            background: linear-gradient(135deg, #C17322 0%, #D9822B 100%);
         }
 
         .btn-outline {
             background: transparent;
             color: var(--blanc);
             border: 2px solid rgba(255, 255, 255, 0.3);
-            backdrop-filter: blur(10px);
         }
 
         .btn-outline:hover {
@@ -343,37 +348,31 @@
         .btn-whatsapp {
             background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
             color: white;
-            border: 2px solid #25D366;
         }
 
         .btn-whatsapp:hover {
             background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
-            border-color: #128C7E;
         }
 
-        /* Tarifs Section améliorée */
-        .tarifs-section {
-            background: linear-gradient(180deg, var(--gris-clair) 0%, var(--blanc) 100%);
-            position: relative;
+        @media (max-width: 576px) {
+            .btn {
+                width: 100%;
+                max-width: 350px;
+            }
+            .hero-buttons {
+                flex-direction: column;
+                align-items: center;
+            }
         }
 
-        .tarifs-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
-        }
-
+        /* ===== SECTIONS COMMUNES ===== */
         .section-header {
             text-align: center;
-            margin-bottom: 80px;
+            margin-bottom: 60px;
         }
 
         .section-title {
-            font-size: 42px;
+            font-size: clamp(28px, 5vw, 42px);
             margin-bottom: 20px;
             position: relative;
             display: inline-block;
@@ -392,28 +391,47 @@
         }
 
         .section-subtitle {
-            font-size: 18px;
+            font-size: clamp(15px, 3vw, 18px);
             color: var(--gris);
             max-width: 750px;
             margin: 25px auto 0;
             line-height: 1.8;
+            padding: 0 15px;
+        }
+
+        .badge {
+            display: inline-block;
+            padding: 8px 16px;
+            background: var(--gradient);
+            color: white;
+            font-size: 12px;
+            font-weight: 600;
+            border-radius: 30px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            margin-bottom: 20px;
+        }
+
+        /* ===== TARIFS ===== */
+        .tarifs-section {
+            background: linear-gradient(180deg, var(--gris-clair) 0%, var(--blanc) 100%);
         }
 
         .tarifs-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 40px;
-            max-width: 900px;
+            gap: 30px;
+            max-width: 1000px;
             margin: 0 auto;
         }
 
         .tarif-card {
             background: var(--blanc);
             border-radius: var(--radius);
-            padding: 45px 35px;
+            padding: 40px 30px;
             text-align: center;
             box-shadow: var(--shadow);
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             border: 1px solid transparent;
             position: relative;
             overflow: hidden;
@@ -437,38 +455,20 @@
 
         .tarif-card.featured {
             border: 2px solid var(--terracotta);
-            transform: scale(1.05);
-        }
-
-        .tarif-card.featured:hover {
-            transform: scale(1.05) translateY(-10px);
         }
 
         .tarif-price {
-            font-size: 56px;
+            font-size: clamp(42px, 8vw, 56px);
             font-weight: 700;
             color: var(--terracotta);
             margin: 25px 0 10px;
             line-height: 1;
-            position: relative;
-            display: inline-block;
-        }
-
-        .tarif-price::before {
-            content: '';
-            position: absolute;
-            bottom: -5px;
-            left: 0;
-            width: 100%;
-            height: 2px;
-            background: linear-gradient(90deg, transparent, var(--terracotta), transparent);
         }
 
         .tarif-period {
             font-size: 17px;
             color: var(--gris);
             margin-bottom: 20px;
-            font-weight: 500;
         }
 
         .tarif-description {
@@ -476,7 +476,6 @@
             color: var(--gris);
             margin: 25px 0;
             line-height: 1.8;
-            padding: 0 15px;
         }
 
         .tarif-features {
@@ -489,8 +488,7 @@
             margin-bottom: 15px;
             padding-left: 35px;
             position: relative;
-            font-size: 16px;
-            line-height: 1.6;
+            font-size: 15px;
         }
 
         .tarif-features li::before {
@@ -499,7 +497,6 @@
             left: 0;
             color: var(--vert);
             font-weight: bold;
-            font-size: 18px;
             background: rgba(163, 196, 188, 0.1);
             width: 26px;
             height: 26px;
@@ -509,11 +506,6 @@
             justify-content: center;
         }
 
-        .tarif-cta {
-            margin-top: 35px;
-        }
-
-        /* Alternative sans gourmandise */
         .alternative-card {
             background: var(--blanc);
             border-radius: var(--radius);
@@ -522,31 +514,12 @@
             max-width: 700px;
             border: 2px dashed var(--vert);
             text-align: center;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .alternative-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 95%, rgba(163, 196, 188, 0.1) 100%);
-            pointer-events: none;
-        }
-
-        .alternative-title {
-            color: var(--chocolat);
-            margin-bottom: 25px;
-            font-size: 24px;
         }
 
         .alternative-prices {
             display: flex;
             justify-content: center;
-            gap: 40px;
+            gap: 30px;
             margin-top: 30px;
             flex-wrap: wrap;
         }
@@ -554,47 +527,18 @@
         .alternative-price {
             text-align: center;
             padding: 20px 30px;
-            background: linear-gradient(135deg, var(--gris-clair) 0%, #f0ece4 100%);
+            background: var(--gris-clair);
             border-radius: var(--radius);
-            min-width: 180px;
-            transition: var(--transition);
-            border: 1px solid rgba(217, 130, 43, 0.1);
-        }
-
-        .alternative-price:hover {
-            transform: translateY(-5px);
-            box-shadow: var(--shadow);
+            min-width: 160px;
         }
 
         .alternative-price .price {
-            font-size: 32px;
+            font-size: 28px;
             font-weight: 700;
             color: var(--terracotta);
-            margin-bottom: 5px;
         }
 
-        .alternative-price .period {
-            font-size: 15px;
-            color: var(--gris);
-        }
-
-        /* Gallery Carousel - COMPLÈTEMENT RECODÉ */
-        .gallery-section {
-            background: var(--blanc);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .gallery-section::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(217, 130, 43, 0.3), transparent);
-        }
-
+        /* ===== GALERIE ===== */
         .gallery-carousel {
             position: relative;
             width: 100%;
@@ -608,37 +552,22 @@
 
         .carousel-container {
             display: flex;
-            height: 550px;
-            position: relative;
+            height: clamp(300px, 50vw, 550px);
+            transition: transform 0.5s ease;
         }
 
         .carousel-slide {
             flex: 0 0 100%;
             height: 100%;
             position: relative;
-            opacity: 0;
-            transition: opacity 0.5s ease;
-            display: none;
-        }
-
-        .carousel-slide.active {
-            opacity: 1;
-            display: block;
         }
 
         .carousel-slide img {
             width: 100%;
             height: 100%;
             object-fit: cover;
-            display: block;
-            transition: transform 0.5s ease;
         }
 
-        .carousel-slide.active img:hover {
-            transform: scale(1.02);
-        }
-
-        /* Styles vidéo améliorés */
         .video-slide {
             background: #000;
         }
@@ -653,8 +582,6 @@
             width: 100%;
             height: 100%;
             object-fit: cover;
-            background: #000;
-            display: block;
         }
 
         .video-overlay {
@@ -663,13 +590,13 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: linear-gradient(rgba(0, 0, 0, 0.4), rgba(0, 0, 0, 0.6));
+            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
             display: flex;
             flex-direction: column;
             justify-content: center;
             align-items: center;
             color: white;
-            transition: opacity 0.3s ease;
+            transition: opacity 0.3s;
             z-index: 2;
             padding: 20px;
             text-align: center;
@@ -692,56 +619,38 @@
             display: flex;
             align-items: center;
             justify-content: center;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(217, 130, 43, 0.4);
+            box-shadow: 0 10px 30px rgba(217,130,43,0.4);
         }
 
         .play-video-btn:hover {
             transform: scale(1.1);
-            box-shadow: 0 15px 40px rgba(217, 130, 43, 0.6);
         }
 
         .video-caption {
-            font-size: 20px;
+            font-size: clamp(14px, 4vw, 20px);
             font-weight: 500;
             max-width: 90%;
-            margin-top: 15px;
             text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-            line-height: 1.5;
-        }
-
-        .video-legend {
-            text-align: center;
-            margin-top: 30px;
-            color: var(--gris);
-            font-size: 15px;
-            font-style: italic;
-            padding: 15px;
-            background: var(--gris-clair);
-            border-radius: var(--radius-sm);
-            display: inline-block;
-            max-width: 600px;
-            margin-left: auto;
-            margin-right: auto;
         }
 
         .carousel-nav {
             position: absolute;
             top: 50%;
             transform: translateY(-50%);
-            background: rgba(255, 255, 255, 0.9);
+            background: rgba(255,255,255,0.9);
             border: none;
-            width: 60px;
-            height: 60px;
+            width: clamp(40px, 8vw, 60px);
+            height: clamp(40px, 8vw, 60px);
             border-radius: 50%;
             display: flex;
             align-items: center;
             justify-content: center;
             cursor: pointer;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+            transition: var(--transition);
             z-index: 10;
-            font-size: 24px;
+            font-size: clamp(16px, 4vw, 24px);
             color: var(--chocolat);
             box-shadow: 0 5px 20px rgba(0,0,0,0.1);
         }
@@ -749,22 +658,17 @@
         .carousel-nav:hover {
             background: var(--terracotta);
             color: var(--blanc);
-            transform: translateY(-50%) scale(1.1);
         }
 
-        .carousel-prev {
-            left: 25px;
-        }
-
-        .carousel-next {
-            right: 25px;
-        }
+        .carousel-prev { left: 15px; }
+        .carousel-next { right: 15px; }
 
         .carousel-dots {
             display: flex;
             justify-content: center;
             gap: 12px;
-            margin-top: 30px;
+            margin-top: 20px;
+            flex-wrap: wrap;
         }
 
         .carousel-dot {
@@ -774,75 +678,35 @@
             background: var(--gris-clair);
             border: 2px solid transparent;
             cursor: pointer;
-            transition: all 0.3s ease;
-            position: relative;
-        }
-
-        .carousel-dot::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            transform: translate(-50%, -50%);
-            width: 6px;
-            height: 6px;
-            background: var(--terracotta);
-            border-radius: 50%;
-            opacity: 0;
-            transition: opacity 0.3s ease;
+            transition: all 0.3s;
         }
 
         .carousel-dot.active {
             background: transparent;
             border-color: var(--terracotta);
-        }
-
-        .carousel-dot.active::before {
-            opacity: 1;
-        }
-
-        .carousel-dot:hover {
             transform: scale(1.2);
         }
 
-        /* Studio Section améliorée */
-        .studio-section {
-            background: linear-gradient(180deg, var(--blanc) 0%, var(--gris-clair) 100%);
-        }
-
+        /* ===== STUDIO FEATURES ===== */
         .features-grid {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(280px, 1fr));
-            gap: 35px;
-            margin-top: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 30px;
+            margin-top: 50px;
         }
 
         .feature-card {
             background: var(--blanc);
             border-radius: var(--radius);
-            padding: 35px 30px;
+            padding: 30px 25px;
             text-align: center;
-            transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .feature-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(45deg, transparent 85%, rgba(217, 130, 43, 0.05) 100%);
-            pointer-events: none;
+            transition: var(--transition);
+            border: 1px solid rgba(217,130,43,0.05);
         }
 
         .feature-card:hover {
             transform: translateY(-8px);
             box-shadow: var(--shadow-hover);
-            border-color: rgba(217, 130, 43, 0.1);
         }
 
         .feature-icon {
@@ -856,50 +720,18 @@
             justify-content: center;
             font-size: 28px;
             margin: 0 auto 25px;
-            transition: var(--transition);
-            box-shadow: 0 10px 25px rgba(217, 130, 43, 0.2);
+            box-shadow: 0 10px 25px rgba(217,130,43,0.2);
         }
 
-        .feature-card:hover .feature-icon {
-            transform: scale(1.1) rotate(5deg);
-        }
-
-        .feature-card h3 {
-            font-size: 20px;
-            margin-bottom: 15px;
-            color: var(--chocolat);
-        }
-
-        .feature-card p {
-            font-size: 15px;
-            color: var(--gris);
-            line-height: 1.7;
-        }
-
-        /* Partenaire Section améliorée */
-        .partenaire-section {
-            background: linear-gradient(135deg, rgba(163, 196, 188, 0.1) 0%, rgba(217, 130, 43, 0.05) 100%);
-        }
-
+        /* ===== PARTENAIRE ===== */
         .partenaire-card {
             background: var(--blanc);
             border-radius: var(--radius);
-            padding: 50px;
+            padding: 40px 30px;
             max-width: 800px;
             margin: 0 auto;
-            position: relative;
-            overflow: hidden;
             box-shadow: var(--shadow);
-        }
-
-        .partenaire-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 6px;
-            height: 100%;
-            background: var(--gradient);
+            border-left: 6px solid var(--vert);
         }
 
         .partenaire-logo {
@@ -909,107 +741,59 @@
         }
 
         .partenaire-title {
-            font-size: 28px;
-            color: var(--chocolat);
+            font-size: clamp(22px, 5vw, 28px);
             margin-bottom: 25px;
-            font-weight: 600;
         }
 
         .partenaire-text {
-            font-size: 18px;
+            font-size: 17px;
             line-height: 1.8;
             margin-bottom: 30px;
-            color: var(--gris);
         }
 
-        .partenaire-note {
-            font-style: italic;
-            font-size: 17px;
-            color: var(--terracotta);
-            margin-top: 35px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(217, 130, 43, 0.2);
-            font-weight: 500;
-        }
-
-        /* Reservation Section améliorée */
-        .reservation-section {
-            background: linear-gradient(180deg, var(--gris-clair) 0%, #f2efe8 100%);
-        }
-
-        .reservation-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .reservation-note {
-            font-size: 19px;
-            color: var(--terracotta);
-            font-weight: 600;
-            margin-top: 15px;
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-            padding: 12px 25px;
-            background: rgba(217, 130, 43, 0.1);
-            border-radius: 50px;
-        }
-
+        /* ===== FORMULAIRE ===== */
         .reservation-form-container {
             max-width: 900px;
             margin: 0 auto;
             background: var(--blanc);
             border-radius: var(--radius);
-            padding: 50px;
+            padding: 40px 30px;
             box-shadow: var(--shadow);
-            position: relative;
-            overflow: hidden;
-        }
-
-        .reservation-form-container::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-        }
-
-        .form-group {
-            margin-bottom: 30px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 12px;
-            font-weight: 600;
-            color: var(--chocolat);
-            font-size: 16px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 16px 22px;
-            border: 2px solid var(--gris-clair);
-            border-radius: var(--radius-sm);
-            font-size: 16px;
-            font-family: 'Montserrat', sans-serif;
-            transition: all 0.3s ease;
-            background: var(--blanc);
-            color: var(--chocolat);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--terracotta);
-            box-shadow: 0 0 0 4px rgba(217, 130, 43, 0.15);
         }
 
         .form-grid {
             display: grid;
             grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 25px;
+            gap: 20px;
+        }
+
+        .form-group {
+            margin-bottom: 25px;
+        }
+
+        .form-label {
+            display: block;
+            margin-bottom: 10px;
+            font-weight: 600;
+            color: var(--chocolat);
+            font-size: 15px;
+        }
+
+        .form-control {
+            width: 100%;
+            padding: 15px 20px;
+            border: 2px solid var(--gris-clair);
+            border-radius: var(--radius-sm);
+            font-size: 16px;
+            font-family: 'Montserrat', sans-serif;
+            transition: var(--transition);
+            background: var(--blanc);
+        }
+
+        .form-control:focus {
+            outline: none;
+            border-color: var(--terracotta);
+            box-shadow: 0 0 0 4px rgba(217,130,43,0.15);
         }
 
         select.form-control {
@@ -1017,162 +801,101 @@
             background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233A2415' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
             background-repeat: no-repeat;
             background-position: right 20px center;
-            background-size: 18px;
-            padding-right: 50px;
+            background-size: 16px;
+            padding-right: 45px;
         }
 
         .date-status {
-            margin-top: 10px;
-            font-size: 15px;
+            margin-top: 8px;
+            font-size: 14px;
             min-height: 24px;
             display: flex;
             align-items: center;
-            gap: 8px;
-            font-weight: 500;
+            gap: 5px;
         }
+        .date-status.available { color: #27ae60; }
+        .date-status.unavailable { color: #e74c3c; }
 
-        .date-status.available {
-            color: #27ae60;
-        }
-
-        .date-status.unavailable {
-            color: #e74c3c;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            font-size: 18px;
-            margin-top: 30px;
-            font-weight: 600;
-        }
-
-        .submit-btn:disabled {
-            opacity: 0.6;
-            cursor: not-allowed;
-            transform: none !important;
-        }
-
-        /* Conditions améliorées */
-        .conditions-container {
-            margin: 35px 0;
-            padding: 25px;
-            background: linear-gradient(135deg, rgba(163, 196, 188, 0.1) 0%, rgba(217, 130, 43, 0.05) 100%);
+        .price-display {
+            background: rgba(217,130,43,0.1);
             border-radius: var(--radius);
-            border: 1px solid rgba(217, 130, 43, 0.1);
+            padding: 25px;
+            margin: 30px 0;
+            text-align: center;
+            border-left: 4px solid var(--terracotta);
+        }
+
+        .price-amount {
+            font-size: clamp(28px, 6vw, 44px);
+            font-weight: 700;
+            color: var(--terracotta);
+            margin: 15px 0;
+        }
+
+        .price-details {
+            font-size: 15px;
+            color: var(--gris);
+            line-height: 1.7;
+            background: rgba(255,255,255,0.7);
+            padding: 20px;
+            border-radius: var(--radius-sm);
+        }
+
+        .conditions-container {
+            margin: 30px 0;
+            padding: 25px;
+            background: var(--gris-clair);
+            border-radius: var(--radius);
         }
 
         .conditions-header {
             display: flex;
             align-items: flex-start;
             gap: 15px;
-            margin-bottom: 20px;
+            margin-bottom: 15px;
         }
 
         .conditions-header input[type="checkbox"] {
             width: 22px;
             height: 22px;
-            margin-top: 3px;
-            cursor: pointer;
             accent-color: var(--terracotta);
-        }
-
-        .conditions-header label {
-            font-size: 16px;
-            line-height: 1.6;
-            font-weight: 500;
-            color: var(--chocolat);
-            cursor: pointer;
+            margin-top: 3px;
         }
 
         .read-conditions-btn {
-            background: transparent;
+            background: none;
             border: none;
             color: var(--terracotta);
             text-decoration: underline;
             cursor: pointer;
             font-size: 15px;
-            margin-top: 10px;
-            padding: 0;
-            font-family: 'Montserrat', sans-serif;
-            font-weight: 500;
-            transition: var(--transition);
         }
 
-        .read-conditions-btn:hover {
-            color: #C17322;
-            text-decoration: none;
+        .submit-btn {
+            width: 100%;
+            padding: 18px;
+            font-size: 18px;
+            margin-top: 20px;
         }
 
-        /* Calcul du prix en temps réel amélioré */
-        .price-display {
-            background: linear-gradient(135deg, rgba(217, 130, 43, 0.1) 0%, rgba(163, 196, 188, 0.1) 100%);
-            border-radius: var(--radius);
-            padding: 30px;
-            margin: 30px 0;
-            text-align: center;
-            border: 2px solid rgba(217, 130, 43, 0.2);
-            animation: fadeIn 0.5s ease;
-        }
-
-        @keyframes fadeIn {
-            from { opacity: 0; transform: translateY(10px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .price-amount {
-            font-size: 44px;
-            font-weight: bold;
-            color: var(--terracotta);
-            margin: 15px 0;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.1);
-        }
-
-        .price-details {
-            font-size: 15px;
-            color: var(--gris);
-            margin-top: 15px;
-            line-height: 1.7;
-            text-align: left;
-            max-width: 500px;
-            margin-left: auto;
-            margin-right: auto;
-            background: rgba(255, 255, 255, 0.7);
-            padding: 20px;
-            border-radius: var(--radius-sm);
-        }
-
-        /* Footer amélioré */
+        /* ===== FOOTER ===== */
         footer {
-            background: linear-gradient(135deg, var(--chocolat) 0%, #2c1c10 100%);
+            background: var(--chocolat);
             color: var(--blanc);
-            padding: 80px 0 40px;
-            position: relative;
-            overflow: hidden;
-        }
-
-        footer::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 1px;
-            background: linear-gradient(90deg, transparent, rgba(217, 130, 43, 0.5), transparent);
+            padding: 80px 0 30px;
         }
 
         .footer-container {
             display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 50px;
-            margin-bottom: 60px;
+            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+            gap: 40px;
+            margin-bottom: 50px;
         }
 
         .footer-column h3 {
             color: var(--blanc);
             margin-bottom: 25px;
             font-size: 20px;
-            font-weight: 600;
             position: relative;
             padding-bottom: 15px;
         }
@@ -1198,8 +921,7 @@
         .footer-links a {
             color: #bdc3c7;
             text-decoration: none;
-            transition: all 0.3s ease;
-            font-size: 16px;
+            transition: var(--transition);
             display: inline-flex;
             align-items: center;
             gap: 10px;
@@ -1208,14 +930,6 @@
         .footer-links a:hover {
             color: var(--terracotta);
             transform: translateX(5px);
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 40px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #95a5a6;
-            font-size: 15px;
         }
 
         .footer-contact li {
@@ -1228,30 +942,23 @@
         .footer-contact i {
             color: var(--terracotta);
             margin-top: 5px;
-            font-size: 18px;
         }
 
-        .footer-note {
+        .copyright {
             text-align: center;
-            margin-top: 30px;
-            font-size: 16px;
-            color: #bdc3c7;
+            padding-top: 30px;
+            border-top: 1px solid rgba(255,255,255,0.1);
+            color: #95a5a6;
         }
 
-        .footer-note .highlight {
-            color: var(--terracotta);
-            font-weight: 600;
-            text-shadow: 0 2px 5px rgba(0,0,0,0.2);
-        }
-
-        /* Floating WhatsApp amélioré */
+        /* ===== WHATSAPP FLOAT ===== */
         .whatsapp-float {
             position: fixed;
-            bottom: 30px;
-            right: 30px;
+            bottom: 25px;
+            right: 25px;
             width: 65px;
             height: 65px;
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
+            background: linear-gradient(135deg, #25D366, #128C7E);
             color: white;
             border-radius: 50%;
             display: flex;
@@ -1259,56 +966,16 @@
             justify-content: center;
             font-size: 32px;
             text-decoration: none;
-            box-shadow: 0 6px 25px rgba(37, 211, 102, 0.4);
+            box-shadow: 0 6px 25px rgba(37,211,102,0.4);
             z-index: 1000;
-            transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            overflow: hidden;
-        }
-
-        .whatsapp-float::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: rgba(255, 255, 255, 0.1);
-            transform: scale(0);
-            border-radius: 50%;
-            transition: transform 0.3s ease;
-        }
-
-        .whatsapp-float:hover::before {
-            transform: scale(1);
+            transition: var(--transition);
         }
 
         .whatsapp-float:hover {
-            transform: scale(1.1) rotate(5deg);
-            box-shadow: 0 10px 35px rgba(37, 211, 102, 0.6);
+            transform: scale(1.1);
         }
 
-        .whatsapp-float .pulse {
-            position: absolute;
-            width: 100%;
-            height: 100%;
-            border-radius: 50%;
-            background: #25D366;
-            animation: pulse 2s infinite;
-            z-index: -1;
-        }
-
-        @keyframes pulse {
-            0% {
-                transform: scale(0.8);
-                opacity: 1;
-            }
-            100% {
-                transform: scale(1.5);
-                opacity: 0;
-            }
-        }
-
-        /* Modal amélioré */
+        /* ===== MODAL ===== */
         .modal {
             display: none;
             position: fixed;
@@ -1316,32 +983,25 @@
             left: 0;
             width: 100%;
             height: 100%;
-            background: rgba(0, 0, 0, 0.85);
+            background: rgba(0,0,0,0.85);
             z-index: 2000;
             overflow-y: auto;
-            animation: fadeIn 0.3s ease;
         }
 
         .modal-content {
             background: var(--blanc);
             margin: 50px auto;
-            padding: 50px;
+            padding: 40px 30px;
             border-radius: var(--radius);
             max-width: 900px;
             width: 90%;
             position: relative;
-            animation: slideUp 0.4s cubic-bezier(0.4, 0, 0.2, 1);
+            animation: slideUp 0.4s;
         }
 
         @keyframes slideUp {
-            from {
-                opacity: 0;
-                transform: translateY(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateY(0);
-            }
+            from { opacity: 0; transform: translateY(30px); }
+            to { opacity: 1; transform: translateY(0); }
         }
 
         .modal-close {
@@ -1353,2054 +1013,607 @@
             width: 40px;
             height: 40px;
             border-radius: 50%;
-            cursor: pointer;
-            color: var(--chocolat);
             font-size: 22px;
+            cursor: pointer;
             transition: var(--transition);
-            display: flex;
-            align-items: center;
-            justify-content: center;
         }
-
         .modal-close:hover {
             background: var(--terracotta);
-            color: var(--blanc);
+            color: white;
             transform: rotate(90deg);
         }
 
         .modal-title {
-            font-size: 36px;
+            font-size: clamp(24px, 5vw, 36px);
             margin-bottom: 25px;
             text-align: center;
-            color: var(--chocolat);
-            line-height: 1.3;
-        }
-
-        .modal-subtitle {
-            font-size: 19px;
-            color: var(--gris);
-            text-align: center;
-            margin-bottom: 50px;
-            line-height: 1.6;
         }
 
         .politique-section {
-            margin-bottom: 40px;
-            padding-bottom: 40px;
-            border-bottom: 2px solid var(--gris-clair);
-        }
-
-        .politique-section:last-child {
-            border-bottom: none;
+            margin-bottom: 30px;
+            padding-bottom: 30px;
+            border-bottom: 1px solid var(--gris-clair);
         }
 
         .politique-section h3 {
             color: var(--terracotta);
-            margin-bottom: 20px;
-            font-size: 22px;
-            display: flex;
-            align-items: center;
-            gap: 12px;
-        }
-
-        .politique-list {
-            list-style: none;
-            margin: 20px 0;
+            margin-bottom: 15px;
+            font-size: 20px;
         }
 
         .politique-list li {
-            margin-bottom: 20px;
-            padding: 20px;
-            position: relative;
-            font-size: 16px;
-            line-height: 1.6;
+            margin-bottom: 15px;
+            padding: 15px;
             background: var(--gris-clair);
             border-radius: var(--radius-sm);
             border-left: 4px solid var(--terracotta);
         }
 
-        .politique-note {
-            background: linear-gradient(135deg, rgba(217, 130, 43, 0.1) 0%, rgba(163, 196, 188, 0.1) 100%);
-            border-radius: var(--radius);
-            padding: 25px 30px;
-            margin: 30px 0;
-            border-left: 4px solid var(--terracotta);
-        }
-
         .politique-warning {
-            background: linear-gradient(135deg, rgba(231, 76, 60, 0.1) 0%, rgba(231, 76, 60, 0.05) 100%);
-            border-radius: var(--radius);
-            padding: 25px 30px;
-            margin: 30px 0;
+            background: rgba(231,76,60,0.1);
+            padding: 20px;
             border-left: 4px solid #e74c3c;
+            border-radius: var(--radius-sm);
+            margin: 20px 0;
         }
 
-        .separator {
-            text-align: center;
-            margin: 40px 0;
+        /* ===== RESPONSIVE FINAL ===== */
+        @media (max-width: 480px) {
+            .tarif-card { padding: 30px 20px; }
+            .alternative-price { width: 100%; }
+            .footer-container { grid-template-columns: 1fr; }
+            .modal-content { padding: 30px 20px; margin: 30px auto; }
+            .whatsapp-float { width: 55px; height: 55px; font-size: 28px; bottom: 20px; right: 20px; }
+        }
+
+        /* Fallback images */
+        .fallback-img {
+            background: var(--gris-clair);
+            display: flex;
+            align-items: center;
+            justify-content: center;
             color: var(--gris);
-            font-size: 24px;
-            letter-spacing: 10px;
-            opacity: 0.5;
-        }
-
-        /* Section indicators */
-        .section-indicator {
-            position: absolute;
-            left: 24px;
-            top: 100px;
-            writing-mode: vertical-rl;
-            transform: rotate(180deg);
-            color: var(--terracotta);
             font-size: 14px;
-            letter-spacing: 2px;
-            text-transform: uppercase;
-            font-weight: 600;
-            opacity: 0.7;
-            display: none;
-        }
-
-        @media (min-width: 1200px) {
-            .section-indicator {
-                display: block;
-            }
-        }
-
-        /* Loading states */
-        .loading {
-            position: relative;
-            overflow: hidden;
-        }
-
-        .loading::after {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            bottom: 0;
-            background: linear-gradient(90deg, transparent, rgba(255,255,255,0.3), transparent);
-            animation: loading 1.5s infinite;
-        }
-
-        @keyframes loading {
-            0% { transform: translateX(-100%); }
-            100% { transform: translateX(100%); }
-        }
-
-        /* Responsive Design amélioré */
-        @media (max-width: 1200px) {
-            .container {
-                padding: 0 30px;
-            }
-            
-            .hero h1 {
-                font-size: 42px;
-            }
-            
-            .section-title {
-                font-size: 36px;
-            }
-            
-            .carousel-container {
-                height: 500px;
-            }
-        }
-
-        @media (max-width: 992px) {
-            section {
-                padding: 80px 0;
-            }
-            
-            .hero {
-                padding: 160px 0 100px;
-            }
-            
-            .footer-container {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 40px;
-            }
-            
-            .carousel-container {
-                height: 450px;
-            }
-            
-            .modal-content {
-                width: 95%;
-                padding: 40px;
-            }
-            
-            .alternative-prices {
-                gap: 30px;
-            }
-            
-            .form-grid {
-                gap: 20px;
-            }
-            
-            .play-video-btn {
-                width: 70px;
-                height: 70px;
-                font-size: 28px;
-            }
-            
-            .video-caption {
-                font-size: 18px;
-            }
-        }
-
-        @media (max-width: 768px) {
-            section {
-                padding: 70px 0;
-            }
-            
-            .hero {
-                padding: 140px 0 80px;
-                background-attachment: scroll;
-            }
-            
-            .hero h1 {
-                font-size: 36px;
-            }
-            
-            .hero-tagline {
-                font-size: 18px;
-            }
-            
-            .hero-subtitle {
-                font-size: 17px;
-            }
-            
-            .section-title {
-                font-size: 32px;
-            }
-            
-            .section-subtitle {
-                font-size: 16px;
-            }
-            
-            /* MENU MOBILE amélioré */
-            nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 30px;
-                box-shadow: 0 10px 30px rgba(58, 36, 21, 0.15);
-                z-index: 1000;
-                gap: 20px;
-                transform: translateY(-20px);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                max-height: calc(100vh - 80px);
-                overflow-y: auto;
-                border-radius: 0 0 var(--radius) var(--radius);
-            }
-            
-            nav.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            
-            nav a {
-                padding: 12px 0;
-                width: 100%;
-                text-align: center;
-                font-size: 16px;
-                border-bottom: 1px solid rgba(58, 36, 21, 0.1);
-            }
-            
-            nav a:last-child {
-                border-bottom: none;
-            }
-            
-            nav a::after {
-                display: none;
-            }
-            
-            .mobile-menu-btn {
-                display: block;
-            }
-            
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-                gap: 20px;
-            }
-            
-            .btn {
-                width: 100%;
-                max-width: 350px;
-            }
-            
-            .tarifs-grid {
-                grid-template-columns: 1fr;
-                gap: 30px;
-            }
-            
-            .tarif-card.featured {
-                transform: none;
-            }
-            
-            .tarif-card.featured:hover {
-                transform: translateY(-10px);
-            }
-            
-            .reservation-form-container {
-                padding: 40px 30px;
-            }
-            
-            .carousel-container {
-                height: 400px;
-            }
-            
-            .carousel-nav {
-                width: 50px;
-                height: 50px;
-                font-size: 20px;
-            }
-            
-            .carousel-prev {
-                left: 15px;
-            }
-            
-            .carousel-next {
-                right: 15px;
-            }
-            
-            .features-grid {
-                grid-template-columns: repeat(2, 1fr);
-                gap: 25px;
-            }
-            
-            .whatsapp-float {
-                bottom: 25px;
-                right: 25px;
-                width: 60px;
-                height: 60px;
-                font-size: 28px;
-            }
-            
-            .modal-content {
-                margin: 30px auto;
-                padding: 35px 30px;
-                width: 95%;
-            }
-            
-            .modal-title {
-                font-size: 30px;
-            }
-            
-            .price-amount {
-                font-size: 36px;
-            }
-            
-            .footer-container {
-                grid-template-columns: 1fr;
-                gap: 40px;
-                text-align: left;
-            }
-            
-            .footer-column h3::after {
-                left: 0;
-                right: auto;
-            }
-            
-            .play-video-btn {
-                width: 60px;
-                height: 60px;
-                font-size: 24px;
-            }
-            
-            .video-caption {
-                font-size: 16px;
-            }
-        }
-
-        @media (max-width: 576px) {
-            .container {
-                padding: 0 20px;
-            }
-            
-            section {
-                padding: 60px 0;
-            }
-            
-            .hero {
-                padding: 130px 0 70px;
-            }
-            
-            .hero h1 {
-                font-size: 32px;
-            }
-            
-            .hero-tagline {
-                font-size: 16px;
-                letter-spacing: 1px;
-            }
-            
-            .hero-subtitle {
-                font-size: 16px;
-            }
-            
-            .section-title {
-                font-size: 28px;
-            }
-            
-            .section-subtitle {
-                font-size: 15px;
-                padding: 0 10px;
-            }
-            
-            .tarif-price {
-                font-size: 48px;
-            }
-            
-            .tarif-card {
-                padding: 35px 25px;
-            }
-            
-            .reservation-form-container {
-                padding: 30px 20px;
-            }
-            
-            .carousel-container {
-                height: 350px;
-            }
-            
-            .carousel-nav {
-                width: 45px;
-                height: 45px;
-                font-size: 18px;
-            }
-            
-            .features-grid {
-                grid-template-columns: 1fr;
-                gap: 20px;
-            }
-            
-            .modal-content {
-                padding: 30px 20px;
-                margin: 20px auto;
-            }
-            
-            .modal-title {
-                font-size: 26px;
-            }
-            
-            .btn {
-                padding: 14px 24px;
-                font-size: 15px;
-            }
-            
-            .price-amount {
-                font-size: 32px;
-            }
-            
-            .form-grid {
-                grid-template-columns: 1fr;
-                gap: 15px;
-            }
-            
-            .conditions-header label {
-                font-size: 15px;
-            }
-            
-            .play-video-btn {
-                width: 55px;
-                height: 55px;
-                font-size: 22px;
-            }
-            
-            .video-caption {
-                font-size: 15px;
-            }
-            
-            .whatsapp-float {
-                bottom: 20px;
-                right: 20px;
-                width: 55px;
-                height: 55px;
-                font-size: 24px;
-            }
-            
-            .alternative-prices {
-                flex-direction: column;
-                gap: 20px;
-            }
-            
-            .alternative-price {
-                width: 100%;
-                max-width: 300px;
-            }
-        }
-
-        @media (max-width: 400px) {
-            .hero h1 {
-                font-size: 28px;
-            }
-            
-            .hero-tagline {
-                font-size: 15px;
-            }
-            
-            .section-title {
-                font-size: 26px;
-            }
-            
-            .carousel-container {
-                height: 300px;
-            }
-            
-            .carousel-nav {
-                width: 40px;
-                height: 40px;
-                font-size: 16px;
-            }
-            
-            .tarif-price {
-                font-size: 42px;
-            }
-        }
-
-        /* Accessibilité améliorée */
-        .sr-only {
-            position: absolute;
-            width: 1px;
-            height: 1px;
-            padding: 0;
-            margin: -1px;
-            overflow: hidden;
-            clip: rect(0, 0, 0, 0);
-            white-space: nowrap;
-            border: 0;
-        }
-
-        /* Focus styles pour accessibilité */
-        *:focus {
-            outline: 3px solid var(--terracotta);
-            outline-offset: 3px;
-        }
-
-        *:focus:not(:focus-visible) {
-            outline: none;
-        }
-
-        /* Animations supplémentaires */
-        .fade-in {
-            animation: fadeIn 0.8s ease-out;
-        }
-
-        .slide-in-left {
-            animation: slideInLeft 0.8s ease-out;
-        }
-
-        .slide-in-right {
-            animation: slideInRight 0.8s ease-out;
-        }
-
-        @keyframes slideInLeft {
-            from {
-                opacity: 0;
-                transform: translateX(-30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        @keyframes slideInRight {
-            from {
-                opacity: 0;
-                transform: translateX(30px);
-            }
-            to {
-                opacity: 1;
-                transform: translateX(0);
-            }
-        }
-
-        /* Badges */
-        .badge {
-            display: inline-block;
-            padding: 6px 12px;
-            background: var(--gradient);
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 20px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 15px;
-        }
-
-        /* Tooltips */
-        .tooltip {
-            position: relative;
-            display: inline-block;
-        }
-
-        .tooltip .tooltip-text {
-            visibility: hidden;
-            width: 200px;
-            background-color: var(--chocolat);
-            color: #fff;
             text-align: center;
-            border-radius: 6px;
-            padding: 10px;
-            position: absolute;
-            z-index: 1;
-            bottom: 125%;
-            left: 50%;
-            transform: translateX(-50%);
-            opacity: 0;
-            transition: opacity 0.3s;
-            font-size: 14px;
-            font-weight: normal;
-        }
-
-        .tooltip .tooltip-text::after {
-            content: "";
-            position: absolute;
-            top: 100%;
-            left: 50%;
-            margin-left: -5px;
-            border-width: 5px;
-            border-style: solid;
-            border-color: var(--chocolat) transparent transparent transparent;
-        }
-
-        .tooltip:hover .tooltip-text {
-            visibility: visible;
-            opacity: 1;
         }
     </style>
 </head>
 <body>
-    <!-- Header -->
+    <!-- HEADER -->
     <header id="main-header">
         <div class="container header-container">
             <a href="#parenthese" class="logo">
                 <i class="fas fa-pause-circle logo-icon"></i>
                 La <span>Parenthèse</span>
             </a>
-            
             <nav id="main-nav">
                 <a href="#parenthese" class="active">Accueil</a>
                 <a href="#studio">Le Studio</a>
                 <a href="#tarifs">Tarifs</a>
                 <a href="#galerie">Galerie</a>
-                <a href="#partenaire">Notre Partenaire</a>
+                <a href="#partenaire">Partenaire</a>
                 <a href="#reservation">Réservation</a>
                 <a href="#contact">Contact</a>
             </nav>
-            
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu mobile">
+            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
     </header>
 
-    <!-- Modal pour politique d'annulation -->
+    <!-- MODAL POLITIQUE -->
     <div class="modal" id="politiqueModal">
         <div class="modal-content">
-            <button class="modal-close" id="modalClose" aria-label="Fermer la fenêtre">&times;</button>
-            <h2 class="modal-title">Politique d'annulation & de remboursement – La Parenthèse</h2>
-            <p class="modal-subtitle">
-                Nous comprenons que des imprévus puissent survenir. Cette politique a pour objectif d'être claire, équitable et transparente pour tous.
-            </p>
-            
-            <div class="separator">⸻</div>
-            
+            <button class="modal-close" id="modalClose">&times;</button>
+            <h2 class="modal-title">Politique d'annulation</h2>
+            <p class="modal-subtitle">Conditions applicables à toute réservation</p>
             <div class="politique-section">
-                <h3><i class="fas fa-clock"></i> Délais d'annulation</h3>
+                <h3>Délais d'annulation</h3>
                 <ul class="politique-list">
-                    <li><strong>Plus de 72 heures avant l'arrivée</strong><br>
-                    → Annulation gratuite avec remboursement à 100 %</li>
-                    <li><strong>Entre 72 heures et 24 heures avant l'arrivée</strong><br>
-                    → Remboursement à 50 % du montant payé</li>
-                    <li><strong>Moins de 24 heures avant l'arrivée</strong><br>
-                    → Aucun remboursement</li>
+                    <li><strong>+72h</strong> : remboursement 100%</li>
+                    <li><strong>72h - 24h</strong> : remboursement 50%</li>
+                    <li><strong>-24h</strong> : aucun remboursement</li>
                 </ul>
             </div>
-            
-            <div class="separator">⸻</div>
-            
-            <div class="politique-section">
-                <h3><i class="fas fa-money-bill-wave"></i> Montants remboursés</h3>
-                <ul class="politique-list">
-                    <li><strong>100 %</strong> si annulation à plus de 72h</li>
-                    <li><strong>50 %</strong> si annulation entre 72h et 24h</li>
-                    <li><strong>0 %</strong> si annulation à moins de 24h</li>
-                </ul>
-                <div class="politique-warning">
-                    <h4><i class="fas fa-exclamation-triangle"></i> Frais non remboursables :</h4>
-                    <p>Les services de ménage, frais de service et formules smoothies/sandwichs.</p>
-                </div>
+            <div class="politique-warning">
+                <strong>Frais non remboursables :</strong> ménage, frais de service, options gourmandes.
             </div>
-            
-            <div class="separator">⸻</div>
-            
-            <div class="politique-section">
-                <h3><i class="fas fa-exclamation-circle"></i> Cas particuliers</h3>
-                <ul class="politique-list">
-                    <li><strong>No-show (absence sans prévenir)</strong><br>
-                    → Aucun remboursement</li>
-                    <li><strong>Force majeure</strong> (urgence médicale grave, décès, événement exceptionnel)<br>
-                    → Justificatif obligatoire<br>
-                    → Proposition prioritaire de report (sans remboursement automatique)</li>
-                    <li><strong>Annulation par le propriétaire</strong><br>
-                    → Remboursement intégral ou report avec avantage (smoothie offert ou remise)</li>
-                </ul>
-            </div>
-            
-            <div class="separator">⸻</div>
-            
-            <div class="politique-section">
-                <h3><i class="fas fa-calendar-alt"></i> Report de séjour</h3>
-                <ul class="politique-list">
-                    <li><strong>Report possible une seule fois</strong>, dans un délai maximum de 30 jours</li>
-                    <li>Sous réserve de disponibilité du studio</li>
-                    <li>Aucun remboursement si la nouvelle date est annulée</li>
-                    <li>Les formules smoothies/sandwichs peuvent être reportées si possible</li>
-                </ul>
-            </div>
-            
-            <div class="separator">⸻</div>
-            
-            <div class="politique-section">
-                <h3><i class="fas fa-calendar-week"></i> Séjours longue durée (semaine / mois)</h3>
-                <ul class="politique-list">
-                    <li><strong>Acompte de 30 % non remboursable</strong> à la réservation</li>
-                    <li>Solde à régler à l'arrivée ou 24h avant</li>
-                    <li><strong>Annulation moins de 7 jours avant l'arrivée</strong><br>
-                    → Acompte conservé</li>
-                </ul>
-            </div>
-            
-            <div class="separator">⸻</div>
-            
-            <div class="politique-note">
-                <h4><i class="fas fa-info-circle"></i> Important</h4>
-                <p>Les smoothies et sandwichs offerts avec certaines formules ne sont pas remboursables en cas d'annulation. En cas de report, ils pourront être maintenus selon disponibilité.</p>
-            </div>
-            
-            <div class="separator">⸻</div>
-            
-            <div class="politique-section">
-                <h4><i class="fas fa-gavel"></i> Note juridique</h4>
-                <p><strong>Toute réservation confirmée vaut acceptation pleine et entière de la présente politique d'annulation et de remboursement.</strong></p>
-                <p style="margin-top: 10px; font-size: 14px; color: var(--gris);">Dernière mise à jour : Janvier 2024</p>
-            </div>
+            <p style="text-align:center; margin-top:20px;"><small>Dernière mise à jour : 2024</small></p>
         </div>
     </div>
 
-    <!-- Hero Section -->
+    <!-- HERO -->
     <section class="hero" id="parenthese">
         <div class="container">
             <span class="badge">Studio cosy • Akpakpa</span>
             <h1>Votre parenthèse cosy à Akpakpa</h1>
             <div class="hero-tagline">
-                <i class="fas fa-star"></i> Une pause • Un lieu à soi • Un souvenir gourmand <i class="fas fa-star"></i>
+                <i class="fas fa-star"></i> Une pause • Un lieu à soi • Un souvenir gourmand
             </div>
             <p class="hero-subtitle">
                 Prenez un moment pour vous. Notre studio est une parenthèse de calme et de confort dans l'énergie de Cotonou, où chaque détail est pensé pour votre bien-être, avec une attention gourmande incluse.
             </p>
-            <p class="hero-note">
-                Ouvrez la parenthèse, nous nous occupons du reste.
-            </p>
-            
+            <p class="hero-note">Ouvrez la parenthèse, nous nous occupons du reste.</p>
             <div class="hero-buttons">
-                <a href="#tarifs" class="btn btn-primary">
-                    <i class="fas fa-eye"></i>
-                    Voir les tarifs
-                </a>
-                <a href="#reservation" class="btn btn-outline">
-                    <i class="fas fa-calendar-check"></i>
-                    Réserver ma parenthèse
-                </a>
+                <a href="#tarifs" class="btn btn-primary"><i class="fas fa-eye"></i> Voir les tarifs</a>
+                <a href="#reservation" class="btn btn-outline"><i class="fas fa-calendar-check"></i> Réserver</a>
             </div>
         </div>
     </section>
 
-    <!-- Tarifs Section -->
+    <!-- TARIFS -->
     <section class="tarifs-section" id="tarifs">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Nos Tarifs</h2>
-                <p class="section-subtitle">
-                    Des formules adaptées à chaque besoin, avec une touche gourmande incluse
-                </p>
+                <p class="section-subtitle">Des formules adaptées à chaque besoin, avec une touche gourmande incluse</p>
             </div>
-            
             <div class="tarifs-grid">
-                <!-- Tarif Nuitée -->
                 <div class="tarif-card">
                     <span class="badge">Le plus populaire</span>
                     <h3>Nuitée Cosy</h3>
                     <div class="tarif-price">17 000 F</div>
                     <div class="tarif-period">par nuitée</div>
-                    
-                    <p class="tarif-description">
-                        Idéale pour une nuit de repos, un déplacement rapide ou une escapade détente.
-                    </p>
-                    
+                    <p class="tarif-description">Idéale pour une nuit de repos ou une escapade détente.</p>
                     <ul class="tarif-features">
-                        <li>Studio entier de 30m²</li>
+                        <li>Studio entier 30m²</li>
                         <li>Wi-Fi haut débit</li>
-                        <li>Climatisation réglable</li>
-                        <li>TV écran plat + PS4</li>
+                        <li>Climatisation</li>
+                        <li>TV + PS4</li>
                         <li>Cuisine équipée</li>
-                        <li>Arrivée 14h - Départ 12h</li>
                         <li><strong>Smoothie ou sandwich INCLUS</strong></li>
                     </ul>
-                    
-                    <div class="tarif-cta">
-                        <a href="#reservation" class="btn btn-primary">
-                            <i class="fas fa-calendar-alt"></i>
-                            Choisir cette formule
-                        </a>
-                    </div>
+                    <div class="tarif-cta"><a href="#reservation" class="btn btn-primary">Choisir</a></div>
                 </div>
-                
-                <!-- Tarif 24h -->
                 <div class="tarif-card featured">
-                    <span class="badge">Flexibilité maximale</span>
+                    <span class="badge">Flexibilité</span>
                     <h3>24h Flexibles</h3>
                     <div class="tarif-price">27 000 F</div>
-                    <div class="tarif-period">pour 24 heures</div>
-                    
-                    <p class="tarif-description">
-                        Parfaite si vous arrivez tard ou souhaitez profiter pleinement du studio sans contrainte horaire.
-                    </p>
-                    
+                    <div class="tarif-period">pour 24h</div>
+                    <p class="tarif-description">Parfaite si vous arrivez tard ou souhaitez profiter sans contrainte.</p>
                     <ul class="tarif-features">
-                        <li>Studio entier de 30m²</li>
+                        <li>Studio entier 30m²</li>
                         <li>Wi-Fi haut débit</li>
-                        <li>Climatisation réglable</li>
-                        <li>TV écran plat + PS4</li>
+                        <li>Climatisation</li>
+                        <li>TV + PS4</li>
                         <li>Cuisine équipée</li>
-                        <li>Heure d'arrivée flexible</li>
                         <li><strong>Smoothie ou sandwich INCLUS</strong></li>
                     </ul>
-                    
-                    <div class="tarif-cta">
-                        <a href="#reservation" class="btn btn-primary">
-                            <i class="fas fa-clock"></i>
-                            Choisir cette formule
-                        </a>
-                    </div>
+                    <div class="tarif-cta"><a href="#reservation" class="btn btn-primary">Choisir</a></div>
                 </div>
             </div>
-            
-            <!-- Alternative sans gourmandise -->
             <div class="alternative-card">
-                <h3 class="alternative-title">Vous préférez sans option gourmande ?</h3>
-                <p style="color: var(--gris); margin-bottom: 20px;">
-                    Profitez simplement du studio confortable à un tarif réduit.
-                </p>
+                <h3 class="alternative-title">Sans option gourmande ?</h3>
+                <p>Profitez du studio à tarif réduit.</p>
                 <div class="alternative-prices">
-                    <div class="alternative-price">
-                        <div class="price">15 000 F</div>
-                        <div class="period">par nuitée</div>
-                    </div>
-                    <div class="alternative-price">
-                        <div class="price">25 000 F</div>
-                        <div class="period">pour 24 heures</div>
-                    </div>
+                    <div class="alternative-price"><span class="price">15 000 F</span><br>par nuitée</div>
+                    <div class="alternative-price"><span class="price">25 000 F</span><br>pour 24h</div>
                 </div>
-                <p style="margin-top: 20px; font-size: 14px; color: var(--gris);">
-                    <i class="fas fa-info-circle"></i> Tous les équipements inclus, sans smoothie/sandwich
-                </p>
             </div>
         </div>
     </section>
 
-    <!-- Gallery Section -->
+    <!-- GALERIE (carrousel dynamique) -->
     <section class="gallery-section" id="galerie">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Galerie</h2>
-                <p class="section-subtitle">
-                    Découvrez le studio en images et vidéo
-                </p>
+                <p class="section-subtitle">Découvrez le studio en images et vidéo</p>
             </div>
-            
             <div class="gallery-carousel">
-                <div class="carousel-container" id="carousel-container">
-                    <!-- Les slides seront générées par JavaScript -->
-                </div>
-                
-                <button class="carousel-nav carousel-prev" id="carousel-prev" aria-label="Image précédente">
-                    <i class="fas fa-chevron-left"></i>
-                </button>
-                <button class="carousel-nav carousel-next" id="carousel-next" aria-label="Image suivante">
-                    <i class="fas fa-chevron-right"></i>
-                </button>
-                
-                <div class="carousel-dots" id="carousel-dots">
-                    <!-- Les points seront générés par JavaScript -->
-                </div>
+                <div class="carousel-container" id="carousel-container"></div>
+                <button class="carousel-nav carousel-prev" id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
+                <button class="carousel-nav carousel-next" id="carousel-next"><i class="fas fa-chevron-right"></i></button>
+                <div class="carousel-dots" id="carousel-dots"></div>
             </div>
-            
-            <div class="video-legend">
-                <i class="fas fa-video"></i> La vidéo présente une visite complète du studio. Cliquez sur le bouton play pour la visionner.
-            </div>
+            <div class="video-legend"><i class="fas fa-video"></i> Visite vidéo du studio</div>
         </div>
     </section>
 
-    <!-- Studio Section -->
+    <!-- STUDIO -->
     <section class="studio-section" id="studio">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Le Studio Cosy</h2>
-                <p class="section-subtitle">
-                    Un espace pensé pour votre confort, tranquillité et bien-être
-                </p>
+                <p class="section-subtitle">Un espace pensé pour votre confort</p>
             </div>
-            
             <div class="features-grid">
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-snowflake"></i>
-                    </div>
-                    <h3>Climatisation</h3>
-                    <p>Température réglable pour un confort optimal toute l'année</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-wifi"></i>
-                    </div>
-                    <h3>Wi-Fi Haut Débit</h3>
-                    <p>Connexion internet rapide et stable pour travailler ou se divertir</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-tv"></i>
-                    </div>
-                    <h3>TV & PS4</h3>
-                    <p>Écran plat avec console de jeux pour vos moments de détente</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-utensils"></i>
-                    </div>
-                    <h3>Cuisine équipée</h3>
-                    <p>Plaques, ustensiles et vaisselle complète pour vos préparations</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-volume-off"></i>
-                    </div>
-                    <h3>Quartier calme</h3>
-                    <p>Environnement paisible pour un séjour reposant à Akpakpa</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-broom"></i>
-                    </div>
-                    <h3>Propreté garantie</h3>
-                    <p>Nettoyage professionnel avant chaque arrivée pour votre tranquillité</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-user-secret"></i>
-                    </div>
-                    <h3>Studio privé</h3>
-                    <p>Espace entier et discret pour préserver votre intimité</p>
-                </div>
-                
-                <div class="feature-card">
-                    <div class="feature-icon">
-                        <i class="fas fa-shield-alt"></i>
-                    </div>
-                    <h3>Sécurité</h3>
-                    <p>Environnement sûr et accès sécurisé pour votre sérénité</p>
-                </div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-snowflake"></i></div><h3>Climatisation</h3><p>Température réglable</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-wifi"></i></div><h3>Wi-Fi Haut Débit</h3><p>Connexion rapide</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tv"></i></div><h3>TV & PS4</h3><p>Divertissement</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-utensils"></i></div><h3>Cuisine équipée</h3><p>Ustensiles inclus</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-volume-off"></i></div><h3>Quartier calme</h3><p>Repos garanti</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-broom"></i></div><h3>Propreté garantie</h3><p>Nettoyage pro</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-user-secret"></i></div><h3>Studio privé</h3><p>Intimité totale</p></div>
+                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Sécurité</h3><p>Accès sécurisé</p></div>
             </div>
         </div>
     </section>
 
-    <!-- Partenaire Section -->
+    <!-- PARTENAIRE -->
     <section class="partenaire-section" id="partenaire">
         <div class="container">
             <div class="section-header">
                 <h2 class="section-title">Notre Partenaire Gourmand</h2>
-                <p class="section-subtitle">
-                    Une touche de fraîcheur pour votre séjour
-                </p>
+                <p class="section-subtitle">Une touche de fraîcheur pour votre séjour</p>
             </div>
-            
             <div class="partenaire-card">
-                <div class="partenaire-logo">
-                    <i class="fas fa-blender"></i>
-                </div>
+                <div class="partenaire-logo"><i class="fas fa-blender"></i></div>
                 <h3 class="partenaire-title">FRESH MOOD</h3>
-                <p class="partenaire-text">
-                    Parce qu'un bon séjour passe aussi par le plaisir, nous vous proposons un smoothie frais ou un sandwich gourmand préparé par <strong>FreshMood</strong>, notre partenaire local de confiance.
-                </p>
-                <p class="partenaire-note">
-                    <i class="fas fa-quote-left"></i> 
-                    Une touche de fraîcheur pour bien commencer ou terminer votre journée.
-                    <i class="fas fa-quote-right"></i>
-                </p>
-                <a href="https://freshmood.bj" target="_blank" class="btn btn-outline" style="color: var(--terracotta); border-color: var(--terracotta); margin-top: 20px;">
-                    <i class="fas fa-external-link-alt"></i>
-                    Découvrir FreshMood
-                </a>
+                <p class="partenaire-text">Smoothies et sandwichs frais préparés par notre partenaire local.</p>
+                <a href="#" class="btn btn-outline" style="color:var(--terracotta); border-color:var(--terracotta);">Découvrir</a>
             </div>
         </div>
     </section>
 
-    <!-- Reservation Section -->
+    <!-- RÉSERVATION -->
     <section class="reservation-section" id="reservation">
         <div class="container">
-            <div class="reservation-header">
+            <div class="section-header">
                 <h2 class="section-title">Réservation</h2>
-                <p class="section-subtitle">
-                    Réservez votre séjour en quelques étapes simples
-                </p>
-                <p class="reservation-note">
-                    <i class="fas fa-bolt"></i> La réservation prend moins d'une minute.
-                </p>
+                <p class="reservation-note"><i class="fas fa-bolt"></i> Moins d'une minute</p>
             </div>
-            
             <div class="reservation-form-container">
                 <form id="reservationForm">
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label" for="nom">Nom *</label>
-                            <input type="text" class="form-control" id="nom" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="prenom">Prénom *</label>
-                            <input type="text" class="form-control" id="prenom" required>
-                        </div>
+                        <div class="form-group"><label class="form-label">Nom *</label><input type="text" class="form-control" id="nom" required></div>
+                        <div class="form-group"><label class="form-label">Prénom *</label><input type="text" class="form-control" id="prenom" required></div>
                     </div>
-                    
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label" for="email">Email *</label>
-                            <input type="email" class="form-control" id="email" required>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="telephone">Téléphone WhatsApp *</label>
-                            <input type="tel" class="form-control" id="telephone" required placeholder="Ex: 66953934">
-                            <small style="color: var(--gris);">Format: 66953934 (sans espace)</small>
-                        </div>
+                        <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-control" id="email" required></div>
+                        <div class="form-group"><label class="form-label">WhatsApp *</label><input type="tel" class="form-control" id="telephone" required placeholder="66953934"><small>Format: 66953934</small></div>
                     </div>
-                    
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label" for="date-arrivee">Date d'arrivée *</label>
-                            <input type="date" class="form-control" id="date-arrivee" required>
-                            <div class="date-status" id="arrivee-status"></div>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="date-depart">Date de départ *</label>
-                            <input type="date" class="form-control" id="date-depart" required>
-                            <div class="date-status" id="depart-status"></div>
-                        </div>
+                        <div class="form-group"><label class="form-label">Arrivée *</label><input type="date" class="form-control" id="date-arrivee" required><div class="date-status" id="arrivee-status"></div></div>
+                        <div class="form-group"><label class="form-label">Départ *</label><input type="date" class="form-control" id="date-depart" required><div class="date-status" id="depart-status"></div></div>
                     </div>
-                    
                     <div class="form-grid">
-                        <div class="form-group">
-                            <label class="form-label" for="formule">Formule choisie *</label>
-                            <select class="form-control" id="formule" required>
-                                <option value="">Sélectionnez une formule</option>
-                                <option value="nuit">Nuitée Cosy (17.000 F/nuit)</option>
-                                <option value="24h">24h Flexibles (27.000 F/24h)</option>
-                            </select>
-                        </div>
-                        
-                        <div class="form-group">
-                            <label class="form-label" for="personnes">Nombre de personnes *</label>
-                            <select class="form-control" id="personnes" required>
-                                <option value="">Sélectionnez</option>
-                                <option value="1">1 personne</option>
-                                <option value="2">2 personnes</option>
-                                <option value="3">3 personnes</option>
-                                <option value="4">4 personnes</option>
-                            </select>
-                        </div>
+                        <div class="form-group"><label class="form-label">Formule *</label><select class="form-control" id="formule" required><option value="">Choisir</option><option value="nuit">Nuitée Cosy (17.000 F/nuit)</option><option value="24h">24h Flexibles (27.000 F/24h)</option></select></div>
+                        <div class="form-group"><label class="form-label">Personnes *</label><select class="form-control" id="personnes" required><option value="">Choisir</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
                     </div>
-                    
                     <div class="form-group">
-                        <label class="form-label" for="smoothie-sandwich">Option gourmande</label>
+                        <label class="form-label">Option gourmande</label>
                         <select class="form-control" id="smoothie-sandwich">
-                            <option value="avec">Oui, je veux le smoothie ou sandwich INCLUS</option>
-                            <option value="sans">Non, sans smoothie/sandwich (tarif réduit)</option>
-                        </select>
-                        <small style="color: var(--gris); display: block; margin-top: 5px;">
-                            <i class="fas fa-info-circle"></i> Sans l'option : 15.000 F/nuit ou 25.000 F/24h
-                        </small>
-                    </div>
-                    
-                    <div class="form-group">
-                        <label class="form-label" for="preference">Préférence (si vous prenez l'option)</label>
-                        <select class="form-control" id="preference">
-                            <option value="">Choisissez votre préférence</option>
-                            <option value="smoothie">Smoothie FreshMood</option>
-                            <option value="sandwich">Sandwich FreshMood</option>
+                            <option value="avec">Oui, avec smoothie/sandwich</option>
+                            <option value="sans">Non, tarif réduit</option>
                         </select>
                     </div>
-                    
                     <div class="form-group">
-                        <label class="form-label" for="message">Message ou demande particulière</label>
-                        <textarea class="form-control" id="message" placeholder="Heure d'arrivée, besoins particuliers, etc." rows="4"></textarea>
+                        <label class="form-label">Préférence</label>
+                        <select class="form-control" id="preference" disabled>
+                            <option value="">Choisir</option>
+                            <option value="smoothie">Smoothie</option>
+                            <option value="sandwich">Sandwich</option>
+                        </select>
                     </div>
-                    
-                    <!-- Affichage du prix en temps réel -->
-                    <div class="price-display" id="price-display" style="display: none;">
-                        <h3>Estimation du prix</h3>
+                    <div class="form-group">
+                        <label class="form-label">Message particulier</label>
+                        <textarea class="form-control" id="message" rows="3"></textarea>
+                    </div>
+                    <div class="price-display" id="price-display" style="display:none;">
+                        <h3>Estimation</h3>
                         <div class="price-amount" id="total-price">0 F</div>
-                        <div class="price-details" id="price-details">
-                            Calculé en fonction de votre séjour
-                        </div>
+                        <div class="price-details" id="price-details"></div>
                     </div>
-                    
-                    <!-- Conditions avec bouton de lecture -->
                     <div class="conditions-container">
                         <div class="conditions-header">
                             <input type="checkbox" id="accept-conditions" required>
-                            <label for="accept-conditions">
-                                J'accepte la politique d'annulation et de remboursement de La Parenthèse.
-                            </label>
+                            <label for="accept-conditions">J'accepte la politique d'annulation</label>
                         </div>
-                        <button type="button" class="read-conditions-btn" id="openPolitiqueBtn">
-                            <i class="fas fa-external-link-alt"></i> Lire les conditions d'annulation et de remboursement
-                        </button>
+                        <button type="button" class="read-conditions-btn" id="openPolitiqueBtn">Lire les conditions</button>
                     </div>
-                    
-                    <div class="form-group" style="text-align: center;">
-                        <button type="submit" class="btn btn-whatsapp submit-btn" id="submit-btn" style="max-width: 400px; margin: 0 auto;">
-                            <i class="fab fa-whatsapp"></i>
-                            Réserver via WhatsApp
-                        </button>
-                        <p style="margin-top: 10px; font-size: 14px; color: var(--gris);">
-                            <i class="fas fa-info-circle"></i> 
-                            Vous serez redirigé vers WhatsApp pour finaliser votre réservation
-                        </p>
-                    </div>
+                    <button type="submit" class="btn btn-whatsapp submit-btn" id="submit-btn"><i class="fab fa-whatsapp"></i> Réserver via WhatsApp</button>
                 </form>
             </div>
         </div>
     </section>
 
-    <!-- Footer -->
+    <!-- FOOTER -->
     <footer id="contact">
         <div class="container">
             <div class="footer-container">
-                <div class="footer-column">
-                    <h3>La Parenthèse</h3>
-                    <p style="color: #bdc3c7; margin-top: 15px; line-height: 1.6;">
-                        Studio cosy et confortable à Akpakpa, Cotonou. Une parenthèse paisible pour vos séjours.
-                    </p>
-                    <p style="color: var(--terracotta); margin-top: 15px; font-weight: 500;">
-                        <i class="fas fa-check-circle"></i> Disponible 7j/7
-                    </p>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Navigation</h3>
-                    <ul class="footer-links">
-                        <li><a href="#parenthese"><i class="fas fa-home"></i> Accueil</a></li>
-                        <li><a href="#studio"><i class="fas fa-couch"></i> Le Studio</a></li>
-                        <li><a href="#tarifs"><i class="fas fa-tags"></i> Tarifs</a></li>
-                        <li><a href="#galerie"><i class="fas fa-images"></i> Galerie</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Informations</h3>
-                    <ul class="footer-links">
-                        <li><a href="#" id="openPolitiqueFooter"><i class="fas fa-file-contract"></i> Politique d'annulation</a></li>
-                        <li><a href="#partenaire"><i class="fas fa-handshake"></i> Notre Partenaire</a></li>
-                        <li><a href="#reservation"><i class="fas fa-calendar-check"></i> Réservation</a></li>
-                        <li><a href="#contact"><i class="fas fa-envelope"></i> Contact</a></li>
-                    </ul>
-                </div>
-                
-                <div class="footer-column">
-                    <h3>Contact</h3>
-                    <ul class="footer-contact">
-                        <li>
-                            <i class="fab fa-whatsapp"></i>
-                            <div>
-                                <strong>WhatsApp</strong><br>
-                                66 95 39 34
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-envelope"></i>
-                            <div>
-                                <strong>Email</strong><br>
-                                mauricegerauds@gmail.com
-                            </div>
-                        </li>
-                        <li>
-                            <i class="fas fa-map-marker-alt"></i>
-                            <div>
-                                <strong>Adresse</strong><br>
-                                Akpakpa, Cotonou
-                            </div>
-                        </li>
-                    </ul>
-                </div>
+                <div class="footer-column"><h3>La Parenthèse</h3><p>Studio cosy à Akpakpa, Cotonou.</p></div>
+                <div class="footer-column"><h3>Navigation</h3><ul class="footer-links"><li><a href="#parenthese">Accueil</a></li><li><a href="#studio">Le Studio</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#galerie">Galerie</a></li></ul></div>
+                <div class="footer-column"><h3>Infos</h3><ul class="footer-links"><li><a href="#" id="openPolitiqueFooter">Politique</a></li><li><a href="#partenaire">Partenaire</a></li></ul></div>
+                <div class="footer-column"><h3>Contact</h3><ul class="footer-contact"><li><i class="fab fa-whatsapp"></i> 66 95 39 34</li><li><i class="fas fa-envelope"></i> mauricegerauds@gmail.com</li></ul></div>
             </div>
-            
-            <div class="footer-note">
-                <p><span class="highlight">Réservation rapide, réponse immédiate sur WhatsApp.</span></p>
-            </div>
-            
-            <div class="copyright">
-                <p>© <span id="current-year">2024</span> La Parenthèse – Studio à Akpakpa, Cotonou. Tous droits réservés.</p>
-                <p style="margin-top: 10px; font-size: 13px;">
-                    Contact : 66 95 39 34 | mauricegerauds@gmail.com
-                </p>
-            </div>
+            <div class="copyright">© <span id="current-year"></span> La Parenthèse</div>
         </div>
     </footer>
 
-    <!-- WhatsApp Float -->
-    <a href="https://wa.me/22966953934?text=Bonjour%20!%20Je%20m'intéresse%20à%20votre%20studio%20La%20Parenthèse%20à%20Akpakpa" 
-       class="whatsapp-float" target="_blank" title="Contact WhatsApp">
-        <i class="fab fa-whatsapp"></i>
-        <span class="pulse"></span>
-    </a>
+    <!-- WHATSAPP FLOAT -->
+    <a href="https://wa.me/22966953934?text=Bonjour%20!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
 
     <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            initApp();
-        });
+        (function() {
+            // Initialisation
+            const currentYear = new Date().getFullYear();
+            document.getElementById('current-year').textContent = currentYear;
 
-        function initApp() {
-            // Update year in footer
-            document.getElementById('current-year').textContent = new Date().getFullYear();
-            
-            // Setup event listeners
-            setupEventListeners();
-            setupUI();
-            setupCarousel();
-            setupForms();
-            setupModal();
-            initDates();
-        }
+            // HEADER SCROLL
+            const header = document.getElementById('main-header');
+            window.addEventListener('scroll', () => {
+                if (window.scrollY > 50) header.classList.add('scrolled');
+                else header.classList.remove('scrolled');
+            });
 
-        function setupCarousel() {
-            const carouselContainer = document.getElementById('carousel-container');
-            const dotsContainer = document.getElementById('carousel-dots');
-            const prevBtn = document.getElementById('carousel-prev');
-            const nextBtn = document.getElementById('carousel-next');
-            
-            // Données des slides (images et vidéo)
-            const slides = [
-                {
-                    type: 'image',
-                    src: 'images/image1.jpg',
-                    alt: 'Vue principale du studio La Parenthèse à Akpakpa'
-                },
-                {
-                    type: 'image',
-                    src: 'images/image2.jpg',
-                    alt: 'Espace lit cosy du studio La Parenthèse'
-                },
-                {
-                    type: 'image',
-                    src: 'images/image3.jpg',
-                    alt: 'Coin détente du studio à Cotonou'
-                },
-                {
-                    type: 'image',
-                    src: 'images/cuisine-equipee.jpg',
-                    alt: 'Cuisine équipée du studio La Parenthèse'
-                },
-                {
-                    type: 'image',
-                    src: 'images/image4.jpg',
-                    alt: 'Salle de bain moderne du studio'
-                },
-                {
-                    type: 'image',
-                    src: 'images/image5.jpg',
-                    alt: 'Détail ambiance cosy du studio'
-                },
-                {
-                    type: 'video',
-                    src: 'images/visite-studio.mp4',
-                    poster: 'images/video-poster.jpg',
-                    alt: 'Visite vidéo du studio La Parenthèse'
-                },
-                {
-                    type: 'image',
-                    src: 'images/image7.jpg',
-                    alt: 'Touche gourmande FreshMood incluse avec votre séjour'
-                }
-            ];
-            
-            let currentSlide = 0;
-            let autoSlideInterval;
-            
-            // Créer les slides
-            slides.forEach((slide, index) => {
-                const slideElement = document.createElement('div');
-                slideElement.className = 'carousel-slide';
-                slideElement.dataset.index = index;
-                
-                if (slide.type === 'image') {
-                    const img = document.createElement('img');
-                    img.src = slide.src;
-                    img.alt = slide.alt;
-                    img.loading = 'lazy';
-                    
-                    // Fallback si l'image ne se charge pas
-                    img.onerror = function() {
-                        this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0Y4RjVGMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2QjVDNEEiPkxvYWRpbmcuLi48L3RleHQ+PC9zdmc+';
-                        this.alt = 'Image non disponible - Chargement en cours';
-                    };
-                    
-                    slideElement.appendChild(img);
-                } else if (slide.type === 'video') {
-                    slideElement.className += ' video-slide';
-                    
-                    const videoContainer = document.createElement('div');
-                    videoContainer.className = 'video-container';
-                    
-                    const video = document.createElement('video');
-                    video.id = 'studio-video';
-                    video.poster = slide.poster;
-                    video.preload = 'metadata';
-                    video.controls = true;
-                    video.playsInline = true;
-                    
-                    const source = document.createElement('source');
-                    source.src = slide.src;
-                    source.type = 'video/mp4';
-                    
-                    video.appendChild(source);
-                    
-                    // Fallback message
-                    const fallbackMsg = document.createElement('p');
-                    fallbackMsg.textContent = 'Votre navigateur ne supporte pas la vidéo.';
-                    video.appendChild(fallbackMsg);
-                    
-                    const overlay = document.createElement('div');
-                    overlay.className = 'video-overlay';
-                    overlay.id = 'video-overlay';
-                    
-                    const playBtn = document.createElement('button');
-                    playBtn.className = 'play-video-btn';
-                    playBtn.id = 'play-video-btn';
-                    playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                    playBtn.setAttribute('aria-label', 'Lancer la vidéo');
-                    
-                    const caption = document.createElement('p');
-                    caption.className = 'video-caption';
-                    caption.textContent = 'Cliquez pour lancer la visite vidéo du studio';
-                    
-                    overlay.appendChild(playBtn);
-                    overlay.appendChild(caption);
-                    
-                    videoContainer.appendChild(video);
-                    videoContainer.appendChild(overlay);
-                    slideElement.appendChild(videoContainer);
-                    
-                    // Setup video controls
-                    video.addEventListener('play', function() {
-                        overlay.classList.add('hidden');
-                        clearInterval(autoSlideInterval);
-                    });
-                    
-                    video.addEventListener('pause', function() {
-                        overlay.classList.remove('hidden');
-                    });
-                    
-                    playBtn.addEventListener('click', function() {
-                        video.play().catch(e => {
-                            console.log('Erreur de lecture vidéo:', e);
-                            video.controls = true;
-                            overlay.classList.add('hidden');
-                        });
-                    });
-                }
-                
-                carouselContainer.appendChild(slideElement);
-                
-                // Créer les dots
-                const dot = document.createElement('button');
-                dot.className = 'carousel-dot';
-                dot.dataset.index = index;
-                dot.setAttribute('aria-label', `Aller à l'image ${index + 1}`);
-                dotsContainer.appendChild(dot);
-            });
-            
-            const slideElements = document.querySelectorAll('.carousel-slide');
-            const dots = document.querySelectorAll('.carousel-dot');
-            
-            // Fonction pour afficher une slide spécifique
-            function showSlide(index) {
-                // Masquer toutes les slides
-                slideElements.forEach(slide => {
-                    slide.classList.remove('active');
-                });
-                
-                // Désactiver tous les dots
-                dots.forEach(dot => {
-                    dot.classList.remove('active');
-                });
-                
-                // Afficher la slide active
-                currentSlide = (index + slides.length) % slides.length;
-                slideElements[currentSlide].classList.add('active');
-                dots[currentSlide].classList.add('active');
-                
-                // Pause video if not on video slide
-                if (slides[currentSlide].type !== 'video') {
-                    const video = document.getElementById('studio-video');
-                    if (video) {
-                        video.pause();
-                        const overlay = document.getElementById('video-overlay');
-                        if (overlay) overlay.classList.remove('hidden');
-                    }
-                }
-            }
-            
-            // Fonction pour la slide suivante
-            function nextSlide() {
-                showSlide(currentSlide + 1);
-            }
-            
-            // Fonction pour la slide précédente
-            function prevSlide() {
-                showSlide(currentSlide - 1);
-            }
-            
-            // Événements pour les boutons
-            if (prevBtn) {
-                prevBtn.addEventListener('click', () => {
-                    prevSlide();
-                    resetAutoSlide();
-                });
-            }
-            
-            if (nextBtn) {
-                nextBtn.addEventListener('click', () => {
-                    nextSlide();
-                    resetAutoSlide();
-                });
-            }
-            
-            // Événements pour les dots
-            dots.forEach(dot => {
-                dot.addEventListener('click', () => {
-                    const index = parseInt(dot.dataset.index);
-                    showSlide(index);
-                    resetAutoSlide();
-                });
-            });
-            
-            // Auto-slide
-            function startAutoSlide() {
-                autoSlideInterval = setInterval(nextSlide, 5000);
-            }
-            
-            function stopAutoSlide() {
-                clearInterval(autoSlideInterval);
-            }
-            
-            function resetAutoSlide() {
-                stopAutoSlide();
-                startAutoSlide();
-            }
-            
-            // Pause auto-slide on hover
-            carouselContainer.addEventListener('mouseenter', stopAutoSlide);
-            carouselContainer.addEventListener('mouseleave', startAutoSlide);
-            
-            // Touches clavier
-            document.addEventListener('keydown', (e) => {
-                if (e.key === 'ArrowLeft') {
-                    prevSlide();
-                    resetAutoSlide();
-                } else if (e.key === 'ArrowRight') {
-                    nextSlide();
-                    resetAutoSlide();
-                }
-            });
-            
-            // Initialiser
-            showSlide(0);
-            startAutoSlide();
-        }
-
-        function setupEventListeners() {
-            // Mobile menu toggle
+            // MOBILE MENU
             const menuBtn = document.getElementById('mobile-menu-btn');
             const nav = document.getElementById('main-nav');
-            
             if (menuBtn && nav) {
-                menuBtn.addEventListener('click', function(e) {
+                menuBtn.addEventListener('click', (e) => {
                     e.stopPropagation();
                     nav.classList.toggle('active');
-                    this.innerHTML = nav.classList.contains('active') ? 
-                        '<i class="fas fa-times"></i>' : 
-                        '<i class="fas fa-bars"></i>';
-                    this.setAttribute('aria-expanded', nav.classList.contains('active'));
+                    menuBtn.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
                 });
-                
-                // Close mobile menu when clicking links
                 document.querySelectorAll('nav a').forEach(link => {
                     link.addEventListener('click', () => {
                         nav.classList.remove('active');
                         menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                        menuBtn.setAttribute('aria-expanded', 'false');
                     });
                 });
-                
-                // Close mobile menu when clicking outside
-                document.addEventListener('click', function(event) {
-                    if (nav.classList.contains('active') && 
-                        !nav.contains(event.target) && 
-                        !menuBtn.contains(event.target)) {
+                document.addEventListener('click', (e) => {
+                    if (nav.classList.contains('active') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
                         nav.classList.remove('active');
                         menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                        menuBtn.setAttribute('aria-expanded', 'false');
                     }
                 });
             }
-            
-            // Header scroll effect
-            window.addEventListener('scroll', handleHeaderScroll);
-        }
 
-        function setupModal() {
+            // MODAL POLITIQUE
             const modal = document.getElementById('politiqueModal');
-            const openButtons = document.querySelectorAll('#openPolitiqueBtn, #openPolitiqueFooter');
-            const closeButton = document.getElementById('modalClose');
-            
-            openButtons.forEach(button => {
-                button.addEventListener('click', function(e) {
+            const openBtns = document.querySelectorAll('#openPolitiqueBtn, #openPolitiqueFooter');
+            const closeBtn = document.getElementById('modalClose');
+            openBtns.forEach(btn => {
+                btn.addEventListener('click', (e) => {
                     e.preventDefault();
                     modal.style.display = 'block';
                     document.body.style.overflow = 'hidden';
-                    document.documentElement.style.overflow = 'hidden';
                 });
             });
-            
-            if (closeButton) {
-                closeButton.addEventListener('click', function() {
+            if (closeBtn) {
+                closeBtn.addEventListener('click', () => {
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                    document.documentElement.style.overflow = 'auto';
                 });
             }
-            
-            // Close modal when clicking outside
-            window.addEventListener('click', function(e) {
+            window.addEventListener('click', (e) => {
                 if (e.target === modal) {
                     modal.style.display = 'none';
                     document.body.style.overflow = 'auto';
-                    document.documentElement.style.overflow = 'auto';
                 }
             });
-            
-            // Close modal with Escape key
-            document.addEventListener('keydown', function(e) {
-                if (e.key === 'Escape' && modal.style.display === 'block') {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                    document.documentElement.style.overflow = 'auto';
-                }
-            });
-        }
 
-        function setupUI() {
-            // Smooth scrolling for anchor links
-            document.querySelectorAll('a[href^="#"]').forEach(anchor => {
-                anchor.addEventListener('click', function(e) {
-                    const targetId = this.getAttribute('href');
-                    if (targetId === '#' || targetId === '#politique') return;
-                    
-                    const targetElement = document.querySelector(targetId);
-                    if (targetElement) {
-                        e.preventDefault();
-                        window.scrollTo({
-                            top: targetElement.offsetTop - 80,
-                            behavior: 'smooth'
-                        });
-                    }
-                });
-            });
-            
-            // Update active nav link on scroll
-            window.addEventListener('scroll', updateActiveNavLink);
-            updateActiveNavLink();
-        }
-
-        function initDates() {
-            // Set minimum date for reservation (today)
-            const today = new Date();
-            const tomorrow = new Date(today);
-            tomorrow.setDate(tomorrow.getDate() + 1);
-            
-            const todayStr = today.toISOString().split('T')[0];
-            const tomorrowStr = tomorrow.toISOString().split('T')[0];
-            
-            const dateArrivee = document.getElementById('date-arrivee');
-            const dateDepart = document.getElementById('date-depart');
-            
-            if (dateArrivee && dateDepart) {
-                dateArrivee.min = todayStr;
-                dateDepart.min = tomorrowStr;
-                
-                // Set initial values (tomorrow and day after tomorrow)
-                dateArrivee.value = tomorrowStr;
-                
-                const afterTomorrow = new Date(tomorrow);
-                afterTomorrow.setDate(afterTomorrow.getDate() + 1);
-                dateDepart.value = afterTomorrow.toISOString().split('T')[0];
-                
-                // Check initial availability
-                checkAvailability();
-                // Calculate initial price
-                calculatePrice();
-            }
-        }
-
-        function calculatePrice() {
-            const arriveeDate = document.getElementById('date-arrivee').value;
-            const departDate = document.getElementById('date-depart').value;
-            const formule = document.getElementById('formule').value;
-            const smoothieOption = document.getElementById('smoothie-sandwich').value;
-            const priceDisplay = document.getElementById('price-display');
-            
-            if (!arriveeDate || !departDate || !formule || !priceDisplay) {
-                priceDisplay.style.display = 'none';
-                return;
-            }
-            
-            const arrivee = new Date(arriveeDate);
-            const depart = new Date(departDate);
-            
-            if (depart <= arrivee) {
-                priceDisplay.style.display = 'none';
-                return;
-            }
-            
-            let prix = 0;
-            let details = '';
-            let prixUnitaire = 0;
-            
-            switch(formule) {
-                case 'nuit':
-                    const diffTimeNuit = Math.abs(depart - arrivee);
-                    const nuits = Math.ceil(diffTimeNuit / (1000 * 60 * 60 * 24));
-                    
-                    if (smoothieOption === 'avec') {
-                        prixUnitaire = 17000;
-                        prix = nuits * 17000;
-                        details = `${nuits} nuitée(s) × 17.000 F = ${prix.toLocaleString('fr-FR')} F`;
-                    } else {
-                        prixUnitaire = 15000;
-                        prix = nuits * 15000;
-                        details = `${nuits} nuitée(s) × 15.000 F = ${prix.toLocaleString('fr-FR')} F`;
-                    }
-                    break;
-                    
-                case '24h':
-                    const diffTime = Math.abs(depart - arrivee);
-                    const heures = diffTime / (1000 * 60 * 60);
-                    const periodes24h = Math.ceil(heures / 24);
-                    
-                    if (smoothieOption === 'avec') {
-                        prixUnitaire = 27000;
-                        prix = periodes24h * 27000;
-                        details = `${periodes24h} période(s) de 24h × 27.000 F = ${prix.toLocaleString('fr-FR')} F`;
-                    } else {
-                        prixUnitaire = 25000;
-                        prix = periodes24h * 25000;
-                        details = `${periodes24h} période(s) de 24h × 25.000 F = ${prix.toLocaleString('fr-FR')} F`;
-                    }
-                    break;
-                    
-                default:
-                    priceDisplay.style.display = 'none';
-                    return;
-            }
-            
-            let caution = 20000;
-            if (formule === '24h') {
-                caution = 25000;
-            }
-            const prixTotal = prix + caution;
-            
-            const options = { day: 'numeric', month: 'long', year: 'numeric' };
-            const dateArriveeFormat = arrivee.toLocaleDateString('fr-FR', options);
-            const dateDepartFormat = depart.toLocaleDateString('fr-FR', options);
-            
-            document.getElementById('total-price').textContent = prixTotal.toLocaleString('fr-FR') + ' F';
-            document.getElementById('price-details').innerHTML = `
-                <strong>Détails :</strong><br>
-                • ${formule === 'nuit' ? 'Nuitées' : 'Périodes 24h'}: ${details}<br>
-                • Caution: ${caution.toLocaleString('fr-FR')} F<br>
-                • Séjour: ${dateArriveeFormat} → ${dateDepartFormat}<br>
-                • Option gourmande: ${smoothieOption === 'avec' ? 'INCLUS' : 'NON INCLUS (-2.000 F)'}
-            `;
-            
-            priceDisplay.style.display = 'block';
-        }
-
-        function checkAvailability() {
-            const arriveeDate = document.getElementById('date-arrivee').value;
-            const departDate = document.getElementById('date-depart').value;
-            const arriveeStatus = document.getElementById('arrivee-status');
-            const departStatus = document.getElementById('depart-status');
-            const submitBtn = document.getElementById('submit-btn');
-            
-            if (!arriveeDate || !departDate || !arriveeStatus || !departStatus || !submitBtn) return;
-            
-            arriveeStatus.textContent = '';
-            departStatus.textContent = '';
-            arriveeStatus.className = 'date-status';
-            departStatus.className = 'date-status';
-            
-            const arrivee = new Date(arriveeDate);
-            const depart = new Date(departDate);
-            const today = new Date();
-            today.setHours(0, 0, 0, 0);
-            
-            // Check if arrival is in the past
-            if (arrivee < today) {
-                arriveeStatus.textContent = '❌ Date déjà passée';
-                arriveeStatus.classList.add('unavailable');
-                submitBtn.disabled = true;
-                return;
-            }
-            
-            // Check if departure is before arrival
-            if (depart <= arrivee) {
-                departStatus.textContent = '❌ Doit être après l\'arrivée';
-                departStatus.classList.add('unavailable');
-                submitBtn.disabled = true;
-                return;
-            }
-            
-            // Date availability simulation
-            const bookedDates = [
-                '2024-12-25', '2024-12-26',
-                '2024-12-31', '2025-01-01',
+            // CARROUSEL (création dynamique)
+            const slidesData = [
+                { type: 'image', src: 'images/image1.jpg', alt: 'Vue principale' },
+                { type: 'image', src: 'images/image2.jpg', alt: 'Espace nuit' },
+                { type: 'image', src: 'images/image3.jpg', alt: 'Coin détente' },
+                { type: 'image', src: 'images/cuisine-equipee.jpg', alt: 'Cuisine' },
+                { type: 'image', src: 'images/image4.jpg', alt: 'Salle de bain' },
+                { type: 'image', src: 'images/image5.jpg', alt: 'Ambiance' },
+                { type: 'video', src: 'images/visite-studio.mp4', poster: 'images/video-poster.jpg', alt: 'Vidéo visite' },
+                { type: 'image', src: 'images/image7.jpg', alt: 'Fresh Mood' }
             ];
-            
-            let isAvailable = true;
-            const checkDate = new Date(arrivee);
-            while (checkDate < depart) {
-                const dateStr = checkDate.toISOString().split('T')[0];
-                if (bookedDates.includes(dateStr)) {
-                    isAvailable = false;
-                    break;
-                }
-                checkDate.setDate(checkDate.getDate() + 1);
-            }
-            
-            if (isAvailable) {
-                arriveeStatus.innerHTML = '<i class="fas fa-check-circle"></i> Date disponible';
-                arriveeStatus.classList.add('available');
-                departStatus.innerHTML = '<i class="fas fa-check-circle"></i> Date disponible';
-                departStatus.classList.add('available');
-                submitBtn.disabled = false;
-            } else {
-                arriveeStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Certaines dates sont réservées';
-                arriveeStatus.classList.add('unavailable');
-                departStatus.innerHTML = '<i class="fas fa-exclamation-triangle"></i> Certaines dates sont réservées';
-                departStatus.classList.add('unavailable');
-                submitBtn.disabled = true;
-            }
-        }
 
-        function setupForms() {
-            const reservationForm = document.getElementById('reservationForm');
-            const submitBtn = document.getElementById('submit-btn');
-            
-            if (!reservationForm || !submitBtn) return;
-            
-            // Écouteurs pour le calcul du prix et vérification des dates
+            const container = document.getElementById('carousel-container');
+            const dotsContainer = document.getElementById('carousel-dots');
+            if (container && dotsContainer) {
+                slidesData.forEach((slide, index) => {
+                    const slideDiv = document.createElement('div');
+                    slideDiv.className = 'carousel-slide' + (slide.type === 'video' ? ' video-slide' : '');
+                    if (slide.type === 'image') {
+                        const img = document.createElement('img');
+                        img.src = slide.src;
+                        img.alt = slide.alt;
+                        img.onerror = function() { this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0Y4RjVGMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2QjVDNEEiPkltYWdlIG5vbiBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg=='; };
+                        slideDiv.appendChild(img);
+                    } else {
+                        const videoContainer = document.createElement('div');
+                        videoContainer.className = 'video-container';
+                        const video = document.createElement('video');
+                        video.id = 'studio-video';
+                        video.poster = slide.poster;
+                        video.preload = 'metadata';
+                        video.controls = true;
+                        video.playsInline = true;
+                        const source = document.createElement('source');
+                        source.src = slide.src;
+                        source.type = 'video/mp4';
+                        video.appendChild(source);
+                        video.appendChild(document.createTextNode('Vidéo non supportée'));
+
+                        const overlay = document.createElement('div');
+                        overlay.className = 'video-overlay';
+                        overlay.id = 'video-overlay-' + index;
+                        const playBtn = document.createElement('button');
+                        playBtn.className = 'play-video-btn';
+                        playBtn.innerHTML = '<i class="fas fa-play"></i>';
+                        playBtn.setAttribute('aria-label', 'Lancer la vidéo');
+                        const caption = document.createElement('p');
+                        caption.className = 'video-caption';
+                        caption.textContent = 'Cliquez pour lancer la visite vidéo';
+
+                        overlay.appendChild(playBtn);
+                        overlay.appendChild(caption);
+                        videoContainer.appendChild(video);
+                        videoContainer.appendChild(overlay);
+                        slideDiv.appendChild(videoContainer);
+
+                        // Gestion de la lecture
+                        playBtn.addEventListener('click', () => {
+                            video.play().then(() => overlay.classList.add('hidden')).catch(() => {});
+                        });
+                        video.addEventListener('play', () => overlay.classList.add('hidden'));
+                        video.addEventListener('pause', () => overlay.classList.remove('hidden'));
+                        video.addEventListener('ended', () => overlay.classList.remove('hidden'));
+                    }
+                    container.appendChild(slideDiv);
+
+                    // Dots
+                    const dot = document.createElement('button');
+                    dot.className = 'carousel-dot';
+                    dot.dataset.index = index;
+                    dot.setAttribute('aria-label', `Aller à l'image ${index+1}`);
+                    dotsContainer.appendChild(dot);
+                });
+
+                // Carrousel logique
+                const slides = document.querySelectorAll('.carousel-slide');
+                const dots = document.querySelectorAll('.carousel-dot');
+                let currentIndex = 0;
+                let autoInterval;
+
+                function showSlide(index) {
+                    if (index < 0) index = slides.length - 1;
+                    if (index >= slides.length) index = 0;
+                    currentIndex = index;
+                    container.style.transform = `translateX(-${currentIndex * 100}%)`;
+                    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+
+                    // Pause video si on change de slide
+                    const video = document.getElementById('studio-video');
+                    if (video && !video.paused) video.pause();
+                }
+
+                document.getElementById('carousel-prev').addEventListener('click', () => {
+                    showSlide(currentIndex - 1);
+                    resetAuto();
+                });
+                document.getElementById('carousel-next').addEventListener('click', () => {
+                    showSlide(currentIndex + 1);
+                    resetAuto();
+                });
+                dots.forEach(dot => {
+                    dot.addEventListener('click', () => {
+                        showSlide(parseInt(dot.dataset.index));
+                        resetAuto();
+                    });
+                });
+
+                function startAuto() { autoInterval = setInterval(() => showSlide(currentIndex + 1), 5000); }
+                function stopAuto() { clearInterval(autoInterval); }
+                function resetAuto() { stopAuto(); startAuto(); }
+
+                container.addEventListener('mouseenter', stopAuto);
+                container.addEventListener('mouseleave', startAuto);
+                startAuto();
+                showSlide(0);
+            }
+
+            // FORMULAIRE : dates et prix
             const dateArrivee = document.getElementById('date-arrivee');
             const dateDepart = document.getElementById('date-depart');
             const formule = document.getElementById('formule');
             const smoothieOption = document.getElementById('smoothie-sandwich');
-            
-            if (dateArrivee && dateDepart && formule && smoothieOption) {
-                dateArrivee.addEventListener('change', function() {
-                    const arriveeDate = new Date(this.value);
-                    const minDepartDate = new Date(arriveeDate);
-                    minDepartDate.setDate(minDepartDate.getDate() + 1);
-                    
-                    if (dateDepart) {
-                        dateDepart.min = minDepartDate.toISOString().split('T')[0];
-                        
-                        // If current departure date is before new minimum, update it
-                        const currentDepart = new Date(dateDepart.value);
-                        if (currentDepart <= arriveeDate) {
-                            dateDepart.value = minDepartDate.toISOString().split('T')[0];
-                        }
-                    }
-                    
-                    checkAvailability();
-                    calculatePrice();
-                });
-                
-                dateDepart.addEventListener('change', function() {
-                    checkAvailability();
-                    calculatePrice();
-                });
-                
-                formule.addEventListener('change', calculatePrice);
-                smoothieOption.addEventListener('change', calculatePrice);
-                
-                // Gérer l'affichage de la préférence selon le choix smoothie/sandwich
-                smoothieOption.addEventListener('change', function() {
-                    const preferenceSelect = document.getElementById('preference');
-                    if (this.value === 'avec') {
-                        preferenceSelect.disabled = false;
-                        preferenceSelect.required = true;
+            const prixDisplay = document.getElementById('price-display');
+            const totalPrice = document.getElementById('total-price');
+            const priceDetails = document.getElementById('price-details');
+            const submitBtn = document.getElementById('submit-btn');
+            const arriveeStatus = document.getElementById('arrivee-status');
+            const departStatus = document.getElementById('depart-status');
+
+            // Initialisation dates
+            const today = new Date().toISOString().split('T')[0];
+            const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
+            if (dateArrivee) {
+                dateArrivee.min = today;
+                dateArrivee.value = tomorrow;
+            }
+            if (dateDepart) {
+                const afterTomorrow = new Date(Date.now() + 2*86400000).toISOString().split('T')[0];
+                dateDepart.min = afterTomorrow;
+                dateDepart.value = afterTomorrow;
+            }
+
+            function checkAvailability() {
+                if (!dateArrivee.value || !dateDepart.value) return;
+                const arrivee = new Date(dateArrivee.value);
+                const depart = new Date(dateDepart.value);
+                if (depart <= arrivee) {
+                    if (departStatus) departStatus.innerHTML = '❌ Départ après arrivée';
+                    submitBtn.disabled = true;
+                    return;
+                }
+                // Simulation de dates réservées
+                const booked = ['2024-12-25','2024-12-31'];
+                let available = true;
+                for (let d = new Date(arrivee); d < depart; d.setDate(d.getDate()+1)) {
+                    const ds = d.toISOString().split('T')[0];
+                    if (booked.includes(ds)) { available = false; break; }
+                }
+                if (arriveeStatus && departStatus) {
+                    if (available) {
+                        arriveeStatus.innerHTML = '✅ Disponible';
+                        departStatus.innerHTML = '✅ Disponible';
+                        submitBtn.disabled = false;
                     } else {
-                        preferenceSelect.disabled = true;
-                        preferenceSelect.required = false;
-                        preferenceSelect.value = '';
+                        arriveeStatus.innerHTML = '❌ Indisponible';
+                        departStatus.innerHTML = '❌ Indisponible';
+                        submitBtn.disabled = true;
                     }
-                });
+                }
             }
-            
-            // Form submission
-            reservationForm.addEventListener('submit', function(e) {
-                e.preventDefault();
-                
-                const acceptConditions = document.getElementById('accept-conditions');
-                if (!acceptConditions || !acceptConditions.checked) {
-                    alert('Veuillez accepter la politique d\'annulation et de remboursement pour continuer.');
-                    acceptConditions.focus();
+
+            function calculatePrice() {
+                if (!dateArrivee.value || !dateDepart.value || !formule.value) {
+                    prixDisplay.style.display = 'none';
                     return;
                 }
-                
-                // Collect form data
-                const formData = {
-                    nom: document.getElementById('nom').value.trim(),
-                    prenom: document.getElementById('prenom').value.trim(),
-                    email: document.getElementById('email').value.trim(),
-                    telephone: document.getElementById('telephone').value.trim(),
-                    dateArrivee: document.getElementById('date-arrivee').value,
-                    dateDepart: document.getElementById('date-depart').value,
-                    formule: document.getElementById('formule').value,
-                    personnes: document.getElementById('personnes').value,
-                    smoothieOption: document.getElementById('smoothie-sandwich').value,
-                    preference: document.getElementById('preference').value,
-                    message: document.getElementById('message').value.trim()
-                };
-                
-                // Validate form
-                if (!formData.nom || !formData.prenom || !formData.email || !formData.telephone || 
-                    !formData.dateArrivee || !formData.dateDepart || !formData.formule || !formData.personnes) {
-                    alert('Veuillez remplir tous les champs obligatoires (*).');
-                    return;
-                }
-                
-                // Validate phone number
-                let phoneNumber = formData.telephone.replace(/\s/g, '');
-                
-                // Format du numéro Bénin pour WhatsApp
-                if (phoneNumber.startsWith('0')) {
-                    phoneNumber = '229' + phoneNumber.substring(1);
-                } else if (phoneNumber.length === 8 && !phoneNumber.startsWith('229')) {
-                    phoneNumber = '229' + phoneNumber;
-                }
-                
-                // Validate dates
-                const arriveeDate = new Date(formData.dateArrivee);
-                const departDate = new Date(formData.dateDepart);
-                
-                if (departDate <= arriveeDate) {
-                    alert('La date de départ doit être après la date d\'arrivée.');
-                    return;
-                }
-                
-                // Recalculer le prix pour confirmation
-                calculatePrice();
-                const prixTotal = document.getElementById('total-price').textContent;
-                
-                // Déterminer les textes
-                let formuleTexte = '';
-                let prixUnitaire = 0;
-                let caution = 20000;
-                
-                switch(formData.formule) {
-                    case 'nuit':
-                        const diffTimeNuit = Math.abs(departDate - arriveeDate);
-                        const nuits = Math.ceil(diffTimeNuit / (1000 * 60 * 60 * 24));
-                        prixUnitaire = formData.smoothieOption === 'avec' ? 17000 : 15000;
-                        formuleTexte = `${nuits} nuitée(s) Cosy - ${prixUnitaire.toLocaleString('fr-FR')} F/nuit`;
-                        caution = 20000;
-                        break;
-                        
-                    case '24h':
-                        const diffTime = Math.abs(departDate - arriveeDate);
-                        const heures = diffTime / (1000 * 60 * 60);
-                        const periodes24h = Math.ceil(heures / 24);
-                        prixUnitaire = formData.smoothieOption === 'avec' ? 27000 : 25000;
-                        formuleTexte = `${periodes24h} période(s) de 24h Flexibles - ${prixUnitaire.toLocaleString('fr-FR')} F/24h`;
-                        caution = 25000;
-                        break;
-                }
-                
-                // Format dates
-                const options = { day: 'numeric', month: 'long', year: 'numeric' };
-                
-                // Determine preference text
-                let preferenceText = 'Non inclus';
-                if (formData.smoothieOption === 'avec') {
-                    preferenceText = formData.preference === 'smoothie' ? 'Smoothie FreshMood' : 
-                                   formData.preference === 'sandwich' ? 'Sandwich FreshMood' : 
-                                   'Non spécifié';
-                }
-                
-                // Calcul du prix du séjour (sans caution)
-                let prixSejour = 0;
-                if (formData.formule === 'nuit') {
-                    const diffTimeNuit = Math.abs(departDate - arriveeDate);
-                    const nuits = Math.ceil(diffTimeNuit / (1000 * 60 * 60 * 24));
-                    prixSejour = nuits * prixUnitaire;
+                const arrivee = new Date(dateArrivee.value);
+                const depart = new Date(dateDepart.value);
+                if (depart <= arrivee) { prixDisplay.style.display = 'none'; return; }
+
+                const smoothie = smoothieOption.value === 'avec';
+                let prixTotal = 0, caution = 20000, details = '';
+                if (formule.value === 'nuit') {
+                    const nuits = Math.ceil((depart - arrivee) / (1000*3600*24));
+                    const prixUnitaire = smoothie ? 17000 : 15000;
+                    prixTotal = nuits * prixUnitaire + caution;
+                    details = `${nuits} nuitée(s) × ${prixUnitaire} F = ${nuits*prixUnitaire} F + caution ${caution} F`;
                 } else {
-                    const diffTime = Math.abs(departDate - arriveeDate);
-                    const heures = diffTime / (1000 * 60 * 60);
-                    const periodes24h = Math.ceil(heures / 24);
-                    prixSejour = periodes24h * prixUnitaire;
+                    const heures = (depart - arrivee) / (1000*3600);
+                    const periodes = Math.ceil(heures / 24);
+                    const prixUnitaire = smoothie ? 27000 : 25000;
+                    caution = 25000;
+                    prixTotal = periodes * prixUnitaire + caution;
+                    details = `${periodes} période(s) 24h × ${prixUnitaire} F = ${periodes*prixUnitaire} F + caution ${caution} F`;
                 }
-                
-                // Prepare WhatsApp message
-                const whatsappMessage = `📋 NOUVELLE RÉSERVATION LA PARENTHÈSE 📋
-
-👤 INFORMATIONS CLIENT :
-• Nom : ${formData.prenom} ${formData.nom}
-• Email : ${formData.email}
-• Téléphone : ${formData.telephone}
-
-📅 SÉJOUR :
-• Arrivée : ${arriveeDate.toLocaleDateString('fr-FR', options)} à 14h
-• Départ : ${departDate.toLocaleDateString('fr-FR', options)} à 12h
-• Formule : ${formuleTexte}
-• Personnes : ${formData.personnes}
-• Option gourmande : ${formData.smoothieOption === 'avec' ? 'INCLUS' : 'NON INCLUS'}
-• Préférence : ${preferenceText}
-
-💰 TARIFS :
-• Prix séjour : ${prixSejour.toLocaleString('fr-FR')} FCFA
-• Caution : ${caution.toLocaleString('fr-FR')} FCFA
-• TOTAL : ${prixTotal}
-
-${formData.message ? `📝 MESSAGE DU CLIENT :
-${formData.message}` : ''}
-
-────────────────────
-⚠️ Cette réservation est soumise à notre politique d'annulation.`;
-
-                // Encode message for WhatsApp URL
-                const encodedMessage = encodeURIComponent(whatsappMessage);
-                
-                // Utiliser le numéro fixe pour WhatsApp
-                const whatsappNumber = '22966953934';
-                
-                // Open WhatsApp directly
-                window.open(`https://wa.me/${whatsappNumber}?text=${encodedMessage}`, '_blank');
-                
-                // Show confirmation
-                setTimeout(() => {
-                    alert('✅ Ouverture de WhatsApp...\n\nVeuillez envoyer le message pré-rempli pour finaliser votre réservation.\n\nLe numéro de contact est : 66 95 39 34');
-                    
-                    // Reset form after a delay
-                    setTimeout(() => {
-                        reservationForm.reset();
-                        const acceptConditions = document.getElementById('accept-conditions');
-                        if (acceptConditions) acceptConditions.checked = false;
-                        initDates();
-                    }, 1000);
-                }, 500);
-            });
-            
-            // Calcul initial
-            calculatePrice();
-        }
-
-        function handleHeaderScroll() {
-            const header = document.getElementById('main-header');
-            if (window.scrollY > 50) {
-                header.classList.add('scrolled');
-            } else {
-                header.classList.remove('scrolled');
+                totalPrice.textContent = prixTotal.toLocaleString('fr-FR') + ' F';
+                priceDetails.innerHTML = details;
+                prixDisplay.style.display = 'block';
             }
-        }
 
-        function updateActiveNavLink() {
-            const sections = document.querySelectorAll('section');
-            const navLinks = document.querySelectorAll('nav a');
-            
-            let currentSection = '';
-            const scrollPosition = window.scrollY + 100;
-            
-            sections.forEach(section => {
-                const sectionTop = section.offsetTop;
-                const sectionHeight = section.clientHeight;
-                
-                if (scrollPosition >= sectionTop && scrollPosition < sectionTop + sectionHeight) {
-                    currentSection = '#' + section.getAttribute('id');
-                }
-            });
-            
-            navLinks.forEach(link => {
-                link.classList.remove('active');
-                if (link.getAttribute('href') === currentSection) {
-                    link.classList.add('active');
-                }
-            });
-            
-            // Default to parenthese if at top
-            if (scrollPosition < 100) {
-                navLinks.forEach(link => {
-                    link.classList.remove('active');
-                    if (link.getAttribute('href') === '#parenthese') {
-                        link.classList.add('active');
+            if (dateArrivee && dateDepart) {
+                dateArrivee.addEventListener('change', () => { checkAvailability(); calculatePrice(); });
+                dateDepart.addEventListener('change', () => { checkAvailability(); calculatePrice(); });
+                formule.addEventListener('change', calculatePrice);
+                smoothieOption.addEventListener('change', () => {
+                    document.getElementById('preference').disabled = (smoothieOption.value !== 'avec');
+                    calculatePrice();
+                });
+                checkAvailability();
+                calculatePrice();
+            }
+
+            // SOUMISSION FORMULAIRE
+            const form = document.getElementById('reservationForm');
+            if (form) {
+                form.addEventListener('submit', (e) => {
+                    e.preventDefault();
+                    if (!document.getElementById('accept-conditions').checked) {
+                        alert('Veuillez accepter les conditions.');
+                        return;
                     }
+                    // Récupération des données...
+                    const nom = document.getElementById('nom').value;
+                    const prenom = document.getElementById('prenom').value;
+                    const tel = document.getElementById('telephone').value.replace(/\s/g,'');
+                    const message = `📋 NOUVELLE RÉSERVATION\nNom: ${prenom} ${nom}\nTél: ${tel}\nDates: ${dateArrivee.value} au ${dateDepart.value}\nFormule: ${formule.value}\nPrix estimé: ${totalPrice.textContent}`;
+                    window.open(`https://wa.me/22966953934?text=${encodeURIComponent(message)}`, '_blank');
                 });
             }
-        }
-
-        // Handle window resize
-        window.addEventListener('resize', function() {
-            if (window.innerWidth > 768) {
-                const nav = document.getElementById('main-nav');
-                const menuBtn = document.getElementById('mobile-menu-btn');
-                if (nav && nav.classList.contains('active')) {
-                    nav.classList.remove('active');
-                    if (menuBtn) {
-                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                        menuBtn.setAttribute('aria-expanded', 'false');
-                    }
-                }
-            }
-        });
+        })();
     </script>
 </body>
 </html>

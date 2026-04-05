@@ -1,1089 +1,1092 @@
 <!DOCTYPE html>
+
 <html lang="fr">
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0, maximum-scale=5.0, user-scalable=yes">
-    <title>La Parenthèse | Studio cosy à Akpakpa, Cotonou</title>
+    <title>La Parenthèse · Studio cosy à Akpakpa, Cotonou</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;0,600;1,300;1,400&family=Jost:wght@300;400;500;600&display=swap" rel="stylesheet">
     <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
-    <link href="https://fonts.googleapis.com/css2?family=Montserrat:wght@300;400;500;600;700&family=Playfair+Display:wght@400;500;600&display=swap" rel="stylesheet">
     <style>
-        /* ===== VARIABLES ===== */
+        /* ================================================
+           VARIABLES
+        ================================================ */
         :root {
-            --beige: #F5E8D3;
-            --terracotta: #D9822B;
-            --vert: #A3C4BC;
-            --chocolat: #3A2415;
-            --blanc: #FFFFFF;
-            --gris-clair: #F8F5F0;
-            --gris: #6B5C4A;
-            --shadow: 0 5px 15px rgba(58, 36, 21, 0.08);
-            --shadow-hover: 0 8px 25px rgba(58, 36, 21, 0.15);
-            --radius: 16px;
-            --radius-sm: 10px;
-            --transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
-            --gradient: linear-gradient(135deg, var(--terracotta) 0%, #E09A5D 100%);
-        }
+            --sand:       #F2E8D9;
+            --sand-dark:  #E8D9C0;
+            --terra:      #C4622D;
+            --terra-light:#D97A48;
+            --terra-pale: rgba(196, 98, 45, 0.08);
+            --sage:       #8EAD9C;
+            --sage-light: rgba(142, 173, 156, 0.15);
+            --espresso:   #2C1A0E;
+            --espresso2:  #3D2412;
+            --cream:      #FDFAF6;
+            --warm-white: #FAF7F2;
+            --muted:      #7D6655;
+            --muted-light:#A3907E;
 
-        /* ===== RESET & BASE ===== */
-        * {
-            margin: 0;
-            padding: 0;
-            box-sizing: border-box;
-        }
+```
+        --shadow-xs: 0 2px 8px rgba(44,26,14,0.06);
+        --shadow-sm: 0 6px 24px rgba(44,26,14,0.08);
+        --shadow-md: 0 16px 48px rgba(44,26,14,0.12);
+        --shadow-lg: 0 28px 72px rgba(44,26,14,0.16);
 
-        html {
-            scroll-behavior: smooth;
-            scroll-padding-top: 80px;
-        }
+        --r:    20px;
+        --r-sm: 12px;
+        --r-xs: 8px;
+        --pill: 100px;
 
-        body {
-            font-family: 'Montserrat', sans-serif;
-            line-height: 1.6;
-            color: var(--chocolat);
-            background-color: var(--blanc);
-            overflow-x: hidden;
-            font-size: 16px;
-            -webkit-font-smoothing: antialiased;
-        }
+        --ease: cubic-bezier(0.22, 1, 0.36, 1);
+        --t:    all 0.35s var(--ease);
 
-        h1, h2, h3, h4, h5 {
-            font-family: 'Playfair Display', serif;
-            font-weight: 600;
-            color: var(--chocolat);
-            line-height: 1.3;
-        }
+        /* Typography scale — generous sizing */
+        --text-xs:  0.8125rem;   /* 13px */
+        --text-sm:  0.9375rem;   /* 15px */
+        --text-md:  1.0625rem;   /* 17px */
+        --text-lg:  1.1875rem;   /* 19px */
+        --text-xl:  1.375rem;    /* 22px */
+        --text-2xl: 1.75rem;     /* 28px */
+        --text-3xl: 2.25rem;     /* 36px */
+        --text-4xl: 3rem;        /* 48px */
+        --text-5xl: 3.75rem;     /* 60px */
 
-        img {
-            max-width: 100%;
-            height: auto;
-            display: block;
-        }
+        --line-snug:  1.25;
+        --line-base:  1.65;
+        --line-loose: 1.85;
+    }
 
-        .container {
-            max-width: 1200px;
-            margin: 0 auto;
-            padding: 0 24px;
-            width: 100%;
-        }
+    /* ================================================
+       RESET & BASE
+    ================================================ */
+    *, *::before, *::after {
+        margin: 0; padding: 0;
+        box-sizing: border-box;
+    }
 
-        section {
-            padding: 100px 0;
-            position: relative;
-        }
+    html {
+        scroll-behavior: smooth;
+        scroll-padding-top: 88px;
+        font-size: 16px;
+    }
 
-        @media (max-width: 992px) {
-            section { padding: 80px 0; }
-        }
-        @media (max-width: 768px) {
-            section { padding: 70px 0; }
-        }
-        @media (max-width: 576px) {
-            section { padding: 60px 0; }
-            .container { padding: 0 20px; }
-        }
+    body {
+        font-family: 'Jost', system-ui, sans-serif;
+        font-weight: 400;
+        line-height: var(--line-base);
+        color: var(--espresso);
+        background: var(--cream);
+        overflow-x: hidden;
+        -webkit-font-smoothing: antialiased;
+    }
 
-        /* ===== HEADER ===== */
-        header {
-            position: fixed;
-            top: 0;
-            width: 100%;
-            background: rgba(255, 255, 255, 0.98);
-            backdrop-filter: blur(10px);
-            z-index: 1000;
-            padding: 20px 0;
-            box-shadow: 0 2px 20px rgba(58, 36, 21, 0.08);
-            transition: var(--transition);
-        }
+    /* Display font */
+    h1, h2, h3, h4, .display {
+        font-family: 'Cormorant Garamond', Georgia, serif;
+        font-weight: 500;
+        line-height: var(--line-snug);
+        color: var(--espresso);
+    }
 
-        header.scrolled {
-            padding: 15px 0;
-            box-shadow: 0 4px 25px rgba(58, 36, 21, 0.12);
-        }
+    p { line-height: var(--line-loose); }
 
-        .header-container {
-            display: flex;
-            justify-content: space-between;
-            align-items: center;
-        }
+    a    { color: inherit; text-decoration: none; }
+    img  { max-width: 100%; height: auto; display: block; }
+    ul   { list-style: none; }
 
-        .logo {
-            font-family: 'Playfair Display', serif;
-            font-size: 28px;
-            font-weight: 600;
-            color: var(--chocolat);
-            text-decoration: none;
-            display: flex;
-            align-items: center;
-            gap: 10px;
-            transition: var(--transition);
-        }
-        .logo:hover { transform: translateY(-2px); }
-        .logo span { color: var(--terracotta); }
-        .logo-icon { color: var(--terracotta); font-size: 24px; }
+    .container {
+        max-width: 1160px;
+        margin: 0 auto;
+        padding: 0 32px;
+    }
 
+    section { padding: 112px 0; }
+
+    @media (max-width: 900px)  { section { padding: 88px 0; } }
+    @media (max-width: 640px)  { section { padding: 72px 0; } .container { padding: 0 20px; } }
+
+    /* ================================================
+       REVEAL ANIMATION
+    ================================================ */
+    .reveal {
+        opacity: 0;
+        transform: translateY(28px);
+        transition: opacity 0.7s var(--ease), transform 0.7s var(--ease);
+    }
+    .reveal.in { opacity: 1; transform: none; }
+    .reveal-delay-1 { transition-delay: 0.1s; }
+    .reveal-delay-2 { transition-delay: 0.2s; }
+    .reveal-delay-3 { transition-delay: 0.3s; }
+    .reveal-delay-4 { transition-delay: 0.45s; }
+
+    /* ================================================
+       HEADER
+    ================================================ */
+    header {
+        position: fixed;
+        top: 0; width: 100%;
+        background: rgba(253,250,246,0.92);
+        backdrop-filter: blur(18px);
+        -webkit-backdrop-filter: blur(18px);
+        border-bottom: 1px solid rgba(44,26,14,0.07);
+        z-index: 900;
+        transition: var(--t);
+    }
+    header.scrolled { box-shadow: var(--shadow-sm); }
+
+    .header-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        height: 76px;
+        gap: 24px;
+    }
+
+    .logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: var(--text-2xl);
+        font-weight: 500;
+        color: var(--espresso);
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        transition: var(--t);
+        letter-spacing: -0.01em;
+        white-space: nowrap;
+    }
+    .logo:hover { color: var(--terra); }
+    .logo i { color: var(--terra); font-size: 1.3rem; }
+    .logo span { color: var(--terra); }
+
+    nav { display: flex; gap: 4px; align-items: center; }
+    nav a {
+        font-size: var(--text-xs);
+        font-weight: 500;
+        letter-spacing: 0.06em;
+        text-transform: uppercase;
+        color: var(--muted);
+        padding: 8px 14px;
+        border-radius: var(--pill);
+        transition: var(--t);
+    }
+    nav a:hover, nav a.active {
+        color: var(--terra);
+        background: var(--terra-pale);
+    }
+
+    .mobile-toggle {
+        display: none;
+        background: var(--sand);
+        border: none;
+        width: 44px; height: 44px;
+        border-radius: var(--r-sm);
+        font-size: 1.1rem;
+        color: var(--espresso);
+        cursor: pointer;
+        align-items: center;
+        justify-content: center;
+        transition: var(--t);
+    }
+    .mobile-toggle:hover { background: var(--terra); color: white; }
+
+    /* nav overlay */
+    .nav-overlay {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(44,26,14,0.4);
+        z-index: 899;
+    }
+    .nav-overlay.open { display: block; }
+
+    @media (max-width: 820px) {
+        .mobile-toggle { display: flex; }
         nav {
-            display: flex;
-            gap: 32px;
-            align-items: center;
-        }
-
-        nav a {
-            text-decoration: none;
-            color: var(--chocolat);
-            font-weight: 500;
-            transition: var(--transition);
-            position: relative;
-            font-size: 15px;
-            padding: 8px 0;
-            text-transform: uppercase;
-            letter-spacing: 0.5px;
-        }
-
-        nav a::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 0;
-            height: 2px;
-            background: var(--gradient);
-            transition: width 0.3s ease;
-        }
-
-        nav a:hover::after,
-        nav a.active::after {
-            width: 100%;
-        }
-
-        nav a:hover,
-        nav a.active {
-            color: var(--terracotta);
-        }
-
-        .mobile-menu-btn {
-            display: none;
-            background: var(--gris-clair);
-            border: none;
-            width: 48px;
-            height: 48px;
-            border-radius: var(--radius-sm);
-            cursor: pointer;
-            color: var(--chocolat);
-            font-size: 24px;
-            transition: var(--transition);
-            align-items: center;
-            justify-content: center;
-        }
-
-        .mobile-menu-btn:hover {
-            background: var(--terracotta);
-            color: var(--blanc);
-        }
-
-        @media (max-width: 768px) {
-            .mobile-menu-btn { display: flex; }
-            nav {
-                position: fixed;
-                top: 80px;
-                left: 0;
-                right: 0;
-                background: rgba(255, 255, 255, 0.98);
-                backdrop-filter: blur(20px);
-                flex-direction: column;
-                padding: 30px;
-                box-shadow: 0 10px 30px rgba(58, 36, 21, 0.15);
-                z-index: 1000;
-                gap: 20px;
-                transform: translateY(-20px);
-                opacity: 0;
-                visibility: hidden;
-                transition: all 0.4s cubic-bezier(0.4, 0, 0.2, 1);
-                max-height: calc(100vh - 80px);
-                overflow-y: auto;
-                border-radius: 0 0 var(--radius) var(--radius);
-            }
-            nav.active {
-                transform: translateY(0);
-                opacity: 1;
-                visibility: visible;
-            }
-            nav a {
-                width: 100%;
-                text-align: center;
-                font-size: 16px;
-                border-bottom: 1px solid rgba(58, 36, 21, 0.1);
-                padding: 15px 0;
-            }
-            nav a:last-child { border-bottom: none; }
-            nav a::after { display: none; }
-        }
-
-        /* ===== HERO ===== */
-        .hero {
-            padding: 180px 0 120px;
-            background: linear-gradient(135deg, rgba(58, 36, 21, 0.9) 0%, rgba(58, 36, 21, 0.7) 100%),
-                        url('images/image1.jpg') center/cover no-repeat;
-            color: var(--blanc);
-            text-align: center;
-            position: relative;
-        }
-
-        .hero h1 {
-            font-size: clamp(32px, 6vw, 48px);
-            margin-bottom: 20px;
-            color: var(--blanc);
-            font-weight: 700;
-            text-shadow: 0 2px 10px rgba(0,0,0,0.3);
-            animation: fadeUp 0.8s ease-out;
-        }
-
-        @keyframes fadeUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
-
-        .hero-tagline {
-            font-size: clamp(16px, 4vw, 20px);
-            margin-bottom: 20px;
-            color: var(--beige);
-            font-weight: 500;
-            letter-spacing: 1.5px;
-            animation: fadeUp 0.8s ease-out 0.2s both;
-        }
-
-        .hero-subtitle {
-            font-size: clamp(16px, 3.5vw, 19px);
-            margin-bottom: 40px;
-            max-width: 750px;
-            margin-left: auto;
-            margin-right: auto;
-            color: rgba(255, 255, 255, 0.95);
-            font-weight: 300;
-            line-height: 1.8;
-            animation: fadeUp 0.8s ease-out 0.4s both;
-        }
-
-        .hero-note {
-            font-style: italic;
-            font-size: 17px;
-            color: rgba(255, 255, 255, 0.9);
-            margin-top: 40px;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255, 255, 255, 0.3);
-            max-width: 700px;
-            margin-left: auto;
-            margin-right: auto;
-            animation: fadeUp 0.8s ease-out 0.6s both;
-        }
-
-        .hero-buttons {
-            display: flex;
-            gap: 20px;
-            justify-content: center;
-            flex-wrap: wrap;
-            margin-top: 40px;
-            animation: fadeUp 0.8s ease-out 0.8s both;
-        }
-
-        /* ===== BOUTONS ===== */
-        .btn {
-            display: inline-flex;
-            align-items: center;
-            justify-content: center;
-            gap: 12px;
-            padding: 16px 32px;
-            border-radius: 50px;
-            text-decoration: none;
-            font-weight: 600;
-            font-size: 16px;
-            border: none;
-            cursor: pointer;
-            transition: var(--transition);
-            font-family: 'Montserrat', sans-serif;
-            position: relative;
-            overflow: hidden;
-            min-width: 200px;
-        }
-
-        .btn::before {
-            content: '';
-            position: absolute;
-            top: 50%;
-            left: 50%;
-            width: 0;
-            height: 0;
-            border-radius: 50%;
-            background: rgba(255, 255, 255, 0.2);
-            transform: translate(-50%, -50%);
-            transition: width 0.6s, height 0.6s;
-        }
-
-        .btn:hover::before {
-            width: 300px;
-            height: 300px;
-        }
-
-        .btn:hover {
-            transform: translateY(-3px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .btn-primary {
-            background: var(--gradient);
-            color: var(--blanc);
-        }
-
-        .btn-outline {
-            background: transparent;
-            color: var(--blanc);
-            border: 2px solid rgba(255, 255, 255, 0.3);
-        }
-
-        .btn-outline:hover {
-            background: var(--blanc);
-            color: var(--terracotta);
-            border-color: var(--blanc);
-        }
-
-        .btn-whatsapp {
-            background: linear-gradient(135deg, #25D366 0%, #128C7E 100%);
-            color: white;
-        }
-
-        .btn-whatsapp:hover {
-            background: linear-gradient(135deg, #128C7E 0%, #075E54 100%);
-        }
-
-        @media (max-width: 576px) {
-            .btn {
-                width: 100%;
-                max-width: 350px;
-            }
-            .hero-buttons {
-                flex-direction: column;
-                align-items: center;
-            }
-        }
-
-        /* ===== SECTIONS COMMUNES ===== */
-        .section-header {
-            text-align: center;
-            margin-bottom: 60px;
-        }
-
-        .section-title {
-            font-size: clamp(28px, 5vw, 42px);
-            margin-bottom: 20px;
-            position: relative;
-            display: inline-block;
-        }
-
-        .section-title::after {
-            content: '';
-            position: absolute;
-            bottom: -12px;
-            left: 50%;
-            transform: translateX(-50%);
-            width: 80px;
-            height: 4px;
-            background: var(--gradient);
-            border-radius: 2px;
-        }
-
-        .section-subtitle {
-            font-size: clamp(15px, 3vw, 18px);
-            color: var(--gris);
-            max-width: 750px;
-            margin: 25px auto 0;
-            line-height: 1.8;
-            padding: 0 15px;
-        }
-
-        .badge {
-            display: inline-block;
-            padding: 8px 16px;
-            background: var(--gradient);
-            color: white;
-            font-size: 12px;
-            font-weight: 600;
-            border-radius: 30px;
-            text-transform: uppercase;
-            letter-spacing: 1px;
-            margin-bottom: 20px;
-        }
-
-        /* ===== TARIFS ===== */
-        .tarifs-section {
-            background: linear-gradient(180deg, var(--gris-clair) 0%, var(--blanc) 100%);
-        }
-
-        .tarifs-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
-            gap: 30px;
-            max-width: 1000px;
-            margin: 0 auto;
-        }
-
-        .tarif-card {
-            background: var(--blanc);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            text-align: center;
-            box-shadow: var(--shadow);
-            transition: var(--transition);
-            border: 1px solid transparent;
-            position: relative;
-            overflow: hidden;
-        }
-
-        .tarif-card::before {
-            content: '';
-            position: absolute;
-            top: 0;
-            left: 0;
-            right: 0;
-            height: 4px;
-            background: var(--gradient);
-        }
-
-        .tarif-card:hover {
-            transform: translateY(-10px);
-            box-shadow: var(--shadow-hover);
-            border-color: rgba(217, 130, 43, 0.2);
-        }
-
-        .tarif-card.featured {
-            border: 2px solid var(--terracotta);
-        }
-
-        .tarif-price {
-            font-size: clamp(42px, 8vw, 56px);
-            font-weight: 700;
-            color: var(--terracotta);
-            margin: 25px 0 10px;
-            line-height: 1;
-        }
-
-        .tarif-period {
-            font-size: 17px;
-            color: var(--gris);
-            margin-bottom: 20px;
-        }
-
-        .tarif-description {
-            font-size: 16px;
-            color: var(--gris);
-            margin: 25px 0;
-            line-height: 1.8;
-        }
-
-        .tarif-features {
-            list-style: none;
-            margin: 30px 0;
-            text-align: left;
-        }
-
-        .tarif-features li {
-            margin-bottom: 15px;
-            padding-left: 35px;
-            position: relative;
-            font-size: 15px;
-        }
-
-        .tarif-features li::before {
-            content: '✓';
-            position: absolute;
-            left: 0;
-            color: var(--vert);
-            font-weight: bold;
-            background: rgba(163, 196, 188, 0.1);
-            width: 26px;
-            height: 26px;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-        }
-
-        .alternative-card {
-            background: var(--blanc);
-            border-radius: var(--radius);
-            padding: 35px;
-            margin: 60px auto 0;
-            max-width: 700px;
-            border: 2px dashed var(--vert);
-            text-align: center;
-        }
-
-        .alternative-prices {
-            display: flex;
-            justify-content: center;
-            gap: 30px;
-            margin-top: 30px;
-            flex-wrap: wrap;
-        }
-
-        .alternative-price {
-            text-align: center;
-            padding: 20px 30px;
-            background: var(--gris-clair);
-            border-radius: var(--radius);
-            min-width: 160px;
-        }
-
-        .alternative-price .price {
-            font-size: 28px;
-            font-weight: 700;
-            color: var(--terracotta);
-        }
-
-        /* ===== GALERIE ===== */
-        .gallery-carousel {
-            position: relative;
-            width: 100%;
-            max-width: 1100px;
-            margin: 50px auto;
-            border-radius: var(--radius);
-            box-shadow: var(--shadow);
-            overflow: hidden;
-            background: #000;
-        }
-
-        .carousel-container {
-            display: flex;
-            height: clamp(300px, 50vw, 550px);
-            transition: transform 0.5s ease;
-        }
-
-        .carousel-slide {
-            flex: 0 0 100%;
-            height: 100%;
-            position: relative;
-        }
-
-        .carousel-slide img {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-slide {
-            background: #000;
-        }
-
-        .video-container {
-            position: relative;
-            width: 100%;
-            height: 100%;
-        }
-
-        #studio-video {
-            width: 100%;
-            height: 100%;
-            object-fit: cover;
-        }
-
-        .video-overlay {
-            position: absolute;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
-            display: flex;
+            position: fixed;
+            top: 0; right: -100%;
+            width: min(320px, 80vw);
+            height: 100dvh;
+            background: var(--cream);
             flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            color: white;
-            transition: opacity 0.3s;
-            z-index: 2;
-            padding: 20px;
-            text-align: center;
-        }
-
-        .video-overlay.hidden {
-            opacity: 0;
-            pointer-events: none;
-        }
-
-        .play-video-btn {
-            width: 80px;
-            height: 80px;
-            background: var(--gradient);
-            border: none;
-            border-radius: 50%;
-            color: white;
-            font-size: 32px;
-            cursor: pointer;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            transition: var(--transition);
-            margin-bottom: 25px;
-            box-shadow: 0 10px 30px rgba(217,130,43,0.4);
-        }
-
-        .play-video-btn:hover {
-            transform: scale(1.1);
-        }
-
-        .video-caption {
-            font-size: clamp(14px, 4vw, 20px);
-            font-weight: 500;
-            max-width: 90%;
-            text-shadow: 0 2px 8px rgba(0,0,0,0.5);
-        }
-
-        .carousel-nav {
-            position: absolute;
-            top: 50%;
-            transform: translateY(-50%);
-            background: rgba(255,255,255,0.9);
-            border: none;
-            width: clamp(40px, 8vw, 60px);
-            height: clamp(40px, 8vw, 60px);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            cursor: pointer;
-            transition: var(--transition);
-            z-index: 10;
-            font-size: clamp(16px, 4vw, 24px);
-            color: var(--chocolat);
-            box-shadow: 0 5px 20px rgba(0,0,0,0.1);
-        }
-
-        .carousel-nav:hover {
-            background: var(--terracotta);
-            color: var(--blanc);
-        }
-
-        .carousel-prev { left: 15px; }
-        .carousel-next { right: 15px; }
-
-        .carousel-dots {
-            display: flex;
-            justify-content: center;
-            gap: 12px;
-            margin-top: 20px;
-            flex-wrap: wrap;
-        }
-
-        .carousel-dot {
-            width: 14px;
-            height: 14px;
-            border-radius: 50%;
-            background: var(--gris-clair);
-            border: 2px solid transparent;
-            cursor: pointer;
-            transition: all 0.3s;
-        }
-
-        .carousel-dot.active {
-            background: transparent;
-            border-color: var(--terracotta);
-            transform: scale(1.2);
-        }
-
-        /* ===== STUDIO FEATURES ===== */
-        .features-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 30px;
-            margin-top: 50px;
-        }
-
-        .feature-card {
-            background: var(--blanc);
-            border-radius: var(--radius);
-            padding: 30px 25px;
-            text-align: center;
-            transition: var(--transition);
-            border: 1px solid rgba(217,130,43,0.05);
-        }
-
-        .feature-card:hover {
-            transform: translateY(-8px);
-            box-shadow: var(--shadow-hover);
-        }
-
-        .feature-icon {
-            width: 70px;
-            height: 70px;
-            background: var(--gradient);
-            color: var(--blanc);
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 28px;
-            margin: 0 auto 25px;
-            box-shadow: 0 10px 25px rgba(217,130,43,0.2);
-        }
-
-        /* ===== PARTENAIRE ===== */
-        .partenaire-card {
-            background: var(--blanc);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            max-width: 800px;
-            margin: 0 auto;
-            box-shadow: var(--shadow);
-            border-left: 6px solid var(--vert);
-        }
-
-        .partenaire-logo {
-            font-size: 42px;
-            color: var(--terracotta);
-            margin-bottom: 20px;
-        }
-
-        .partenaire-title {
-            font-size: clamp(22px, 5vw, 28px);
-            margin-bottom: 25px;
-        }
-
-        .partenaire-text {
-            font-size: 17px;
-            line-height: 1.8;
-            margin-bottom: 30px;
-        }
-
-        /* ===== FORMULAIRE ===== */
-        .reservation-form-container {
-            max-width: 900px;
-            margin: 0 auto;
-            background: var(--blanc);
-            border-radius: var(--radius);
-            padding: 40px 30px;
-            box-shadow: var(--shadow);
-        }
-
-        .form-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 20px;
-        }
-
-        .form-group {
-            margin-bottom: 25px;
-        }
-
-        .form-label {
-            display: block;
-            margin-bottom: 10px;
-            font-weight: 600;
-            color: var(--chocolat);
-            font-size: 15px;
-        }
-
-        .form-control {
-            width: 100%;
-            padding: 15px 20px;
-            border: 2px solid var(--gris-clair);
-            border-radius: var(--radius-sm);
-            font-size: 16px;
-            font-family: 'Montserrat', sans-serif;
-            transition: var(--transition);
-            background: var(--blanc);
-        }
-
-        .form-control:focus {
-            outline: none;
-            border-color: var(--terracotta);
-            box-shadow: 0 0 0 4px rgba(217,130,43,0.15);
-        }
-
-        select.form-control {
-            appearance: none;
-            background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%233A2415' stroke-width='2' stroke-linecap='round' stroke-linejoin='round'%3e%3cpolyline points='6 9 12 15 18 9'%3e%3c/polyline%3e%3c/svg%3e");
-            background-repeat: no-repeat;
-            background-position: right 20px center;
-            background-size: 16px;
-            padding-right: 45px;
-        }
-
-        .date-status {
-            margin-top: 8px;
-            font-size: 14px;
-            min-height: 24px;
-            display: flex;
-            align-items: center;
-            gap: 5px;
-        }
-        .date-status.available { color: #27ae60; }
-        .date-status.unavailable { color: #e74c3c; }
-
-        .price-display {
-            background: rgba(217,130,43,0.1);
-            border-radius: var(--radius);
-            padding: 25px;
-            margin: 30px 0;
-            text-align: center;
-            border-left: 4px solid var(--terracotta);
-        }
-
-        .price-amount {
-            font-size: clamp(28px, 6vw, 44px);
-            font-weight: 700;
-            color: var(--terracotta);
-            margin: 15px 0;
-        }
-
-        .price-details {
-            font-size: 15px;
-            color: var(--gris);
-            line-height: 1.7;
-            background: rgba(255,255,255,0.7);
-            padding: 20px;
-            border-radius: var(--radius-sm);
-        }
-
-        .conditions-container {
-            margin: 30px 0;
-            padding: 25px;
-            background: var(--gris-clair);
-            border-radius: var(--radius);
-        }
-
-        .conditions-header {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 15px;
-        }
-
-        .conditions-header input[type="checkbox"] {
-            width: 22px;
-            height: 22px;
-            accent-color: var(--terracotta);
-            margin-top: 3px;
-        }
-
-        .read-conditions-btn {
-            background: none;
-            border: none;
-            color: var(--terracotta);
-            text-decoration: underline;
-            cursor: pointer;
-            font-size: 15px;
-        }
-
-        .submit-btn {
-            width: 100%;
-            padding: 18px;
-            font-size: 18px;
-            margin-top: 20px;
-        }
-
-        /* ===== FOOTER ===== */
-        footer {
-            background: var(--chocolat);
-            color: var(--blanc);
-            padding: 80px 0 30px;
-        }
-
-        .footer-container {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
-            gap: 40px;
-            margin-bottom: 50px;
-        }
-
-        .footer-column h3 {
-            color: var(--blanc);
-            margin-bottom: 25px;
-            font-size: 20px;
-            position: relative;
-            padding-bottom: 15px;
-        }
-
-        .footer-column h3::after {
-            content: '';
-            position: absolute;
-            bottom: 0;
-            left: 0;
-            width: 40px;
-            height: 3px;
-            background: var(--terracotta);
-        }
-
-        .footer-links {
-            list-style: none;
-        }
-
-        .footer-links li {
-            margin-bottom: 15px;
-        }
-
-        .footer-links a {
-            color: #bdc3c7;
-            text-decoration: none;
-            transition: var(--transition);
-            display: inline-flex;
-            align-items: center;
-            gap: 10px;
-        }
-
-        .footer-links a:hover {
-            color: var(--terracotta);
-            transform: translateX(5px);
-        }
-
-        .footer-contact li {
-            display: flex;
-            align-items: flex-start;
-            gap: 15px;
-            margin-bottom: 20px;
-        }
-
-        .footer-contact i {
-            color: var(--terracotta);
-            margin-top: 5px;
-        }
-
-        .copyright {
-            text-align: center;
-            padding-top: 30px;
-            border-top: 1px solid rgba(255,255,255,0.1);
-            color: #95a5a6;
-        }
-
-        /* ===== WHATSAPP FLOAT ===== */
-        .whatsapp-float {
-            position: fixed;
-            bottom: 25px;
-            right: 25px;
-            width: 65px;
-            height: 65px;
-            background: linear-gradient(135deg, #25D366, #128C7E);
-            color: white;
-            border-radius: 50%;
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            font-size: 32px;
-            text-decoration: none;
-            box-shadow: 0 6px 25px rgba(37,211,102,0.4);
-            z-index: 1000;
-            transition: var(--transition);
-        }
-
-        .whatsapp-float:hover {
-            transform: scale(1.1);
-        }
-
-        /* ===== MODAL ===== */
-        .modal {
-            display: none;
-            position: fixed;
-            top: 0;
-            left: 0;
-            width: 100%;
-            height: 100%;
-            background: rgba(0,0,0,0.85);
-            z-index: 2000;
+            align-items: stretch;
+            padding: 96px 24px 40px;
+            gap: 4px;
             overflow-y: auto;
+            transition: right 0.4s var(--ease);
+            box-shadow: var(--shadow-lg);
+            z-index: 900;
         }
+        nav.open { right: 0; }
+        nav a {
+            font-size: var(--text-sm);
+            padding: 14px 18px;
+            border-radius: var(--r-sm);
+        }
+    }
 
-        .modal-content {
-            background: var(--blanc);
-            margin: 50px auto;
-            padding: 40px 30px;
-            border-radius: var(--radius);
-            max-width: 900px;
-            width: 90%;
-            position: relative;
-            animation: slideUp 0.4s;
-        }
+    /* ================================================
+       HERO
+    ================================================ */
+    .hero {
+        padding: 196px 0 120px;
+        background:
+            linear-gradient(160deg, rgba(44,26,14,0.88) 0%, rgba(44,26,14,0.65) 100%),
+            url('images/image1.jpg') center/cover no-repeat;
+        color: white;
+        position: relative;
+        overflow: hidden;
+    }
 
-        @keyframes slideUp {
-            from { opacity: 0; transform: translateY(30px); }
-            to { opacity: 1; transform: translateY(0); }
-        }
+    /* Subtle grain texture */
+    .hero::after {
+        content: '';
+        position: absolute; inset: 0;
+        background-image: url("data:image/svg+xml,%3Csvg viewBox='0 0 200 200' xmlns='http://www.w3.org/2000/svg'%3E%3Cfilter id='n'%3E%3CfeTurbulence type='fractalNoise' baseFrequency='0.9' numOctaves='4' stitchTiles='stitch'/%3E%3C/filter%3E%3Crect width='100%25' height='100%25' filter='url(%23n)' opacity='0.04'/%3E%3C/svg%3E");
+        pointer-events: none;
+        opacity: 0.5;
+    }
 
-        .modal-close {
-            position: absolute;
-            top: 20px;
-            right: 20px;
-            background: var(--gris-clair);
-            border: none;
-            width: 40px;
-            height: 40px;
-            border-radius: 50%;
-            font-size: 22px;
-            cursor: pointer;
-            transition: var(--transition);
-        }
-        .modal-close:hover {
-            background: var(--terracotta);
-            color: white;
-            transform: rotate(90deg);
-        }
+    .hero-content {
+        position: relative; z-index: 1;
+        max-width: 760px;
+    }
 
-        .modal-title {
-            font-size: clamp(24px, 5vw, 36px);
-            margin-bottom: 25px;
-            text-align: center;
-        }
+    .hero-eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        background: rgba(255,255,255,0.1);
+        border: 1px solid rgba(255,255,255,0.2);
+        border-radius: var(--pill);
+        padding: 8px 20px;
+        font-size: var(--text-xs);
+        font-weight: 500;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        margin-bottom: 32px;
+        color: rgba(255,255,255,0.9);
+    }
+    .hero-eyebrow i { color: var(--terra-light); }
 
-        .politique-section {
-            margin-bottom: 30px;
-            padding-bottom: 30px;
-            border-bottom: 1px solid var(--gris-clair);
-        }
+    .hero h1 {
+        font-size: clamp(var(--text-4xl), 7vw, var(--text-5xl));
+        color: white;
+        font-weight: 400;
+        font-style: italic;
+        margin-bottom: 24px;
+        text-shadow: 0 4px 20px rgba(0,0,0,0.25);
+        line-height: 1.1;
+    }
 
-        .politique-section h3 {
-            color: var(--terracotta);
-            margin-bottom: 15px;
-            font-size: 20px;
-        }
+    .hero-tagline {
+        font-size: var(--text-lg);
+        color: rgba(255,255,255,0.75);
+        font-weight: 300;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        margin-bottom: 28px;
+    }
 
-        .politique-list li {
-            margin-bottom: 15px;
-            padding: 15px;
-            background: var(--gris-clair);
-            border-radius: var(--radius-sm);
-            border-left: 4px solid var(--terracotta);
-        }
+    .hero-desc {
+        font-size: var(--text-md);
+        color: rgba(255,255,255,0.88);
+        font-weight: 300;
+        line-height: var(--line-loose);
+        max-width: 600px;
+        margin-bottom: 48px;
+    }
 
-        .politique-warning {
-            background: rgba(231,76,60,0.1);
-            padding: 20px;
-            border-left: 4px solid #e74c3c;
-            border-radius: var(--radius-sm);
-            margin: 20px 0;
-        }
+    .hero-note {
+        font-family: 'Cormorant Garamond', serif;
+        font-style: italic;
+        font-size: var(--text-xl);
+        color: rgba(255,255,255,0.75);
+        margin-top: 40px;
+        padding-top: 32px;
+        border-top: 1px solid rgba(255,255,255,0.2);
+    }
 
-        /* ===== RESPONSIVE FINAL ===== */
-        @media (max-width: 480px) {
-            .tarif-card { padding: 30px 20px; }
-            .alternative-price { width: 100%; }
-            .footer-container { grid-template-columns: 1fr; }
-            .modal-content { padding: 30px 20px; margin: 30px auto; }
-            .whatsapp-float { width: 55px; height: 55px; font-size: 28px; bottom: 20px; right: 20px; }
-        }
+    .hero-btns {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 16px;
+    }
 
-        /* Fallback images */
-        .fallback-img {
-            background: var(--gris-clair);
-            display: flex;
-            align-items: center;
-            justify-content: center;
-            color: var(--gris);
-            font-size: 14px;
-            text-align: center;
-        }
-    </style>
+    @media (max-width: 480px) {
+        .hero { padding: 160px 0 96px; }
+        .hero-btns { flex-direction: column; }
+    }
+
+    /* ================================================
+       BUTTONS
+    ================================================ */
+    .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        padding: 16px 36px;
+        border-radius: var(--pill);
+        font-family: 'Jost', sans-serif;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        letter-spacing: 0.04em;
+        cursor: pointer;
+        border: none;
+        transition: var(--t);
+        position: relative;
+        overflow: hidden;
+    }
+    .btn:hover { transform: translateY(-3px); }
+
+    .btn-terra {
+        background: var(--terra);
+        color: white;
+        box-shadow: 0 6px 20px rgba(196,98,45,0.35);
+    }
+    .btn-terra:hover {
+        background: var(--espresso2);
+        box-shadow: 0 10px 30px rgba(196,98,45,0.4);
+    }
+
+    .btn-outline-white {
+        background: transparent;
+        color: white;
+        border: 1.5px solid rgba(255,255,255,0.4);
+    }
+    .btn-outline-white:hover {
+        background: white;
+        color: var(--terra);
+        border-color: white;
+    }
+
+    .btn-outline-terra {
+        background: transparent;
+        color: var(--terra);
+        border: 1.5px solid var(--terra);
+    }
+    .btn-outline-terra:hover {
+        background: var(--terra);
+        color: white;
+    }
+
+    .btn-wa {
+        background: #25D366;
+        color: white;
+        box-shadow: 0 6px 20px rgba(37,211,102,0.3);
+    }
+    .btn-wa:hover {
+        background: #1baa52;
+        box-shadow: 0 10px 28px rgba(37,211,102,0.4);
+    }
+
+    .btn-full { width: 100%; }
+
+    /* ================================================
+       SECTION HEADERS
+    ================================================ */
+    .section-header { text-align: center; margin-bottom: 72px; }
+
+    .section-eyebrow {
+        display: inline-block;
+        font-size: var(--text-xs);
+        font-weight: 500;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+        color: var(--terra);
+        margin-bottom: 16px;
+    }
+
+    .section-title {
+        font-size: clamp(var(--text-3xl), 5vw, var(--text-4xl));
+        font-weight: 400;
+        margin-bottom: 20px;
+        position: relative;
+        display: inline-block;
+    }
+    .section-title::after {
+        content: '';
+        position: absolute;
+        bottom: -14px; left: 50%;
+        transform: translateX(-50%);
+        width: 48px; height: 3px;
+        background: var(--terra);
+        border-radius: 2px;
+    }
+
+    .section-subtitle {
+        font-size: var(--text-md);
+        color: var(--muted);
+        max-width: 600px;
+        margin: 32px auto 0;
+        font-weight: 300;
+        line-height: var(--line-loose);
+    }
+
+    /* ================================================
+       TARIFS
+    ================================================ */
+    .tarifs-section { background: var(--warm-white); }
+
+    .tarifs-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
+        gap: 28px;
+        max-width: 880px;
+        margin: 0 auto;
+    }
+
+    .tarif-card {
+        background: white;
+        border-radius: var(--r);
+        padding: 48px 36px;
+        text-align: center;
+        box-shadow: var(--shadow-sm);
+        transition: var(--t);
+        position: relative;
+        overflow: hidden;
+        border: 1.5px solid transparent;
+    }
+    .tarif-card::before {
+        content: '';
+        position: absolute;
+        top: 0; left: 0; right: 0;
+        height: 4px;
+        background: linear-gradient(90deg, var(--terra), var(--terra-light));
+    }
+    .tarif-card:hover {
+        transform: translateY(-8px);
+        box-shadow: var(--shadow-md);
+        border-color: rgba(196,98,45,0.15);
+    }
+    .tarif-card.featured { border-color: var(--terra); }
+
+    .tarif-badge {
+        display: inline-block;
+        font-size: var(--text-xs);
+        font-weight: 500;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: var(--terra);
+        background: var(--terra-pale);
+        padding: 6px 16px;
+        border-radius: var(--pill);
+        margin-bottom: 20px;
+    }
+
+    .tarif-card h3 {
+        font-size: var(--text-2xl);
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+
+    .tarif-price {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 56px;
+        font-weight: 500;
+        color: var(--terra);
+        line-height: 1;
+        margin-bottom: 8px;
+    }
+
+    .tarif-period {
+        font-size: var(--text-sm);
+        color: var(--muted-light);
+        margin-bottom: 24px;
+        font-weight: 300;
+    }
+
+    .tarif-desc {
+        font-size: var(--text-sm);
+        color: var(--muted);
+        line-height: var(--line-loose);
+        margin-bottom: 32px;
+        padding: 0 8px;
+    }
+
+    .tarif-features {
+        text-align: left;
+        margin-bottom: 36px;
+    }
+    .tarif-features li {
+        font-size: var(--text-sm);
+        color: var(--espresso);
+        padding: 10px 0 10px 36px;
+        position: relative;
+        border-bottom: 1px solid var(--sand);
+        line-height: 1.5;
+    }
+    .tarif-features li:last-child { border-bottom: none; }
+    .tarif-features li::before {
+        content: '✓';
+        position: absolute;
+        left: 0;
+        width: 24px; height: 24px;
+        background: var(--sage-light);
+        color: var(--sage);
+        border-radius: 50%;
+        font-size: 0.75rem;
+        font-weight: 700;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        top: 10px;
+    }
+
+    .alt-card {
+        background: white;
+        border-radius: var(--r);
+        padding: 44px 40px;
+        max-width: 700px;
+        margin: 48px auto 0;
+        border: 2px dashed var(--sage);
+        text-align: center;
+    }
+    .alt-card h3 { font-size: var(--text-2xl); font-weight: 400; margin-bottom: 12px; }
+    .alt-card > p { font-size: var(--text-sm); color: var(--muted); margin-bottom: 28px; font-weight: 300; }
+
+    .alt-prices {
+        display: flex;
+        justify-content: center;
+        gap: 20px;
+        flex-wrap: wrap;
+    }
+    .alt-price {
+        background: var(--warm-white);
+        border-radius: var(--r);
+        padding: 24px 32px;
+        min-width: 160px;
+    }
+    .alt-price .price {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: var(--text-3xl);
+        font-weight: 500;
+        color: var(--terra);
+        display: block;
+        margin-bottom: 4px;
+    }
+    .alt-price .label { font-size: var(--text-xs); color: var(--muted-light); }
+
+    /* ================================================
+       GALLERY
+    ================================================ */
+    .gallery-section { background: var(--espresso); padding: 112px 0 80px; }
+    .gallery-section .section-title { color: white; }
+    .gallery-section .section-eyebrow { color: var(--terra-light); }
+    .gallery-section .section-subtitle { color: rgba(255,255,255,0.55); }
+
+    .carousel-wrap {
+        position: relative;
+        max-width: 1000px;
+        margin: 0 auto 28px;
+        border-radius: var(--r);
+        overflow: hidden;
+        background: #000;
+        box-shadow: var(--shadow-lg);
+    }
+
+    .carousel-track {
+        display: flex;
+        height: clamp(280px, 48vw, 520px);
+        transition: transform 0.55s var(--ease);
+    }
+
+    .c-slide {
+        flex: 0 0 100%;
+        height: 100%;
+    }
+    .c-slide img {
+        width: 100%; height: 100%;
+        object-fit: cover;
+    }
+
+    .video-slide { background: #000; }
+    .video-container { width: 100%; height: 100%; position: relative; }
+    #studio-video { width: 100%; height: 100%; object-fit: cover; }
+    .video-overlay {
+        position: absolute; inset: 0;
+        background: linear-gradient(rgba(0,0,0,0.4), rgba(0,0,0,0.6));
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        color: white;
+        transition: opacity 0.3s;
+        z-index: 2;
+        gap: 20px;
+    }
+    .video-overlay.hidden { opacity: 0; pointer-events: none; }
+    .play-btn {
+        width: 76px; height: 76px;
+        background: var(--terra);
+        border: none;
+        border-radius: 50%;
+        color: white;
+        font-size: 28px;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        transition: var(--t);
+        box-shadow: 0 10px 30px rgba(196,98,45,0.5);
+    }
+    .play-btn:hover { transform: scale(1.1); background: var(--espresso2); }
+    .video-caption { font-size: var(--text-sm); font-weight: 300; }
+
+    .c-nav {
+        position: absolute;
+        top: 50%; transform: translateY(-50%);
+        background: rgba(253,250,246,0.9);
+        border: none;
+        width: clamp(40px,8vw,52px); height: clamp(40px,8vw,52px);
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        cursor: pointer;
+        color: var(--espresso);
+        font-size: 1rem;
+        z-index: 10;
+        transition: var(--t);
+        box-shadow: var(--shadow-sm);
+    }
+    .c-nav:hover { background: var(--terra); color: white; }
+    .c-prev { left: 14px; }
+    .c-next { right: 14px; }
+
+    .c-dots {
+        display: flex;
+        justify-content: center;
+        gap: 10px;
+        flex-wrap: wrap;
+    }
+    .c-dot {
+        width: 10px; height: 10px;
+        border-radius: 50%;
+        background: rgba(255,255,255,0.2);
+        border: none;
+        cursor: pointer;
+        transition: var(--t);
+    }
+    .c-dot.active { background: var(--terra); transform: scale(1.3); }
+
+    /* ================================================
+       STUDIO FEATURES
+    ================================================ */
+    .studio-section { background: var(--cream); }
+
+    .features-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(220px, 1fr));
+        gap: 20px;
+    }
+
+    .feat-card {
+        background: white;
+        border-radius: var(--r);
+        padding: 32px 24px;
+        text-align: center;
+        transition: var(--t);
+        border: 1px solid rgba(44,26,14,0.04);
+    }
+    .feat-card:hover { transform: translateY(-6px); box-shadow: var(--shadow-sm); }
+
+    .feat-icon {
+        width: 64px; height: 64px;
+        background: linear-gradient(135deg, var(--terra), var(--terra-light));
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        color: white;
+        font-size: 1.5rem;
+        margin: 0 auto 20px;
+        box-shadow: 0 8px 20px rgba(196,98,45,0.25);
+    }
+
+    .feat-card h3 {
+        font-family: 'Jost', sans-serif;
+        font-size: var(--text-md);
+        font-weight: 600;
+        margin-bottom: 8px;
+    }
+    .feat-card p { font-size: var(--text-sm); color: var(--muted); font-weight: 300; }
+
+    /* ================================================
+       PARTENAIRE
+    ================================================ */
+    .partenaire-section { background: var(--warm-white); }
+
+    .partenaire-card {
+        background: white;
+        border-radius: var(--r);
+        padding: 56px 48px;
+        max-width: 760px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-sm);
+        border-left: 5px solid var(--sage);
+    }
+    @media (max-width: 640px) { .partenaire-card { padding: 36px 24px; } }
+
+    .partenaire-card .p-icon {
+        font-size: 2.5rem;
+        color: var(--terra);
+        margin-bottom: 16px;
+    }
+    .partenaire-card h3 {
+        font-size: var(--text-3xl);
+        font-weight: 400;
+        margin-bottom: 20px;
+    }
+    .partenaire-card p {
+        font-size: var(--text-md);
+        color: var(--muted);
+        font-weight: 300;
+        line-height: var(--line-loose);
+        margin-bottom: 32px;
+    }
+
+    /* ================================================
+       RESERVATION
+    ================================================ */
+    .reservation-section { background: var(--sand); }
+
+    .form-card {
+        background: white;
+        border-radius: var(--r);
+        padding: 56px 48px;
+        max-width: 860px;
+        margin: 0 auto;
+        box-shadow: var(--shadow-sm);
+    }
+    @media (max-width: 640px) { .form-card { padding: 32px 20px; } }
+
+    .form-grid-2 {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 20px;
+    }
+    @media (max-width: 600px) { .form-grid-2 { grid-template-columns: 1fr; } }
+
+    .form-group { margin-bottom: 24px; }
+
+    .form-label {
+        display: block;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--espresso);
+        margin-bottom: 10px;
+    }
+
+    .form-input {
+        width: 100%;
+        padding: 15px 20px;
+        border: 1.5px solid var(--sand-dark);
+        border-radius: var(--r-sm);
+        font-family: 'Jost', sans-serif;
+        font-size: var(--text-sm);
+        color: var(--espresso);
+        background: var(--cream);
+        transition: var(--t);
+        outline: none;
+        line-height: 1.5;
+    }
+    .form-input:focus {
+        border-color: var(--terra);
+        background: white;
+        box-shadow: 0 0 0 4px rgba(196,98,45,0.1);
+    }
+    textarea.form-input {
+        border-radius: var(--r-sm);
+        resize: vertical;
+        min-height: 110px;
+    }
+    select.form-input {
+        appearance: none;
+        background-image: url("data:image/svg+xml;charset=UTF-8,%3csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 24 24' fill='none' stroke='%232C1A0E' stroke-width='2'%3e%3cpolyline points='6 9 12 15 18 9'/%3e%3c/svg%3e");
+        background-repeat: no-repeat;
+        background-position: right 16px center;
+        background-size: 16px;
+        padding-right: 44px;
+        cursor: pointer;
+    }
+    .form-input:disabled { opacity: 0.45; cursor: not-allowed; }
+
+    .date-status {
+        margin-top: 8px;
+        font-size: var(--text-xs);
+        min-height: 20px;
+        font-weight: 500;
+    }
+    .date-status.ok   { color: #2d8c4e; }
+    .date-status.bad  { color: #c0392b; }
+
+    .price-preview {
+        display: none;
+        background: var(--terra-pale);
+        border-left: 4px solid var(--terra);
+        border-radius: var(--r-sm);
+        padding: 28px 32px;
+        margin: 32px 0;
+        text-align: center;
+    }
+    .price-preview h4 {
+        font-family: 'Jost', sans-serif;
+        font-size: var(--text-sm);
+        font-weight: 500;
+        color: var(--muted);
+        text-transform: uppercase;
+        letter-spacing: 0.08em;
+        margin-bottom: 10px;
+    }
+    .price-amount {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: 52px;
+        font-weight: 500;
+        color: var(--terra);
+        line-height: 1;
+        margin-bottom: 12px;
+    }
+    .price-breakdown {
+        font-size: var(--text-sm);
+        color: var(--muted);
+        font-weight: 300;
+        line-height: var(--line-loose);
+    }
+
+    .conditions-box {
+        background: var(--warm-white);
+        border-radius: var(--r-sm);
+        padding: 24px 28px;
+        margin: 28px 0;
+    }
+    .check-row {
+        display: flex;
+        align-items: flex-start;
+        gap: 14px;
+    }
+    .check-row input[type="checkbox"] {
+        width: 20px; height: 20px;
+        accent-color: var(--terra);
+        margin-top: 2px;
+        flex-shrink: 0;
+        cursor: pointer;
+    }
+    .check-row label {
+        font-size: var(--text-sm);
+        line-height: var(--line-base);
+        cursor: pointer;
+    }
+    .btn-link {
+        background: none;
+        border: none;
+        color: var(--terra);
+        text-decoration: underline;
+        cursor: pointer;
+        font-size: var(--text-sm);
+        font-family: 'Jost', sans-serif;
+        margin-top: 12px;
+        padding: 0;
+    }
+    .btn-link:hover { color: var(--espresso); }
+
+    .form-note {
+        font-size: var(--text-xs);
+        color: var(--muted-light);
+        margin-top: 6px;
+        font-weight: 300;
+    }
+
+    /* ================================================
+       FOOTER
+    ================================================ */
+    footer {
+        background: var(--espresso);
+        color: rgba(255,255,255,0.7);
+        padding: 80px 0 32px;
+    }
+
+    .footer-grid {
+        display: grid;
+        grid-template-columns: 1.8fr 1fr 1fr 1.2fr;
+        gap: 48px;
+        margin-bottom: 60px;
+    }
+    @media (max-width: 900px) { .footer-grid { grid-template-columns: 1fr 1fr; } }
+    @media (max-width: 480px) { .footer-grid { grid-template-columns: 1fr; } }
+
+    .footer-logo {
+        font-family: 'Cormorant Garamond', serif;
+        font-size: var(--text-2xl);
+        font-weight: 400;
+        color: white;
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        margin-bottom: 16px;
+    }
+    .footer-logo i { color: var(--terra); }
+    .footer-logo span { color: var(--terra-light); }
+
+    .footer-brand p {
+        font-size: var(--text-sm);
+        font-weight: 300;
+        color: rgba(255,255,255,0.45);
+        line-height: var(--line-loose);
+    }
+
+    .footer-col h4 {
+        font-family: 'Jost', sans-serif;
+        font-size: var(--text-xs);
+        font-weight: 600;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+        color: rgba(255,255,255,0.4);
+        margin-bottom: 20px;
+    }
+
+    .footer-col ul { display: flex; flex-direction: column; gap: 10px; }
+    .footer-col a, .footer-col li {
+        font-size: var(--text-sm);
+        font-weight: 300;
+        color: rgba(255,255,255,0.6);
+        transition: color 0.2s;
+        line-height: var(--line-base);
+    }
+    .footer-col a:hover { color: var(--terra-light); }
+
+    .footer-contact-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+    }
+    .footer-contact-item i {
+        color: var(--terra);
+        margin-top: 3px;
+        flex-shrink: 0;
+        font-size: 0.9rem;
+    }
+
+    .footer-bottom {
+        border-top: 1px solid rgba(255,255,255,0.08);
+        padding-top: 28px;
+        display: flex;
+        justify-content: space-between;
+        align-items: center;
+        flex-wrap: wrap;
+        gap: 12px;
+        font-size: var(--text-xs);
+        color: rgba(255,255,255,0.3);
+    }
+
+    /* ================================================
+       WHATSAPP FLOAT
+    ================================================ */
+    .wa-float {
+        position: fixed;
+        bottom: 28px; right: 28px;
+        width: 62px; height: 62px;
+        background: linear-gradient(135deg, #25D366, #128C7E);
+        color: white;
+        border-radius: 50%;
+        display: flex; align-items: center; justify-content: center;
+        font-size: 1.8rem;
+        text-decoration: none;
+        box-shadow: 0 8px 28px rgba(37,211,102,0.4);
+        z-index: 800;
+        transition: var(--t);
+    }
+    .wa-float:hover { transform: scale(1.1); }
+
+    /* ================================================
+       MODAL
+    ================================================ */
+    .modal-overlay {
+        display: none;
+        position: fixed; inset: 0;
+        background: rgba(44,26,14,0.75);
+        backdrop-filter: blur(6px);
+        z-index: 2000;
+        overflow-y: auto;
+        padding: 40px 20px;
+    }
+    .modal-overlay.open { display: flex; align-items: flex-start; justify-content: center; }
+
+    .modal-box {
+        background: white;
+        border-radius: var(--r);
+        padding: 48px 40px;
+        max-width: 820px;
+        width: 100%;
+        position: relative;
+        animation: modalIn 0.4s var(--ease);
+        margin: auto 0;
+    }
+    @media (max-width: 640px) { .modal-box { padding: 36px 24px; } }
+
+    @keyframes modalIn {
+        from { opacity: 0; transform: translateY(32px) scale(0.97); }
+        to   { opacity: 1; transform: none; }
+    }
+
+    .modal-close {
+        position: absolute;
+        top: 20px; right: 20px;
+        background: var(--warm-white);
+        border: none;
+        width: 40px; height: 40px;
+        border-radius: 50%;
+        font-size: 1.2rem;
+        cursor: pointer;
+        display: flex; align-items: center; justify-content: center;
+        transition: var(--t);
+        color: var(--espresso);
+    }
+    .modal-close:hover { background: var(--terra); color: white; transform: rotate(90deg); }
+
+    .modal-box h2 {
+        font-size: var(--text-3xl);
+        font-weight: 400;
+        margin-bottom: 10px;
+    }
+    .modal-box .modal-sub {
+        font-size: var(--text-sm);
+        color: var(--muted);
+        margin-bottom: 36px;
+        font-weight: 300;
+    }
+
+    .pol-section { margin-bottom: 28px; padding-bottom: 28px; border-bottom: 1px solid var(--sand); }
+    .pol-section:last-of-type { border-bottom: none; }
+    .pol-section h3 { font-family: 'Jost', sans-serif; font-size: var(--text-lg); font-weight: 600; color: var(--terra); margin-bottom: 16px; }
+
+    .pol-list { display: flex; flex-direction: column; gap: 10px; }
+    .pol-list li {
+        font-size: var(--text-sm);
+        padding: 14px 16px 14px 20px;
+        background: var(--warm-white);
+        border-radius: var(--r-sm);
+        border-left: 3px solid var(--terra);
+        line-height: var(--line-base);
+    }
+
+    .pol-warning {
+        background: rgba(192,57,43,0.07);
+        border-left: 4px solid #c0392b;
+        border-radius: var(--r-sm);
+        padding: 18px 20px;
+        font-size: var(--text-sm);
+        line-height: var(--line-base);
+        margin-top: 20px;
+    }
+
+</style>
+```
+
 </head>
 <body>
-    <!-- HEADER -->
-    <header id="main-header">
-        <div class="container header-container">
+
+<!-- HEADER -->
+
+<header id="site-header">
+    <div class="container">
+        <div class="header-inner">
             <a href="#parenthese" class="logo">
-                <i class="fas fa-pause-circle logo-icon"></i>
+                <i class="fas fa-pause-circle"></i>
                 La <span>Parenthèse</span>
             </a>
             <nav id="main-nav">
@@ -1095,525 +1098,792 @@
                 <a href="#reservation">Réservation</a>
                 <a href="#contact">Contact</a>
             </nav>
-            <button class="mobile-menu-btn" id="mobile-menu-btn" aria-label="Menu">
+            <button class="mobile-toggle" id="mobile-toggle" aria-label="Menu" aria-expanded="false">
                 <i class="fas fa-bars"></i>
             </button>
         </div>
-    </header>
+    </div>
+</header>
+<div class="nav-overlay" id="nav-overlay"></div>
 
-    <!-- MODAL POLITIQUE -->
-    <div class="modal" id="politiqueModal">
-        <div class="modal-content">
-            <button class="modal-close" id="modalClose">&times;</button>
-            <h2 class="modal-title">Politique d'annulation</h2>
-            <p class="modal-subtitle">Conditions applicables à toute réservation</p>
-            <div class="politique-section">
-                <h3>Délais d'annulation</h3>
-                <ul class="politique-list">
-                    <li><strong>+72h</strong> : remboursement 100%</li>
-                    <li><strong>72h - 24h</strong> : remboursement 50%</li>
-                    <li><strong>-24h</strong> : aucun remboursement</li>
-                </ul>
-            </div>
-            <div class="politique-warning">
-                <strong>Frais non remboursables :</strong> ménage, frais de service, options gourmandes.
-            </div>
-            <p style="text-align:center; margin-top:20px;"><small>Dernière mise à jour : 2024</small></p>
+<!-- MODAL POLITIQUE D'ANNULATION -->
+
+<div class="modal-overlay" id="modal-politique">
+    <div class="modal-box">
+        <button class="modal-close" id="modal-close" aria-label="Fermer">&times;</button>
+        <h2>Politique d'annulation</h2>
+        <p class="modal-sub">Conditions applicables à toute réservation</p>
+
+```
+    <div class="pol-section">
+        <h3>Délais d'annulation</h3>
+        <ul class="pol-list">
+            <li><strong>Plus de 72h avant l'arrivée</strong> — Remboursement intégral (100 %)</li>
+            <li><strong>Entre 72h et 24h avant l'arrivée</strong> — Remboursement partiel (50 %)</li>
+            <li><strong>Moins de 24h avant l'arrivée</strong> — Aucun remboursement</li>
+        </ul>
+    </div>
+
+    <div class="pol-section">
+        <div class="pol-warning">
+            <strong>Frais non remboursables :</strong> frais de ménage, frais de service et options gourmandes sont retenus quelle que soit la date d'annulation.
         </div>
     </div>
 
-    <!-- HERO -->
-    <section class="hero" id="parenthese">
-        <div class="container">
-            <span class="badge">Studio cosy • Akpakpa</span>
-            <h1>Votre parenthèse cosy à Akpakpa</h1>
-            <div class="hero-tagline">
-                <i class="fas fa-star"></i> Une pause • Un lieu à soi • Un souvenir gourmand
+    <p style="text-align:center; font-size: var(--text-xs); color: var(--muted-light); margin-top: 16px;">
+        Dernière mise à jour : 2025
+    </p>
+</div>
+```
+
+</div>
+
+<!-- HERO -->
+
+<section class="hero" id="parenthese">
+    <div class="container">
+        <div class="hero-content">
+            <div class="hero-eyebrow reveal">
+                <i class="fas fa-map-marker-alt"></i>
+                Studio cosy · Akpakpa, Cotonou
             </div>
-            <p class="hero-subtitle">
-                Prenez un moment pour vous. Notre studio est une parenthèse de calme et de confort dans l'énergie de Cotonou, où chaque détail est pensé pour votre bien-être, avec une attention gourmande incluse.
+            <h1 class="reveal reveal-delay-1">Votre parenthèse<br>cosy à Akpakpa</h1>
+            <p class="hero-tagline reveal reveal-delay-2">
+                Une pause &nbsp;·&nbsp; Un lieu à soi &nbsp;·&nbsp; Un souvenir gourmand
             </p>
-            <p class="hero-note">Ouvrez la parenthèse, nous nous occupons du reste.</p>
-            <div class="hero-buttons">
-                <a href="#tarifs" class="btn btn-primary"><i class="fas fa-eye"></i> Voir les tarifs</a>
-                <a href="#reservation" class="btn btn-outline"><i class="fas fa-calendar-check"></i> Réserver</a>
+            <p class="hero-desc reveal reveal-delay-3">
+                Prenez un moment pour vous. Notre studio est une parenthèse de calme et de confort dans l'énergie de Cotonou — chaque détail est pensé pour votre bien-être, avec une attention gourmande incluse.
+            </p>
+            <div class="hero-btns reveal reveal-delay-4">
+                <a href="#tarifs" class="btn btn-terra">
+                    <i class="fas fa-eye"></i> Voir les tarifs
+                </a>
+                <a href="#reservation" class="btn btn-outline-white">
+                    <i class="fas fa-calendar-check"></i> Réserver
+                </a>
+            </div>
+            <p class="hero-note reveal reveal-delay-4">
+                Ouvrez la parenthèse, nous nous occupons du reste.
+            </p>
+        </div>
+    </div>
+</section>
+
+<!-- TARIFS -->
+
+<section class="tarifs-section" id="tarifs">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-eyebrow">Formules</span>
+            <h2 class="section-title">Nos Tarifs</h2>
+            <p class="section-subtitle">Des formules adaptées à chaque besoin, avec une touche gourmande incluse dans chaque séjour.</p>
+        </div>
+
+```
+    <div class="tarifs-grid">
+        <!-- Nuitée -->
+        <div class="tarif-card reveal">
+            <div class="tarif-badge">Le plus populaire</div>
+            <h3>Nuitée Cosy</h3>
+            <div class="tarif-price">17 000 F</div>
+            <div class="tarif-period">par nuitée</div>
+            <p class="tarif-desc">Idéale pour une nuit de repos ou une escapade détente.</p>
+            <ul class="tarif-features">
+                <li>Studio entier 30 m²</li>
+                <li>Wi-Fi haut débit</li>
+                <li>Climatisation</li>
+                <li>TV &amp; PS4</li>
+                <li>Cuisine équipée</li>
+                <li><strong>Smoothie ou sandwich INCLUS</strong></li>
+            </ul>
+            <a href="#reservation" class="btn btn-terra btn-full">Choisir cette formule</a>
+        </div>
+
+        <!-- 24h -->
+        <div class="tarif-card featured reveal reveal-delay-2">
+            <div class="tarif-badge">Flexibilité</div>
+            <h3>24h Flexibles</h3>
+            <div class="tarif-price">27 000 F</div>
+            <div class="tarif-period">pour 24 heures</div>
+            <p class="tarif-desc">Parfaite si vous arrivez tard ou souhaitez profiter sans contrainte horaire.</p>
+            <ul class="tarif-features">
+                <li>Studio entier 30 m²</li>
+                <li>Wi-Fi haut débit</li>
+                <li>Climatisation</li>
+                <li>TV &amp; PS4</li>
+                <li>Cuisine équipée</li>
+                <li><strong>Smoothie ou sandwich INCLUS</strong></li>
+            </ul>
+            <a href="#reservation" class="btn btn-terra btn-full">Choisir cette formule</a>
+        </div>
+    </div>
+
+    <!-- Sans option gourmande -->
+    <div class="alt-card reveal">
+        <h3>Sans option gourmande ?</h3>
+        <p>Profitez du studio à tarif réduit, sans l'option Fresh Mood.</p>
+        <div class="alt-prices">
+            <div class="alt-price">
+                <span class="price">15 000 F</span>
+                <span class="label">par nuitée</span>
+            </div>
+            <div class="alt-price">
+                <span class="price">25 000 F</span>
+                <span class="label">pour 24h</span>
             </div>
         </div>
-    </section>
+    </div>
+</div>
+```
 
-    <!-- TARIFS -->
-    <section class="tarifs-section" id="tarifs">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Nos Tarifs</h2>
-                <p class="section-subtitle">Des formules adaptées à chaque besoin, avec une touche gourmande incluse</p>
-            </div>
-            <div class="tarifs-grid">
-                <div class="tarif-card">
-                    <span class="badge">Le plus populaire</span>
-                    <h3>Nuitée Cosy</h3>
-                    <div class="tarif-price">17 000 F</div>
-                    <div class="tarif-period">par nuitée</div>
-                    <p class="tarif-description">Idéale pour une nuit de repos ou une escapade détente.</p>
-                    <ul class="tarif-features">
-                        <li>Studio entier 30m²</li>
-                        <li>Wi-Fi haut débit</li>
-                        <li>Climatisation</li>
-                        <li>TV + PS4</li>
-                        <li>Cuisine équipée</li>
-                        <li><strong>Smoothie ou sandwich INCLUS</strong></li>
-                    </ul>
-                    <div class="tarif-cta"><a href="#reservation" class="btn btn-primary">Choisir</a></div>
+</section>
+
+<!-- GALERIE -->
+
+<section class="gallery-section" id="galerie">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-eyebrow">Visuels</span>
+            <h2 class="section-title">Le Studio en Images</h2>
+            <p class="section-subtitle">Découvrez l'espace, l'ambiance et la visite vidéo complète.</p>
+        </div>
+
+```
+    <div class="carousel-wrap reveal">
+        <div class="carousel-track" id="carousel-track"></div>
+        <button class="c-nav c-prev" id="c-prev" aria-label="Précédent"><i class="fas fa-chevron-left"></i></button>
+        <button class="c-nav c-next" id="c-next" aria-label="Suivant"><i class="fas fa-chevron-right"></i></button>
+    </div>
+    <div class="c-dots" id="c-dots"></div>
+</div>
+```
+
+</section>
+
+<!-- STUDIO -->
+
+<section class="studio-section" id="studio">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-eyebrow">Équipements</span>
+            <h2 class="section-title">Le Studio Cosy</h2>
+            <p class="section-subtitle">Chaque détail a été pensé pour que vous vous sentiez immédiatement chez vous.</p>
+        </div>
+
+```
+    <div class="features-grid">
+        <div class="feat-card reveal">
+            <div class="feat-icon"><i class="fas fa-snowflake"></i></div>
+            <h3>Climatisation</h3>
+            <p>Température réglable à votre convenance</p>
+        </div>
+        <div class="feat-card reveal reveal-delay-1">
+            <div class="feat-icon"><i class="fas fa-wifi"></i></div>
+            <h3>Wi-Fi Haut Débit</h3>
+            <p>Connexion rapide et stable</p>
+        </div>
+        <div class="feat-card reveal reveal-delay-2">
+            <div class="feat-icon"><i class="fas fa-tv"></i></div>
+            <h3>TV &amp; PS4</h3>
+            <p>Divertissement assuré</p>
+        </div>
+        <div class="feat-card reveal reveal-delay-3">
+            <div class="feat-icon"><i class="fas fa-utensils"></i></div>
+            <h3>Cuisine équipée</h3>
+            <p>Tous les ustensiles inclus</p>
+        </div>
+        <div class="feat-card reveal">
+            <div class="feat-icon"><i class="fas fa-volume-off"></i></div>
+            <h3>Quartier calme</h3>
+            <p>Repos garanti, sans nuisances</p>
+        </div>
+        <div class="feat-card reveal reveal-delay-1">
+            <div class="feat-icon"><i class="fas fa-broom"></i></div>
+            <h3>Propreté garantie</h3>
+            <p>Nettoyage professionnel entre chaque séjour</p>
+        </div>
+        <div class="feat-card reveal reveal-delay-2">
+            <div class="feat-icon"><i class="fas fa-user-secret"></i></div>
+            <h3>Studio privé</h3>
+            <p>Intimité totale, entrée indépendante</p>
+        </div>
+        <div class="feat-card reveal reveal-delay-3">
+            <div class="feat-icon"><i class="fas fa-shield-alt"></i></div>
+            <h3>Accès sécurisé</h3>
+            <p>Serrure numérique, quartier sécurisé</p>
+        </div>
+    </div>
+</div>
+```
+
+</section>
+
+<!-- PARTENAIRE -->
+
+<section class="partenaire-section" id="partenaire">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-eyebrow">Partenariat</span>
+            <h2 class="section-title">Notre Partenaire Gourmand</h2>
+            <p class="section-subtitle">Une touche de fraîcheur pour agrémenter votre séjour.</p>
+        </div>
+
+```
+    <div class="partenaire-card reveal">
+        <div class="p-icon"><i class="fas fa-blender"></i></div>
+        <h3>Fresh Mood</h3>
+        <p>
+            Smoothies et sandwichs frais préparés avec soin par notre partenaire local. Inclus dans chaque formule premium, Fresh Mood apporte une note gourmande et naturelle à votre parenthèse. Des fruits locaux de saison, sans additifs, livrés directement avec votre séjour.
+        </p>
+        <button class="btn btn-outline-terra" onclick="alert('Découvrez Fresh Mood prochainement !')">
+            <i class="fas fa-external-link-alt"></i> Découvrir Fresh Mood
+        </button>
+    </div>
+</div>
+```
+
+</section>
+
+<!-- RÉSERVATION -->
+
+<section class="reservation-section" id="reservation">
+    <div class="container">
+        <div class="section-header reveal">
+            <span class="section-eyebrow">Réserver</span>
+            <h2 class="section-title">Votre Réservation</h2>
+            <p class="section-subtitle">Remplissez le formulaire en moins d'une minute et finalisez via WhatsApp.</p>
+        </div>
+
+```
+    <div class="form-card reveal">
+        <form id="reservation-form" novalidate>
+
+            <div class="form-grid-2">
+                <div class="form-group">
+                    <label class="form-label" for="f-nom">Nom *</label>
+                    <input class="form-input" type="text" id="f-nom" required autocomplete="family-name">
                 </div>
-                <div class="tarif-card featured">
-                    <span class="badge">Flexibilité</span>
-                    <h3>24h Flexibles</h3>
-                    <div class="tarif-price">27 000 F</div>
-                    <div class="tarif-period">pour 24h</div>
-                    <p class="tarif-description">Parfaite si vous arrivez tard ou souhaitez profiter sans contrainte.</p>
-                    <ul class="tarif-features">
-                        <li>Studio entier 30m²</li>
-                        <li>Wi-Fi haut débit</li>
-                        <li>Climatisation</li>
-                        <li>TV + PS4</li>
-                        <li>Cuisine équipée</li>
-                        <li><strong>Smoothie ou sandwich INCLUS</strong></li>
-                    </ul>
-                    <div class="tarif-cta"><a href="#reservation" class="btn btn-primary">Choisir</a></div>
+                <div class="form-group">
+                    <label class="form-label" for="f-prenom">Prénom *</label>
+                    <input class="form-input" type="text" id="f-prenom" required autocomplete="given-name">
                 </div>
             </div>
-            <div class="alternative-card">
-                <h3 class="alternative-title">Sans option gourmande ?</h3>
-                <p>Profitez du studio à tarif réduit.</p>
-                <div class="alternative-prices">
-                    <div class="alternative-price"><span class="price">15 000 F</span><br>par nuitée</div>
-                    <div class="alternative-price"><span class="price">25 000 F</span><br>pour 24h</div>
+
+            <div class="form-grid-2">
+                <div class="form-group">
+                    <label class="form-label" for="f-email">Adresse e-mail *</label>
+                    <input class="form-input" type="email" id="f-email" required autocomplete="email">
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="f-phone">WhatsApp *</label>
+                    <input class="form-input" type="tel" id="f-phone" required placeholder="66 95 39 34" autocomplete="tel">
+                    <p class="form-note">Format : 66953934</p>
                 </div>
             </div>
+
+            <div class="form-grid-2">
+                <div class="form-group">
+                    <label class="form-label" for="f-arrivee">Date d'arrivée *</label>
+                    <input class="form-input" type="date" id="f-arrivee" required>
+                    <div class="date-status" id="arrivee-status"></div>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="f-depart">Date de départ *</label>
+                    <input class="form-input" type="date" id="f-depart" required>
+                    <div class="date-status" id="depart-status"></div>
+                </div>
+            </div>
+
+            <div class="form-grid-2">
+                <div class="form-group">
+                    <label class="form-label" for="f-formule">Formule *</label>
+                    <select class="form-input" id="f-formule" required>
+                        <option value="">— Choisir —</option>
+                        <option value="nuit">Nuitée Cosy (17 000 F / nuit)</option>
+                        <option value="24h">24h Flexibles (27 000 F / 24h)</option>
+                    </select>
+                </div>
+                <div class="form-group">
+                    <label class="form-label" for="f-personnes">Nombre de personnes *</label>
+                    <select class="form-input" id="f-personnes" required>
+                        <option value="">— Choisir —</option>
+                        <option value="1">1 personne</option>
+                        <option value="2">2 personnes</option>
+                        <option value="3">3 personnes</option>
+                        <option value="4">4 personnes</option>
+                    </select>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="f-gourmand">Option gourmande</label>
+                <select class="form-input" id="f-gourmand">
+                    <option value="avec">Oui — avec smoothie ou sandwich (inclus)</option>
+                    <option value="sans">Non — tarif réduit sans option</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="f-preference">Préférence gourmande</label>
+                <select class="form-input" id="f-preference" disabled>
+                    <option value="">— Choisir —</option>
+                    <option value="smoothie">Smoothie</option>
+                    <option value="sandwich">Sandwich</option>
+                </select>
+            </div>
+
+            <div class="form-group">
+                <label class="form-label" for="f-message">Message particulier</label>
+                <textarea class="form-input" id="f-message" rows="4" placeholder="Occasion spéciale, heure d'arrivée approximative…"></textarea>
+            </div>
+
+            <!-- Estimation de prix -->
+            <div class="price-preview" id="price-preview">
+                <h4>Estimation du séjour</h4>
+                <div class="price-amount" id="price-amount">0 F</div>
+                <div class="price-breakdown" id="price-breakdown"></div>
+            </div>
+
+            <!-- Conditions -->
+            <div class="conditions-box">
+                <div class="check-row">
+                    <input type="checkbox" id="f-conditions" required>
+                    <label for="f-conditions">
+                        J'ai lu et j'accepte la <strong>politique d'annulation</strong> de La Parenthèse.
+                    </label>
+                </div>
+                <button type="button" class="btn-link" id="open-politique">
+                    <i class="fas fa-file-alt"></i> Lire les conditions d'annulation
+                </button>
+            </div>
+
+            <button type="submit" class="btn btn-wa btn-full" style="font-size: var(--text-md); padding: 18px;">
+                <i class="fab fa-whatsapp"></i> Confirmer ma réservation via WhatsApp
+            </button>
+
+        </form>
+    </div>
+</div>
+```
+
+</section>
+
+<!-- FOOTER -->
+
+<footer id="contact">
+    <div class="container">
+        <div class="footer-grid">
+            <div class="footer-brand">
+                <div class="footer-logo">
+                    <i class="fas fa-pause-circle"></i>
+                    La <span>Parenthèse</span>
+                </div>
+                <p>Studio cosy à Akpakpa, Cotonou.<br>Une pause dans l'énergie de la ville.</p>
+            </div>
+
+```
+        <div class="footer-col">
+            <h4>Navigation</h4>
+            <ul>
+                <li><a href="#parenthese">Accueil</a></li>
+                <li><a href="#studio">Le Studio</a></li>
+                <li><a href="#tarifs">Tarifs</a></li>
+                <li><a href="#galerie">Galerie</a></li>
+                <li><a href="#reservation">Réservation</a></li>
+            </ul>
         </div>
-    </section>
 
-    <!-- GALERIE (carrousel dynamique) -->
-    <section class="gallery-section" id="galerie">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Galerie</h2>
-                <p class="section-subtitle">Découvrez le studio en images et vidéo</p>
-            </div>
-            <div class="gallery-carousel">
-                <div class="carousel-container" id="carousel-container"></div>
-                <button class="carousel-nav carousel-prev" id="carousel-prev"><i class="fas fa-chevron-left"></i></button>
-                <button class="carousel-nav carousel-next" id="carousel-next"><i class="fas fa-chevron-right"></i></button>
-                <div class="carousel-dots" id="carousel-dots"></div>
-            </div>
-            <div class="video-legend"><i class="fas fa-video"></i> Visite vidéo du studio</div>
+        <div class="footer-col">
+            <h4>Infos</h4>
+            <ul>
+                <li><a href="#partenaire">Partenaire</a></li>
+                <li><a href="#" id="footer-politique">Politique d'annulation</a></li>
+            </ul>
         </div>
-    </section>
 
-    <!-- STUDIO -->
-    <section class="studio-section" id="studio">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Le Studio Cosy</h2>
-                <p class="section-subtitle">Un espace pensé pour votre confort</p>
-            </div>
-            <div class="features-grid">
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-snowflake"></i></div><h3>Climatisation</h3><p>Température réglable</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-wifi"></i></div><h3>Wi-Fi Haut Débit</h3><p>Connexion rapide</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-tv"></i></div><h3>TV & PS4</h3><p>Divertissement</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-utensils"></i></div><h3>Cuisine équipée</h3><p>Ustensiles inclus</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-volume-off"></i></div><h3>Quartier calme</h3><p>Repos garanti</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-broom"></i></div><h3>Propreté garantie</h3><p>Nettoyage pro</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-user-secret"></i></div><h3>Studio privé</h3><p>Intimité totale</p></div>
-                <div class="feature-card"><div class="feature-icon"><i class="fas fa-shield-alt"></i></div><h3>Sécurité</h3><p>Accès sécurisé</p></div>
-            </div>
+        <div class="footer-col">
+            <h4>Contact</h4>
+            <ul style="gap: 14px;">
+                <li class="footer-contact-item">
+                    <i class="fab fa-whatsapp"></i>
+                    <span>+229 66 95 39 34</span>
+                </li>
+                <li class="footer-contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <span>mauricegerauds@gmail.com</span>
+                </li>
+                <li class="footer-contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <span>Akpakpa, Cotonou, Bénin</span>
+                </li>
+            </ul>
         </div>
-    </section>
+    </div>
 
-    <!-- PARTENAIRE -->
-    <section class="partenaire-section" id="partenaire">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Notre Partenaire Gourmand</h2>
-                <p class="section-subtitle">Une touche de fraîcheur pour votre séjour</p>
-            </div>
-            <div class="partenaire-card">
-                <div class="partenaire-logo"><i class="fas fa-blender"></i></div>
-                <h3 class="partenaire-title">FRESH MOOD</h3>
-                <p class="partenaire-text">Smoothies et sandwichs frais préparés par notre partenaire local.</p>
-                <a href="#" class="btn btn-outline" style="color:var(--terracotta); border-color:var(--terracotta);">Découvrir</a>
-            </div>
-        </div>
-    </section>
+    <div class="footer-bottom">
+        <span>&copy; <span id="footer-year"></span> La Parenthèse · Tous droits réservés</span>
+        <span>Fait avec soin à Cotonou</span>
+    </div>
+</div>
+```
 
-    <!-- RÉSERVATION -->
-    <section class="reservation-section" id="reservation">
-        <div class="container">
-            <div class="section-header">
-                <h2 class="section-title">Réservation</h2>
-                <p class="reservation-note"><i class="fas fa-bolt"></i> Moins d'une minute</p>
-            </div>
-            <div class="reservation-form-container">
-                <form id="reservationForm">
-                    <div class="form-grid">
-                        <div class="form-group"><label class="form-label">Nom *</label><input type="text" class="form-control" id="nom" required></div>
-                        <div class="form-group"><label class="form-label">Prénom *</label><input type="text" class="form-control" id="prenom" required></div>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group"><label class="form-label">Email *</label><input type="email" class="form-control" id="email" required></div>
-                        <div class="form-group"><label class="form-label">WhatsApp *</label><input type="tel" class="form-control" id="telephone" required placeholder="66953934"><small>Format: 66953934</small></div>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group"><label class="form-label">Arrivée *</label><input type="date" class="form-control" id="date-arrivee" required><div class="date-status" id="arrivee-status"></div></div>
-                        <div class="form-group"><label class="form-label">Départ *</label><input type="date" class="form-control" id="date-depart" required><div class="date-status" id="depart-status"></div></div>
-                    </div>
-                    <div class="form-grid">
-                        <div class="form-group"><label class="form-label">Formule *</label><select class="form-control" id="formule" required><option value="">Choisir</option><option value="nuit">Nuitée Cosy (17.000 F/nuit)</option><option value="24h">24h Flexibles (27.000 F/24h)</option></select></div>
-                        <div class="form-group"><label class="form-label">Personnes *</label><select class="form-control" id="personnes" required><option value="">Choisir</option><option value="1">1</option><option value="2">2</option><option value="3">3</option><option value="4">4</option></select></div>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Option gourmande</label>
-                        <select class="form-control" id="smoothie-sandwich">
-                            <option value="avec">Oui, avec smoothie/sandwich</option>
-                            <option value="sans">Non, tarif réduit</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Préférence</label>
-                        <select class="form-control" id="preference" disabled>
-                            <option value="">Choisir</option>
-                            <option value="smoothie">Smoothie</option>
-                            <option value="sandwich">Sandwich</option>
-                        </select>
-                    </div>
-                    <div class="form-group">
-                        <label class="form-label">Message particulier</label>
-                        <textarea class="form-control" id="message" rows="3"></textarea>
-                    </div>
-                    <div class="price-display" id="price-display" style="display:none;">
-                        <h3>Estimation</h3>
-                        <div class="price-amount" id="total-price">0 F</div>
-                        <div class="price-details" id="price-details"></div>
-                    </div>
-                    <div class="conditions-container">
-                        <div class="conditions-header">
-                            <input type="checkbox" id="accept-conditions" required>
-                            <label for="accept-conditions">J'accepte la politique d'annulation</label>
-                        </div>
-                        <button type="button" class="read-conditions-btn" id="openPolitiqueBtn">Lire les conditions</button>
-                    </div>
-                    <button type="submit" class="btn btn-whatsapp submit-btn" id="submit-btn"><i class="fab fa-whatsapp"></i> Réserver via WhatsApp</button>
-                </form>
-            </div>
-        </div>
-    </section>
+</footer>
 
-    <!-- FOOTER -->
-    <footer id="contact">
-        <div class="container">
-            <div class="footer-container">
-                <div class="footer-column"><h3>La Parenthèse</h3><p>Studio cosy à Akpakpa, Cotonou.</p></div>
-                <div class="footer-column"><h3>Navigation</h3><ul class="footer-links"><li><a href="#parenthese">Accueil</a></li><li><a href="#studio">Le Studio</a></li><li><a href="#tarifs">Tarifs</a></li><li><a href="#galerie">Galerie</a></li></ul></div>
-                <div class="footer-column"><h3>Infos</h3><ul class="footer-links"><li><a href="#" id="openPolitiqueFooter">Politique</a></li><li><a href="#partenaire">Partenaire</a></li></ul></div>
-                <div class="footer-column"><h3>Contact</h3><ul class="footer-contact"><li><i class="fab fa-whatsapp"></i> 66 95 39 34</li><li><i class="fas fa-envelope"></i> mauricegerauds@gmail.com</li></ul></div>
-            </div>
-            <div class="copyright">© <span id="current-year"></span> La Parenthèse</div>
-        </div>
-    </footer>
+<!-- WHATSAPP FLOTTANT -->
 
-    <!-- WHATSAPP FLOAT -->
-    <a href="https://wa.me/22966953934?text=Bonjour%20!" class="whatsapp-float" target="_blank"><i class="fab fa-whatsapp"></i></a>
+<a href="https://wa.me/22966953934?text=Bonjour%20La%20Paren%C3%A8se%20!" class="wa-float" target="_blank" rel="noopener" aria-label="WhatsApp">
+    <i class="fab fa-whatsapp"></i>
+</a>
 
-    <script>
-        (function() {
-            // Initialisation
-            const currentYear = new Date().getFullYear();
-            document.getElementById('current-year').textContent = currentYear;
+<!-- ================================================
+     SCRIPT
+================================================ -->
 
-            // HEADER SCROLL
-            const header = document.getElementById('main-header');
-            window.addEventListener('scroll', () => {
-                if (window.scrollY > 50) header.classList.add('scrolled');
-                else header.classList.remove('scrolled');
+<script>
+(function () {
+    'use strict';
+
+    /* -----------------------------------
+       Année footer
+    ----------------------------------- */
+    document.getElementById('footer-year').textContent = new Date().getFullYear();
+
+    /* -----------------------------------
+       REVEAL AU SCROLL
+    ----------------------------------- */
+    const io = new IntersectionObserver((entries) => {
+        entries.forEach((e, i) => {
+            if (e.isIntersecting) {
+                setTimeout(() => e.target.classList.add('in'), i * 50);
+                io.unobserve(e.target);
+            }
+        });
+    }, { threshold: 0.08 });
+    document.querySelectorAll('.reveal').forEach(el => io.observe(el));
+
+    /* -----------------------------------
+       HEADER SCROLL
+    ----------------------------------- */
+    const header = document.getElementById('site-header');
+    window.addEventListener('scroll', () => {
+        header.classList.toggle('scrolled', window.scrollY > 50);
+    }, { passive: true });
+
+    /* -----------------------------------
+       MOBILE NAV
+    ----------------------------------- */
+    const toggle  = document.getElementById('mobile-toggle');
+    const nav     = document.getElementById('main-nav');
+    const overlay = document.getElementById('nav-overlay');
+
+    function openNav() {
+        nav.classList.add('open');
+        overlay.classList.add('open');
+        toggle.setAttribute('aria-expanded', 'true');
+        toggle.innerHTML = '<i class="fas fa-times"></i>';
+    }
+    function closeNav() {
+        nav.classList.remove('open');
+        overlay.classList.remove('open');
+        toggle.setAttribute('aria-expanded', 'false');
+        toggle.innerHTML = '<i class="fas fa-bars"></i>';
+    }
+
+    toggle.addEventListener('click', () => nav.classList.contains('open') ? closeNav() : openNav());
+    overlay.addEventListener('click', closeNav);
+    document.querySelectorAll('#main-nav a').forEach(a => a.addEventListener('click', closeNav));
+
+    /* -----------------------------------
+       ACTIVE NAV LINK
+    ----------------------------------- */
+    const sections = document.querySelectorAll('section[id], footer[id]');
+    const navLinks = document.querySelectorAll('#main-nav a');
+
+    const sectionObserver = new IntersectionObserver((entries) => {
+        entries.forEach(e => {
+            if (e.isIntersecting) {
+                navLinks.forEach(a => {
+                    a.classList.toggle('active', a.getAttribute('href') === '#' + e.target.id);
+                });
+            }
+        });
+    }, { threshold: 0.4 });
+    sections.forEach(s => sectionObserver.observe(s));
+
+    /* -----------------------------------
+       MODAL POLITIQUE
+    ----------------------------------- */
+    const modalEl = document.getElementById('modal-politique');
+    const closeEl = document.getElementById('modal-close');
+
+    function openModal()  { modalEl.classList.add('open');  document.body.style.overflow = 'hidden'; }
+    function closeModal() { modalEl.classList.remove('open'); document.body.style.overflow = ''; }
+
+    document.getElementById('open-politique').addEventListener('click', openModal);
+    document.getElementById('footer-politique').addEventListener('click', (e) => { e.preventDefault(); openModal(); });
+    closeEl.addEventListener('click', closeModal);
+    modalEl.addEventListener('click', e => { if (e.target === modalEl) closeModal(); });
+    document.addEventListener('keydown', e => { if (e.key === 'Escape') closeModal(); });
+
+    /* -----------------------------------
+       CAROUSEL
+    ----------------------------------- */
+    const slidesData = [
+        { type: 'image', src: 'images/image1.jpg',          alt: 'Vue principale du studio' },
+        { type: 'image', src: 'images/image2.jpg',          alt: 'Espace nuit' },
+        { type: 'image', src: 'images/image3.jpg',          alt: 'Coin détente' },
+        { type: 'image', src: 'images/cuisine-equipee.jpg', alt: 'Cuisine équipée' },
+        { type: 'image', src: 'images/image4.jpg',          alt: 'Salle de bain' },
+        { type: 'image', src: 'images/image5.jpg',          alt: 'Ambiance' },
+        { type: 'video', src: 'images/visite-studio.mp4',   poster: 'images/video-poster.jpg', alt: 'Visite vidéo' },
+        { type: 'image', src: 'images/image7.jpg',          alt: 'Fresh Mood' }
+    ];
+
+    const PLACEHOLDER = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjUwMCIgZmlsbD0iI0YyRThEOSIvPjx0ZXh0IHg9IjQwMCIgeT0iMjUwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjAiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM3RDY2NTUiPkltYWdlIG5vbiBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg==';
+
+    const track    = document.getElementById('carousel-track');
+    const dotsWrap = document.getElementById('c-dots');
+    let current = 0;
+    let autoPlay;
+
+    slidesData.forEach((s, i) => {
+        const slide = document.createElement('div');
+        slide.className = 'c-slide' + (s.type === 'video' ? ' video-slide' : '');
+
+        if (s.type === 'image') {
+            const img = document.createElement('img');
+            img.src   = s.src;
+            img.alt   = s.alt;
+            img.onerror = function() { this.src = PLACEHOLDER; };
+            slide.appendChild(img);
+        } else {
+            const vc  = document.createElement('div');
+            vc.className = 'video-container';
+            const vid = document.createElement('video');
+            vid.id = 'studio-video';
+            vid.poster = s.poster || PLACEHOLDER;
+            vid.preload = 'metadata';
+            vid.controls = true;
+            vid.playsInline = true;
+            const src = document.createElement('source');
+            src.src = s.src; src.type = 'video/mp4';
+            vid.appendChild(src);
+
+            const ov  = document.createElement('div');
+            ov.className = 'video-overlay';
+            const pb  = document.createElement('button');
+            pb.className = 'play-btn';
+            pb.innerHTML = '<i class="fas fa-play"></i>';
+            pb.setAttribute('aria-label', 'Lancer la vidéo');
+            const cap = document.createElement('p');
+            cap.className = 'video-caption';
+            cap.textContent = 'Cliquez pour lancer la visite vidéo';
+            ov.appendChild(pb);
+            ov.appendChild(cap);
+
+            pb.addEventListener('click', () => {
+                vid.play().then(() => ov.classList.add('hidden')).catch(() => {});
             });
+            vid.addEventListener('play',  () => ov.classList.add('hidden'));
+            vid.addEventListener('pause', () => ov.classList.remove('hidden'));
+            vid.addEventListener('ended', () => ov.classList.remove('hidden'));
 
-            // MOBILE MENU
-            const menuBtn = document.getElementById('mobile-menu-btn');
-            const nav = document.getElementById('main-nav');
-            if (menuBtn && nav) {
-                menuBtn.addEventListener('click', (e) => {
-                    e.stopPropagation();
-                    nav.classList.toggle('active');
-                    menuBtn.innerHTML = nav.classList.contains('active') ? '<i class="fas fa-times"></i>' : '<i class="fas fa-bars"></i>';
-                });
-                document.querySelectorAll('nav a').forEach(link => {
-                    link.addEventListener('click', () => {
-                        nav.classList.remove('active');
-                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    });
-                });
-                document.addEventListener('click', (e) => {
-                    if (nav.classList.contains('active') && !nav.contains(e.target) && !menuBtn.contains(e.target)) {
-                        nav.classList.remove('active');
-                        menuBtn.innerHTML = '<i class="fas fa-bars"></i>';
-                    }
-                });
-            }
+            vc.appendChild(vid);
+            vc.appendChild(ov);
+            slide.appendChild(vc);
+        }
 
-            // MODAL POLITIQUE
-            const modal = document.getElementById('politiqueModal');
-            const openBtns = document.querySelectorAll('#openPolitiqueBtn, #openPolitiqueFooter');
-            const closeBtn = document.getElementById('modalClose');
-            openBtns.forEach(btn => {
-                btn.addEventListener('click', (e) => {
-                    e.preventDefault();
-                    modal.style.display = 'block';
-                    document.body.style.overflow = 'hidden';
-                });
-            });
-            if (closeBtn) {
-                closeBtn.addEventListener('click', () => {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                });
-            }
-            window.addEventListener('click', (e) => {
-                if (e.target === modal) {
-                    modal.style.display = 'none';
-                    document.body.style.overflow = 'auto';
-                }
-            });
+        track.appendChild(slide);
 
-            // CARROUSEL (création dynamique)
-            const slidesData = [
-                { type: 'image', src: 'images/image1.jpg', alt: 'Vue principale' },
-                { type: 'image', src: 'images/image2.jpg', alt: 'Espace nuit' },
-                { type: 'image', src: 'images/image3.jpg', alt: 'Coin détente' },
-                { type: 'image', src: 'images/cuisine-equipee.jpg', alt: 'Cuisine' },
-                { type: 'image', src: 'images/image4.jpg', alt: 'Salle de bain' },
-                { type: 'image', src: 'images/image5.jpg', alt: 'Ambiance' },
-                { type: 'video', src: 'images/visite-studio.mp4', poster: 'images/video-poster.jpg', alt: 'Vidéo visite' },
-                { type: 'image', src: 'images/image7.jpg', alt: 'Fresh Mood' }
-            ];
+        // Dot
+        const dot = document.createElement('button');
+        dot.className = 'c-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('aria-label', `Diapositive ${i + 1}`);
+        dot.addEventListener('click', () => { goTo(i); resetAuto(); });
+        dotsWrap.appendChild(dot);
+    });
 
-            const container = document.getElementById('carousel-container');
-            const dotsContainer = document.getElementById('carousel-dots');
-            if (container && dotsContainer) {
-                slidesData.forEach((slide, index) => {
-                    const slideDiv = document.createElement('div');
-                    slideDiv.className = 'carousel-slide' + (slide.type === 'video' ? ' video-slide' : '');
-                    if (slide.type === 'image') {
-                        const img = document.createElement('img');
-                        img.src = slide.src;
-                        img.alt = slide.alt;
-                        img.onerror = function() { this.src = 'data:image/svg+xml;base64,PHN2ZyB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48cmVjdCB3aWR0aD0iODAwIiBoZWlnaHQ9IjYwMCIgZmlsbD0iI0Y4RjVGMCIvPjx0ZXh0IHg9IjQwMCIgeT0iMzAwIiBmb250LWZhbWlseT0iQXJpYWwiIGZvbnQtc2l6ZT0iMjQiIHRleHQtYW5jaG9yPSJtaWRkbGUiIGZpbGw9IiM2QjVDNEEiPkltYWdlIG5vbiBkaXNwb25pYmxlPC90ZXh0Pjwvc3ZnPg=='; };
-                        slideDiv.appendChild(img);
-                    } else {
-                        const videoContainer = document.createElement('div');
-                        videoContainer.className = 'video-container';
-                        const video = document.createElement('video');
-                        video.id = 'studio-video';
-                        video.poster = slide.poster;
-                        video.preload = 'metadata';
-                        video.controls = true;
-                        video.playsInline = true;
-                        const source = document.createElement('source');
-                        source.src = slide.src;
-                        source.type = 'video/mp4';
-                        video.appendChild(source);
-                        video.appendChild(document.createTextNode('Vidéo non supportée'));
+    const dots = dotsWrap.querySelectorAll('.c-dot');
 
-                        const overlay = document.createElement('div');
-                        overlay.className = 'video-overlay';
-                        overlay.id = 'video-overlay-' + index;
-                        const playBtn = document.createElement('button');
-                        playBtn.className = 'play-video-btn';
-                        playBtn.innerHTML = '<i class="fas fa-play"></i>';
-                        playBtn.setAttribute('aria-label', 'Lancer la vidéo');
-                        const caption = document.createElement('p');
-                        caption.className = 'video-caption';
-                        caption.textContent = 'Cliquez pour lancer la visite vidéo';
+    function goTo(idx) {
+        if (idx < 0) idx = slidesData.length - 1;
+        if (idx >= slidesData.length) idx = 0;
+        current = idx;
+        track.style.transform = `translateX(-${current * 100}%)`;
+        dots.forEach((d, i) => d.classList.toggle('active', i === current));
+        // Pause video when leaving slide
+        const vid = document.getElementById('studio-video');
+        if (vid && !vid.paused) vid.pause();
+    }
 
-                        overlay.appendChild(playBtn);
-                        overlay.appendChild(caption);
-                        videoContainer.appendChild(video);
-                        videoContainer.appendChild(overlay);
-                        slideDiv.appendChild(videoContainer);
+    document.getElementById('c-prev').addEventListener('click', () => { goTo(current - 1); resetAuto(); });
+    document.getElementById('c-next').addEventListener('click', () => { goTo(current + 1); resetAuto(); });
 
-                        // Gestion de la lecture
-                        playBtn.addEventListener('click', () => {
-                            video.play().then(() => overlay.classList.add('hidden')).catch(() => {});
-                        });
-                        video.addEventListener('play', () => overlay.classList.add('hidden'));
-                        video.addEventListener('pause', () => overlay.classList.remove('hidden'));
-                        video.addEventListener('ended', () => overlay.classList.remove('hidden'));
-                    }
-                    container.appendChild(slideDiv);
+    // Touch swipe
+    let startX = 0;
+    track.addEventListener('touchstart', e => { startX = e.touches[0].clientX; }, { passive: true });
+    track.addEventListener('touchend',   e => {
+        const diff = startX - e.changedTouches[0].clientX;
+        if (Math.abs(diff) > 50) { goTo(current + (diff > 0 ? 1 : -1)); resetAuto(); }
+    }, { passive: true });
 
-                    // Dots
-                    const dot = document.createElement('button');
-                    dot.className = 'carousel-dot';
-                    dot.dataset.index = index;
-                    dot.setAttribute('aria-label', `Aller à l'image ${index+1}`);
-                    dotsContainer.appendChild(dot);
-                });
+    function startAuto() { autoPlay = setInterval(() => goTo(current + 1), 5000); }
+    function stopAuto()  { clearInterval(autoPlay); }
+    function resetAuto() { stopAuto(); startAuto(); }
 
-                // Carrousel logique
-                const slides = document.querySelectorAll('.carousel-slide');
-                const dots = document.querySelectorAll('.carousel-dot');
-                let currentIndex = 0;
-                let autoInterval;
+    track.parentElement.addEventListener('mouseenter', stopAuto);
+    track.parentElement.addEventListener('mouseleave', startAuto);
+    goTo(0);
+    startAuto();
 
-                function showSlide(index) {
-                    if (index < 0) index = slides.length - 1;
-                    if (index >= slides.length) index = 0;
-                    currentIndex = index;
-                    container.style.transform = `translateX(-${currentIndex * 100}%)`;
-                    dots.forEach((d, i) => d.classList.toggle('active', i === currentIndex));
+    /* -----------------------------------
+       FORMULAIRE
+    ----------------------------------- */
+    const fArrivee  = document.getElementById('f-arrivee');
+    const fDepart   = document.getElementById('f-depart');
+    const fFormule  = document.getElementById('f-formule');
+    const fGourmand = document.getElementById('f-gourmand');
+    const fPref     = document.getElementById('f-preference');
+    const priceBox  = document.getElementById('price-preview');
+    const priceAmt  = document.getElementById('price-amount');
+    const priceBreak= document.getElementById('price-breakdown');
+    const arrivSt   = document.getElementById('arrivee-status');
+    const departSt  = document.getElementById('depart-status');
 
-                    // Pause video si on change de slide
-                    const video = document.getElementById('studio-video');
-                    if (video && !video.paused) video.pause();
-                }
+    // Set default dates
+    const today     = new Date();
+    const tomorrow  = new Date(today); tomorrow.setDate(today.getDate() + 1);
+    const dat2      = new Date(today); dat2.setDate(today.getDate() + 2);
 
-                document.getElementById('carousel-prev').addEventListener('click', () => {
-                    showSlide(currentIndex - 1);
-                    resetAuto();
-                });
-                document.getElementById('carousel-next').addEventListener('click', () => {
-                    showSlide(currentIndex + 1);
-                    resetAuto();
-                });
-                dots.forEach(dot => {
-                    dot.addEventListener('click', () => {
-                        showSlide(parseInt(dot.dataset.index));
-                        resetAuto();
-                    });
-                });
+    function toISO(d) { return d.toISOString().split('T')[0]; }
+    fArrivee.min   = toISO(today);
+    fArrivee.value = toISO(tomorrow);
+    fDepart.min    = toISO(dat2);
+    fDepart.value  = toISO(dat2);
 
-                function startAuto() { autoInterval = setInterval(() => showSlide(currentIndex + 1), 5000); }
-                function stopAuto() { clearInterval(autoInterval); }
-                function resetAuto() { stopAuto(); startAuto(); }
+    // Booked dates (simulation)
+    const BOOKED = ['2025-12-25', '2025-12-31'];
 
-                container.addEventListener('mouseenter', stopAuto);
-                container.addEventListener('mouseleave', startAuto);
-                startAuto();
-                showSlide(0);
-            }
+    function isBooked(dateStr) { return BOOKED.includes(dateStr); }
 
-            // FORMULAIRE : dates et prix
-            const dateArrivee = document.getElementById('date-arrivee');
-            const dateDepart = document.getElementById('date-depart');
-            const formule = document.getElementById('formule');
-            const smoothieOption = document.getElementById('smoothie-sandwich');
-            const prixDisplay = document.getElementById('price-display');
-            const totalPrice = document.getElementById('total-price');
-            const priceDetails = document.getElementById('price-details');
-            const submitBtn = document.getElementById('submit-btn');
-            const arriveeStatus = document.getElementById('arrivee-status');
-            const departStatus = document.getElementById('depart-status');
+    function checkDates() {
+        if (!fArrivee.value || !fDepart.value) return true;
+        const a = new Date(fArrivee.value);
+        const d = new Date(fDepart.value);
 
-            // Initialisation dates
-            const today = new Date().toISOString().split('T')[0];
-            const tomorrow = new Date(Date.now() + 86400000).toISOString().split('T')[0];
-            if (dateArrivee) {
-                dateArrivee.min = today;
-                dateArrivee.value = tomorrow;
-            }
-            if (dateDepart) {
-                const afterTomorrow = new Date(Date.now() + 2*86400000).toISOString().split('T')[0];
-                dateDepart.min = afterTomorrow;
-                dateDepart.value = afterTomorrow;
-            }
+        if (d <= a) {
+            departSt.textContent = '❌ La date de départ doit être après l\'arrivée';
+            departSt.className   = 'date-status bad';
+            return false;
+        }
 
-            function checkAvailability() {
-                if (!dateArrivee.value || !dateDepart.value) return;
-                const arrivee = new Date(dateArrivee.value);
-                const depart = new Date(dateDepart.value);
-                if (depart <= arrivee) {
-                    if (departStatus) departStatus.innerHTML = '❌ Départ après arrivée';
-                    submitBtn.disabled = true;
-                    return;
-                }
-                // Simulation de dates réservées
-                const booked = ['2024-12-25','2024-12-31'];
-                let available = true;
-                for (let d = new Date(arrivee); d < depart; d.setDate(d.getDate()+1)) {
-                    const ds = d.toISOString().split('T')[0];
-                    if (booked.includes(ds)) { available = false; break; }
-                }
-                if (arriveeStatus && departStatus) {
-                    if (available) {
-                        arriveeStatus.innerHTML = '✅ Disponible';
-                        departStatus.innerHTML = '✅ Disponible';
-                        submitBtn.disabled = false;
-                    } else {
-                        arriveeStatus.innerHTML = '❌ Indisponible';
-                        departStatus.innerHTML = '❌ Indisponible';
-                        submitBtn.disabled = true;
-                    }
-                }
-            }
+        // Check each day
+        let ok = true;
+        for (let dt = new Date(a); dt < d; dt.setDate(dt.getDate() + 1)) {
+            if (isBooked(toISO(dt))) { ok = false; break; }
+        }
 
-            function calculatePrice() {
-                if (!dateArrivee.value || !dateDepart.value || !formule.value) {
-                    prixDisplay.style.display = 'none';
-                    return;
-                }
-                const arrivee = new Date(dateArrivee.value);
-                const depart = new Date(dateDepart.value);
-                if (depart <= arrivee) { prixDisplay.style.display = 'none'; return; }
+        if (ok) {
+            arrivSt.textContent = '✅ Disponible';
+            arrivSt.className   = 'date-status ok';
+            departSt.textContent = '✅ Disponible';
+            departSt.className   = 'date-status ok';
+        } else {
+            arrivSt.textContent = '❌ Dates indisponibles';
+            arrivSt.className   = 'date-status bad';
+            departSt.textContent = '';
+        }
+        return ok;
+    }
 
-                const smoothie = smoothieOption.value === 'avec';
-                let prixTotal = 0, caution = 20000, details = '';
-                if (formule.value === 'nuit') {
-                    const nuits = Math.ceil((depart - arrivee) / (1000*3600*24));
-                    const prixUnitaire = smoothie ? 17000 : 15000;
-                    prixTotal = nuits * prixUnitaire + caution;
-                    details = `${nuits} nuitée(s) × ${prixUnitaire} F = ${nuits*prixUnitaire} F + caution ${caution} F`;
-                } else {
-                    const heures = (depart - arrivee) / (1000*3600);
-                    const periodes = Math.ceil(heures / 24);
-                    const prixUnitaire = smoothie ? 27000 : 25000;
-                    caution = 25000;
-                    prixTotal = periodes * prixUnitaire + caution;
-                    details = `${periodes} période(s) 24h × ${prixUnitaire} F = ${periodes*prixUnitaire} F + caution ${caution} F`;
-                }
-                totalPrice.textContent = prixTotal.toLocaleString('fr-FR') + ' F';
-                priceDetails.innerHTML = details;
-                prixDisplay.style.display = 'block';
-            }
+    function calcPrice() {
+        if (!fArrivee.value || !fDepart.value || !fFormule.value) {
+            priceBox.style.display = 'none';
+            return;
+        }
+        const a = new Date(fArrivee.value);
+        const d = new Date(fDepart.value);
+        if (d <= a) { priceBox.style.display = 'none'; return; }
 
-            if (dateArrivee && dateDepart) {
-                dateArrivee.addEventListener('change', () => { checkAvailability(); calculatePrice(); });
-                dateDepart.addEventListener('change', () => { checkAvailability(); calculatePrice(); });
-                formule.addEventListener('change', calculatePrice);
-                smoothieOption.addEventListener('change', () => {
-                    document.getElementById('preference').disabled = (smoothieOption.value !== 'avec');
-                    calculatePrice();
-                });
-                checkAvailability();
-                calculatePrice();
-            }
+        const avecGourmand = fGourmand.value === 'avec';
+        let total = 0;
+        let detail = '';
 
-            // SOUMISSION FORMULAIRE
-            const form = document.getElementById('reservationForm');
-            if (form) {
-                form.addEventListener('submit', (e) => {
-                    e.preventDefault();
-                    if (!document.getElementById('accept-conditions').checked) {
-                        alert('Veuillez accepter les conditions.');
-                        return;
-                    }
-                    // Récupération des données...
-                    const nom = document.getElementById('nom').value;
-                    const prenom = document.getElementById('prenom').value;
-                    const tel = document.getElementById('telephone').value.replace(/\s/g,'');
-                    const message = `📋 NOUVELLE RÉSERVATION\nNom: ${prenom} ${nom}\nTél: ${tel}\nDates: ${dateArrivee.value} au ${dateDepart.value}\nFormule: ${formule.value}\nPrix estimé: ${totalPrice.textContent}`;
-                    window.open(`https://wa.me/22966953934?text=${encodeURIComponent(message)}`, '_blank');
-                });
-            }
-        })();
-    </script>
+        if (fFormule.value === 'nuit') {
+            const nuits  = Math.ceil((d - a) / 86400000);
+            const pu     = avecGourmand ? 17000 : 15000;
+            const caution = 20000;
+            const ht     = nuits * pu;
+            total        = ht + caution;
+            detail       = `${nuits} nuit${nuits > 1 ? 's' : ''} × ${pu.toLocaleString('fr-FR')} F = ${ht.toLocaleString('fr-FR')} F<br>Caution remboursable : ${caution.toLocaleString('fr-FR')} F`;
+        } else {
+            const heures  = (d - a) / 3600000;
+            const periodes = Math.ceil(heures / 24);
+            const pu      = avecGourmand ? 27000 : 25000;
+            const caution = 25000;
+            const ht      = periodes * pu;
+            total         = ht + caution;
+            detail        = `${periodes} période${periodes > 1 ? 's' : ''} 24h × ${pu.toLocaleString('fr-FR')} F = ${ht.toLocaleString('fr-FR')} F<br>Caution remboursable : ${caution.toLocaleString('fr-FR')} F`;
+        }
+
+        priceAmt.textContent       = total.toLocaleString('fr-FR') + ' F';
+        priceBreak.innerHTML       = detail;
+        priceBox.style.display     = 'block';
+    }
+
+    function update() { checkDates(); calcPrice(); }
+
+    fArrivee.addEventListener('change', update);
+    fDepart.addEventListener('change',  update);
+    fFormule.addEventListener('change', update);
+    fGourmand.addEventListener('change', () => {
+        fPref.disabled = fGourmand.value !== 'avec';
+        if (fPref.disabled) fPref.value = '';
+        calcPrice();
+    });
+
+    // Init
+    update();
+
+    /* -----------------------------------
+       SOUMISSION
+    ----------------------------------- */
+    document.getElementById('reservation-form').addEventListener('submit', function(e) {
+        e.preventDefault();
+
+        if (!document.getElementById('f-conditions').checked) {
+            alert('Veuillez accepter la politique d\'annulation.');
+            return;
+        }
+        if (!checkDates()) {
+            alert('Veuillez vérifier vos dates.');
+            return;
+        }
+
+        const nom    = document.getElementById('f-nom').value.trim();
+        const prenom = document.getElementById('f-prenom').value.trim();
+        const tel    = document.getElementById('f-phone').value.replace(/\s+/g, '');
+        const email  = document.getElementById('f-email').value.trim();
+        const msg    = document.getElementById('f-message').value.trim();
+        const pref   = fPref.disabled ? '' : fPref.value;
+
+        let text = `📋 *NOUVELLE RÉSERVATION — La Parenthèse*\n\n`;
+        text += `👤 *Client :* ${prenom} ${nom}\n`;
+        text += `📞 *Téléphone :* ${tel}\n`;
+        text += `📧 *E-mail :* ${email}\n\n`;
+        text += `🗓️ *Arrivée :* ${fArrivee.value}\n`;
+        text += `🗓️ *Départ :* ${fDepart.value}\n`;
+        text += `🏠 *Formule :* ${fFormule.value === 'nuit' ? 'Nuitée Cosy' : '24h Flexibles'}\n`;
+        text += `🍹 *Option gourmande :* ${fGourmand.value === 'avec' ? 'Oui' + (pref ? ` (${pref})` : '') : 'Non'}\n`;
+        text += `💰 *Estimation :* ${priceAmt.textContent}\n`;
+        if (msg) text += `\n💬 *Message :* ${msg}\n`;
+        text += `\nMerci d'avoir choisi La Parenthèse ! 🌿`;
+
+        window.open(`https://wa.me/22966953934?text=${encodeURIComponent(text)}`, '_blank');
+    });
+
+})();
+</script>
+
 </body>
 </html>
